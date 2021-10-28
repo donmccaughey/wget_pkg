@@ -43,7 +43,11 @@ wget : $(TMP)/wget/install/usr/local/bin/wget
 
 ##### openssl ##########
 
-openssl_config_options := no-shared
+openssl_config_options := \
+		no-filenames \
+		no-shared \
+		no-stdio \
+		no-tests
 
 openssl_sources := $(shell find openssl -type f \! -name .DS_Store)
 
