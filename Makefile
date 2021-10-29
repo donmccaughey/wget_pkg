@@ -63,12 +63,9 @@ $(TMP)/openssl :
 
 ##### openssl arm64 ##########
 
-openssl_install_files_arm64 := \
-		$(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
-		$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
-		$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a
-
-$(openssl_install_files_arm64) : $(TMP)/openssl/arm64/installed.stamp.txt
+$(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
+$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
+$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a : $(TMP)/openssl/arm64/installed.stamp.txt
 	@:
 
 $(TMP)/openssl/arm64/installed.stamp.txt : \
@@ -100,12 +97,9 @@ $(TMP)/openssl/arm64/install :
 
 ##### openssl x86_64 ##########
 
-openssl_install_files_x86_64 := \
-		$(TMP)/openssl/x86_64/install/usr/local/include/openssl/ssl.h \
-		$(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
-		$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a
-
-$(openssl_install_files_x86_64) : $(TMP)/openssl/x86_64/installed.stamp.txt
+$(TMP)/openssl/x86_64/install/usr/local/include/openssl/ssl.h \
+$(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
+$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a : $(TMP)/openssl/x86_64/installed.stamp.txt
 	@:
 
 $(TMP)/openssl/x86_64/installed.stamp.txt : \
@@ -138,9 +132,9 @@ $(TMP)/openssl/x86_64/install :
 ##### openssl fat binaries ##########
 
 $(TMP)/openssl/install/usr/local/include/openssl/ssl.h : \
-				$(TMP)/openssl/install/usr/local/include \
-				$(TMP)/openssl/arm64/installed.stamp.txt
-	cp -R $(TMP)/openssl/arm64/install/usr/local/include/openssl $</openssl
+				$(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
+				| $(TMP)/openssl/install/usr/local/include
+	cp -R $(dir $<) $(dir $@)
 
 $(TMP)/openssl/install/usr/local/lib/libcrypto.a : \
 				$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
