@@ -40,6 +40,11 @@ openssl : \
 wget : $(TMP)/wget/install/usr/local/bin/wget
 
 
+.PHONY : clean-wget
+clean-wget :
+	rm -rf $(TMP)/wget
+
+
 ##### compilation flags ##########
 
 arch_flags = $(patsubst %,-arch %,$(archs))
@@ -159,7 +164,8 @@ $(TMP)/openssl/install/usr/local/lib :
 wget_configure_options := \
 		--disable-silent-rules \
 		--with-ssl=openssl \
-		--with-libssl-prefix=$(TMP)/openssl/install/usr/local
+		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
+		CFLAGS='$(CFLAGS)'
 
 wget_sources := $(shell find wget -type f \! -name .DS_Store)
 
