@@ -18,10 +18,6 @@ clean :
 	-rm -rf $(TMP)
 
 
-.PHONY : openssl
-openssl : $(TMP)/openssl/installed.stamp.txt
-
-
 .PHONY : check
 check :
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
@@ -34,11 +30,21 @@ check :
 
 
 .PHONY : openssl
-openssl : $(TMP)/openssl/installed.stamp.txt
+openssl : \
+				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
+				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
+				$(TMP)/openssl/install/usr/local/lib/libssl.a
 
 
 .PHONY : wget
 wget : $(TMP)/wget/install/usr/local/bin/wget
+
+
+##### compilation flags ##########
+
+arch_flags = $(patsubst %,-arch %,$(archs))
+
+CFLAGS += $(arch_flags)
 
 
 ##### openssl ##########
@@ -51,36 +57,106 @@ openssl_config_options := \
 
 openssl_sources := $(shell find openssl -type f \! -name .DS_Store)
 
-openssl_install_files := \
-		$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
-		$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
-		$(TMP)/openssl/install/usr/local/lib/libssl.a
+$(TMP)/openssl :
+	mkdir -p $@
 
-$(openssl_install_files) : $(TMP)/openssl/installed.stamp.txt
+
+##### openssl arm64 ##########
+
+openssl_install_files_arm64 := \
+		$(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
+		$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
+		$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a
+
+$(openssl_install_files_arm64) : $(TMP)/openssl/arm64/installed.stamp.txt
 	@:
 
-$(TMP)/openssl/installed.stamp.txt : \
-				$(TMP)/openssl/build/libssl.a \
-				$(TMP)/openssl/build/libcrypto.a \
-				| $(TMP)/openssl/install
-	cd $(TMP)/openssl/build && $(MAKE) DESTDIR=$(TMP)/openssl/install install_sw
+$(TMP)/openssl/arm64/installed.stamp.txt : \
+				$(TMP)/openssl/arm64/build/libssl.a \
+				$(TMP)/openssl/arm64/build/libcrypto.a \
+				| $(TMP)/openssl/arm64/install
+	cd $(TMP)/openssl/arm64/build && $(MAKE) DESTDIR=$(TMP)/openssl/arm64/install install_sw
 	date > $@
 
-$(TMP)/openssl/build/libssl.a \
-$(TMP)/openssl/build/libcrypto.a : $(TMP)/openssl/built.stamp.txt | $$(dir $$@)
+$(TMP)/openssl/arm64/build/libssl.a \
+$(TMP)/openssl/arm64/build/libcrypto.a : $(TMP)/openssl/arm64/built.stamp.txt | $$(dir $$@)
 	@:
 
-$(TMP)/openssl/built.stamp.txt : $(TMP)/openssl/configured.stamp.txt | $$(dir $$@)
-	cd $(TMP)/openssl/build && $(MAKE)
+$(TMP)/openssl/arm64/built.stamp.txt : $(TMP)/openssl/arm64/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/openssl/arm64/build && $(MAKE)
 	date > $@
 
-$(TMP)/openssl/configured.stamp.txt : $(openssl_sources) | $(TMP)/openssl/build
-	cd $(TMP)/openssl/build && sh $(abspath openssl/config) $(openssl_config_options)
+$(TMP)/openssl/arm64/configured.stamp.txt : $(openssl_sources) | $(TMP)/openssl/arm64/build
+	cd $(TMP)/openssl/arm64/build \
+			&& $(abspath openssl/Configure) \
+					$(openssl_config_options) darwin64-arm64-cc
 	date > $@
 
-$(TMP)/openssl \
-$(TMP)/openssl/build \
-$(TMP)/openssl/install :
+$(TMP)/openssl/arm64 \
+$(TMP)/openssl/arm64/build \
+$(TMP)/openssl/arm64/install :
+	mkdir -p $@
+
+
+##### openssl x86_64 ##########
+
+openssl_install_files_x86_64 := \
+		$(TMP)/openssl/x86_64/install/usr/local/include/openssl/ssl.h \
+		$(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
+		$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a
+
+$(openssl_install_files_x86_64) : $(TMP)/openssl/x86_64/installed.stamp.txt
+	@:
+
+$(TMP)/openssl/x86_64/installed.stamp.txt : \
+				$(TMP)/openssl/x86_64/build/libssl.a \
+				$(TMP)/openssl/x86_64/build/libcrypto.a \
+				| $(TMP)/openssl/x86_64/install
+	cd $(TMP)/openssl/x86_64/build && $(MAKE) DESTDIR=$(TMP)/openssl/x86_64/install install_sw
+	date > $@
+
+$(TMP)/openssl/x86_64/build/libssl.a \
+$(TMP)/openssl/x86_64/build/libcrypto.a : $(TMP)/openssl/x86_64/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/openssl/x86_64/built.stamp.txt : $(TMP)/openssl/x86_64/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/openssl/x86_64/build && $(MAKE)
+	date > $@
+
+$(TMP)/openssl/x86_64/configured.stamp.txt : $(openssl_sources) | $(TMP)/openssl/x86_64/build
+	cd $(TMP)/openssl/x86_64/build \
+			&& $(abspath openssl/Configure) \
+					$(openssl_config_options) darwin64-x86_64-cc
+	date > $@
+
+$(TMP)/openssl/x86_64 \
+$(TMP)/openssl/x86_64/build \
+$(TMP)/openssl/x86_64/install :
+	mkdir -p $@
+
+
+##### openssl fat binaries ##########
+
+$(TMP)/openssl/install/usr/local/include/openssl/ssl.h : \
+				$(TMP)/openssl/install/usr/local/include \
+				$(TMP)/openssl/arm64/installed.stamp.txt
+	cp -R $(TMP)/openssl/arm64/install/usr/local/include/openssl $</openssl
+
+$(TMP)/openssl/install/usr/local/lib/libcrypto.a : \
+				$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
+				$(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
+				| $$(dir $$@)
+	lipo -create $^ -output $@
+
+
+$(TMP)/openssl/install/usr/local/lib/libssl.a : \
+				$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a \
+				$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a \
+				| $$(dir $$@)
+	lipo -create $^ -output $@
+
+$(TMP)/openssl/install/usr/local/include \
+$(TMP)/openssl/install/usr/local/lib :
 	mkdir -p $@
 
 
@@ -101,7 +177,9 @@ $(TMP)/wget/build/src/wget : $(TMP)/wget/build/config.status $(wget_sources)
 
 $(TMP)/wget/build/config.status : \
 				wget/configure \
-				$(openssl_install_files) \
+				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
+				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
+				$(TMP)/openssl/install/usr/local/lib/libssl.a \
 				| $(TMP)/wget/build
 	cd $(TMP)/wget/build && sh $(abspath wget/configure) $(wget_configure_options)
 
