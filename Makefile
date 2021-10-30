@@ -1,3 +1,4 @@
+APP_SIGNING_ID ?= Developer ID Application: Donald McCaughey
 TMP ?= $(abspath tmp)
 
 version := 1.21.2
@@ -23,7 +24,7 @@ check :
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
-	codesign --verify --strict $(TMP)/install/usr/local/bin/wget
+	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
 	pkgutil --check-signature wget-$(version).pkg
 	spctl --assess --type install wget-$(version).pkg
 	xcrun stapler validate wget-$(version).pkg
@@ -37,7 +38,7 @@ openssl : \
 
 
 .PHONY : wget
-wget : $(TMP)/wget/install/usr/local/bin/wget
+wget : $(TMP)/signed.stamp.txt
 
 
 .PHONY : clean-wget
@@ -186,4 +187,16 @@ $(TMP)/wget/build/config.status : \
 $(TMP)/wget/build \
 $(TMP)/wget/install :
 	mkdir -p $@
+
+
+##### pkg ##########
+
+# sign executable
+
+$(TMP)/signed.stamp.txt : $(TMP)/wget/install/usr/local/bin/wget | $$(dir $$@)
+	xcrun codesign \
+		--sign "$(APP_SIGNING_ID)" \
+		--options runtime \
+		$<
+	date > $@
 
