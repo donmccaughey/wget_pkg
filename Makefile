@@ -38,7 +38,7 @@ openssl : \
 
 
 .PHONY : wget
-wget : $(TMP)/signed.stamp.txt
+wget : $(TMP)/wget.pkg
 
 
 .PHONY : clean-wget
@@ -199,4 +199,20 @@ $(TMP)/signed.stamp.txt : $(TMP)/wget/install/usr/local/bin/wget | $$(dir $$@)
 		--options runtime \
 		$<
 	date > $@
+
+$(TMP)/wget.pkg : \
+		$(TMP)/signed.stamp.txt \
+		$(TMP)/wget/install/etc/paths.d/wget.path
+	pkgbuild \
+		--root $(TMP)/wget/install \
+		--identifier cc.donm.wget \
+		--ownership recommended \
+		--version $(version) \
+		$@
+
+$(TMP)/wget/install/etc/paths.d/wget.path : wget.path | $$(dir $$@)
+	cp $< $@
+
+$(TMP)/wget/install/etc/paths.d :
+	mkdir -p $@
 
