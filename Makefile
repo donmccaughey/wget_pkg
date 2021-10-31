@@ -27,6 +27,7 @@ check :
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
 	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
+	$(TMP)/wget/install/usr/local/bin/wget --output-document - https://donm.cc > /dev/null
 	pkgutil --check-signature wget-$(version).pkg
 	spctl --assess --type install wget-$(version).pkg
 	xcrun stapler validate wget-$(version).pkg
@@ -58,9 +59,9 @@ CFLAGS += $(arch_flags)
 ##### openssl ##########
 
 openssl_config_options := \
+		--openssldir=/etc/ssl \
 		no-filenames \
 		no-shared \
-		no-stdio \
 		no-tests
 
 openssl_sources := $(shell find openssl -type f \! -name .DS_Store)
