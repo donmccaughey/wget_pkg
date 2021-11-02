@@ -208,9 +208,22 @@ $(TMP)/signed.stamp.txt : $(TMP)/wget/install/usr/local/bin/wget | $$(dir $$@)
 		$<
 	date > $@
 
+# uninstall
+
+$(TMP)/wget/install/usr/local/bin/uninstall-wget : \
+		./uninstall-wget \
+		$(TMP)/wget/install/etc/paths.d/wget.path \
+		$(TMP)/wget/install/usr/local/bin/wget \
+		| $$(dir $$@)
+	cp $< $@
+	cd $(TMP)/wget/install && find . -type f \! -name .DS_Store | sort >> $@
+	sed -e 's/^\./rm -f /g' -i '' $@
+	chmod a+x $@
+
 $(TMP)/wget.pkg : \
 		$(TMP)/signed.stamp.txt \
-		$(TMP)/wget/install/etc/paths.d/wget.path
+		$(TMP)/wget/install/etc/paths.d/wget.path \
+		$(TMP)/wget/install/usr/local/bin/uninstall-wget
 	pkgbuild \
 		--root $(TMP)/wget/install \
 		--identifier cc.donm.pkg.wget \
