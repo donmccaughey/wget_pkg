@@ -4,6 +4,7 @@ NOTARIZATION_KEYCHAIN_PROFILE ?= Donald McCaughey
 TMP ?= $(abspath tmp)
 
 version := 1.21.2
+libiconv_version := 1.16
 openssl_version := 1.1.1m
 revision := 2
 archs := arm64 x86_64
@@ -42,11 +43,17 @@ check :
 	xcrun stapler validate wget-$(ver).pkg
 
 
+.PHONY : libiconv
+libiconv : \
+			$(TMP)/libiconv/install/usr/local/include/iconv.h \
+			$(TMP)/libiconv/install/usr/local/lib/libiconv.a
+
+
 .PHONY : openssl
 openssl : \
-				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
-				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
-				$(TMP)/openssl/install/usr/local/lib/libssl.a
+			$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
+			$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
+			$(TMP)/openssl/install/usr/local/lib/libssl.a
 
 
 .PHONY : wget
@@ -63,6 +70,42 @@ clean-wget :
 arch_flags = $(patsubst %,-arch %,$(archs))
 
 CFLAGS += $(arch_flags)
+
+
+##### libiconv ##########
+
+libiconv_config_options := --disable-shared
+
+libiconv_sources := $(shell find libiconv -type f \! -name .DS_Store)
+
+$(TMP)/libiconv/install/usr/local/include/iconv.h \
+$(TMP)/libiconv/install/usr/local/lib/libiconv.a : $(TMP)/libiconv/installed.stamp.txt
+	@:
+
+$(TMP)/libiconv/installed.stamp.txt : \
+			$(TMP)/libiconv/build/include/iconv.h \
+			$(TMP)/libiconv/build/lib/.libs/libiconv.a \
+			| $$(dir $$@)
+	cd $(TMP)/libiconv/build && $(MAKE) DESTDIR=$(TMP)/libiconv/install install
+	date > $@
+
+$(TMP)/libiconv/build/include/iconv.h \
+$(TMP)/libiconv/build/lib/.libs/libiconv.a : $(TMP)/libiconv/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/libiconv/built.stamp.txt : $(TMP)/libiconv/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/libiconv/build && $(MAKE)
+	date > $@
+
+$(TMP)/libiconv/configured.stamp.txt : $(libiconv_sources) | $(TMP)/libiconv/build
+	cd $(TMP)/libiconv/build \
+			&& $(abspath libiconv/configure) $(libiconv_config_options)
+	date > $@
+
+$(TMP)/libiconv \
+$(TMP)/libiconv/build \
+$(TMP)/libiconv/install :
+	mkdir -p $@
 
 
 ##### openssl ##########
@@ -177,6 +220,7 @@ $(TMP)/openssl/install/usr/local/lib :
 wget_configure_options := \
 		--disable-silent-rules \
 		--with-ssl=openssl \
+		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
 		CFLAGS='$(CFLAGS)'
 
@@ -190,6 +234,8 @@ $(TMP)/wget/build/src/wget : $(TMP)/wget/build/config.status $(wget_sources)
 
 $(TMP)/wget/build/config.status : \
 				wget/configure \
+				$(TMP)/libiconv/install/usr/local/include/iconv.h \
+				$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
 				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
 				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
 				$(TMP)/openssl/install/usr/local/lib/libssl.a \
@@ -276,6 +322,7 @@ wget-$(ver).pkg : \
 $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Build Date: %s\n' "$(date)" > $@
 	printf 'Software Version: %s\n' "$(version)" >> $@
+	printf 'libiconv Version: %s\n' "$(libiconv_version)" >> $@
 	printf 'OpenSSL Version: %s\n' "$(openssl_version)" >> $@
 	printf 'Installer Revision: %s\n' "$(revision)" >> $@
 	printf 'Architectures: %s\n' "$(arch_list)" >> $@
@@ -295,6 +342,7 @@ $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
 		-e 's/{{arch_list}}/$(arch_list)/g' \
 		-e 's/{{date}}/$(date)/g' \
 		-e 's/{{macos}}/$(macos)/g' \
+		-e 's/{{libiconv_version}}/$(libiconv_version)/g' \
 		-e 's/{{openssl_version}}/$(openssl_version)/g' \
 		-e 's/{{revision}}/$(revision)/g' \
 		-e 's/{{version}}/$(version)/g' \
