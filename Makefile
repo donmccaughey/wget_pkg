@@ -5,15 +5,18 @@ TMP ?= $(abspath tmp)
 
 version := 1.21.2
 openssl_version := 1.1.1l
-revision := 1
+revision := 2
 archs := arm64 x86_64
+
+rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
+ver := $(version)$(rev)
 
 
 .SECONDEXPANSION :
 
 
 .PHONY : signed-package
-signed-package : wget-$(version).pkg
+signed-package : wget-$(ver).pkg
 
 
 .PHONY : notarize
@@ -33,9 +36,9 @@ check :
 	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
 	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
 	$(TMP)/wget/install/usr/local/bin/wget --output-document - https://donm.cc > /dev/null
-	pkgutil --check-signature wget-$(version).pkg
-	spctl --assess --type install wget-$(version).pkg
-	xcrun stapler validate wget-$(version).pkg
+	pkgutil --check-signature wget-$(ver).pkg
+	spctl --assess --type install wget-$(ver).pkg
+	xcrun stapler validate wget-$(ver).pkg
 
 
 .PHONY : openssl
@@ -253,7 +256,7 @@ xcode:=$(shell \
 	| awk -F ' ' '{print $$2}' \
 	)
 
-wget-$(version).pkg : \
+wget-$(ver).pkg : \
 		$(TMP)/wget.pkg \
 		$(TMP)/build-report.txt \
 		$(TMP)/distribution.xml \
@@ -309,7 +312,7 @@ $(TMP)/resources :
 
 ##### notarization ##########
 
-$(TMP)/submit-log.json : wget-$(version).pkg | $$(dir $$@)
+$(TMP)/submit-log.json : wget-$(ver).pkg | $$(dir $$@)
 	xcrun notarytool submit $< \
 		--keychain-profile "$(NOTARIZATION_KEYCHAIN_PROFILE)" \
 		--output-format json \
@@ -328,7 +331,7 @@ $(TMP)/notarized.stamp.txt : $(TMP)/notarization-log.json | $$(dir $$@)
 	test "$$(jq --raw-output '.status' < $<)" = "Accepted"
 	date > $@
 
-$(TMP)/stapled.stamp.txt : wget-$(version).pkg $(TMP)/notarized.stamp.txt
+$(TMP)/stapled.stamp.txt : wget-$(ver).pkg $(TMP)/notarized.stamp.txt
 	xcrun stapler staple $<
 	date > $@
 
