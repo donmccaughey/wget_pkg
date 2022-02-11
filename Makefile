@@ -4,7 +4,7 @@ NOTARIZATION_KEYCHAIN_PROFILE ?= Donald McCaughey
 TMP ?= $(abspath tmp)
 
 version := 1.21.2
-openssl_version := 1.1.1l
+openssl_version := 1.1.1m
 revision := 2
 archs := arm64 x86_64
 
