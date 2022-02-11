@@ -34,6 +34,7 @@ check :
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
+	test "$(shell ./tools/dylibs --no-sys-libs --count $(TMP)/wget/install/usr/local/bin/wget) dylibs" = "0 dylibs"
 	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
 	$(TMP)/wget/install/usr/local/bin/wget --output-document - https://donm.cc > /dev/null
 	pkgutil --check-signature wget-$(ver).pkg
