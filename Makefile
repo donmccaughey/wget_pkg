@@ -373,13 +373,13 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Architectures: %s\n' "$(arch_list)" >> $@
 	printf 'macOS Version: %s\n' "$(macos)" >> $@
 	printf 'Xcode Version: %s\n' "$(xcode)" >> $@
-	printf 'Tag Version: v%s-r%s\n' "$(version)" "$(revision)" >> $@
 	printf 'APP_SIGNING_ID: %s\n' "$(APP_SIGNING_ID)" >> $@
 	printf 'INSTALLER_SIGNING_ID: %s\n' "$(INSTALLER_SIGNING_ID)" >> $@
 	printf 'TMP directory: %s\n' "$(TMP)" >> $@
 	printf 'CFLAGS: %s\n' "$(CFLAGS)" >> $@
-	printf 'Release Title: wget %s for macOS rev %s\n' "$(version)" "$(revision)" >> $@
-	printf 'Description: A signed macOS installer package for `wget` %s.\n' "$(version)" >> $@
+	printf 'Tag: v%s-r%s\n' "$(version)" "$(revision)" >> $@
+	printf 'Tag Title: wget %s for macOS rev %s\n' "$(version)" "$(revision)" >> $@
+	printf 'Tag Message: A signed and notarized universal installer package for `wget` %s.\n' "$(version)" >> $@
 
 $(TMP)/distribution.xml \
 $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
