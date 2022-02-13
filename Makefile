@@ -6,6 +6,7 @@ TMP ?= $(abspath tmp)
 version := 1.21.2
 libiconv_version := 1.16
 openssl_version := 1.1.1m
+zlib_version := 1.2.11
 revision := 2
 archs := arm64 x86_64
 
@@ -32,8 +33,10 @@ clean :
 
 .PHONY : check
 check :
+	test "$(shell lipo -archs $(TMP)/libiconv/install/usr/local/lib/libiconv.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/zlib/install/usr/local/lib/libz.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
 	test "$(shell ./tools/dylibs --no-sys-libs --count $(TMP)/wget/install/usr/local/bin/wget) dylibs" = "0 dylibs"
 	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
@@ -56,6 +59,12 @@ openssl : \
 			$(TMP)/openssl/install/usr/local/lib/libssl.a
 
 
+.PHONY : zlib
+zlib : \
+			$(TMP)/zlib/install/usr/local/include/zlib.h \
+			$(TMP)/zlib/install/usr/local/lib/zlib.a
+
+
 .PHONY : wget
 wget : $(TMP)/wget.pkg
 
@@ -74,7 +83,9 @@ CFLAGS += $(arch_flags)
 
 ##### libiconv ##########
 
-libiconv_config_options := --disable-shared
+libiconv_config_options := \
+			--disable-shared \
+			CFLAGS='$(CFLAGS)'
 
 libiconv_sources := $(shell find libiconv -type f \! -name .DS_Store)
 
@@ -215,6 +226,44 @@ $(TMP)/openssl/install/usr/local/lib :
 	mkdir -p $@
 
 
+#### zlib ##########
+
+zlib_config_options := \
+		--static \
+		--archs="$(arch_flags)"
+
+zlib_sources := $(shell find zlib -type f \! -name .DS_Store)
+
+$(TMP)/zlib/install/usr/local/include/zlib.h \
+$(TMP)/zlib/install/usr/local/lib/zlib.a : $(TMP)/zlib/installed.stamp.txt
+	@:
+
+$(TMP)/zlib/installed.stamp.txt : \
+			$(TMP)/zlib/build/zconf.h \
+			$(TMP)/zlib/build/zlib.a \
+			| $$(dir $$@)
+	cd $(TMP)/zlib/build && $(MAKE) DESTDIR=$(TMP)/zlib/install install
+	date > $@
+
+$(TMP)/zlib/build/zconf.h \
+$(TMP)/zlib/build/zlib.a : $(TMP)/zlib/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/zlib/built.stamp.txt : $(TMP)/zlib/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/zlib/build && $(MAKE)
+	date > $@
+
+$(TMP)/zlib/configured.stamp.txt : $(zlib_sources) | $(TMP)/zlib/build
+	cd $(TMP)/zlib/build \
+			&& $(abspath zlib/configure) $(zlib_config_options)
+	date > $@
+
+$(TMP)/zlib \
+$(TMP)/zlib/build \
+$(TMP)/zlib/install :
+	mkdir -p $@
+
+
 ##### wget ##########
 
 wget_configure_options := \
@@ -222,7 +271,9 @@ wget_configure_options := \
 		--with-ssl=openssl \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
-		CFLAGS='$(CFLAGS)'
+		CFLAGS='$(CFLAGS)' \
+		ZLIB_CFLAGS='-I $(TMP)/zlib/install/usr/local/include' \
+		ZLIB_LIBS='-lz -L$(TMP)/zlib/install/usr/local/lib'
 
 wget_sources := $(shell find wget -type f \! -name .DS_Store)
 
@@ -239,6 +290,8 @@ $(TMP)/wget/build/config.status : \
 				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
 				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
 				$(TMP)/openssl/install/usr/local/lib/libssl.a \
+				$(TMP)/zlib/install/usr/local/include/zlib.h \
+				$(TMP)/zlib/install/usr/local/lib/zlib.a \
 				| $(TMP)/wget/build
 	cd $(TMP)/wget/build && sh $(abspath wget/configure) $(wget_configure_options)
 
@@ -324,6 +377,7 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Software Version: %s\n' "$(version)" >> $@
 	printf 'libiconv Version: %s\n' "$(libiconv_version)" >> $@
 	printf 'OpenSSL Version: %s\n' "$(openssl_version)" >> $@
+	printf 'zlib Version: %s\n' "$(zlib_version)" >> $@
 	printf 'Installer Revision: %s\n' "$(revision)" >> $@
 	printf 'Architectures: %s\n' "$(arch_list)" >> $@
 	printf 'macOS Version: %s\n' "$(macos)" >> $@
@@ -344,6 +398,7 @@ $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
 		-e 's/{{macos}}/$(macos)/g' \
 		-e 's/{{libiconv_version}}/$(libiconv_version)/g' \
 		-e 's/{{openssl_version}}/$(openssl_version)/g' \
+		-e 's/{{zlib_version}}/$(zlib_version)/g' \
 		-e 's/{{revision}}/$(revision)/g' \
 		-e 's/{{version}}/$(version)/g' \
 		-e 's/{{xcode}}/$(xcode)/g' \
