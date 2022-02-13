@@ -279,6 +279,10 @@ wget_sources := $(shell find wget -type f \! -name .DS_Store)
 
 $(TMP)/wget/install/usr/local/bin/wget : $(TMP)/wget/build/src/wget | $(TMP)/wget/install
 	cd $(TMP)/wget/build && $(MAKE) DESTDIR=$(TMP)/wget/install install
+	xcrun codesign \
+		--sign "$(APP_SIGNING_ID)" \
+		--options runtime \
+		$@
 
 $(TMP)/wget/build/src/wget : $(TMP)/wget/build/config.status $(wget_sources)
 	cd $(TMP)/wget/build && $(MAKE)
@@ -302,16 +306,14 @@ $(TMP)/wget/install :
 
 ##### pkg ##########
 
-# sign executable
-
-$(TMP)/signed.stamp.txt : $(TMP)/wget/install/usr/local/bin/wget | $$(dir $$@)
-	xcrun codesign \
-		--sign "$(APP_SIGNING_ID)" \
-		--options runtime \
-		$<
-	date > $@
-
-# uninstall
+$(TMP)/wget.pkg : \
+		$(TMP)/wget/install/usr/local/bin/uninstall-wget
+	pkgbuild \
+		--root $(TMP)/wget/install \
+		--identifier cc.donm.pkg.wget \
+		--ownership recommended \
+		--version $(version) \
+		$@
 
 $(TMP)/wget/install/usr/local/bin/uninstall-wget : \
 		./uninstall-wget \
@@ -322,17 +324,6 @@ $(TMP)/wget/install/usr/local/bin/uninstall-wget : \
 	cd $(TMP)/wget/install && find . -type f \! -name .DS_Store | sort >> $@
 	sed -e 's/^\./rm -f /g' -i '' $@
 	chmod a+x $@
-
-$(TMP)/wget.pkg : \
-		$(TMP)/signed.stamp.txt \
-		$(TMP)/wget/install/etc/paths.d/wget.path \
-		$(TMP)/wget/install/usr/local/bin/uninstall-wget
-	pkgbuild \
-		--root $(TMP)/wget/install \
-		--identifier cc.donm.pkg.wget \
-		--ownership recommended \
-		--version $(version) \
-		$@
 
 $(TMP)/wget/install/etc/paths.d/wget.path : wget.path | $$(dir $$@)
 	cp $< $@
