@@ -62,7 +62,7 @@ openssl : \
 .PHONY : zlib
 zlib : \
 			$(TMP)/zlib/install/usr/local/include/zlib.h \
-			$(TMP)/zlib/install/usr/local/lib/zlib.a
+			$(TMP)/zlib/install/usr/local/lib/libz.a
 
 
 .PHONY : wget
@@ -235,18 +235,18 @@ zlib_config_options := \
 zlib_sources := $(shell find zlib -type f \! -name .DS_Store)
 
 $(TMP)/zlib/install/usr/local/include/zlib.h \
-$(TMP)/zlib/install/usr/local/lib/zlib.a : $(TMP)/zlib/installed.stamp.txt
+$(TMP)/zlib/install/usr/local/lib/libz.a : $(TMP)/zlib/installed.stamp.txt
 	@:
 
 $(TMP)/zlib/installed.stamp.txt : \
 			$(TMP)/zlib/build/zconf.h \
-			$(TMP)/zlib/build/zlib.a \
+			$(TMP)/zlib/build/libz.a \
 			| $$(dir $$@)
 	cd $(TMP)/zlib/build && $(MAKE) DESTDIR=$(TMP)/zlib/install install
 	date > $@
 
 $(TMP)/zlib/build/zconf.h \
-$(TMP)/zlib/build/zlib.a : $(TMP)/zlib/built.stamp.txt | $$(dir $$@)
+$(TMP)/zlib/build/libz.a : $(TMP)/zlib/built.stamp.txt | $$(dir $$@)
 	@:
 
 $(TMP)/zlib/built.stamp.txt : $(TMP)/zlib/configured.stamp.txt | $$(dir $$@)
@@ -291,7 +291,7 @@ $(TMP)/wget/build/config.status : \
 				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
 				$(TMP)/openssl/install/usr/local/lib/libssl.a \
 				$(TMP)/zlib/install/usr/local/include/zlib.h \
-				$(TMP)/zlib/install/usr/local/lib/zlib.a \
+				$(TMP)/zlib/install/usr/local/lib/libz.a \
 				| $(TMP)/wget/build
 	cd $(TMP)/wget/build && sh $(abspath wget/configure) $(wget_configure_options)
 
