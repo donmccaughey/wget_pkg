@@ -6,7 +6,7 @@ TMP ?= $(abspath tmp)
 version := 1.21.3
 libiconv_version := 1.16
 openssl_version := 1.1.1n
-zlib_version := 1.2.11
+zlib_version := 1.2.12
 revision := 1
 archs := arm64 x86_64
 
