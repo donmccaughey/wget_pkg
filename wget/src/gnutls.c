@@ -1,5 +1,5 @@
 /* SSL support via GnuTLS library.
-   Copyright (C) 2005-2012, 2015, 2018-2021 Free Software Foundation,
+   Copyright (C) 2005-2012, 2015, 2018-2022 Free Software Foundation,
    Inc.
 
 This file is part of GNU Wget.
@@ -99,7 +99,6 @@ static gnutls_certificate_credentials_t credentials;
 bool
 ssl_init (void)
 {
-  fprintf(stderr,"SSL_INIT\n");
   /* Becomes true if GnuTLS is initialized. */
   const char *ca_directory;
   DIR *dir;
@@ -237,8 +236,6 @@ cert to be of the same type.\n"));
 void
 ssl_cleanup (void)
 {
-  fprintf(stderr,"SSL_CLEANUP\n");
-
   if (!ssl_initialized)
     return;
 

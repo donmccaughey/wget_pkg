@@ -3,11 +3,11 @@ INSTALLER_SIGNING_ID ?= Developer ID Installer: Donald McCaughey
 NOTARIZATION_KEYCHAIN_PROFILE ?= Donald McCaughey
 TMP ?= $(abspath tmp)
 
-version := 1.21.2
+version := 1.21.3
 libiconv_version := 1.16
 openssl_version := 1.1.1m
 zlib_version := 1.2.11
-revision := 2
+revision := 1
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
@@ -379,7 +379,8 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'CFLAGS: %s\n' "$(CFLAGS)" >> $@
 	printf 'Tag: v%s-r%s\n' "$(version)" "$(revision)" >> $@
 	printf 'Tag Title: wget %s for macOS rev %s\n' "$(version)" "$(revision)" >> $@
-	printf 'Tag Message: A signed and notarized universal installer package for `wget` %s.\n' "$(version)" >> $@
+	printf 'Tag Message: A signed and notarized universal installer package for `wget` %s, built with libiconv %s, OpenSSL %s and zlib %s.\n' \
+		"$(version)" "$(libiconv_version)" "$(openssl_version)" "$(zlib_version)" >> $@
 
 $(TMP)/distribution.xml \
 $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)

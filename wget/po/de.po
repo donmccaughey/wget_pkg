@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the wget package.
 # Karl Eichwalder <ke@suse.de>, 1998-1999, 2000.
 # Karl Eichwalder <ke@ke.Central.DE>, 1997-1998.
-# Jochen Hein <jochen@jochen.org>, 2001-2020.
+# Jochen Hein <jochen@jochen.org>, 2001-2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.21\n"
+"Project-Id-Version: wget 1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2020-09-07 20:07+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-09 19:33+0200\n"
 "Last-Translator: Jochen Hein <jochen@jochen.org>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -430,7 +430,7 @@ msgstr ""
 "%s (%s) - %s gespeichert [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -572,148 +572,148 @@ msgstr "HTML-artiger Index wurde nach %s [%s] geschrieben.\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "HTML-artiger Index wurde nach %s geschrieben.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr ""
 "ERROR: Verzeichnis »%s« kann nicht geöffnet werden.\n"
 "\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "ERROR: Zertifikat »%s« kann nicht geöffnet werden: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "CA-Zertifikat »%s« wurde geladen\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "ERROR: CRL-Datei »%s« kann nicht geladen werden: (%d).\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "CRL-Datei »%s« wurde geladen\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr ""
 "ERROR: GnuTLS verlangt, dass der Schlüssel und das Zertifikat vom gleichen "
 "Typ sind.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Ihre GnuTLS-Version ist zu alt, um TLSv1.3 zu unterstützen\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: Option %u zu »secure-protocol« ist nicht implementiert\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Bitte dieses Problem an <bug-wget@gnu.org> melden\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: Option %d zu »secure-protocol« ist nicht implementiert\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: Priorität kann nicht direkt angegeben werden.  Verwende die Standard-"
 "Priorität als Ersatz.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "FEHLER"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "WARNUNG"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: Kein Zertifikat angegeben von %s.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Dem Zertifikat von %s wird nicht vertraut.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Das Zertifikat von »%s« hat keinen bekannten Austeller.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Das Zertifikat von %s wurde für ungültig erklärt.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: Der Unterzeichner des Zertifikats von %s ist keine CA.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr ""
 "%s: Das Zertifikat von »%s« wurde mit einem unsicheren Algorithmus "
 "signiert.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Dem Zertifikat von %s ist noch nicht aktiviert.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Das Zertifikat von %s ist abgelaufen.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Fehler beim Initialisieren des X509-Zertifikates: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Kein Zertifikat gefunden.\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Fehler beim Auswerten des Zertifikates: %s.\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Das ausgestellte Zertifikat ist noch nicht aktiviert.\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Das ausgestellte Zertifikat ist nicht mehr gültig.\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Der Zertifikat-Eigentümer passt nicht zum Hostname %s.\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr ""
 "Der öffentliche Schlüssel ist nicht mehr der gespeicherte öffentliche "
 "Schlüssel!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Es muss ein X.509-Zertifikat verwendet werden\n"
 
@@ -1089,27 +1089,27 @@ msgstr ""
 "%s (%s) - %s gespeichert [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Verbindung bei Byte %s geschlossen. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Lesefehler bei Byte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Lesefehler bei Byte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Qualität des Schutzes »%s« wird nicht unterstützt.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Nicht unterstützter Algorithmus »%s«.\n"
@@ -1283,7 +1283,7 @@ msgstr "idn_encode fehlgeschlagen (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Fehler beim Konvertieren zu Kleinbuchstaben: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1292,7 +1292,7 @@ msgstr ""
 "\n"
 "Ausgabe wird nach %s umgeleitet.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; Protokollierung wird ausgeschaltet.\n"
@@ -1587,16 +1587,16 @@ msgstr ""
 "       --read-timeout=SEKUNDEN     den Lese-Timeout auf SEKUNDEN setzen\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
 "  -w,  --wait=SEKUNDEN             SEKUNDEN zwischen den Downloads warten\n"
+"                                     (für mehr als eine URL zum "
+"Herunterladen)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1604,11 +1604,11 @@ msgid ""
 "retrieved)\n"
 msgstr ""
 "       --waitretry=SEKUNDEN        1..SEKUNDEN zwischen den erneuten "
-"Versuchen\n"
-"                                     warten\n"
+"Versuchen warten\n"
+"                                     (für mehr als eine URL zum "
+"Herunterladen)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1617,6 +1617,8 @@ msgid ""
 msgstr ""
 "       --random-wait               Zwischen 0,5*WAIT und 1,5*WAIT Sekunden\n"
 "                                     zwischen den Abfragen warten\n"
+"                                     (für mehr als eine URL zum "
+"Herunterladen)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -2024,10 +2026,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "HTTPS (SSL/TLS) Optionen:\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        Als sicheres Protokoll eines aus »auto«,\n"
 "                                     »SSLv2«, »SSLv3«, »TLSv1«, »TLSv1_1«,\n"
@@ -2813,6 +2822,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"WARNUNG: Kein Benutzername mit »--ask-password« verwendet. Das ist "
+"üblicherweise nicht das Richtige.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2865,7 +2876,7 @@ msgstr ""
 msgid "This version does not have support for IRIs\n"
 msgstr "Diese Version unterstützt keine IRIs.\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2874,7 +2885,7 @@ msgstr ""
 "eine\n"
 "normale Datei ist.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2883,43 +2894,43 @@ msgstr ""
 "»--covert-links« oder »--convert-files-only« kann nur zusammen\n"
 "verwendet werden, wenn die Ausgabe eine normale Datei ist.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Fehler beim Initialisieren der Bibliothek »libares«\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Initialisieren der »c-ares« Kommunikation\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Fehler beim Parsen der IP-Adresse »%s«\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Fehler beim Setzen der/s DNS-Server(s) »%s« (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Keine URLs in %s gefunden.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Kann die Metalink Datei %s nicht parsen.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Konnte nicht alle Ressourcen von %s herunterladen.\n"
 
 # XXX
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2930,7 +2941,7 @@ msgstr ""
 "Verstrichene Zeit: %s\n"
 "Geholt: %d Dateien, %s in %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "Download-Kontingent von %s ERSCHÖPFT!\n"
@@ -3138,13 +3149,13 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: unbekannter Wortteil »%s«\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Aufruf: %s NETRC [HOSTNAME]\n"
 
 # stat
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: Aufruf von »stat« für %s nicht möglich: %s\n"
@@ -3298,11 +3309,11 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "Der Takt der Echtzeit-Uhr kann nicht bestimmt werden: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"»no-follow» Attribut in »%s« gefunden.  Links auf dieser Seite werden nicht "
+"»nofollow» Attribut in »%s« gefunden.  Links auf dieser Seite werden nicht "
 "verfolgt\n"
 
 #: src/recur.c:514
@@ -3597,178 +3608,3 @@ msgid "Found exact match in CDX file. Saving revisit record to WARC.\n"
 msgstr ""
 "Exakter Treffer in der CDX-Datei gefunden.\n"
 "Revisit-Datensatz wird in WARC gespeichert.\n"
-
-#~ msgid "Unknown system error"
-#~ msgstr "Unbekannter Fehler"
-
-#~ msgid "Address family for hostname not supported"
-#~ msgstr "Adressfamilie wird für Hostnamen nicht unterstützt"
-
-#~ msgid "Bad value for ai_flags"
-#~ msgstr "Ungültiger Wert für ai_flags"
-
-#~ msgid "Non-recoverable failure in name resolution"
-#~ msgstr "Nicht-behebbarer Fehler bei der Namensauflösung"
-
-#~ msgid "ai_family not supported"
-#~ msgstr "ai_family wird nicht unterstützt"
-
-#~ msgid "Memory allocation failure"
-#~ msgstr "Fehler bei der Speicheranforderung"
-
-#~ msgid "No address associated with hostname"
-#~ msgstr "Mit dem Hostnamen ist keine Adresse verknüpft"
-
-#~ msgid "Name or service not known"
-#~ msgstr "Name oder Dienst ist nicht bekannt"
-
-#~ msgid "Servname not supported for ai_socktype"
-#~ msgstr "Dienstame wird für ai_socktype nicht unterstützt"
-
-#~ msgid "ai_socktype not supported"
-#~ msgstr "ai_socktype wird nicht unterstützt"
-
-#~ msgid "System error"
-#~ msgstr "System-Fehler"
-
-#~ msgid "Argument buffer too small"
-#~ msgstr "Der Argument-Puffer ist zu klein"
-
-#~ msgid "Processing request in progress"
-#~ msgstr "Verarbeitungsanforderung wird bearbeitet"
-
-#~ msgid "Request canceled"
-#~ msgstr "Anforderung wurde abgebrochen"
-
-#~ msgid "Request not canceled"
-#~ msgstr "Anforderung wurde nicht abgebrochen"
-
-#~ msgid "All requests done"
-#~ msgstr "Alle Anforderungen wurden abgearbeitet"
-
-#~ msgid "Interrupted by a signal"
-#~ msgstr "Durch ein Signal unterbrochen"
-
-#~ msgid "Parameter string not correctly encoded"
-#~ msgstr "Der Parameter ist nicht korrekt kodiert"
-
-#, c-format
-#~ msgid "%s: option '%s%s' is ambiguous\n"
-#~ msgstr "%s: Option »%s%s« ist mehrdeutig\n"
-
-#, c-format
-#~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
-#~ msgstr "%s: Option »%s%s« ist mehrdeutig; mögliche Optionen:"
-
-#, c-format
-#~ msgid "%s: unrecognized option '%s%s'\n"
-#~ msgstr "%s: nicht erkannte Option »%s%s«\n"
-
-#, c-format
-#~ msgid "%s: option '%s%s' doesn't allow an argument\n"
-#~ msgstr "%s: Option »%s%s« erlaubt kein Argument\n"
-
-#, c-format
-#~ msgid "%s: option '%s%s' requires an argument\n"
-#~ msgstr "%s: Option »%s%s« benötigt ein Argument\n"
-
-#, c-format
-#~ msgid "%s: invalid option -- '%c'\n"
-#~ msgstr "%s: ungültige Option -- »%c«\n"
-
-#, c-format
-#~ msgid "%s: option requires an argument -- '%c'\n"
-#~ msgstr "%s: Option verlangt ein Argument -- »%c«\n"
-
-# Möglicherweise sollten wir irgendwann „...“ verwenden
-#~ msgid "`"
-#~ msgstr "»"
-
-#~ msgid "'"
-#~ msgstr "«"
-
-#~ msgid "Success"
-#~ msgstr "Erfolgreich"
-
-#~ msgid "No match"
-#~ msgstr "Kein Teffer"
-
-#~ msgid "Invalid regular expression"
-#~ msgstr "Ungültiger Regulärer Ausdruck"
-
-#~ msgid "Invalid collation character"
-#~ msgstr "Ungültiges Vergleichszeichen"
-
-#~ msgid "Invalid character class name"
-#~ msgstr "Ungültiger Name der Zeichenklasse"
-
-#~ msgid "Trailing backslash"
-#~ msgstr "Backslash »\\« am Ende"
-
-#~ msgid "Invalid back reference"
-#~ msgstr "Ungültige Rückwärtsreferenz"
-
-#~ msgid "Unmatched [, [^, [:, [., or [="
-#~ msgstr ""
-#~ "Öffnende Klammer »[«, »[^«, »[:«, »[.« oder »[=« ohne passende "
-#~ "schließende Klammer"
-
-#~ msgid "Unmatched ( or \\("
-#~ msgstr "Öffnende Klammer »(« oder »\\(« ohne passende schließende Klammer"
-
-#~ msgid "Unmatched \\{"
-#~ msgstr "Öffnende Klammer »\\{« ohne passende schließende Klammer"
-
-#~ msgid "Invalid content of \\{\\}"
-#~ msgstr "Ungültiger Inhalt in »\\{\\}«"
-
-#~ msgid "Invalid range end"
-#~ msgstr "Ungültiges Ende des Bereichs"
-
-#~ msgid "Memory exhausted"
-#~ msgstr "Speicher erschöpft"
-
-# XXX
-#~ msgid "Invalid preceding regular expression"
-#~ msgstr "Ungültiger vorhergehender Regulärer Ausdruck"
-
-#~ msgid "Premature end of regular expression"
-#~ msgstr "Vorzeitiges Ende des Regulären Ausdrucks"
-
-#~ msgid "Regular expression too big"
-#~ msgstr "Der Reguläre Ausdruck ist zu groß"
-
-#~ msgid "Unmatched ) or \\)"
-#~ msgstr "Schließende Klammer »)« oder »\\)« ohne passende öffnende Klammer"
-
-#~ msgid "No previous regular expression"
-#~ msgstr "Kein vorhergehender Regulärer Ausdruck"
-
-#, c-format
-#~ msgid "cannot create pipe"
-#~ msgstr "Pipe kann nicht erstellt werden"
-
-#, c-format
-#~ msgid "%s subprocess failed"
-#~ msgstr "%s Unterprozess fehlgeschlagen"
-
-#, c-format
-#~ msgid "_open_osfhandle failed"
-#~ msgstr "_open_osfhandle fehlgeschlagen"
-
-#, c-format
-#~ msgid "cannot restore fd %d: dup2 failed"
-#~ msgstr ""
-#~ "Dateideskriptor %d kann nicht wiederhergestellt werden: dup2 "
-#~ "fehlgeschlagen"
-
-#, c-format
-#~ msgid "%s subprocess"
-#~ msgstr "%s Unterprozess"
-
-#, c-format
-#~ msgid "%s subprocess got fatal signal %d"
-#~ msgstr "%s Unterprozess erhielt das fatale Signal %d"
-
-#~ msgid "memory exhausted"
-#~ msgstr "Speicher erschöpft"

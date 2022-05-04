@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wget 1.18.109\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
 "PO-Revision-Date: 2017-01-24 08:49+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -203,6 +203,7 @@ msgstr " (không đủ thẩm quyền)\n"
 
 #: src/ftp.c:403
 #, fuzzy
+#| msgid "Could not initialize SSL. It will be disabled."
 msgid "Could not initialize SSL. It will be disabled.\n"
 msgstr "Không thể khởi tạo SSL. Nó sẽ bị tắt đi."
 
@@ -413,7 +414,7 @@ msgstr ""
 "%s (%s) — đã lưu %s [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -518,11 +519,13 @@ msgstr "Từ chối %s.\n"
 
 #: src/ftp.c:2654
 #, fuzzy, c-format
+#| msgid "Rejecting %s.\n"
 msgid "Rejecting %s (Invalid Entry).\n"
 msgstr "Từ chối %s.\n"
 
 #: src/ftp.c:2675
 #, fuzzy, c-format
+#| msgid "Not descending to %s as it is excluded/not-included.\n"
 msgid "%s is excluded/not-included through regex.\n"
 msgstr "Không vào %s vì nó bị loại ra hoặc không được thêm vào.\n"
 
@@ -546,139 +549,142 @@ msgstr "Đã viết chỉ mục ở dạng HTML vào %s [%s].\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Đã viết chỉ mục ở dạng HTML vào %s.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "LỖI: Không thể mở thư mục %s.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "LỖI: Gặp lỗi khi mở giấy chứng nhận %s: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Chứng nhận CA đã tải “%s”\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "LỖI: Gặp lỗi khi tải tập tin CRL “%s”: (%d).\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Tập tin CRL đã tải “%s”\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "LỖI: GnuTLS yêu cầu khóa và chứng nhận phải cùng một kiểu.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 #, fuzzy
+#| msgid "Your OpenSSL version is too old to support TLSv1.1\n"
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Phiên bản OpenSSL của bạn quá cũ để hỗ trợ TLSv1.1\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, fuzzy, c-format
+#| msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: giá trị tùy chọn “secure-protocol” chưa được thực hiện %d\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Hãy gửi thông báo lỗi nảy sinh này cho <bug-wget@gnu.org>.\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: giá trị tùy chọn “secure-protocol” chưa được thực hiện %d\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "LỖI"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "CẢNH BÁO"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: Không có chứng thực từ %s.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Chứng nhận của %s không tin cậy.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, fuzzy, c-format
+#| msgid "%s: The certificate of %s hasn't got a known issuer.\n"
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Chứng nhận của %s không có nhà cấp đã biết.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Chứng nhận của %s đã bị thu hồi.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: Người ký chứng nhận của %s không phải là một CA.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: Chứng nhận của %s đã được ký bằng thuật toán không an toàn.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Chứng nhận của %s vẫn chưa được kích hoạt.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Chứng nhận của %s đã bị hết hạn.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Lỗi khởi tạo chứng nhận X509: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Không tìm thấy chứng nhận nào\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Lỗi phân tích cú pháp của chứng nhận: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Chứng nhận vẫn chưa được kích hoạt\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Chứng nhận đã hết hạn dùng\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Chủ chứng nhận không tương ứng với tên máy %s\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Khóa công không khớp với khóa công được đóng cứng!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Giấy chứng nhận phải có định dạng X.509\n"
 
@@ -1044,33 +1050,34 @@ msgstr ""
 "%s (%s) — đã lưu %s [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Đóng kết nối tại byte %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Lỗi đọc tại byte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Lỗi đọc tại byte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Không hỗ trợ chất lượng bảo vệ “%s”.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Không hỗ trợ thuật toán “%s”.\n"
 
 #: src/init.c:583
 #, fuzzy, c-format
+#| msgid "%s: WGETRC points to %s, which doesn't exist.\n"
 msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC chỉ tới %s, mà nó lại không tồn tại.\n"
@@ -1161,6 +1168,7 @@ msgstr "%s: %s: Khoảng thời gian %s sai.\n"
 
 #: src/init.c:1443
 #, fuzzy, c-format
+#| msgid "%s: %s: Invalid time period %s\n"
 msgid "%s: %s: Negative time period %s\n"
 msgstr "%s: %s: Khoảng thời gian %s sai.\n"
 
@@ -1236,7 +1244,7 @@ msgstr "idn_encode bị lỗi (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Gặp lỗi khi chuyển sang chữ thường: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1245,7 +1253,7 @@ msgstr ""
 "\n"
 "Chuyển hướng kết xuất tới %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; không ghi nhật ký.\n"
@@ -1403,6 +1411,9 @@ msgstr "       --retry-connrefused         cố tải dù kết nối bị từ 
 
 #: src/main.c:651
 #, fuzzy
+#| msgid ""
+#| "       --ignore-tags=LIST          comma-separated list of ignored HTML "
+#| "tags\n"
 msgid ""
 "       --retry-on-http-error=ERRORS    comma-separated list of HTTP errors "
 "to retry\n"
@@ -1423,6 +1434,7 @@ msgstr ""
 
 #: src/main.c:658
 #, fuzzy
+#| msgid "       --no-config                 do not read any config file\n"
 msgid ""
 "       --no-netrc                  don't try to obtain credentials from ."
 "netrc\n"
@@ -1528,6 +1540,7 @@ msgstr "       --read-timeout=GIÂY         đặt thời gian chờ đọc thà
 
 #: src/main.c:695
 #, fuzzy
+#| msgid "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
@@ -1537,6 +1550,9 @@ msgstr ""
 
 #: src/main.c:698
 #, fuzzy
+#| msgid ""
+#| "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
+#| "retrieval\n"
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1546,6 +1562,9 @@ msgstr "       --waitretry=GIÂY            chờ 1..GIÂY giữa các lần th�
 
 #: src/main.c:701
 #, fuzzy
+#| msgid ""
+#| "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
+#| "between retrievals\n"
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1707,6 +1726,9 @@ msgstr "       --preferred-location        vị trí ưu tiên cho nguồn Metal
 
 #: src/main.c:759
 #, fuzzy
+#| msgid ""
+#| "       --no-xattr                  turn off storage of metadata in "
+#| "extended file attributes\n"
 msgid ""
 "       --xattr                     turn on storage of metadata in extended "
 "file attributes\n"
@@ -1942,10 +1964,15 @@ msgstr "Tùy chọn HTTPS (SSL/TLS):\n"
 
 #: src/main.c:847
 #, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1 and PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        chọn giao thức bảo mật, một trong số:\n"
 "                                     auto, SSLv2, SSLv3, và PFS.\n"
@@ -2658,6 +2685,9 @@ msgstr ""
 
 #: src/main.c:1750
 #, fuzzy, c-format
+#| msgid ""
+#| "WARC output does not work with --continue or --start-pos, they will be "
+#| "disabled.\n"
 msgid ""
 "Compression does not work with --continue or --start-pos, they will be "
 "disabled.\n"
@@ -2727,7 +2757,7 @@ msgstr ""
 msgid "This version does not have support for IRIs\n"
 msgstr "Phiên bản này không hỗ trợ IRI\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2735,7 +2765,7 @@ msgstr ""
 "“-k” hay “-r” chỉ có thể được dùng cùng với “-O” chỉ khi xuất vào một tập "
 "tin thông thường.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2744,42 +2774,42 @@ msgstr ""
 "--convert-links hay --convert-file-only chỉ có thể được dùng cùng với nhau "
 "chỉ khi xuất vào một tập tin thông thường.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Gặp lỗi khi khởi tạo libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Gặp lỗi khi khởi tạo kênh c-ares\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Gặp lỗi khi phân tích địa chỉ IP %s\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Gặp lỗi khi đặt máy phục vụ DNS “%s” (%d).\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Không tìm thấy địa chỉ URL trong %s.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Không thể phân tích cú pháp tập tin metalink %s.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Không thể tải về mọi nguồn tài nguyên từ %s.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2790,7 +2820,7 @@ msgstr ""
 "Tổng thời gian: %s\n"
 "Đã tải về: %d tập tin, %s trong %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "VƯỢT GIỚI HẠN tải về %s!\n"
@@ -2991,12 +3021,12 @@ msgstr "%s: %s:%d: cảnh báo: hiệu bài %s xuất hiện trước bất kỳ
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: không rõ hiệu bài “%s”\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Cách dùng: %s NETRC [TÊN MÁY]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: không thể lấy thống kê (stat) %s: %s\n"
@@ -3011,6 +3041,7 @@ msgstr "Không thể tạo mầm PRNG, coi như sử dụng --random-file.\n"
 
 #: src/openssl.c:271
 #, fuzzy
+#| msgid "Your OpenSSL version is too old to support TLSv1.1\n"
 msgid "Your OpenSSL version is too old to support TLS 1.3\n"
 msgstr "Phiên bản OpenSSL của bạn quá cũ để hỗ trợ TLSv1.1\n"
 
@@ -3029,6 +3060,7 @@ msgstr "OpenSSL: giá trị tùy chọn “secure-protocol” chưa được th�
 
 #: src/openssl.c:333
 #, fuzzy, c-format
+#| msgid "%s: Invalid URL %s: %s\n"
 msgid "OpenSSL: Invalid cipher list: %s\n"
 msgstr "%s: URL không hợp lệ %s: %s\n"
 
@@ -3042,6 +3074,7 @@ msgstr ""
 
 #: src/openssl.c:844
 #, fuzzy
+#| msgid "Could not seed PRNG; consider using --random-file.\n"
 msgid "WARNING: Could not seed PRNG. Consider using --random-file.\n"
 msgstr "Không thể tạo mầm PRNG, coi như sử dụng --random-file.\n"
 
@@ -3147,6 +3180,7 @@ msgstr "Xóa %s vì nó sẽ bị từ chối.\n"
 
 #: src/res.c:394
 #, fuzzy, c-format
+#| msgid "Cannot open %s: %s"
 msgid "Cannot open %s: %s\n"
 msgstr "Không thể mở %s: %s"
 
@@ -3248,6 +3282,7 @@ msgstr "Chưa biên dịch để hỗ trợ HTTPS"
 
 #: src/url.c:1648
 #, fuzzy
+#| msgid "Incomplete or invalid multibyte sequence encountered\n"
 msgid "Unconvertable multibyte sequence encountered\n"
 msgstr "Gặp chuỗi byte không hoàn chỉnh hoặc không hợp lệ\n"
 
@@ -3278,16 +3313,19 @@ msgstr "Bỏ liên kết mềm %s không thành công: %s\n"
 
 #: src/utils.c:872
 #, fuzzy, c-format
+#| msgid "Failed to init libcares\n"
 msgid "Failed to Fopen file %s\n"
 msgstr "Gặp lỗi khi khởi tạo libcares\n"
 
 #: src/utils.c:878
 #, fuzzy, c-format
+#| msgid "Failed to set permissions for %s.\n"
 msgid "Failed to get FD for file %s\n"
 msgstr "Gặp lỗi khi phân quyền cho %s.\n"
 
 #: src/utils.c:885
 #, fuzzy, c-format
+#| msgid "Failed to set permissions for %s.\n"
 msgid "Failed to stat file %s, (check permissions)\n"
 msgstr "Gặp lỗi khi phân quyền cho %s.\n"
 
@@ -3298,11 +3336,13 @@ msgstr ""
 
 #: src/utils.c:930
 #, fuzzy, c-format
+#| msgid "Failed to parse IP address '%s'\n"
 msgid "Failed to open file %s, reason :%s\n"
 msgstr "Gặp lỗi khi phân tích địa chỉ IP %s\n"
 
 #: src/utils.c:936
 #, fuzzy, c-format
+#| msgid "Failed to set permissions for %s.\n"
 msgid "Failed to stat file %s, error: %s\n"
 msgstr "Gặp lỗi khi phân quyền cho %s.\n"
 
@@ -3315,6 +3355,7 @@ msgstr ""
 
 #: src/utils.c:2443
 #, fuzzy, c-format
+#| msgid "Invalid regular expression %s, %s\n"
 msgid "Invalid regular expression %s, PCRE2 error %d\n"
 msgstr "Biểu thức chính qui không hợp lệ %s, %s\n"
 
@@ -3335,16 +3376,19 @@ msgstr ""
 
 #: src/warc.c:217
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error setting WARC file position.\n"
 msgstr "Gặp lỗi trong khi mở tập tin WARC %s.\n"
 
 #: src/warc.c:224
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error flushing WARC file to disk.\n"
 msgstr "Gặp lỗi trong khi mở tập tin WARC %s.\n"
 
 #: src/warc.c:234
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error duplicating WARC file file descriptor.\n"
 msgstr "Gặp lỗi trong khi mở tập tin WARC %s.\n"
 

@@ -1,5 +1,5 @@
 /* HTTP support.
-   Copyright (C) 1996-2012, 2014-2015, 2018-2021 Free Software
+   Copyright (C) 1996-2012, 2014-2015, 2018-2022 Free Software
    Foundation, Inc.
 
 This file is part of GNU Wget.
@@ -1343,7 +1343,7 @@ parse_strict_transport_security (const char *header, time_t *max_age, bool *incl
       else
         {
           /* something weird happened */
-          logprintf (LOG_VERBOSE, "Could not parse String-Transport-Security header\n");
+          logprintf (LOG_VERBOSE, "Could not parse Strict-Transport-Security header\n");
           success = false;
         }
     }
@@ -4794,10 +4794,15 @@ Remote file exists.\n\n"));
                              tms, tmrate,
                              write_to_stdout ? "" : quote (hstat.local_file),
                              number_to_static_string (hstat.len));
-                  logprintf (LOG_NONVERBOSE,
-                             "%s URL:%s [%s] -> \"%s\" [%d]\n",
-                             tms, u->url, number_to_static_string (hstat.len),
-                             hstat.local_file, count);
+                  if (!(opt.verbose || opt.quiet))
+                    {
+                      char *url = url_string (u, URL_AUTH_HIDE_PASSWD);
+                      logprintf (LOG_NONVERBOSE,
+                                 "%s URL:%s [%s] -> \"%s\" [%d]\n",
+                                 tms, url, number_to_static_string (hstat.len),
+                                 hstat.local_file, count);
+                      xfree (url);
+                    }
                 }
               ++numurls;
               total_downloaded_bytes += hstat.rd_size;

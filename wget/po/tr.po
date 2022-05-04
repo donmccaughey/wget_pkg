@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wget 1.18.109\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
 "PO-Revision-Date: 2017-06-27 09:52+0300\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -205,6 +205,7 @@ msgstr " (yetkin değil)\n"
 
 #: src/ftp.c:403
 #, fuzzy
+#| msgid "Could not initialize SSL. It will be disabled."
 msgid "Could not initialize SSL. It will be disabled.\n"
 msgstr "SSL ilklendirilemedi. Devre dışı bırakılacak."
 
@@ -415,7 +416,7 @@ msgstr ""
 "%s (%s) - %s kaydedildi [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -520,11 +521,13 @@ msgstr "%s iptal ediliyor.\n"
 
 #: src/ftp.c:2654
 #, fuzzy, c-format
+#| msgid "Rejecting %s.\n"
 msgid "Rejecting %s (Invalid Entry).\n"
 msgstr "%s iptal ediliyor.\n"
 
 #: src/ftp.c:2675
 #, fuzzy, c-format
+#| msgid "Not descending to %s as it is excluded/not-included.\n"
 msgid "%s is excluded/not-included through regex.\n"
 msgstr "%s dışlandığı/dahil edilmediği için alçalmıyor.\n"
 
@@ -548,140 +551,143 @@ msgstr "HTML'leştirilen dizin %s [%s] içine yazıldı.\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "HTML'leştirilen dizin %s içine yazıldı.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "HATA: %s dizini açılamıyor.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "HATA: %s sertifikası açılamıyor: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "CA sertifikası '%s' yüklendi\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "HATA: CRL dosyası '%s' yüklenemedi: (%d)\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "CRL dosyası '%s' yüklendi\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr ""
 "HATA: GnuTLS, anahtar ve sertifikanın aynı türde olmasını gerektirir.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 #, fuzzy
+#| msgid "Your OpenSSL version is too old to support TLSv1.1\n"
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "OpenSSL versiyonunuz TLSv1.1'i destemek için çok eski.\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, fuzzy, c-format
+#| msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: uygulanmamış 'secure-protocol' seçeneği değeri %d\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Lütfen bu sorunu bug-wget@gnu.org adresine bildirin.\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: uygulanmamış 'secure-protocol' seçeneği değeri %d\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "HATA"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "DİKKAT"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: %s tarafından sunulun böyle bir sertifika yok.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: %s sertifikası güvenilir değil.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, fuzzy, c-format
+#| msgid "%s: The certificate of %s hasn't got a known issuer.\n"
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: %s sertifikası bilinen bir yayımcıya ait değil.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: %s sertifikası iptal edilmiş.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: %s sertifikası imzalayanı bir CA değil.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: %s sertifikası güvensiz bir algoritma kullanılarak imzalanmış.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: %s sertifikası henüz etkin değil.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: %s sertifikasının geçerlilik süresi dolmuş.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "X509 sertifikası başlatmada hata: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Hiçbir sertifika bulunamadı\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Sertifika çözümlenmesinde hata: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Sertifika henüz etkinleştirilmedi\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Sertifikanın kullanım süresi dolmuş\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Sertifika sahibi host adı ile uyuşmuyor %s\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Açık anahtar sabitlenen açık anahtarla eşleşmiyor!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Sertifika X.509 olmalıdır\n"
 
@@ -1048,33 +1054,34 @@ msgstr ""
 "%s (%s) - %s kaydedildi [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - %s baytta bağlantı kesildi. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - %s. baytta okuma hatası (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - %s/%s baytta okuma hatası (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Desteklenmeyen koruma kalitesi '%s'.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Desteklenmeyen algoritma '%s'.\n"
 
 #: src/init.c:583
 #, fuzzy, c-format
+#| msgid "%s: WGETRC points to %s, which doesn't exist.\n"
 msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC olmayan %s dosyasını gösteriyor.\n"
@@ -1163,6 +1170,7 @@ msgstr "%s: %s: %s geçersiz bir zaman aralığı\n"
 
 #: src/init.c:1443
 #, fuzzy, c-format
+#| msgid "%s: %s: Invalid time period %s\n"
 msgid "%s: %s: Negative time period %s\n"
 msgstr "%s: %s: %s geçersiz bir zaman aralığı\n"
 
@@ -1238,7 +1246,7 @@ msgstr "idn_encode başarısız (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Küçük harfe dönüştürme başarısız:%d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1247,7 +1255,7 @@ msgstr ""
 "\n"
 "Çıktı şuraya yönlendiriliyor: %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; giriş iptalediliyor.\n"
@@ -1401,6 +1409,9 @@ msgstr ""
 
 #: src/main.c:651
 #, fuzzy
+#| msgid ""
+#| "       --ignore-tags=LIST          comma-separated list of ignored HTML "
+#| "tags\n"
 msgid ""
 "       --retry-on-http-error=ERRORS    comma-separated list of HTTP errors "
 "to retry\n"
@@ -1422,6 +1433,7 @@ msgstr ""
 
 #: src/main.c:658
 #, fuzzy
+#| msgid "       --no-config                 do not read any config file\n"
 msgid ""
 "       --no-netrc                  don't try to obtain credentials from ."
 "netrc\n"
@@ -1534,6 +1546,7 @@ msgstr ""
 
 #: src/main.c:695
 #, fuzzy
+#| msgid "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
@@ -1544,6 +1557,9 @@ msgstr ""
 
 #: src/main.c:698
 #, fuzzy
+#| msgid ""
+#| "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
+#| "retrieval\n"
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1555,6 +1571,9 @@ msgstr ""
 
 #: src/main.c:701
 #, fuzzy
+#| msgid ""
+#| "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
+#| "between retrievals\n"
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1712,6 +1731,9 @@ msgstr ""
 
 #: src/main.c:759
 #, fuzzy
+#| msgid ""
+#| "       --no-xattr                  turn off storage of metadata in "
+#| "extended file attributes\n"
 msgid ""
 "       --xattr                     turn on storage of metadata in extended "
 "file attributes\n"
@@ -1945,10 +1967,15 @@ msgstr "HTTPS (SSL/TLS) seçenekleri:\n"
 
 #: src/main.c:847
 #, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1 and PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        güvenlik protokolünü seç, auto, SSLv2,\n"
 "                                     SSLv3, TLSv1 ve PFS'ten biri\n"
@@ -2665,6 +2692,9 @@ msgstr ""
 
 #: src/main.c:1750
 #, fuzzy, c-format
+#| msgid ""
+#| "WARC output does not work with --continue or --start-pos, they will be "
+#| "disabled.\n"
 msgid ""
 "Compression does not work with --continue or --start-pos, they will be "
 "disabled.\n"
@@ -2732,7 +2762,7 @@ msgstr "--body-data ve --body-file aynı anda kullanılamaz.\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "Bu sürüm IRI'ler için destek sunmuyor\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2741,7 +2771,7 @@ msgstr ""
 "birlikte\n"
 "kullanılabilir.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2751,42 +2781,42 @@ msgstr ""
 "dosyaya çıktı alınıyorsa birlikte\n"
 "kullanılabilir.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "libcares ilklendirilemedi\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "c-ares kanalı ilklendirilemedi\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "'%s' IP adresi çözümlenemedi\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "DNS sunucu(ları) '%s' (%d) ayarlanamadı\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "%s de URL yok.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Üst bağlantı dosyası %s çözümlenemedi.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "%s'den bütün kaynaklar indirilemedi\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2797,7 +2827,7 @@ msgstr ""
 "Toplam duvar saati zamanı: %s\n"
 "İndirilen: %d dosya, %s, %s (%s) içerisinde\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "Dosya indirme kotası %s AŞILDI!\n"
@@ -2999,12 +3029,12 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: bilinmeyen dizgecik \"%s\"\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Kullanım: %s NETRC [MAKİNA-ADI]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: %s durumlanamadı: %s\n"
@@ -3019,6 +3049,7 @@ msgstr "Rasgele sayı üreteci tohumlanamadı; --random-file kullanılabilir.\n"
 
 #: src/openssl.c:271
 #, fuzzy
+#| msgid "Your OpenSSL version is too old to support TLSv1.1\n"
 msgid "Your OpenSSL version is too old to support TLS 1.3\n"
 msgstr "OpenSSL versiyonunuz TLSv1.1'i destemek için çok eski.\n"
 
@@ -3037,6 +3068,7 @@ msgstr "OpenSSL: uygulanmayan 'secure-protocol' seçenek değeri %d\n"
 
 #: src/openssl.c:333
 #, fuzzy, c-format
+#| msgid "%s: Invalid URL %s: %s\n"
 msgid "OpenSSL: Invalid cipher list: %s\n"
 msgstr "%s: URL `%s' geçersiz: %s\n"
 
@@ -3050,6 +3082,7 @@ msgstr ""
 
 #: src/openssl.c:844
 #, fuzzy
+#| msgid "Could not seed PRNG; consider using --random-file.\n"
 msgid "WARNING: Could not seed PRNG. Consider using --random-file.\n"
 msgstr "Rasgele sayı üreteci tohumlanamadı; --random-file kullanılabilir.\n"
 
@@ -3155,6 +3188,7 @@ msgstr "Reddedileceğinden %s kaldırılıyor.\n"
 
 #: src/res.c:394
 #, fuzzy, c-format
+#| msgid "Cannot open %s: %s"
 msgid "Cannot open %s: %s\n"
 msgstr "%s açılamıyor: %s"
 
@@ -3256,6 +3290,7 @@ msgstr "HTTPS desteği derlenirken eklenmemiş"
 
 #: src/url.c:1648
 #, fuzzy
+#| msgid "Incomplete or invalid multibyte sequence encountered\n"
 msgid "Unconvertable multibyte sequence encountered\n"
 msgstr "Tamamlanmamış veya geçersiz çoklu bayt dizisi ile karşılaşıldı\n"
 
@@ -3286,16 +3321,19 @@ msgstr "Symlink %s bağlantısı kaldırılamıyor: %s\n"
 
 #: src/utils.c:872
 #, fuzzy, c-format
+#| msgid "Failed to init libcares\n"
 msgid "Failed to Fopen file %s\n"
 msgstr "libcares ilklendirilemedi\n"
 
 #: src/utils.c:878
 #, fuzzy, c-format
+#| msgid "Failed to set permissions for %s.\n"
 msgid "Failed to get FD for file %s\n"
 msgstr "%s için izinler ayarlanamadı.\n"
 
 #: src/utils.c:885
 #, fuzzy, c-format
+#| msgid "Failed to set permissions for %s.\n"
 msgid "Failed to stat file %s, (check permissions)\n"
 msgstr "%s için izinler ayarlanamadı.\n"
 
@@ -3306,11 +3344,13 @@ msgstr ""
 
 #: src/utils.c:930
 #, fuzzy, c-format
+#| msgid "Failed to parse IP address '%s'\n"
 msgid "Failed to open file %s, reason :%s\n"
 msgstr "'%s' IP adresi çözümlenemedi\n"
 
 #: src/utils.c:936
 #, fuzzy, c-format
+#| msgid "Failed to set permissions for %s.\n"
 msgid "Failed to stat file %s, error: %s\n"
 msgstr "%s için izinler ayarlanamadı.\n"
 
@@ -3323,6 +3363,7 @@ msgstr ""
 
 #: src/utils.c:2443
 #, fuzzy, c-format
+#| msgid "Invalid regular expression %s, %s\n"
 msgid "Invalid regular expression %s, PCRE2 error %d\n"
 msgstr "Geçersiz düzenli ifade %s, %s\n"
 
@@ -3343,16 +3384,19 @@ msgstr ""
 
 #: src/warc.c:217
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error setting WARC file position.\n"
 msgstr "%s WARC dosyası açılırken hata.\n"
 
 #: src/warc.c:224
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error flushing WARC file to disk.\n"
 msgstr "%s WARC dosyası açılırken hata.\n"
 
 #: src/warc.c:234
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error duplicating WARC file file descriptor.\n"
 msgstr "%s WARC dosyası açılırken hata.\n"
 

@@ -1,6 +1,6 @@
 /* Declaration of functions and data types used for MD5 sum computing
    library functions.
-   Copyright (C) 1995-1997, 1999-2001, 2004-2006, 2008-2021 Free Software
+   Copyright (C) 1995-1997, 1999-2001, 2004-2006, 2008-2022 Free Software
    Foundation, Inc.
    This file is part of the GNU C Library.
 
@@ -124,6 +124,7 @@ extern void *__md5_buffer (const char *buffer, size_t len,
                            void *restrict resblock) __THROW;
 
 # endif
+
 /* Compute MD5 message digest for bytes read from STREAM.
    STREAM is an open file stream.  Regular files are handled more efficiently.
    The contents of STREAM from its current position to its end will be read.

@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget-1.21\n"
+"Project-Id-Version: wget-1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2021-03-16 04:30+0100\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-09 10:26+0200\n"
 "Last-Translator: Johnny A. Solbu <johnny@solbu.net>\n"
 "Language-Team: Norwegian Bokmaal <l10n-no@lister.huftis.org>\n"
 "Language: nb\n"
@@ -410,7 +410,7 @@ msgstr ""
 "%s (%s) - %s lagret [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -543,143 +543,143 @@ msgstr "Lagret indeks i HTML-format til %s [%s].\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Lagret indeks i HTML-format til %s.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "Feil: Klarte ikke å åpne mappa %s.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "FEIL: Klarte ikke å åpne sertifikatet s%s: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Lastet inn CA-sertifikat «%s»\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "FEIL: Klarte ikke å laste inn CRL-fil «%s»: (%d)\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Latet inn CRL-fil «%s»\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr ""
 "FEIL: GnuTLS krever at nøkler og sertifikater skal være av samme type.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Installert GnuTLS-versjon er for gammel til å støtte TLSv1.3\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: verdi %u er ikke implementert for valget «secure-protocol»\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Du bør rapportere dette problemet til bug-wget@gnu.org\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: verdi %d er ikke implementert for valget «secure-protocol»\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: Klarte ikke å endre prioritetsstreng skikkelig. Faller tilbake på "
 "forvalgt prioritet.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "FEIL"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "ADVARSEL"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: %s la ikke frem et sertifikat.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Sertifikatet på %s regnes ikke som pålitelig.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Sertifikatet på %s kommer ikke fra en kjent utgiver.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Sertifikatet på %s er tilbakekalt.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr ""
 "%s: Attestanten for sertifikatet %s er ikke en CA "
 "(sertifiseringsmyndighet).\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: Sertifikatet på %s er signert med en usikker algoritme.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Sertifikatet på %s er ikke aktivt ennå.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Sertifikatet på %s er utgått.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Feil ved innlasting av X509-sertifikat: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Fant ingen sertifikat\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Feil ved lesing av sertifikat: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Sertifikatet er ikke aktivt ennå\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Sertifikatet er utgått\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Sertifikatets eier samsvarer ikke med vertsnavnet %s\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Offentlig nøkkel samsvarer ikke med tilknyttet offentlig nøkkel.\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Sertifikatet må være av typen X.509\n"
 
@@ -1048,27 +1048,27 @@ msgstr ""
 "%s (%s) - %s lagret [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Tilkobling lukket ved byte %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Lesefeil ved byte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Lesefeil ved byte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Beskyttelseskvalitet «%s» støttes ikke.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algoritmen «%s» støttes ikke.\n"
@@ -1241,7 +1241,7 @@ msgstr "idn_encode mislyktes (%d). %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Klarte ikke å konvertere til små bokstaver: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1250,7 +1250,7 @@ msgstr ""
 "\n"
 "Videresender utdata til %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s. Slår av loggføring.\n"
@@ -1529,7 +1529,6 @@ msgstr ""
 "tidsavbrudd for lesing\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
@@ -1537,9 +1536,10 @@ msgid ""
 msgstr ""
 "  -w,  --wait=SEK                  ta en pause i valgt antall SEKunder før "
 "neste fil hentes\n"
+"                                     (gjelder hvis mer enn 1 URL skal "
+"hentes)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1548,9 +1548,10 @@ msgid ""
 msgstr ""
 "       --waitretry=SEKUNDER        vent 1…SEKunder mellom gjentatte forsøk "
 "på nedlasting\n"
+"                                     (gjelder hvis mer enn 1 URL skal "
+"hentes)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1559,6 +1560,8 @@ msgid ""
 msgstr ""
 "       --random-wait               vent fra 0.5*WAIT … 1.5*WAIT sekunder "
 "mellom nedlastinger\n"
+"                                     (gjelder hvis mer enn 1 URL skal "
+"hentes)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -1942,10 +1945,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "HTTPS(SSL-/TLS-)-valg :\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR         velg sikkerhetsprotokoll. Enten «auto», "
 "«SSLv2»,\n"
@@ -2690,6 +2700,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"ADVARSEL: Ingen brukernavn er angitt med --ask-passord. Dette er vanligvis "
+"ikke det du vil.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2738,7 +2750,7 @@ msgstr "Du kan ikke bruke både «--body-data» og «--body-file».\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "Denne versjonen støtter ikke IRI-er\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2746,7 +2758,7 @@ msgstr ""
 "Valgene «-k» og «-r» kan bare brukes samtidig med «-O» hvis utdata er en "
 "vanlig fil.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2755,42 +2767,42 @@ msgstr ""
 "valgene «--convert-links» og «--convert-file-only» kan bare brukes samtidig "
 "hvis utdata er en vanlig fil.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Klarte ikke å starte libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Klarte ikke å starte «c-ares»-kanal\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Klarte ikke å tolke IP-adresse «%s»\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Klarte ikke å endre DNS-tjener(e) «%s» (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Fant ingen nettadresser i %s.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Klarte ikke å lese metalink-fila %s.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Klarte ikke å laste ned alle ressurser fra %s.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2801,7 +2813,7 @@ msgstr ""
 "Totalt medgått tid: %s\n"
 "Lastet ned: %d filer, %s på %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "Nedlastingsgrense på %s OVERSKREDET!\n"
@@ -3002,12 +3014,12 @@ msgstr "%s: %s:%d: advarsel: symbolet %s dukker opp før maskinnavn\n"
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: «%s» er et ukjent symbol\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Bruk: %s NETRC [VERTSNAVN]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: klarte ikke å lage statistikk av %s: %s\n"
@@ -3146,11 +3158,11 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "Klarte ikke å hente klokkefrekvensen for REALTIME. %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"no-follow attributt funnet i %s. Vil ikke følge noen lenker på denne siden\n"
+"nofollow attributt funnet i %s. Vil ikke følge noen lenker på denne siden\n"
 
 #: src/recur.c:514
 #, c-format
@@ -3498,31 +3510,24 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "Parameter-strengen er ikke kodet korrekt"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous\n"
 #~ msgstr "%s: valget «%s%s» er flertydig\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
 #~ msgstr "%s: valget «%s%s» er flertydig, og kan bety følgende:"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%s%s'\n"
 #~ msgstr "%s: «%s%s» er et ukjent valg\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' doesn't allow an argument\n"
 #~ msgstr "%s: valget «%s%s» tillater ikke bruk av argumenter\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' requires an argument\n"
 #~ msgstr "%s: valget «%s%s» krever et argument\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: «%c» er et ugyldig valg\n"
 
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: «%c» krever et argument\n"
 
@@ -3586,27 +3591,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "Intet tidligere regulært uttrykk"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "klarte ikke å lage datarør"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "underprosess av %s mislyktes"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "_open_osfhandle mislyktes"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "klarte ikke å gjenopprette fd %d. dup2 mislyktes"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "underprosess av %s"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "underprosess av %s fikk kritisk feilsignal %d"
 

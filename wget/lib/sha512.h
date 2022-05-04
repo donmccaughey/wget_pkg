@@ -1,6 +1,6 @@
 /* Declarations of functions and data types used for SHA512 and SHA384 sum
    library functions.
-   Copyright (C) 2005-2006, 2008-2021 Free Software Foundation, Inc.
+   Copyright (C) 2005-2006, 2008-2022 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -96,6 +96,7 @@ extern void *sha384_buffer (const char *buffer, size_t len,
                             void *restrict resblock);
 
 # endif
+
 /* Compute SHA512 (SHA384) message digest for bytes read from STREAM.
    STREAM is an open file stream.  Regular files are handled more efficiently.
    The contents of STREAM from its current position to its end will be read.

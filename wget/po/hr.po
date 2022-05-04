@@ -9,13 +9,13 @@
 # Domagoj Margan <sartrum@gmail.com>, 2010-2011.
 # Vedran Miletić <rivanvx@gmail.com>, 2010-2011.
 # Tomislav Krznar <tomislav.krznar@gmail.com>, 2012.
-# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017, 2018, 2019, 2020.
+# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017, 2018, 2019, 2020, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget-1.21\n"
+"Project-Id-Version: GNU wget-1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2020-09-08 15:34+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-09 17:39+0200\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0\n"
 
 #: src/connect.c:201
 #, c-format
@@ -417,7 +417,7 @@ msgstr ""
 "%s (%s) - %s spremljeno [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -549,140 +549,140 @@ msgstr "Indeks u HTML formatu zapisan je u %s [%s]\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Indeks u HTML formatu zapisan je u %s\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "GREŠKA: direktorij %s ne može se otvoriti.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "GREŠKA: nije uspjelo otvaranje certifikata %s: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Učitani je CA certifikat „%s“\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "GREŠKA: nije uspjelo učitati CRL datoteke „%s“: (%d).\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Učitana je CRL datoteka „%s“\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "GREŠKA: GnuTLS zahtijeva da su ključ i certifikat iste vrste.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Vaša GnuTLS inačica je prestara i ne podržava TLS 1.3\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: vrijednost %u opcije „secure-protocol“ nije implementirana\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Izvijestite o ovom problemu (na engleskom) na <bug-wget@gnu.org>\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: vrijednost %d opcije „secure-protocol“ nije implementirana\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: nije moguće direktno postaviti prio string; postavlja se zadani "
 "prioritet\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "GREŠKA"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "UPOZORENJE"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: %s nije predočio certifikat\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: certifikat %s nije pouzdan\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: certifikat od %s nije izdan od poznatoga izdavatelja\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: certifikat od %s je opozvan\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: potpisnik certifikata od %s nije bio CA\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: certifikat %s je potpisan s nesigurnim algoritmom\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: certifikat %s još nije aktiviran\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: certifikat %s više ne vrijedi (istekao je)\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Greška pri inicijalizaciji X509 certifikata: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Nijedan certifikat nije pronađen\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Greška pri raščlambi certifikata: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Certifikat još nije aktiviran\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Certifikat više ne vrijedi (istekao je)\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Vlasnik certifikata ne podudara se s imenom hosta „%s“\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Javni ključ se ne podudara s pohranjenim javnim ključem!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Certifikat mora biti X.509\n"
 
@@ -1061,27 +1061,27 @@ msgstr ""
 "%s (%s) - %s spremljeno [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Veza zatvorena na bajtu %s "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Greška čitanja na bajtu %s (%s)"
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Greška čitanja na bajtu %s/%s (%s) "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Nepodržana kvaliteta zaštite „%s“\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Nepodržani algoritam „%s“\n"
@@ -1271,7 +1271,7 @@ msgstr ""
 "Nije uspjela konverzija u mala slova: %d: %s\n"
 "\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1282,7 +1282,7 @@ msgstr ""
 
 # log > bilježiti u dnevnik > dnevničiti
 # logging > dnevničenje
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; dnevničenje (bilježenje u dnevnik) se onemogućuje\n"
@@ -1531,8 +1531,8 @@ msgstr "       --spider                    ništa ne preuzima\n"
 #: src/main.c:681
 msgid "  -T,  --timeout=SECONDS           set all timeout values to SECONDS\n"
 msgstr ""
-"  -T,  --timeout=SECONDS           sva tajmaut vremena postavlja\n"
-"                                     na SECONDS sekundi\n"
+"  -T,  --timeout=BROJ              svako timeout vrijeme postavi\n"
+"                                     na BROJ sekundi\n"
 
 #: src/main.c:684
 msgid ""
@@ -1554,51 +1554,49 @@ msgstr ""
 #: src/main.c:689
 msgid "       --dns-timeout=SECS          set the DNS lookup timeout to SECS\n"
 msgstr ""
-"       --dns-timeout=SECS          ograniči odgovor DNS-a na SECS sekundi\n"
+"       --dns-timeout=BROJ          ograniči odgovor DNS-a na BROJ sekundi\n"
 
 #: src/main.c:691
 msgid "       --connect-timeout=SECS      set the connect timeout to SECS\n"
 msgstr ""
-"       --connect-timeout=SECS      ograniči tajmaut za spajanje na SECS "
+"       --connect-timeout=BROJ      ograniči timeout za spajanje na BROJ "
 "sekundi\n"
 
 #: src/main.c:693
 msgid "       --read-timeout=SECS         set the read timeout to SECS\n"
 msgstr ""
-"       --read-timeout=SECS         ograniči tajmaut za čitanje na SECS "
+"       --read-timeout=BROJ         ograniči timeout za čitanje na BROJ "
 "sekundi\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"  -w,  --wait=VRIJEME              pričekaj VRIJEME sekunda između "
-"preuzimanja\n"
+"  -w,  --wait=BROJ                 pričekaj BROJ sekunda između preuzimanja\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"       --waitretry=VRIJEME         pauza 1..VRIJEME sekundi između\n"
-"                                     pokušaja preuzimanja\n"
+"       --waitretry=BROJ            PAUZIRA 1..BROJ sekundi između pokušaja\n"
+"                                     preuzimanja (samo ako je dan više od 1\n"
+"                                     URL za preuzimanje)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"       --random-wait               pauza 0.5*ČEKAJ...1.5*ČEKAJ sekundi\n"
-"                                     između pokušaja preuzimanja\n"
+"       --random-wait               čeka 0.5*BROJ...1.5*BROJ sekundi između\n"
+"                                     pokušaja preuzimanja (samo ako je dan\n"
+"                                     više od 1 URL za preuzimanje)\n"
 
 # Don’t use proxies, even if the appropriate *_proxy environment variable is defined.
 #: src/main.c:704
@@ -1998,10 +1996,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "HTTPS (SSL/TLS) opcije:\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        odaberite jedan sigurnosni PR protokol:\n"
 "                                     auto, SSLv2, SSLv3, TLSv1,\n"
@@ -2768,6 +2773,9 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"UPOZORENJE: Ime korisnika nije dano s --ask-password. To obično nije ono "
+"što\n"
+"želite\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2816,14 +2824,14 @@ msgstr "Istovremeno ne možete navesti --body-data i --body-file\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "Ova inačica ne podržava IRI\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
 msgstr ""
 "-k ili -r može se koristiti sa -O samo kod ispisa u regularnu datoteku\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2832,42 +2840,42 @@ msgstr ""
 "--convert-links or --convert-file-only mogu se koristiti samo za ispis u\n"
 "regularnu datoteku\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Nije uspjelo inicijalizirati libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Nije uspjelo inicijalizirati c-ares kanal\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Nije uspjelo raščlaniti IP adresu „%s“\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Nije uspjelo postaviti DNS server(e) „%s“ (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Nijedan URL nije pronađen u %s\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Nije moguće raščlaniti metalink datoteku %s\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Nije moguće preuzeti sve resurse iz %s\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2878,7 +2886,7 @@ msgstr ""
 "Ukupno vrijeme od početka: %s\n"
 "Preuzeto: %d datoteka, %s u %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "PREKORAČENA je kvota od %s preuzimanja!\n"
@@ -3083,12 +3091,12 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: nepoznati simbol „%s“\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Uporaba: %s NETRC [HOSTNAME]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: ne može se dobiti status od %s: %s\n"
@@ -3232,11 +3240,11 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "Frekvenciju REALTIME clock nije moguće odrediti: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"Nađen je no-follow atribut u %s. Poveznice na ovoj stranici neće se "
+"Nađen je nofollow atribut u %s. Poveznice na ovoj stranici neće se "
 "slijediti\n"
 
 #: src/recur.c:514
@@ -3589,31 +3597,24 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "String parametra nije ispravno kodiran"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous\n"
 #~ msgstr "%s: opcija „%s%s“ je dvosmislena\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
 #~ msgstr "%s: opcija „%s%s“ je dvosmislena; mogućnosti:"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%s%s'\n"
 #~ msgstr "%s: neprepoznata opcija „%s%s“\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' doesn't allow an argument\n"
 #~ msgstr "%s: opcija „%s%s“ ne dopušta argument\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' requires an argument\n"
 #~ msgstr "%s: opcija „%s%s“ zahtijeva argument\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: nevaljana opcija -- „%c“\n"
 
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: opcija zahtijeva argument -- „%c“\n"
 
@@ -3677,27 +3678,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "Nema prethodnog regularnog izraza"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "nije moguće napraviti cijev"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "%s potproces je završio s neuspjehom"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "_open_osfhandle() završila je s neuspjehom"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "nije moguće vratiti fd %d: dup2() je završila s neuspjehom"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "%s potproces"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "%s potproces je primio fatalni signal %d"
 

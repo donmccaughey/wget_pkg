@@ -5,13 +5,13 @@
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998, 1999, 2000, 2001.
 # Pavel Maryanov <acid_jack@ukr.net>, 2004, 2005, 2006, 2008, 2009.
 # Pavel Maryanov <acid@jack.kiev.ua>, 2010, 2011, 2012.
-# Yuri Kozlov <yuray@komyakino.ru>, 2012, 2013, 2015, 2016, 2017, 2018, 2020.
+# Yuri Kozlov <yuray@komyakino.ru>, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.21\n"
+"Project-Id-Version: wget 1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2020-09-09 07:23+0300\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-16 07:16+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@d07.ru>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.04.3\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: src/connect.c:201
 #, c-format
@@ -412,7 +412,7 @@ msgstr ""
 "%s (%s) - %s сохранён [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -545,140 +545,140 @@ msgstr "Индекс в формате HTML записан в файл «%s» [%
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Индекс в формате HTML записан в файл «%s».\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "ОШИБКА: Не удалось открыть каталог %s.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "ОШИБКА: Ошибка открытия сертификата %s: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Загружен сертификат CA «%s»\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "ОШИБКА: Не удалось загрузить CRL-файл «%s»: (%d).\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Загружен CRL-файл «%s»\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "ОШИБКА: Для GnuTLS требуется ключ и сертификат одного типа.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Слишком старая версия GnuTLS, чтобы поддерживать TLS 1.3\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: значение %u параметра «secure-protocol» не реализовано\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Сообщите об этой ошибке по адресу bug-wget@gnu.org\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: значение %d параметра «secure-protocol» не реализовано\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: невозможно задать строку приоритета напрямую. Возвращаемся к "
 "приоритету по умолчанию.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "ОШИБКА"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "ПРЕДУПРЕЖДЕНИЕ"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: Нет сертификата, представленного %s.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Нет доверия сертификату для %s.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Неизвестный издатель сертификата %s.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Сертификат для %s отозван.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: Подписавший сертификат %s отсутствует в УЦ.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: Для подписания сертификата %s использован небезопасный алгоритм.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Сертификат %s ещё не активирован.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Срок действия сертификата %s истёк.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Ошибка инициализации сертификата X509: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Сертификат не найден\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Ошибка разбора сертификата: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Сертификат ещё не активирован\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Срок действия сертификата истек\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Владелец сертификата не совпадает с именем узла %s\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Открытый ключ не соответствует прикреплённому открытому ключу!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Сертификат должен соответствовать X.509\n"
 
@@ -1044,27 +1044,27 @@ msgstr ""
 "%s (%s) - %s сохранён [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Соединение закрыто, позиция %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Ошибка чтения, позиция %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Ошибка чтения, позиция %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Неподдерживаемый атрибут защиты «%s».\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Неподдерживаемый алгоритм «%s».\n"
@@ -1237,7 +1237,7 @@ msgstr "ошибка idn_encode (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Ошибка при преобразовании в нижний регистр: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1246,7 +1246,7 @@ msgstr ""
 "\n"
 "Вывод перенаправляется в %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; журналирование отключается.\n"
@@ -1525,15 +1525,15 @@ msgid "       --read-timeout=SECS         set the read timeout to SECS\n"
 msgstr "       --read-timeout=СЕК        установка тайм-аута чтения в СЕК\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
-msgstr "  -w,  --wait=СЕКУНДЫ            пауза в СЕКУНДАХ между загрузками\n"
+msgstr ""
+"  -w,  --wait=СЕКУНДЫ            пауза в СЕКУНДАХ между загрузками\n"
+"                                 (при загрузке более 1 URL)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1541,10 +1541,10 @@ msgid ""
 "retrieved)\n"
 msgstr ""
 "       --waitretry=СЕКУНДЫ       пауза в 1..СЕКУНДЫ между повторными\n"
-"                                 попытками загрузки\n"
+"                                 попытками загрузки (при загрузке более 1 "
+"URL)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1552,7 +1552,8 @@ msgid ""
 "retrieved)\n"
 msgstr ""
 "       --random-wait             пауза в 0.5*WAIT...1.5*WAIT секунд\n"
-"                                 между загрузками\n"
+"                                 между загрузками (при загрузке более 1 "
+"URL)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -1934,10 +1935,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "Параметры HTTPS (SSL/TLS):\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=ПР     выбор протокола безопасности: auto, SSLv2,\n"
 "                                SSLv3, TLSv1, TLSv1_1, TLSv1_2 или PFS\n"
@@ -2671,6 +2679,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"ПРЕДУПРЕЖДЕНИЕ: не указано имя пользователя, но указан --ask-password. "
+"Обычно, это не то, что нужно.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2719,7 +2729,7 @@ msgstr "Нельзя указывать --body-data и --body-file одновр�
 msgid "This version does not have support for IRIs\n"
 msgstr "Эта версия не поддерживает IRI\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2727,7 +2737,7 @@ msgstr ""
 "Параметр -k или -r может использовать только вместе с -O, если вывод "
 "производится в обычный файл.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2736,42 +2746,42 @@ msgstr ""
 "Параметр --convert-links или --convert-file-only может использовать вместе "
 "только, если вывод производится в обычный файл.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Сбой при инициализации libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Сбой при инициализации канала c-ares\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Не удалось разобрать IP-адрес «%s»\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Не удалось назначить DNS-сервер(ы) «%s» (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Не найдены URL-ы в файле %s.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Не удалось обработать файл metalink %s.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Невозможно скачать все ресурсы с %s.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2782,7 +2792,7 @@ msgstr ""
 "Общее время: %s\n"
 "Загружено: %d файлов, %s за %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "ПРЕВЫШЕНО ограничение на загрузку (%s)!\n"
@@ -2984,12 +2994,12 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: неизвестный маркер «%s»\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Использование: %s NETRC [ИМЯ_УЗЛА]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: невозможно выполнить stat для %s: %s\n"
@@ -3132,12 +3142,12 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "Не удаётся получить REALTIME-частоту часов: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"В %s найден атрибут no-follow. По ссылкам из этой страницы переходов "
-"выполняться не будет\n"
+"В %s найден атрибут nofollow. По ссылкам из этой страницы переходы "
+"выполняться не будут\n"
 
 #: src/recur.c:514
 #, c-format
@@ -3491,31 +3501,24 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "Неправильно закодирована строка параметров"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous\n"
 #~ msgstr "%s: двусмысленный параметр «%s%s»\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
 #~ msgstr "%s: двусмысленный параметр «%s%s»; возможные варианты:"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%s%s'\n"
 #~ msgstr "%s: нераспознанный параметр «%s%s»\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' doesn't allow an argument\n"
 #~ msgstr "%s: для параметра «%s%s» нельзя использовать аргумент\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' requires an argument\n"
 #~ msgstr "%s: для параметра «%s%s» требуется аргумент\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: недопустимый параметр — «%c»\n"
 
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: для параметра требуется аргумент — «%c»\n"
 
@@ -3579,27 +3582,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "Нет предшествующего регулярного выражения"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "не удалось создать канал"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "подпроцесс %s завершился с ошибкой"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "_open_osfhandle завершилась неудачно"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "не удалось восстановить fd %d: dup2 завершилась неудачно"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "подпроцесс %s"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "подпроцесс %s получил сигнал завершения %d"
 

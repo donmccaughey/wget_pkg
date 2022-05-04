@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wget 1.16.3.124\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
 "PO-Revision-Date: 2015-09-23 11:42+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -203,6 +203,7 @@ msgstr " (onzeker)\n"
 
 #: src/ftp.c:403
 #, fuzzy
+#| msgid "Could not initialize SSL. It will be disabled."
 msgid "Could not initialize SSL. It will be disabled.\n"
 msgstr "Kan SSL niet initialiseren.  Het wordt uitgeschakeld."
 
@@ -413,7 +414,7 @@ msgstr ""
 "%s (%s) - '%s' opgeslagen [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -495,6 +496,7 @@ msgstr "%s: onbekende of niet-ondersteunde bestandssoort.\n"
 
 #: src/ftp.c:2424
 #, fuzzy, c-format
+#| msgid "Unable to get cookie for %s\n"
 msgid "Failed to set permissions for %s.\n"
 msgstr "Kan geen cookie verkrijgen voor %s\n"
 
@@ -522,11 +524,13 @@ msgstr "'%s' wordt verworpen.\n"
 
 #: src/ftp.c:2654
 #, fuzzy, c-format
+#| msgid "Rejecting %s.\n"
 msgid "Rejecting %s (Invalid Entry).\n"
 msgstr "'%s' wordt verworpen.\n"
 
 #: src/ftp.c:2675
 #, fuzzy, c-format
+#| msgid "Not descending to %s as it is excluded/not-included.\n"
 msgid "%s is excluded/not-included through regex.\n"
 msgstr ""
 "Er wordt niet afgedaald naar '%s', want deze is uitgesloten of niet "
@@ -552,141 +556,144 @@ msgstr "Index is in HTML-vorm naar '%s' [%s] geschreven.\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Index is in HTML-vorm naar '%s' geschreven.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "FOUT: Kan map %s niet openen.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "FOUT: Kan certificaat %s niet openen: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "CA-certificaat '%s' is geladen\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "FOUT: Kan CRL-bestand '%s' niet laden: (%d).\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "CRL-bestand '%s' is geladen\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr ""
 "FOUT: GnuTLS eist dat sleutel en certificaat van hetzelfde type zijn.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 #, fuzzy
+#| msgid "Your OpenSSL version is too old to support TLSv1.1\n"
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Uw OpenSSL-versie is te oud om TLSv1.1 te ondersteunen.\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, fuzzy, c-format
+#| msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: niet-geïmplementeerde 'secure-protocol'-optiewaarde %d\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Rapporteer dit gebrek aan <bug-wget@gnu.org>.\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: niet-geïmplementeerde 'secure-protocol'-optiewaarde %d\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "FOUT"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "WAARSCHUWING"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: Geen certificaat aangeboden door %s.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Het certificaat van '%s' wordt niet vertrouwd.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, fuzzy, c-format
+#| msgid "%s: The certificate of %s hasn't got a known issuer.\n"
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Het certificaat van '%s' heeft een onbekende uitgever.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Het certificaat van '%s' is herroepen.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: De certificaatondertekenaar van '%s' was geen CA.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr ""
 "%s: Het certificaat van '%s' werd ondertekend met een onveilig algoritme.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Het certificaat van '%s' is nog niet geactiveerd.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Het certificaat van '%s' is verlopen.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Fout tijdens initialiseren van X509-certificaat: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Geen certificaat gevonden\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Fout tijdens ontleden van certificaat: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Het certificaat is nog niet geactiveerd\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Het certificaat is verlopen\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "De certificaateigenaar komt niet overeen met hostnaam '%s'\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr ""
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Het certificaat moet een X.509 zijn.\n"
 
@@ -1049,33 +1056,34 @@ msgstr ""
 "%s (%s) - '%s' opgeslagen [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Verbinding werd verbroken bij byte %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Leesfout bij byte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Leesfout bij byte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Niet-ondersteunde beschermingskwaliteit '%s'.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Niet-ondersteund algoritme '%s'.\n"
 
 #: src/init.c:583
 #, fuzzy, c-format
+#| msgid "%s: WGETRC points to %s, which doesn't exist.\n"
 msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: De variabele WGETRC wijst naar %s, maar deze bestaat niet.\n"
@@ -1140,6 +1148,7 @@ msgstr "%s: %s: Ongeldige booleaan '%s' --  gebruik 'on' of 'off'.\n"
 
 #: src/init.c:1099
 #, fuzzy, c-format
+#| msgid "%s: %s: Invalid boolean %s; use `on' or `off'.\n"
 msgid "%s: %s: Invalid %s; use `on', `off' or `quiet'.\n"
 msgstr "%s: %s: Ongeldige booleaan '%s' --  gebruik 'on' of 'off'.\n"
 
@@ -1165,6 +1174,7 @@ msgstr "%s: %s: Ongeldig tijdsinterval '%s'\n"
 
 #: src/init.c:1443
 #, fuzzy, c-format
+#| msgid "%s: %s: Invalid time period %s\n"
 msgid "%s: %s: Negative time period %s\n"
 msgstr "%s: %s: Ongeldig tijdsinterval '%s'\n"
 
@@ -1212,6 +1222,7 @@ msgstr "Codering %s is niet geldig\n"
 
 #: src/iri.c:140 src/url.c:1615
 #, fuzzy, c-format
+#| msgid "Conversion from %s to UTF-8 isn't supported\n"
 msgid "Conversion from %s to %s isn't supported\n"
 msgstr "Omzetting van %s naar UTF-8 wordt niet ondersteund\n"
 
@@ -1235,11 +1246,15 @@ msgstr "idn_encode() is mislukt (%d): %s\n"
 
 #: src/iri.c:290
 #, fuzzy, c-format
+#| msgid "couldn't connect to %s port %d: %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Kan geen verbinding maken met %s op poort %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, fuzzy, c-format
+#| msgid ""
+#| "\n"
+#| "%s received, redirecting output to %s.\n"
 msgid ""
 "\n"
 "Redirecting output to %s.\n"
@@ -1247,7 +1262,7 @@ msgstr ""
 "\n"
 "%s ontvangen; uitvoer wordt omgeleid naar '%s'.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; bijhouden van logboek wordt uitgeschakeld.\n"
@@ -1395,6 +1410,9 @@ msgstr ""
 
 #: src/main.c:651
 #, fuzzy
+#| msgid ""
+#| "       --ignore-tags=LIST          comma-separated list of ignored HTML "
+#| "tags\n"
 msgid ""
 "       --retry-on-http-error=ERRORS    comma-separated list of HTTP errors "
 "to retry\n"
@@ -1416,6 +1434,7 @@ msgstr ""
 
 #: src/main.c:658
 #, fuzzy
+#| msgid "       --no-config                 do not read any config file\n"
 msgid ""
 "       --no-netrc                  don't try to obtain credentials from ."
 "netrc\n"
@@ -1470,6 +1489,10 @@ msgstr ""
 
 #: src/main.c:674
 #, fuzzy
+#| msgid ""
+#| "  --no-use-server-timestamps       don't set the local file's timestamp "
+#| "by\n"
+#| "                                     the one on the server\n"
 msgid ""
 "       --no-use-server-timestamps  don't set the local file's timestamp by\n"
 "                                     the one on the server\n"
@@ -1499,6 +1522,9 @@ msgstr ""
 
 #: src/main.c:686
 #, fuzzy
+#| msgid ""
+#| "       --bind-address=ADDRESS      bind to ADDRESS (hostname or IP) on "
+#| "local host\n"
 msgid ""
 "       --bind-dns-address=ADDRESS  bind DNS resolver to ADDRESS (hostname or "
 "IP) on local host\n"
@@ -1522,6 +1548,7 @@ msgstr "       --read-timeout=SECONDEN  leeswachttijd instellen op SECONDEN\n"
 
 #: src/main.c:695
 #, fuzzy
+#| msgid "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
@@ -1532,6 +1559,9 @@ msgstr ""
 
 #: src/main.c:698
 #, fuzzy
+#| msgid ""
+#| "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
+#| "retrieval\n"
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1543,6 +1573,9 @@ msgstr ""
 
 #: src/main.c:701
 #, fuzzy
+#| msgid ""
+#| "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
+#| "between retrievals\n"
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1687,6 +1720,7 @@ msgstr ""
 
 #: src/main.c:759
 #, fuzzy
+#| msgid "       --warc-cdx                  write CDX index files\n"
 msgid ""
 "       --xattr                     turn on storage of metadata in extended "
 "file attributes\n"
@@ -1911,10 +1945,15 @@ msgstr "HTTPS-opties (SSL/TLS):\n"
 
 #: src/main.c:847
 #, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1 and PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PRTCL  beveiligingsprotocol PRTCL gebruiken\n"
 "                                  ('auto', 'SSLv2', 'SSLv3', 'TLSv1', of "
@@ -2379,6 +2418,7 @@ msgstr "Wachtwoord: "
 
 #: src/main.c:1106
 #, fuzzy, c-format
+#| msgid "cannot create pipe"
 msgid "Cannot create pipe\n"
 msgstr "kan geen pijp aanmaken"
 
@@ -2404,6 +2444,7 @@ msgstr ""
 
 #: src/main.c:1180
 #, fuzzy, c-format
+#| msgid "Password for user %s: "
 msgid "Password for '%s%s@%s': "
 msgstr "Wachtwoord voor gebruiker %s: "
 
@@ -2521,6 +2562,9 @@ msgstr ""
 
 #: src/main.c:1608
 #, fuzzy, c-format
+#| msgid ""
+#| "Both --no-clobber and --convert-links were specified, only --convert-"
+#| "links will be used.\n"
 msgid ""
 "Both --no-clobber and --convert-file-only were specified, only --convert-"
 "file-only will be used.\n"
@@ -2546,6 +2590,11 @@ msgstr "Opties '--inet4-only' en '--inet6-only' gaan niet samen.\n"
 
 #: src/main.c:1666
 #, fuzzy
+#| msgid ""
+#| "Cannot specify both -k and -O if multiple URLs are given, or in "
+#| "combination\n"
+#| "with -p or -r. See the manual for details.\n"
+#| "\n"
 msgid ""
 "Cannot specify both -k or --convert-file-only and -O if multiple URLs are "
 "given, or in combination\n"
@@ -2615,6 +2664,9 @@ msgstr ""
 
 #: src/main.c:1750
 #, fuzzy, c-format
+#| msgid ""
+#| "WARC output does not work with --continue or --start-pos, they will be "
+#| "disabled.\n"
 msgid ""
 "Compression does not work with --continue or --start-pos, they will be "
 "disabled.\n"
@@ -2655,6 +2707,9 @@ msgstr "Opties '--post-data' en '--post-file' gaan niet samen.\n"
 
 #: src/main.c:1841
 #, fuzzy, c-format
+#| msgid ""
+#| "You cannot use --post-data or --post-file along with --method. --method "
+#| "expects data through --body-data and --body-file options"
 msgid ""
 "You cannot use --post-data or --post-file along with --method. --method "
 "expects data through --body-data and --body-file options\n"
@@ -2682,7 +2737,7 @@ msgstr "Opties '--body-data' en '--body-file' gaan niet samen.\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "Deze versie heeft geen ondersteuning voor IRI's.\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2690,8 +2745,11 @@ msgstr ""
 "Optie '-k' of '-r' gaat alleen samen met '-O' bij uitvoer naar een normaal "
 "bestand.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, fuzzy, c-format
+#| msgid ""
+#| "-k or -r can be used together with -O only if outputting to a regular "
+#| "file.\n"
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
 "outputting to a regular file.\n"
@@ -2699,42 +2757,45 @@ msgstr ""
 "Optie '-k' of '-r' gaat alleen samen met '-O' bij uitvoer naar een normaal "
 "bestand.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, fuzzy, c-format
+#| msgid "Failed to unlink symlink %s: %s\n"
 msgid "Failed to init libcares\n"
 msgstr "Verwijderen van symbolische koppeling '%s' is mislukt: %s\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr ""
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, fuzzy, c-format
+#| msgid "%s: unable to resolve host address %s\n"
 msgid "Failed to parse IP address '%s'\n"
 msgstr "%s: kan host-adres '%s' niet herleiden\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, fuzzy, c-format
+#| msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "FOUT: Kan certificaat %s niet openen: (%d).\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Geen URL's gevonden in %s.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, fuzzy, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Kan '%s' niet verwijderen: %s\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Kan niet alle hulpbronnen van %s downloaden.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2745,7 +2806,7 @@ msgstr ""
 "Totaal verlopen tijd: %s\n"
 "Opgehaald: %d bestanden, %s in %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "Downloadquotum van %s bytes is overschreden!\n"
@@ -2785,6 +2846,7 @@ msgstr ""
 
 #: src/metalink.c:268
 #, fuzzy, c-format
+#| msgid "Failed to download %s. Skipping resource.\n"
 msgid "Failed to download %s. Skipping metaurl.\n"
 msgstr "Downloaden van %s is mislukt.  Hulpbron wordt overgeslagen.\n"
 
@@ -2808,26 +2870,31 @@ msgstr "Kan gedownload bestand niet openen.\n"
 
 #: src/metalink.c:514
 #, fuzzy, c-format
+#| msgid "Computing checksum for %s\n"
 msgid "Computing size for %s\n"
 msgstr "Berekenen van controlesom voor %s\n"
 
 #: src/metalink.c:519
 #, fuzzy
+#| msgid "Failed to download %s. Skipping resource.\n"
 msgid "File size not declared. Skipping check.\n"
 msgstr "Downloaden van %s is mislukt.  Hulpbron wordt overgeslagen.\n"
 
 #: src/metalink.c:527
 #, fuzzy
+#| msgid "Could not open downloaded file.\n"
 msgid "Could not get downloaded file's size.\n"
 msgstr "Kan gedownload bestand niet openen.\n"
 
 #: src/metalink.c:539
 #, fuzzy, c-format
+#| msgid "Checksum mismatch for file %s.\n"
 msgid "Size mismatch for file %s.\n"
 msgstr "Controlesom komt niet overeen voor bestand %s.\n"
 
 #: src/metalink.c:547
 #, fuzzy
+#| msgid "Checksum matches.\n"
 msgid "Size matches.\n"
 msgstr "Controlesom komt overeen.\n"
 
@@ -2865,6 +2932,7 @@ msgstr ""
 
 #: src/metalink.c:821
 #, fuzzy
+#| msgid "Signature validation suceeded.\n"
 msgid "Signature validation succeeded.\n"
 msgstr "Controle van ondertekening is geslaagd.\n"
 
@@ -2880,6 +2948,7 @@ msgstr ""
 
 #: src/metalink.c:865
 #, fuzzy
+#| msgid "No certificate found\n"
 msgid "No checksums found.\n"
 msgstr "Geen certificaat gevonden\n"
 
@@ -2890,6 +2959,7 @@ msgstr "Downloaden van %s is mislukt.  Hulpbron wordt overgeslagen.\n"
 
 #: src/metalink.c:878
 #, fuzzy, c-format
+#| msgid "File %s retrieved but signature does not match. \n"
 msgid "File %s retrieved but size does not match. \n"
 msgstr "Bestand %s is opgehaald maar ondertekening komt niet overeen. \n"
 
@@ -2905,6 +2975,7 @@ msgstr "Bestand %s is opgehaald maar ondertekening komt niet overeen. \n"
 
 #: src/metalink.c:1113
 #, fuzzy, c-format
+#| msgid "Removing %s.\n"
 msgid "Renaming %s to %s.\n"
 msgstr "Verwijderen van %s.\n"
 
@@ -2956,12 +3027,12 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: onbekend sleutelwoord '%s'\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Gebruik:  %s NETRC [HOSTNAAM]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: kan status van %s niet opvragen: %s\n"
@@ -2978,6 +3049,7 @@ msgstr ""
 
 #: src/openssl.c:271
 #, fuzzy
+#| msgid "Your OpenSSL version is too old to support TLSv1.1\n"
 msgid "Your OpenSSL version is too old to support TLS 1.3\n"
 msgstr "Uw OpenSSL-versie is te oud om TLSv1.1 te ondersteunen.\n"
 
@@ -2996,6 +3068,7 @@ msgstr "OpenSSL: niet-geïmplementeerde 'secure-protocol'-optiewaarde %d\n"
 
 #: src/openssl.c:333
 #, fuzzy, c-format
+#| msgid "%s: Invalid URL %s: %s\n"
 msgid "OpenSSL: Invalid cipher list: %s\n"
 msgstr "%s: Ongeldige URL '%s': %s.\n"
 
@@ -3009,6 +3082,7 @@ msgstr ""
 
 #: src/openssl.c:844
 #, fuzzy
+#| msgid "Could not seed PRNG; consider using --random-file.\n"
 msgid "WARNING: Could not seed PRNG. Consider using --random-file.\n"
 msgstr ""
 "Kan geen 'seed' voor PRNG vinden;  gebruik eventueel '--random-file'.\n"
@@ -3088,6 +3162,7 @@ msgstr "Ongeldige puntjesstijl '%s' opgegeven; blijft onveranderd.\n"
 #. be short, ideally 3 chars.  Abbreviate if necessary.
 #: src/progress.c:1006
 #, fuzzy, c-format
+#| msgid "   eta %s"
 msgid "    eta %s"
 msgstr "   nog %s"
 
@@ -3097,6 +3172,7 @@ msgstr "   nog %s"
 #. * available here (6 columns).  Abbreviate if necessary.
 #: src/progress.c:1312
 #, fuzzy
+#| msgid "   in "
 msgid "    in "
 msgstr "   in "
 
@@ -3118,6 +3194,7 @@ msgstr "'%s' wordt verwijderd omdat het verworpen dient te worden.\n"
 
 #: src/res.c:394
 #, fuzzy, c-format
+#| msgid "Cannot open %s: %s"
 msgid "Cannot open %s: %s\n"
 msgstr "Kan %s niet openen: %s"
 
@@ -3222,6 +3299,7 @@ msgstr "Ondersteuning voor HTTPS is niet meegecompileerd"
 
 #: src/url.c:1648
 #, fuzzy
+#| msgid "Incomplete or invalid multibyte sequence encountered\n"
 msgid "Unconvertable multibyte sequence encountered\n"
 msgstr "Incomplete of ongeldige multibyte-volgorde aangetroffen\n"
 
@@ -3255,11 +3333,13 @@ msgstr "Verwijderen van symbolische koppeling '%s' is mislukt: %s\n"
 
 #: src/utils.c:872
 #, fuzzy, c-format
+#| msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgid "Failed to Fopen file %s\n"
 msgstr "FOUT: Kan certificaat %s niet openen: (%d).\n"
 
 #: src/utils.c:878
 #, fuzzy, c-format
+#| msgid "Unable to get cookie for %s\n"
 msgid "Failed to get FD for file %s\n"
 msgstr "Kan geen cookie verkrijgen voor %s\n"
 
@@ -3275,11 +3355,13 @@ msgstr ""
 
 #: src/utils.c:930
 #, fuzzy, c-format
+#| msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgid "Failed to open file %s, reason :%s\n"
 msgstr "FOUT: Kan certificaat %s niet openen: (%d).\n"
 
 #: src/utils.c:936
 #, fuzzy, c-format
+#| msgid "Failed to unlink symlink %s: %s\n"
 msgid "Failed to stat file %s, error: %s\n"
 msgstr "Verwijderen van symbolische koppeling '%s' is mislukt: %s\n"
 
@@ -3292,6 +3374,7 @@ msgstr ""
 
 #: src/utils.c:2443
 #, fuzzy, c-format
+#| msgid "Invalid regular expression %s, %s\n"
 msgid "Invalid regular expression %s, PCRE2 error %d\n"
 msgstr "Ongeldige reguliere expressie %s, %s\n"
 
@@ -3312,16 +3395,19 @@ msgstr ""
 
 #: src/warc.c:217
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error setting WARC file position.\n"
 msgstr "Fout bij openen van WARC-bestand %s.\n"
 
 #: src/warc.c:224
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error flushing WARC file to disk.\n"
 msgstr "Fout bij openen van WARC-bestand %s.\n"
 
 #: src/warc.c:234
 #, fuzzy
+#| msgid "Error opening WARC file %s.\n"
 msgid "Error duplicating WARC file file descriptor.\n"
 msgstr "Fout bij openen van WARC-bestand %s.\n"
 

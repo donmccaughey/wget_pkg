@@ -24,10 +24,10 @@
 # Antonio Ceballos <aceballos@gmail.com>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget 1.21\n"
+"Project-Id-Version: GNU wget 1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2021-01-08 09:58+0100\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-10 18:13+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -520,7 +520,7 @@ msgstr ""
 "%s (%s) - %s guardado [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -678,144 +678,144 @@ msgstr "Se escribió un índice en HTML a %s [%s].\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Se escribió un índice en HTML a %s.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "ERROR: No se puede abrir el directorio %s.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "ERROR: No se pudo abrir certificado %s: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Cargado certificado CA '%s'\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "ERROR: Fallo al abrir fichero de CRL '%s': (%d)\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Cargado fichero CRL '%s'\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr ""
 "ERROR: GnuTLS requiere que la llave y el certificado sean del mismo tipo.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Su versión de GnuTLS es demasiado antigua para soportar TLS 1.3\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: valor de opción %u de 'secure-protocol' no implementada\n"
 
 # CER, 201011117:  Yo traduzco bugs por gazapo, en vez de "bichos" :-)
 # (acepcion 2.2 de <http://lema.rae.es/drae/?val=gazapo>)
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Por favor, reporte éste problema a bug-wget@gnu.org.\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: valor de opción %d de 'secure-protocol' no implementada\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: No se puede establecer la cadena de la prioridad directamente. Se "
 "vuelve a la prioridad predeterminada.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "ERROR"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "AVISO"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: %s no ha presentado certificado.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: El certificado de %s no es confiable.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: El certificado de %s no tiene un emisor conocido.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: El certificado de %s ha sido revocado.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: El signatario del certificado de %s no es una AC.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: El certificado de %s fue firmado usando un algoritmo inseguro.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: El certificado de %s no está aún activado.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: El certificado de %s ha expirado.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Error inicializando el certificado X509: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "No se encontró certificado\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Error analizando el certificado: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "El certificado no ha sido aún activado\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Ha expirado el certificado\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "El propietario del certificado no se ajusta al nombre de equipo %s\n"
 
 # CER, 2016-06-28	No se como traducir correctamente "pinned". Ningún idioma lo ha traducido todavía. Es cogido o clavado con un alfiler. Enchavetar. Clavar. Enclavijar.
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "¡La clave pública no encaja con la clave enchavetada!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "El certificado debe ser X.509\n"
 
@@ -1206,27 +1206,27 @@ msgstr ""
 "%s (%s) - %s guardado [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Conexión cerrada en el byte %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Error de lectura en el byte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Error de lectura en el byte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Calidad de protección no soportada '%s'.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algoritmo no soportado '%s'.\n"
@@ -1405,7 +1405,7 @@ msgstr "falló idn_encode (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "No se pudo convertir a minúsculas: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1414,7 +1414,7 @@ msgstr ""
 "\n"
 "Redirigiendo la salida a %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; deshabilitando el registro.\n"
@@ -1715,35 +1715,38 @@ msgstr ""
 "SEGS\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
 "  -w,  --wait=SEGUNDOS             espera tantos SEGUNDOS entre reintentos\n"
+"                                     (aplicable si se va a descargar más de "
+"1 URL)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"       --waitretry=SEGUNDOS        espera 1..SEGUNDOS entre reintentos\n"
-"                                     de una descarga\n"
+"       --waitretry=SEGUNDOS        espera 1..SEGUNDOS entre reintentos de "
+"una descarga\n"
+"                                     (aplicable si se va a descargar más de "
+"1 URL)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"       --random-wait               espera entre 0.5*WAIT...1.5*WAIT segs.\n"
-"                                     entre descargas\n"
+"       --random-wait               espera entre 0.5*WAIT...1.5*WAIT segs "
+"entre descargas.\n"
+"                                     (aplicable si se va a descargar más de "
+"1 URL)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -2142,10 +2145,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "Opciones HTTPS (SSL/TLS):\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        elige protocolo seguro entre auto, "
 "SSLv2,\n"
@@ -2913,6 +2923,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"AVISO: No se ha puesto nombre de usuario con --ask-password. Normalmente no "
+"es eso lo que se desea hacer.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2962,7 +2974,7 @@ msgstr ""
 msgid "This version does not have support for IRIs\n"
 msgstr "Esta versión no tiene soporte para IRIs\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2970,7 +2982,7 @@ msgstr ""
 "-k o -r puede ser usado junto con -O sólo si la salida va a un fichero "
 "regular.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2979,37 +2991,37 @@ msgstr ""
 "--convert-links o --convert-file-only pueden ser usados juntos sólo si la "
 "salida va a un fichero regular.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "No se pudo inicializar libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "No se pudo inicializar el canal c-ares\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "No se pudo analizar dirección IP '%s'\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "No se pudo poner el(los) servidor(es) DNS  '%s' (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "No se han encontrado URLs en %s.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "No se pudo analizar el fichero metalink %s.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "No se pudo descargar todos los recursos desde %s\n"
@@ -3017,7 +3029,7 @@ msgstr "No se pudo descargar todos los recursos desde %s\n"
 # `Bajados' es una traducción demasiado literal. Como en uno de los
 # mensajes de ayuda que hay más arriba, y para ser coherente, con lo que
 # allí te sugiero, te propongo ahora también `descargados' - cll
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -3030,7 +3042,7 @@ msgstr ""
 
 # ¡Efectivamente! Ahora lo has puesto tu, ...  `download'=`descarga' -
 # cll
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "¡Cuota de descarga de %s EXCEDIDA!\n"
@@ -3252,7 +3264,7 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: símbolo desconocido \"%s\"\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Modo de empleo: %s NETRC [NOMBREDEMÁQUINA]\n"
@@ -3261,7 +3273,7 @@ msgstr "Modo de empleo: %s NETRC [NOMBREDEMÁQUINA]\n"
 # nota jjrs: stat es una función de C que obtiene datos de un archivo
 #   y en esta parte solamente lo usa para checar si existe el archivo
 #   pero el wget no utiliza esta función.
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: no se pudo ejecutar “stat” sobre %s: %s\n"
@@ -3402,12 +3414,11 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "No se puede obtener frecuencia de reloj REALTIME: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"atributo no-follow encontrado en %s. No seguirá ningún enlace en esta "
-"página\n"
+"atributo nofollow encontrado en %s. No seguirá ningún enlace en esta página\n"
 
 #: src/recur.c:514
 #, c-format
@@ -3758,33 +3769,26 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "Cadena de parámetros no codificada correctamente"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous\n"
 #~ msgstr "%s: la opción '%s%s' es ambigua\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
 #~ msgstr "%s: la opción '%s%s' es ambigua; posibilidades:"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%s%s'\n"
 #~ msgstr "%s: no se reconoce la opción '%s%s'\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' doesn't allow an argument\n"
 #~ msgstr "%s: la opción '%s%s' no admite ningún argumento\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' requires an argument\n"
 #~ msgstr "%s: la opción '%s%s' requiere un argumento\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: opción inválida -- '%c'\n"
 
 # nota jjrs: argumento o parametro?
 # mmm... argumento? ;-P -Salva
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: la opción requiere un argumento -- '%c'\n"
 
@@ -3853,27 +3857,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "No hay expresión regular previa"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "no se puede crear tubería"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "falló el subproceso %s"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "falló _open_osfhandle"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "no se puede restaurar fd %d: dup2 falló"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "subproceso %s"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "subproceso %s obtuvo señal fatal %d"
 

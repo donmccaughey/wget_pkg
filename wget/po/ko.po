@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget-1.21\n"
+"Project-Id-Version: wget-1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2021-04-13 18:21+0900\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-10 00:02+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <translation-team-ko@googlegroups.com>\n"
 "Language: ko\n"
@@ -411,7 +411,7 @@ msgstr ""
 "%s (%s) - %s 저장함 [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -539,142 +539,142 @@ msgstr "HTML 인덱스를 %s에 기록함 [%s].\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "HTML 인덱스를 %s에 기록함.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "오류: %s 디렉터리를 열 수 없습니다.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "오류: %s 인증서 열기에 실패했습니다: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "'%s' CA 인증서를 불러왔습니다\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "오류: '%s' CRL 파일 불러오기 실패: (%d)\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "'%s' CRL 파일을 불러왔습니다\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "오류: GnuTLS에서 동일한 형식의 키와 인증서가 필요합니다.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr ""
 "TLSv1.3을 지원하기에는 GnuTLS 버전이 너무 오래되었습니다.\n"
 "\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: 구현하지 않은 'secure-protocol' 옵션값 %u\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "bug-wget@gnu.org에 문제점을 보고하십시오\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: 구현하지 않은 'secure-protocol' 옵션값 %d\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: prio 문자열을 바로 설정할 수 없습니다. 기본 우선순위 설정으로 돌아갑"
 "니다.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "오류"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "경고"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: %s에서 제출한 인증서가 없습니다.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: %s 인증서를 신뢰할 수 없습니다.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: %s 인증서에 알려진 발급자 정보가 없습니다.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: %s 인증서는 이미 파기했습니다.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: %s 인증서 서명 주체는 CA가 아닙니다.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: %s 인증서는 보안이 취약한 알고리즘으로 서명했습니다.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: %s 인증서를 아직 활성화하지 않았습니다.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: %s 인증서는 더이상 유효하지 않습니다.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "X509 인증서 초기화 오류: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "인증서가 없습니다\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "인증서 해석 오류: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "인증서를 아직 활성화하지 않았습니다\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "인증서가 더이상 유효하지 않습니다\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "인증서 소유자가 %s 호스트 이름과 일치하지 않습니다\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "공개키가 고정 공개키와 일치하지 않습니다!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "인증서 형식은 X.509여야 합니다\n"
 
@@ -1039,27 +1039,27 @@ msgstr ""
 "%s (%s) - %s 저장함 [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - %s 바이트에 연결 끊음. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - %s 바이트에서 읽기 오류 (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - %s/%s 바이트에서 읽기 오류 (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "'%s' 보호 수준을 지원하지 않습니다.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "'%s' 알고리즘을 지원하지 않습니다.\n"
@@ -1233,7 +1233,7 @@ msgstr "idn_encode 실패 (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "소문자 변환 실패: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1242,7 +1242,7 @@ msgstr ""
 "\n"
 "%s 출력으로 전환합니다.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; 로깅 중단함.\n"
@@ -1511,15 +1511,15 @@ msgid "       --read-timeout=SECS         set the read timeout to SECS\n"
 msgstr "       --read-timeout=<초>         읽기 제한 시간을 <초>로 지정\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
-msgstr "  -w,  --wait=<초>              전송 동작간 대기 시간을 <초>로 지정\n"
+msgstr ""
+"  -w,  --wait=<초>              전송 동작간 대기 시간을 <초>로 지정\n"
+"                                     (하나 이상의 URL을 가져올 때 적용)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1527,9 +1527,9 @@ msgid ""
 "retrieved)\n"
 msgstr ""
 "       --waitretry=<초>         전송 재시도 시간 간격을 1..<초> 사이로 지정\n"
+"                                     (하나 이상의 URL을 가져올 때 적용)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
@@ -1538,6 +1538,7 @@ msgid ""
 msgstr ""
 "       --random-wait               전송 동작간 대기 시간을 0.5*<대기>...1.5*<"
 "대기> 사이로 지정\n"
+"                                     (하나 이상의 URL을 가져올 때 적용)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -1903,10 +1904,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "HTTPS (SSL/TLS) 옵션:\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=<프로토콜>        auto, SSLv2, SSLv3, TLSv1, "
 "TLSv1_1,\n"
@@ -2621,6 +2629,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"경고: --ask-password로 사용자 이름을 설정하지 않았습니다. 보통 원하는 방식은 "
+"아닙니다.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2669,13 +2679,13 @@ msgstr "--body-data와 --body-file을 동시에 지정할 수 없습니다.\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "이 버전에서는 IRI를 지원하지 않습니다\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
 msgstr "-k 또는 -r은 일반 파일 출력시 -O 옵션만 병용할 수 있습니다.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2684,42 +2694,42 @@ msgstr ""
 "--convert-links 또는 --convert-file-only는 일반 파일 출력시에만 병용할 수 있"
 "습니다.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "libcares 초기화 실패\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "c-ares 채널 초기화 실패\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "'%s' IP 주소 해석 실패\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "'%s' DNS 서버 지정 실패 (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "%s에 URL이 없습니다.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "%s 메타링크 파일을 해석할 수 없습니다.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "%s에서 모든 리소스를 다운로드할 수 없습니다.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2730,7 +2740,7 @@ msgstr ""
 "총 wall 클록 시간: %2$s\n"
 "다운로드: %3$d 파일, %5$s중 %4$s (%6$s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "%s 다운로드 제한양을 초과했습니다!\n"
@@ -2931,12 +2941,12 @@ msgstr "%s: %s:%d: 경고: %s 토큰이 머신 이름 전에 나타났습니다\
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: 알 수 없는 \"%s\" 토큰\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "사용법: %s NETRC [<호스트이름>]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: %s 상태 정보 확인 불가: %s\n"
@@ -3074,11 +3084,11 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "실시간 클록 주파수 정보를 가져올 수 없습니다: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"%s에 no-follow 속성이 있습니다. 이 페이지의 어떤 링크도 따라가지 않습니다\n"
+"%s에 nofollow 속성이 있습니다. 이 페이지의 어떤 링크도 따라가지 않습니다\n"
 
 #: src/recur.c:514
 #, c-format
@@ -3415,31 +3425,24 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "매개변수 문자열을 제대로 인코딩할 수 없습니다"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous\n"
 #~ msgstr "%s: '%s%s' 옵션이 모호합니다\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
 #~ msgstr "%s: '%s%s' 옵션이 모호합니다. 가능한 옵션:"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%s%s'\n"
 #~ msgstr "%s: '%s%s' 옵션을 인식할 수 없습니다\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' doesn't allow an argument\n"
 #~ msgstr "%s: '%s%s' 옵션은 인자를 허용하지 않습니다\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' requires an argument\n"
 #~ msgstr "%s: '%s%s' 옵션에 인자가 필요합니다\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: 부적절한 '%c' 옵션\n"
 
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: '%c' 옵션에 인자가 필요합니다\n"
 
@@ -3503,27 +3506,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "이전 정규 표현식 없음"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "파이프를 만들 수 없습니다"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "%s 하위 프로세스 처리 실패"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "_open_osfhandle 실행 실패"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "파일 서술자 %d번을 복원할 수 없습니다: dup2 실패"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "%s 하위 프로세스"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "%s 하위 프로세스에서 중대한 시그널 %d번을 받았습니다"
 

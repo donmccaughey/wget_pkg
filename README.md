@@ -1,8 +1,8 @@
-# GNU Wget 1.21.2 for macOS
+# GNU Wget 1.21.3 for macOS
 
 This project builds a signed and notarized universal macOS installer package
 for [GNU Wget][1], a command line tool for retrieving files using HTTP, HTTPS,
-FTP and FTPS.  It contains the source distribution of Wget 1.21.2, 
+FTP and FTPS.  It contains the source distribution of Wget 1.21.3, 
 [libiconv 1.16][2], [OpenSSL 1.1.1m][3] and [zlib 1.2.11][4].
 
 [1]: https://www.gnu.org/software/wget/
@@ -16,8 +16,8 @@ A recent version of Xcode and the [`jq`][5] command are needed to build and
 notarize this installer package.  An [Apple Developer][6] account is required
 to generate the credentials needed to sign and notarize.
 
-Building was last tested on an Apple Silicon Mac with macOS Monterey 12.1 and
-Xcode 13.2.1.  Installation was last tested on both Intel and Apple Silicon
+Building was last tested on an Apple Silicon Mac with macOS Monterey 12.3.1 and
+Xcode 13.3.1.  Installation was last tested on both Intel and Apple Silicon
 Macs running Monterey.
 
 [5]: https://stedolan.github.io/jq/
@@ -53,7 +53,7 @@ To build and sign the executable and installer, run:
         $ make [APP_SIGNING_ID="<cert name 1>"] [INSTALLER_SIGNING_ID="<cert name 2>"] [TMP="<build dir>"]
 
 Intermediate files are generated in the temp directory; the signed installer 
-package is written into the project root with the name `wget-1.21.2-r2.pkg`.  
+package is written into the project root with the name `wget-1.21.3.pkg`.  
 
 To notarize the signed installer package, run:
 
@@ -64,7 +64,7 @@ success.  Check the file `$(TMP)/notarization-log.json` for detailed
 information if notarization fails.  The signed installer is stapled in place
 if notarization succeeds.  Use the command:
 
-        $ xcrun stapler validate --verbose wget-1.21.2-r2.pkg
+        $ xcrun stapler validate --verbose wget-1.21.3.pkg
 
 to check the notarization state of the installer package.
 

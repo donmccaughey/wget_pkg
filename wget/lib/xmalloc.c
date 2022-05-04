@@ -1,10 +1,10 @@
 /* xmalloc.c -- malloc with out of memory checking
 
-   Copyright (C) 1990-2000, 2002-2006, 2008-2021 Free Software Foundation, Inc.
+   Copyright (C) 1990-2000, 2002-2006, 2008-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3 of the License, or
+   the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -99,6 +99,12 @@ void *
 xnmalloc (size_t n, size_t s)
 {
   return xreallocarray (NULL, n, s);
+}
+
+void *
+xinmalloc (idx_t n, idx_t s)
+{
+  return xireallocarray (NULL, n, s);
 }
 
 /* If P is null, allocate a block of at least *PS bytes; otherwise,

@@ -1,9 +1,9 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2021 Free Software Foundation, Inc.
+# Copyright (C) 2002-2022 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License, or
+# the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
 # This file is distributed in the hope that it will be useful,
@@ -225,10 +225,13 @@ lib/mbtowc-impl.h
 lib/mbtowc-lock.c
 lib/mbtowc-lock.h
 lib/mbtowc.c
+lib/md2-stream.c
 lib/md2.c
 lib/md2.h
+lib/md4-stream.c
 lib/md4.c
 lib/md4.h
+lib/md5-stream.c
 lib/md5.c
 lib/md5.h
 lib/memchr.c
@@ -268,6 +271,8 @@ lib/printf-args.c
 lib/printf-args.h
 lib/printf-parse.c
 lib/printf-parse.h
+lib/pselect.c
+lib/pthread_sigmask.c
 lib/quote.h
 lib/quotearg.c
 lib/quotearg.h
@@ -300,10 +305,13 @@ lib/setlocale-lock.c
 lib/setlocale_null.c
 lib/setlocale_null.h
 lib/setsockopt.c
+lib/sha1-stream.c
 lib/sha1.c
 lib/sha1.h
+lib/sha256-stream.c
 lib/sha256.c
 lib/sha256.h
+lib/sha512-stream.c
 lib/sha512.c
 lib/sha512.h
 lib/sig-handler.c
@@ -344,6 +352,7 @@ lib/stdbool.in.h
 lib/stddef.in.h
 lib/stdint.in.h
 lib/stdio-impl.h
+lib/stdio-read.c
 lib/stdio-write.c
 lib/stdio.in.h
 lib/stdlib.in.h
@@ -443,6 +452,8 @@ lib/unitypes.in.h
 lib/uniwidth.in.h
 lib/uniwidth/cjk.h
 lib/uniwidth/width.c
+lib/uniwidth/width0.h
+lib/uniwidth/width2.h
 lib/unlink.c
 lib/unlocked-io.h
 lib/utime.c

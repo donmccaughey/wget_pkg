@@ -1,10 +1,10 @@
 /* ialloc.h -- malloc with idx_t rather than size_t
 
-   Copyright 2021 Free Software Foundation, Inc.
+   Copyright 2021-2022 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
-   published by the Free Software Foundation; either version 3 of the
+   published by the Free Software Foundation; either version 2.1 of the
    License, or (at your option) any later version.
 
    This file is distributed in the hope that it will be useful,

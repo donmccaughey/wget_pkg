@@ -1,4 +1,165 @@
+2022-02-26  Darshit Shah  <darnir@gnu.org>
+
+	* NEWS: Update NEWS items for release
+
+	* .gitignore: Remove empty line at EOF
+
+	* .gitignore: Update file
+
+	* src.hsts.c(hsts_read_database): Use SCNd64 for portable format flags
+
+	* configure.ac: Add some warning flags to ignore
+
+	* cfg.mk: Remove passing syntax-checks from skip list
+
+	Fix issues from syntax-check
+	* doc/wget.texi: s/time stamp/timestamp/
+	* src/ftp-ls.c(clean_line): Same
+	  (ftp_parse_vms_ls): Don't cast return value of x*alloc
+	* src/ftp.c: Don't cast return value of alloca
+	* src/css-url.c: wget.h should be the first include
+	* testenv/Makefile.am: Use $(PATH_SEPARATOR) instead of : when declaring
+	  a path
+	* testenv/Test-no_proxy-env.py: s/can not/cannot/
+
+	* Update Copyright years
+
+	* bootstrap: Update script
+
+	* gnulib: Pull forward
+
+	Cleanup some incorrect uses of AM Conditionals
+	    * configure.ac: Replace IRI_IS_ENABLED with WITH_IRI and
+	      METALINK_IS_ENABLED with WITH_METALINK
+	    * src/Makefile.am: Add the .c and .h files for IRI, Metalink and
+	      Xattr support to wget_SOURCES directly when needed instead of
+	      adding them as object files.
+	    * testenv/Makefile.am: Rename METALINK_IS_ENABLED to WITH_METALINK
+
+2022-02-26  Darshit Shah  <darnir@gnu.org>
+
+	Replace incorrect usage of AC_LIBOBJ in configure.ac
+	AC_LIBOBJ is to be used for providing replacement functions for
+	compatibility reasons. Not for conditional compilation of entire source
+	files. Autotools provides other methods for achieving that. However, our
+	build system has (ab-)used the AC_LIBOBJ macros for doing this for over
+	15 years. That stops today.
+
+	    * configure.ac: Replace uses of AC_LIBOBJ with automake conditionals
+	      that can be used in Makefiles
+	    * src/Makefile.am: Use the defined conditionals to select which
+	      files get built.
+
+2022-02-25  Darshit Shah  <darnir@gnu.org>
+
+	Fix case where installed gettext is newer than minimum version
+	* configure.ac: Use AM_GNU_GETTEXT_REQUIRE_VERSION to specify a minimum
+	  version of gettext needed. This should allow newer versions of gettext
+	  to be copied for autipoint to use when available.
+
+	This commit hopefully fixes the annoying issue when building from
+	source on a system that has a newer version of gettext.
+
+2022-02-13  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* src/netrc.c (test_parse_netrc): Free netrc structure
+
+	* .gitlab-ci.yml: Fix path to llvm-symbolizer
+
+	* src/netrc.c (test_parse_netrc): New unit test function
+
+2022-01-31  Aarni Koskela  <akx@iki.fi>  (tiny change)
+
+	* src/http.c (parse_strict_transport_security): Fix typo in string
+
+2022-01-23  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* .gitlab-ci.yml (Scan-Build): Allow failure due to two false positives
+
+	* configure.ac: Use pkg-config for gpgme, libidn2 and nettle
+
+2022-01-22  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* src/ftp.c: Small cleanups
+
+2022-01-16  Nik Soggia  <wget@niksoggia.it>  (tiny change)
+
+	Print newline after dot progress bar in non-verbose mode
+	* src/progress.c (dot_finish): Print new in all progress bar contexts
+	  instead of just verbose
+
+2022-01-12  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* .gitlab-ci.yml: Fix artifact path for the Scan-Build runner
+
+2022-01-09  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* src/main.c (main): Unlink output document when --unlink is given
+
+2021-12-22  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	fuzz/*.in: Update fuzzer corpora
+
+	* .gitlab-ci.yml (CoverageReports): Fix artifacts paths
+
+	* tests/valgrind-suppressions: Fix libidn rule
+
+	* .gitlab-ci.yml: Fix artifacts paths
+
+	* tests/valgrind-suppressions: Extend libidn rule
+
+	* src/log.c (logprintf): Check earlier for verbosity
+
+	* src/http.c (http_loop): Fix memleak
+
+2021-12-21  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	Switch fuzzing build from C++ to C
+	* Makefile.am (oss-fuzz): Build with $CC instead of $CXX.
+	* README.md: Remove CXX and CXXFLAGS exports.
+
+2021-12-01  Darshit Shah  <darnir@gnu.org>
+
+	* src/http.c (http_loop): Hide password when printing status with -nv
+	Reported-By: Per Lundberg <perlun@gmail.com>
+	Closes: #61492
+
+	* gnulib: Pull forward
+
+	* src/hsts.c (hsts_read_database): Read time_t values as long long
+
+2021-12-01  Thomas Niederberger  <thomas@niederb.ch>
+
+	* src/main.c (print_help): Add command line option for TLS 1.3
+
+2021-10-11  Darshit Shah  <darnir@gnu.org>
+
+	* retr.c (rotate_backups): Non existent files are not errors in this function
+
+2021-10-08  Darshit Shah  <darnir@gnu.org>
+
+	* ftp.c (ftp_loop_internal): Fix computation of total_downloaded_bytes
+	When continuing a FTP download, or not starting one because the file is
+	already fully retrieved, don't include the size of the file in the
+	total_downloaded_bytes. Only the actual amount of data retrieved over
+	the network should be considered there.
+
+	Fixes: #61277
+	Reported-By: Michal Ruprich <formaiko>
+
+2021-09-08  Darshit Shah  <darnir@gnu.org>
+
+	Remove suprious print statements
+	* src/gnutls.c: Remove fprintf statements. We should never print to
+	  console directly. Always honor the log levels.
+	  Fixes: #61125
+
 2021-09-07  Darshit Shah  <darnir@gnu.org>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
 
 	* NEWS: Update NEWS items for release
 

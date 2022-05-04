@@ -1,5 +1,5 @@
 /* File Transfer Protocol support.
-   Copyright (C) 1996-2011, 2014-2015, 2018-2021 Free Software
+   Copyright (C) 1996-2011, 2014-2015, 2018-2022 Free Software
    Foundation, Inc.
 
 This file is part of GNU Wget.
@@ -843,7 +843,7 @@ Error in server response, closing control connection.\n"));
           if (con->rs == ST_VMS)
             {
               char *tmpp;
-              char *ntarget = (char *)alloca (strlen (target) + 2);
+              char *ntarget = alloca (strlen (target) + 2);
               /* We use a converted initial dir, so directories in
                  TARGET will be separated with slashes, something like
                  "/INITIAL/FOLDER/DIR/SUBDIR".  Convert that to
@@ -2083,7 +2083,7 @@ ftp_loop_internal (struct url *u, struct url *original_url, struct fileinfo *f,
             /* --dont-remove-listing was specified, so do count this towards the
                number of bytes and files downloaded. */
             {
-              total_downloaded_bytes += qtyread;
+              total_downloaded_bytes += (qtyread - restval);
               numurls++;
             }
 
@@ -2098,7 +2098,7 @@ ftp_loop_internal (struct url *u, struct url *original_url, struct fileinfo *f,
              downloaded if they're going to be deleted.  People seeding proxies,
              for instance, may want to know how many bytes and files they've
              downloaded through it. */
-          total_downloaded_bytes += qtyread;
+          total_downloaded_bytes += (qtyread - restval);
           numurls++;
 
           if (opt.delete_after && !input_file_url (opt.input_filename))
@@ -2868,7 +2868,6 @@ delelement (struct fileinfo **f, struct fileinfo **start)
   xfree ((*f)->name);
   xfree ((*f)->linkto);
   xfree (*f);
-  *f = NULL;
 
   if (next)
     next->prev = prev;
@@ -2887,8 +2886,7 @@ freefileinfo (struct fileinfo *f)
     {
       struct fileinfo *next = f->next;
       xfree (f->name);
-      if (f->linkto)
-        xfree (f->linkto);
+      xfree (f->linkto);
       xfree (f);
       f = next;
     }

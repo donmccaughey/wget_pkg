@@ -1,6 +1,6 @@
-# calloc.m4 serial 27
+# calloc.m4 serial 29
 
-# Copyright (C) 2004-2021 Free Software Foundation, Inc.
+# Copyright (C) 2004-2022 Free Software Foundation, Inc.
 # This file is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
@@ -58,8 +58,9 @@ AC_DEFUN([gl_FUNC_CALLOC_GNU],
 [
   AC_REQUIRE([gl_STDLIB_H_DEFAULTS])
   AC_REQUIRE([gl_FUNC_CALLOC_POSIX])
-  if test $REPLACE_CALLOC = 0; then
-    _AC_FUNC_CALLOC_IF([], [REPLACE_CALLOC=1])
+  REPLACE_CALLOC_FOR_CALLOC_GNU="$REPLACE_CALLOC_FOR_CALLOC_POSIX"
+  if test $REPLACE_CALLOC_FOR_CALLOC_GNU = 0; then
+    _AC_FUNC_CALLOC_IF([], [REPLACE_CALLOC_FOR_CALLOC_GNU=1])
   fi
 ])# gl_FUNC_CALLOC_GNU
 
@@ -72,8 +73,8 @@ AC_DEFUN([gl_FUNC_CALLOC_POSIX],
 [
   AC_REQUIRE([gl_STDLIB_H_DEFAULTS])
   AC_REQUIRE([gl_FUNC_MALLOC_POSIX])
-  if test $REPLACE_MALLOC = 1; then
-    REPLACE_CALLOC=1
+  if test $REPLACE_MALLOC_FOR_MALLOC_POSIX = 1; then
+    REPLACE_CALLOC_FOR_CALLOC_POSIX=1
   fi
   dnl Although in theory we should also test for size_t overflow,
   dnl in practice testing for ptrdiff_t overflow suffices

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailutils 0.6\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -203,84 +203,84 @@ msgstr "`"
 msgid "'"
 msgstr "'"
 
-#: lib/regcomp.c:135
+#: lib/regcomp.c:122
 msgid "Success"
 msgstr "Ibyatunganye"
 
-#: lib/regcomp.c:138
+#: lib/regcomp.c:125
 msgid "No match"
 msgstr ""
 
-#: lib/regcomp.c:141
+#: lib/regcomp.c:128
 #, fuzzy
 msgid "Invalid regular expression"
 msgstr "%s:Sibyo Ibisanzwe imvugo"
 
-#: lib/regcomp.c:144
+#: lib/regcomp.c:131
 #, fuzzy
 msgid "Invalid collation character"
 msgstr "Sibyo Inyuguti ishuri"
 
-#: lib/regcomp.c:147
+#: lib/regcomp.c:134
 #, fuzzy
 msgid "Invalid character class name"
 msgstr "Sibyo Inyuguti ishuri"
 
-#: lib/regcomp.c:150
+#: lib/regcomp.c:137
 msgid "Trailing backslash"
 msgstr ""
 
-#: lib/regcomp.c:153
+#: lib/regcomp.c:140
 #, fuzzy
 msgid "Invalid back reference"
 msgstr "Umubare utari wo"
 
-#: lib/regcomp.c:156
+#: lib/regcomp.c:143
 msgid "Unmatched [, [^, [:, [., or [="
 msgstr ""
 
-#: lib/regcomp.c:159
+#: lib/regcomp.c:146
 msgid "Unmatched ( or \\("
 msgstr ""
 
-#: lib/regcomp.c:162
+#: lib/regcomp.c:149
 msgid "Unmatched \\{"
 msgstr ""
 
-#: lib/regcomp.c:165
+#: lib/regcomp.c:152
 msgid "Invalid content of \\{\\}"
 msgstr ""
 
-#: lib/regcomp.c:168
+#: lib/regcomp.c:155
 #, fuzzy
 msgid "Invalid range end"
 msgstr "Ipaji Urutonde"
 
-#: lib/regcomp.c:171
+#: lib/regcomp.c:158
 #, fuzzy
 msgid "Memory exhausted"
 msgstr "Ububiko"
 
-#: lib/regcomp.c:174
+#: lib/regcomp.c:161
 #, fuzzy
 msgid "Invalid preceding regular expression"
 msgstr "%s:Sibyo Ibisanzwe imvugo"
 
-#: lib/regcomp.c:177
+#: lib/regcomp.c:164
 #, fuzzy
 msgid "Premature end of regular expression"
 msgstr "Ikosa in Ibisanzwe imvugo Gushaka"
 
-#: lib/regcomp.c:180
+#: lib/regcomp.c:167
 #, fuzzy
 msgid "Regular expression too big"
 msgstr "%s:Sibyo Ibisanzwe imvugo"
 
-#: lib/regcomp.c:183
+#: lib/regcomp.c:170
 msgid "Unmatched ) or \\)"
 msgstr ""
 
-#: lib/regcomp.c:676
+#: lib/regcomp.c:650
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Ikosa in Ibisanzwe imvugo Gushaka"

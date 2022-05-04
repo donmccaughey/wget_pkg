@@ -1,17 +1,18 @@
 # Swedish messages for wget.
-# Copyright (C) 2008, 2009, 2010, 2016, 2017, 2018, 2020 Free Software Foundation, Inc.
+# Copyright © 2008, 2009, 2010, 2016, 2017, 2018, 2020, 2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget package.
 # Christian Rose <menthos@menthos.com>, 1999, 2000, 2001, 2002, 2003.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010.
-# Göran Uddeborg <goeran@uddeborg.se>, 2016, 2017, 2018, 2020.
+# Luna Jernberg <droidbittin@gmail.com>, 2021
+# Göran Uddeborg <goeran@uddeborg.se>, 2016, 2017, 2018, 2020, 2021.
 #
-# $Revision: 1.13 $
+# $Revision: 1.15 $
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.21\n"
+"Project-Id-Version: wget 1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2020-09-08 20:55+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-13 21:59+0200\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -30,12 +31,12 @@ msgstr "%s: kunde inte slå upp bindningsadressen %s; inaktiverar bindning.\n"
 #: src/connect.c:282
 #, c-format
 msgid "Connecting to %s|%s|:%d... "
-msgstr "Ansluter till %s|%s|:%d... "
+msgstr "Ansluter till %s|%s|:%d … "
 
 #: src/connect.c:290
 #, c-format
 msgid "Connecting to %s:%d... "
-msgstr "Ansluter till %s:%d... "
+msgstr "Ansluter till %s:%d … "
 
 #: src/connect.c:293
 #, c-format
@@ -205,7 +206,7 @@ msgstr "Kunde inte initiera SSL. Det kommer avaktiveras.\n"
 #: src/ftp.c:485
 #, c-format
 msgid "Logging in as %s ... "
-msgstr "Loggar in som %s... "
+msgstr "Loggar in som %s … "
 
 #: src/ftp.c:504 src/ftp.c:590 src/ftp.c:657 src/ftp.c:722 src/ftp.c:963
 #: src/ftp.c:1016 src/ftp.c:1063 src/ftp.c:1126 src/ftp.c:1187 src/ftp.c:1285
@@ -409,7 +410,7 @@ msgstr ""
 "%s (%s) - %s sparades [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -541,140 +542,140 @@ msgstr "Skrev HTML-iserat index till %s [%s].\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Skrev HTML-iserat index till %s.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "FEL: Kan inte öppna katalogen %s.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "FEL: Kan inte öppna certifikatet %s: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Läste in CA-certifikatet ”%s”\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "FEL: Misslyckades att läsa in CRL-filen ”%s”: (%d)\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Läste in CRL-filen ”%s”\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "FEL: GnuTLS förutsätter att nyckeln och certifikatet har samma typ.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Din GnuTLS-version är för gammal för att stödja TLS 1.3\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: oimplementerat värde %u på alternativet ”secure-protocol”\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Rapportera gärna detta problem till bug-wget@gnu.org\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: oimplementerat värde %d på alternativet ”secure-protocol”\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: kan inte sätta prioritetssträngen direkt.  Faller tillbaka på "
 "standardprioriteten.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "FEL"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "VARNING"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: Inget certifikat presenterades av %s.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Certifikatet för %s är inte betrott.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Certifikatet för %s har inte en känd utfärdare.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Certifikatet för %s har spärrats.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: Certifikatsigneraren av %s är inte en CA.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr "%s: Certifikatet för %s signerades med en osäker algoritm.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Certifikatet för %s är inte aktiverat ännu.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Certifikatet för %s har gått ut.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Fel vid initiering av X509-certifikat: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Inget certifikat hittades\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Fel vid tolkning av certifikat: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Certifikatet har ännu inte aktiverats\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Certifikatet har gått ut\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Certifikatets ägare matchar inte värdnamnet %s\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Den publika nyckeln stämmer inte med fäst publik nyckel!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Certifikatet måste vara X.509\n"
 
@@ -1041,27 +1042,27 @@ msgstr ""
 "%s (%s) - %s sparades [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Anslutningen stängd vid byte %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Läsfel vid byte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Läsfel vid byte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Ej stödd skyddskvalitet ”%s”.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algoritmen ”%s” stödjs inte.\n"
@@ -1233,7 +1234,7 @@ msgstr "idn_encode misslyckades (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Misslyckades att konvertera till gemen: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1242,7 +1243,7 @@ msgstr ""
 "\n"
 "Omdirigerar utdata till %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; deaktiverar loggning.\n"
@@ -1523,15 +1524,15 @@ msgid "       --read-timeout=SECS         set the read timeout to SECS\n"
 msgstr "       --read-timeout=SEK          sätt lästidsgränsen till SEK\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
-msgstr "  -w,  --wait=SEKUNDER             vänta SEKUNDER mellan hämtningar\n"
+msgstr ""
+"  -w,  --wait=SEKUNDER             vänta SEKUNDER mellan hämtningar\n"
+"                                     (gäller om mer än 1 URL skall hämtas)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1539,18 +1540,18 @@ msgid ""
 "retrieved)\n"
 msgstr ""
 "       --waitretry=SEKUNDER        vänta 1..SEKUNDER mellan hämtningsförsök\n"
+"                                     (gäller om mer än 1 URL skall hämtas)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"       --random-wait               vänta från 0.5*VÄNTA...1.5*VÄNTA "
-"sekunder\n"
-"                                     mellan hämtningar\n"
+"       --random-wait               vänta från 0,5*VÄNTA…1,5*VÄNTA sekunder "
+"mellan hämtningar\n"
+"                                     (gäller om mer än 1 URL skall hämtas)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -1932,10 +1933,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "HTTPS-flaggor (SSL/TLS):\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        välj säkert protokoll, ett av auto, "
 "SSLv2,\n"
@@ -2679,6 +2687,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"VARNING: inget användarnamn satt med --ask-password. Detta är normalt inte "
+"vad du vill.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2728,7 +2738,7 @@ msgstr "Det går inte att ange både --body-data och --body-file.\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "Denna version saknar stöd för IRI:er\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2737,7 +2747,7 @@ msgstr ""
 "vanlig\n"
 "fil.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2747,42 +2757,42 @@ msgstr ""
 "med\n"
 "-O vid skrivning till en vanlig fil.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Misslyckades med att initiera libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Misslyckades med att initiera c-ares-kanalen\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Misslyckades att tolka IP-adressen ”%s”\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Misslyckades att sätta DNS-servrar ”%s” (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "Inga URL:er hittade i %s.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Kunde inte tolka metalink-filen %s.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Kunde inte hämta alla resurser från %s.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2793,7 +2803,7 @@ msgstr ""
 "Total väggklocktid: %s\n"
 "Hämtade: %d filer, %s på %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "Hämtningskvot för %s ÖVERSKRIDEN!\n"
@@ -2994,12 +3004,12 @@ msgstr "%s: %s:%d: varning: %s-märke förekommer framför alla maskinnamn\n"
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: okänt märke \"%s\"\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Användning: %s NETRC [VÄRDDATORNAMN]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: kan inte ta status på %s: %s\n"
@@ -3135,12 +3145,12 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "Kan inte hämta REALTIME-klockfrekvens: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"attributet no-follow funnet i %s. Kommer inte att följa några länkar på "
-"denna sida\n"
+"attributet nofollow funnet i %s. Kommer inte att följa några länkar på denna "
+"sida\n"
 
 #: src/recur.c:514
 #, c-format
@@ -3435,172 +3445,3 @@ msgstr "Kunde inte öppna temporär WARC-fil.\n"
 msgid "Found exact match in CDX file. Saving revisit record to WARC.\n"
 msgstr ""
 "Hittade exakt matchning i CDX-filen.  Sparar en återbesökspost i WARC.\n"
-
-#~ msgid "Unknown system error"
-#~ msgstr "Okänt systemfel"
-
-#~ msgid "Address family for hostname not supported"
-#~ msgstr "Adressfamiljen för värdnamnet stödjs inte"
-
-#~ msgid "Bad value for ai_flags"
-#~ msgstr "Felaktigt värde för ai_flags"
-
-#~ msgid "Non-recoverable failure in name resolution"
-#~ msgstr "Ej reparabelt fel i namnuppslagning"
-
-#~ msgid "ai_family not supported"
-#~ msgstr "ai_family stödjs inte"
-
-#~ msgid "Memory allocation failure"
-#~ msgstr "Minnesallokeringsfel"
-
-#~ msgid "No address associated with hostname"
-#~ msgstr "Ingen adress associerad med värdnamnet"
-
-#~ msgid "Name or service not known"
-#~ msgstr "Namn eller tjänst okänd"
-
-#~ msgid "Servname not supported for ai_socktype"
-#~ msgstr "Servname stödjs inte för ai_socktype"
-
-#~ msgid "ai_socktype not supported"
-#~ msgstr "ai_socktype stödjs inte"
-
-#~ msgid "System error"
-#~ msgstr "Systemfel"
-
-#~ msgid "Argument buffer too small"
-#~ msgstr "Argumentbufferten är för liten"
-
-#~ msgid "Processing request in progress"
-#~ msgstr "Bearbetar pågående begäran"
-
-#~ msgid "Request canceled"
-#~ msgstr "Begäran annullerad"
-
-#~ msgid "Request not canceled"
-#~ msgstr "Begäran inte annullerad"
-
-#~ msgid "All requests done"
-#~ msgstr "Alla begäran utförda"
-
-#~ msgid "Interrupted by a signal"
-#~ msgstr "Avbruten av en signal"
-
-#~ msgid "Parameter string not correctly encoded"
-#~ msgstr "Parametersträng inte korrekt kodad"
-
-#, c-format
-#~ msgid "%s: option '%s%s' is ambiguous\n"
-#~ msgstr "%s: flaggan ”%s%s” är tvetydig\n"
-
-#, c-format
-#~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
-#~ msgstr "%s: flaggan ”%s%s” är tvetydig; möjligheter:"
-
-#, c-format
-#~ msgid "%s: unrecognized option '%s%s'\n"
-#~ msgstr "%s: okänd flagga ”%s%s”\n"
-
-#, c-format
-#~ msgid "%s: option '%s%s' doesn't allow an argument\n"
-#~ msgstr "%s: flaggan ”%s%s” tar inget argument\n"
-
-#, c-format
-#~ msgid "%s: option '%s%s' requires an argument\n"
-#~ msgstr "%s: flaggan ”%s%s” behöver ett argument\n"
-
-#, c-format
-#~ msgid "%s: invalid option -- '%c'\n"
-#~ msgstr "%s: ogiltig flagga -- \"%c\"\n"
-
-#, c-format
-#~ msgid "%s: option requires an argument -- '%c'\n"
-#~ msgstr "%s: flaggan behöver ett argument -- \"%c\"\n"
-
-#~ msgid "`"
-#~ msgstr "\""
-
-#~ msgid "'"
-#~ msgstr "\""
-
-#~ msgid "Success"
-#~ msgstr "Lyckas"
-
-#~ msgid "No match"
-#~ msgstr "Ingen matchning"
-
-#~ msgid "Invalid regular expression"
-#~ msgstr "Felaktigt reguljärt uttryck"
-
-#~ msgid "Invalid collation character"
-#~ msgstr "Ogiltigt sorteringstecken"
-
-#~ msgid "Invalid character class name"
-#~ msgstr "Ogiltigt teckenklassnamn"
-
-#~ msgid "Trailing backslash"
-#~ msgstr "Avslutande bakstreck"
-
-#~ msgid "Invalid back reference"
-#~ msgstr "Ogiltig bakåtreferens"
-
-#~ msgid "Unmatched [, [^, [:, [., or [="
-#~ msgstr "Ensam [, [^, [:, [. eller [="
-
-#~ msgid "Unmatched ( or \\("
-#~ msgstr "Ensam ( eller \\("
-
-#~ msgid "Unmatched \\{"
-#~ msgstr "Ensam \\{"
-
-#~ msgid "Invalid content of \\{\\}"
-#~ msgstr "Felaktigt innehåll i \\{\\}"
-
-#~ msgid "Invalid range end"
-#~ msgstr "Ogiltigt intervallslut"
-
-#~ msgid "Memory exhausted"
-#~ msgstr "Slut på minne"
-
-#~ msgid "Invalid preceding regular expression"
-#~ msgstr "Felaktigt föregående reguljärt uttryck"
-
-#~ msgid "Premature end of regular expression"
-#~ msgstr "Förtida filslut i reguljärt uttryck"
-
-#~ msgid "Regular expression too big"
-#~ msgstr "Reguljärt uttryck är för stort"
-
-#~ msgid "Unmatched ) or \\)"
-#~ msgstr "Ensam ) eller \\)"
-
-#~ msgid "No previous regular expression"
-#~ msgstr "Inget tidigare reguljärt uttryck"
-
-#, c-format
-#~ msgid "cannot create pipe"
-#~ msgstr "kan inte skapa ett rör"
-
-#, c-format
-#~ msgid "%s subprocess failed"
-#~ msgstr "%s-underprocess misslyckades"
-
-#, c-format
-#~ msgid "_open_osfhandle failed"
-#~ msgstr "_open_osfhandle misslyckades"
-
-#, c-format
-#~ msgid "cannot restore fd %d: dup2 failed"
-#~ msgstr "kan inte återställa fb %d: dup2 misslyckades"
-
-#, c-format
-#~ msgid "%s subprocess"
-#~ msgstr "%s-underprocess"
-
-#, c-format
-#~ msgid "%s subprocess got fatal signal %d"
-#~ msgstr "%s-underprocess fick en ödesdiger signal %d"
-
-#~ msgid "memory exhausted"
-#~ msgstr "slut på minne"

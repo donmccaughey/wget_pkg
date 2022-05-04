@@ -1,15 +1,15 @@
 # Slovak translations for GNU wget
-# Copyright (C) 1999, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020 Free Software Foundation, Inc.
+# Copyright (C) 1999, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget package.
 # Miroslav Vasko <vasko@debian.cz>, 1999.
-# Marcel Telka <marcel@telka.sk>, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020.
+# Marcel Telka <marcel@telka.sk>, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget 1.21\n"
+"Project-Id-Version: GNU wget 1.21.2\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2021-09-07 21:01+0200\n"
-"PO-Revision-Date: 2020-09-08 09:43+0200\n"
+"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"PO-Revision-Date: 2021-09-09 20:59+0200\n"
 "Last-Translator: Marcel Telka <marcel@telka.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "Language: sk\n"
@@ -296,7 +296,7 @@ msgstr "==> CWD nie je potrebné.\n"
 
 #: src/ftp.c:1041
 msgid "File has already been retrieved.\n"
-msgstr "Súbor už bol prenesený.\n"
+msgstr "Súbor už bol stiahnutý.\n"
 
 #: src/ftp.c:1077
 msgid "Cannot initiate PASV transfer.\n"
@@ -407,7 +407,7 @@ msgstr ""
 "%s (%s) - %s uložený [%s]\n"
 "\n"
 
-#: src/ftp.c:2108 src/main.c:2174 src/metalink.c:1135 src/recur.c:513
+#: src/ftp.c:2108 src/main.c:2179 src/metalink.c:1135 src/recur.c:513
 #: src/recur.c:752 src/retr.c:1317
 #, c-format
 msgid "Removing %s.\n"
@@ -540,141 +540,141 @@ msgstr "Výpis adresára v HTML formáte bol zapísaný do %s [%s].\n"
 msgid "Wrote HTML-ized index to %s.\n"
 msgstr "Výpis adresára v HTML formáte bol zapísaný do %s.\n"
 
-#: src/gnutls.c:134
+#: src/gnutls.c:133
 #, c-format
 msgid "ERROR: Cannot open directory %s.\n"
 msgstr "CHYBA: Nie je možné otvoriť adresár %s.\n"
 
-#: src/gnutls.c:180
+#: src/gnutls.c:179
 #, c-format
 msgid "ERROR: Failed to open cert %s: (%d).\n"
 msgstr "CHYBA: Otvorenie certifikátu %s zlyhalo: (%d).\n"
 
-#: src/gnutls.c:185
+#: src/gnutls.c:184
 #, c-format
 msgid "Loaded CA certificate '%s'\n"
 msgstr "Načítaný CA certifikát '%s'\n"
 
-#: src/gnutls.c:193
+#: src/gnutls.c:192
 #, c-format
 msgid "ERROR: Failed to load CRL file '%s': (%d)\n"
 msgstr "CHYBA: Načítanie CRL súboru '%s' zlyhalo: (%d)\n"
 
-#: src/gnutls.c:197
+#: src/gnutls.c:196
 #, c-format
 msgid "Loaded CRL file '%s'\n"
 msgstr "Načítaný CRL súbor '%s'\n"
 
-#: src/gnutls.c:221
+#: src/gnutls.c:220
 msgid "ERROR: GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "CHYBA: GnuTLS vyžaduje, aby kľúč a certifikát boli rovnakého typu.\n"
 
-#: src/gnutls.c:780 src/gnutls.c:844
+#: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
 msgstr "Vaša verzia GnuTLS je príliš stará, aby podporovala TLS 1.3\n"
 
-#: src/gnutls.c:792
+#: src/gnutls.c:789
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %u\n"
 msgstr "GnuTLS: neimplementovaná hodnota %u voľby 'secure-protocol'\n"
 
-#: src/gnutls.c:794 src/gnutls.c:850 src/host.c:158 src/openssl.c:288
+#: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:288
 msgid "Please report this issue to bug-wget@gnu.org\n"
 msgstr "Oznámte, prosím, tento problém na bug-wget@gnu.org (iba anglicky)\n"
 
-#: src/gnutls.c:849
+#: src/gnutls.c:846
 #, c-format
 msgid "GnuTLS: unimplemented 'secure-protocol' option value %d\n"
 msgstr "GnuTLS: neimplementovaná hodnota %d voľby 'secure-protocol'\n"
 
-#: src/gnutls.c:902
+#: src/gnutls.c:899
 msgid ""
 "GnuTLS: Cannot set prio string directly. Falling back to default priority.\n"
 msgstr ""
 "GnuTLS: Nie je možné priamo nastaviť reťazec prio. Použije sa predvolená "
 "priorita.\n"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "ERROR"
 msgstr "CHYBA"
 
-#: src/gnutls.c:1030 src/openssl.c:1029
+#: src/gnutls.c:1027 src/openssl.c:1029
 msgid "WARNING"
 msgstr "UPOZORNENIE"
 
-#: src/gnutls.c:1041 src/openssl.c:1042
+#: src/gnutls.c:1038 src/openssl.c:1042
 #, c-format
 msgid "%s: No certificate presented by %s.\n"
 msgstr "%s: %s neprezentoval certifikát.\n"
 
-#: src/gnutls.c:1047
+#: src/gnutls.c:1044
 #, c-format
 msgid "%s: The certificate of %s is not trusted.\n"
 msgstr "%s: Certifikát %s nie je dôveryhodný.\n"
 
-#: src/gnutls.c:1048
+#: src/gnutls.c:1045
 #, c-format
 msgid "%s: The certificate of %s doesn't have a known issuer.\n"
 msgstr "%s: Certifikát %s nemá známeho vydavateľa.\n"
 
-#: src/gnutls.c:1049
+#: src/gnutls.c:1046
 #, c-format
 msgid "%s: The certificate of %s has been revoked.\n"
 msgstr "%s: Certifikát %s bol zrušený.\n"
 
-#: src/gnutls.c:1050
+#: src/gnutls.c:1047
 #, c-format
 msgid "%s: The certificate signer of %s was not a CA.\n"
 msgstr "%s: Ten, kto podpísal certifikát %s, nebol CA.\n"
 
-#: src/gnutls.c:1051
+#: src/gnutls.c:1048
 #, c-format
 msgid "%s: The certificate of %s was signed using an insecure algorithm.\n"
 msgstr ""
 "%s: Certifikát %s bol podpísaný pomocou algoritmu, ktorý nie je bezpečný.\n"
 
-#: src/gnutls.c:1052
+#: src/gnutls.c:1049
 #, c-format
 msgid "%s: The certificate of %s is not yet activated.\n"
 msgstr "%s: Certifikát %s ešte nie je aktivovaný.\n"
 
-#: src/gnutls.c:1053
+#: src/gnutls.c:1050
 #, c-format
 msgid "%s: The certificate of %s has expired.\n"
 msgstr "%s: Certifikátu %s vypršala platnosť.\n"
 
-#: src/gnutls.c:1065
+#: src/gnutls.c:1062
 #, c-format
 msgid "Error initializing X509 certificate: %s\n"
 msgstr "Chyba pri inicializácii certifikátu X509: %s\n"
 
-#: src/gnutls.c:1074
+#: src/gnutls.c:1071
 msgid "No certificate found\n"
 msgstr "Certifikát nenájdený\n"
 
-#: src/gnutls.c:1081
+#: src/gnutls.c:1078
 #, c-format
 msgid "Error parsing certificate: %s\n"
 msgstr "Chyba pri analýze certifikátu: %s\n"
 
-#: src/gnutls.c:1088
+#: src/gnutls.c:1085
 msgid "The certificate has not yet been activated\n"
 msgstr "Certifikát ešte nebol aktivovaný\n"
 
-#: src/gnutls.c:1093
+#: src/gnutls.c:1090
 msgid "The certificate has expired\n"
 msgstr "Certifikátu vypršala platnosť\n"
 
-#: src/gnutls.c:1100
+#: src/gnutls.c:1097
 #, c-format
 msgid "The certificate's owner does not match hostname %s\n"
 msgstr "Majiteľ certifikátu sa nezhoduje s názvom hostiteľa %s\n"
 
-#: src/gnutls.c:1109 src/openssl.c:1238
+#: src/gnutls.c:1106 src/openssl.c:1238
 msgid "The public key does not match pinned public key!\n"
 msgstr "Verejný kľúč sa nezhoduje so zadaným verejným kľúčom!\n"
 
-#: src/gnutls.c:1118
+#: src/gnutls.c:1115
 msgid "Certificate must be X.509\n"
 msgstr "Certifikát musí byť X.509\n"
 
@@ -1042,27 +1042,27 @@ msgstr ""
 "%s (%s) - %s uložené [%s/%s]\n"
 "\n"
 
-#: src/http.c:4818
+#: src/http.c:4823
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Spojenie uzatvorené na bajte %s. "
 
-#: src/http.c:4841
+#: src/http.c:4846
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Chyba pri čítaní na bajte %s (%s)."
 
-#: src/http.c:4850
+#: src/http.c:4855
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Chyba pri čítaní na bajte %s/%s (%s). "
 
-#: src/http.c:5107
+#: src/http.c:5112
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Nepodporovaná kvalita ochrany '%s'.\n"
 
-#: src/http.c:5112
+#: src/http.c:5117
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Nepodporovaný algoritmus '%s'.\n"
@@ -1233,7 +1233,7 @@ msgstr "idn_encode zlyhalo (%d): %s\n"
 msgid "Failed to convert to lower: %d: %s\n"
 msgstr "Zlyhala konverzia na malé: %d: %s\n"
 
-#: src/log.c:937 src/log.c:956
+#: src/log.c:938 src/log.c:957
 #, c-format
 msgid ""
 "\n"
@@ -1242,7 +1242,7 @@ msgstr ""
 "\n"
 "Výstup sa presmerováva do %s.\n"
 
-#: src/log.c:949
+#: src/log.c:950
 #, c-format
 msgid "%s: %s; disabling logging.\n"
 msgstr "%s: %s; protokolovaniei sa vypína.\n"
@@ -1530,15 +1530,16 @@ msgstr ""
 "       --read-timeout=SEKUNDY      nastaviť časový limit čítania na SEKUNDY\n"
 
 #: src/main.c:695
-#, fuzzy
 msgid ""
 "  -w,  --wait=SECONDS              wait SECONDS between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
-msgstr "  -w,  --wait=SEKUNDY              počkať SEKUNDY medzi sťahovaniami\n"
+msgstr ""
+"  -w,  --wait=SEKUNDY              počkať SEKUNDY medzi sťahovaniami\n"
+"                                     (použije sa, ak sa bude sťahovať viac "
+"ako jedno URL)\n"
 
 #: src/main.c:698
-#, fuzzy
 msgid ""
 "       --waitretry=SECONDS         wait 1..SECONDS between retries of a "
 "retrieval\n"
@@ -1547,18 +1548,21 @@ msgid ""
 msgstr ""
 "       --waitretry=SEKÚND          počkať 1..SEKÚND medzi pokusmi o "
 "sťahovanie\n"
+"                                     (použije sa, ak sa bude sťahovať viac "
+"ako jedno URL)\n"
 
 #: src/main.c:701
-#, fuzzy
 msgid ""
 "       --random-wait               wait from 0.5*WAIT...1.5*WAIT secs "
 "between retrievals\n"
 "                                     (applies if more then 1 URL is to be "
 "retrieved)\n"
 msgstr ""
-"       --random-wait               počkať od 0,5 × POČKAŤ ... 1,5 × POČKAŤ "
+"       --random-wait               počkať od 0,5 × POČKAŤ do 1,5 × POČKAŤ "
 "sekúnd medzi\n"
-"                                     sťahovaniami\n"
+"                                     sťahovaniami (použije sa, ak sa bude "
+"sťahovať viac\n"
+"                                     ako jedno URL)\n"
 
 #: src/main.c:704
 msgid "       --no-proxy                  explicitly turn off proxy\n"
@@ -1947,10 +1951,17 @@ msgid "HTTPS (SSL/TLS) options:\n"
 msgstr "Voľby HTTPS (SSL/TLS):\n"
 
 #: src/main.c:847
+#, fuzzy
+#| msgid ""
+#| "       --secure-protocol=PR        choose secure protocol, one of auto, "
+#| "SSLv2,\n"
+#| "                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and "
+#| "PFS\n"
 msgid ""
 "       --secure-protocol=PR        choose secure protocol, one of auto, "
 "SSLv2,\n"
-"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2 and PFS\n"
+"                                     SSLv3, TLSv1, TLSv1_1, TLSv1_2, TLSv1_3 "
+"and PFS\n"
 msgstr ""
 "       --secure-protocol=PR        vybrať bezpečný protokol, jeden z auto, "
 "SSLv2,\n"
@@ -2703,6 +2714,8 @@ msgid ""
 "WARNING: No username set with --ask-password. This is usually not what you "
 "want.\n"
 msgstr ""
+"UPOZORNENIE: Nenastavené meno používateľa s --ask-password. Toto "
+"pravdepodobne nechcete.\n"
 
 #: src/main.c:1775
 #, c-format
@@ -2751,7 +2764,7 @@ msgstr "Nemôžete zadať naraz --body-data aj --body-file.\n"
 msgid "This version does not have support for IRIs\n"
 msgstr "Táto verzia nemá podporu pre IRI\n"
 
-#: src/main.c:2003
+#: src/main.c:2008
 #, c-format
 msgid ""
 "-k or -r can be used together with -O only if outputting to a regular file.\n"
@@ -2759,7 +2772,7 @@ msgstr ""
 "-k alebo -r môže byť použité spolu s -O, len ak je výstup do bežného "
 "súboru.\n"
 
-#: src/main.c:2009
+#: src/main.c:2014
 #, c-format
 msgid ""
 "--convert-links or --convert-file-only can be used together only if "
@@ -2768,42 +2781,42 @@ msgstr ""
 "--convert-links alebo --convert-file-only môžu byť použité spolu, len ak je "
 "výstup do bežného súboru.\n"
 
-#: src/main.c:2020
+#: src/main.c:2025
 #, c-format
 msgid "Failed to init libcares\n"
 msgstr "Zlyhala inicializácia libcares\n"
 
-#: src/main.c:2026
+#: src/main.c:2031
 #, c-format
 msgid "Failed to init c-ares channel\n"
 msgstr "Zlyhala inicializácia kanála c-ares\n"
 
-#: src/main.c:2049
+#: src/main.c:2054
 #, c-format
 msgid "Failed to parse IP address '%s'\n"
 msgstr "Zlyhala analýza IP adresy '%s'\n"
 
-#: src/main.c:2060
+#: src/main.c:2065
 #, c-format
 msgid "Failed to set DNS server(s) '%s' (%d)\n"
 msgstr "Zlyhalo nastavenie DNS server(ov) '%s' (%d)\n"
 
-#: src/main.c:2197
+#: src/main.c:2202
 #, c-format
 msgid "No URLs found in %s.\n"
 msgstr "V %s neboli nájdené URL.\n"
 
-#: src/main.c:2213
+#: src/main.c:2218
 #, c-format
 msgid "Unable to parse metalink file %s.\n"
 msgstr "Nepodarilo sa analyzovať metalink súbor %s.\n"
 
-#: src/main.c:2243 src/metalink.c:337
+#: src/main.c:2248 src/metalink.c:337
 #, c-format
 msgid "Could not download all resources from %s.\n"
 msgstr "Nepodarilo sa stiahnuť všetky zdroje z %s.\n"
 
-#: src/main.c:2270
+#: src/main.c:2275
 #, c-format
 msgid ""
 "FINISHED --%s--\n"
@@ -2814,7 +2827,7 @@ msgstr ""
 "Celkový čas: %s\n"
 "Stiahnutých: %d súborov, %s za %s (%s)\n"
 
-#: src/main.c:2284
+#: src/main.c:2289
 #, c-format
 msgid "Download quota of %s EXCEEDED!\n"
 msgstr "Limit objemu stiahnutych dát %s PREKROČENÝ!\n"
@@ -3016,12 +3029,12 @@ msgstr ""
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: neznámy token \"%s\"\n"
 
-#: src/netrc.c:500
+#: src/netrc.c:553
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Použitie: %s NETRC [NÁZOV_POČÍTAČA]\n"
 
-#: src/netrc.c:518
+#: src/netrc.c:571
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: volanie `stat %s' skončilo s chybou: %s\n"
@@ -3159,12 +3172,12 @@ msgid "Cannot get REALTIME clock frequency: %s\n"
 msgstr "Nie je možné získať frekvenciu hodín reálneho času: %s\n"
 
 #: src/recur.c:430
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "nofollow attribute found in %s. Will not follow any links on this page\n"
 msgstr ""
-"Bol nájdený príznak no-follow v %s. Nebudú nasledované žiadne odkazy na "
-"tejto stránke\n"
+"Bol nájdený príznak nofollow v %s. Nebudú nasledované žiadne odkazy na tejto "
+"stránke\n"
 
 #: src/recur.c:514
 #, c-format
@@ -3513,31 +3526,24 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "Reťazec parametra nie je správne zakódovaný"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous\n"
 #~ msgstr "%s: voľba '%s%s' je nejednoznačná\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' is ambiguous; possibilities:"
 #~ msgstr "%s: voľba '%s%s' je nejednoznačná, možnosti:"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%s%s'\n"
 #~ msgstr "%s: neznáma voľba '%s%s'\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' doesn't allow an argument\n"
 #~ msgstr "%s: voľba '%s%s' nepodporuje parameter\n"
 
-#, c-format
 #~ msgid "%s: option '%s%s' requires an argument\n"
 #~ msgstr "%s: voľba '%s%s' vyžaduje parameter\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: neplatná voľba -- '%c'\n"
 
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: voľba vyžaduje parameter -- '%c'\n"
 
@@ -3601,27 +3607,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "Bez predchádzajúceho regulárneho výraz"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "nepodarilo sa vytvoriť dátovod"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "podproces %s zlyhal"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "_open_osfhandle zlyhalo"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "nie je možné obnoviť fd %d: dup2 zlyhalo"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "podproces %s"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "podproces %s dostal závažný signál %d"
 

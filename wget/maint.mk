@@ -2,7 +2,7 @@
 # This Makefile fragment tries to be general-purpose enough to be
 # used by many projects via the gnulib maintainer-makefile module.
 
-## Copyright (C) 2001-2021 Free Software Foundation, Inc.
+## Copyright (C) 2001-2022 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ VC_LIST = $(srcdir)/$(_build-aux)/vc-list-files -C $(srcdir)
 
 # You can override this variable in cfg.mk if your gnulib submodule lives
 # in a different location.
-gnulib_dir ?= $(shell if test -d $(srcdir)/gnulib; then \
+gnulib_dir ?= $(shell if test -f $(srcdir)/gnulib/gnulib-tool; then \
 			echo $(srcdir)/gnulib; \
 		else \
 			echo ${GNULIB_SRCDIR}; \
@@ -473,7 +473,7 @@ sc_error_message_uppercase:
 	@$(VC_LIST_EXCEPT)						\
 	  | xargs $(GREP) -nEA2 '[^rp]error *\(' /dev/null		\
 	  | $(GREP) -E '"[A-Z]'						\
-	  | $(GREP) -vE '"FATAL|"WARNING|"Java|"C#|PRIuMAX'		\
+	  | $(GREP) -vE '"FATAL|"WARNING|"Java|"C#|"PRI'		\
 	  && { echo '$(ME): found capitalized error message' 1>&2;	\
 	       exit 1; }						\
 	  || :
@@ -1031,7 +1031,7 @@ perl_filename_lineno_text_ =						\
     -e '  }'
 
 prohibit_doubled_words_ = \
-    the then in an on if is it but for or at and do to
+    the then in an on if is it but for or at and do to can
 # expand the regex before running the check to avoid using expensive captures
 prohibit_doubled_word_expanded_ = \
     $(join $(prohibit_doubled_words_),$(addprefix \s+,$(prohibit_doubled_words_)))
@@ -1522,7 +1522,7 @@ alpha beta stable: $(local-check) writable-files $(submodule-checks)
 
 release:
 	$(AM_V_GEN)$(MAKE) _version
-	$(AM_V_GEN)$(MAKE) $(release-type)
+	$(AM_V_at)$(MAKE) $(release-type)
 
 # Override this in cfg.mk if you follow different procedures.
 release-prep-hook ?= release-prep
@@ -1702,9 +1702,8 @@ sc_tight_scope: tight-scope.mk
 	exit $$fail
 
 tight-scope.mk: $(ME)
-	@rm -f $@ $@-t
 	@perl -ne '/^# TS-start/.../^# TS-end/ and print' $(srcdir)/$(ME) > $@-t
-	@chmod a=r $@-t && mv $@-t $@
+	@mv $@-t $@
 
 ifeq (a,b)
 # TS-start

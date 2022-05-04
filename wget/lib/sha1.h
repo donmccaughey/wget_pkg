@@ -1,6 +1,6 @@
 /* Declarations of functions and data types used for SHA1 sum
    library functions.
-   Copyright (C) 2000-2001, 2003, 2005-2006, 2008-2021 Free Software
+   Copyright (C) 2000-2001, 2003, 2005-2006, 2008-2022 Free Software
    Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
 extern "C" {
 # endif
 
-#define SHA1_DIGEST_SIZE 20
+# define SHA1_DIGEST_SIZE 20
 
 # if HAVE_OPENSSL_SHA1
 #  define GL_OPENSSL_NAME 1
@@ -88,6 +88,7 @@ extern void *sha1_buffer (const char *buffer, size_t len,
                           void *restrict resblock);
 
 # endif
+
 /* Compute SHA1 message digest for bytes read from STREAM.
    STREAM is an open file stream.  Regular files are handled more efficiently.
    The contents of STREAM from its current position to its end will be read.
