@@ -268,6 +268,10 @@ $(TMP)/zlib/install :
 
 wget_configure_options := \
 		--disable-silent-rules \
+		--disable-iri \
+		--disable-pcre2 \
+		--disable-pcre \
+		--without-libpsl \
 		--with-ssl=openssl \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
