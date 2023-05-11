@@ -1,8 +1,8 @@
 # Configure a more-standard replacement for <time.h>.
 
-# Copyright (C) 2000-2001, 2003-2007, 2009-2022 Free Software Foundation, Inc.
+# Copyright (C) 2000-2001, 2003-2007, 2009-2023 Free Software Foundation, Inc.
 
-# serial 19
+# serial 22
 
 # This file is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
@@ -18,6 +18,12 @@ AC_DEFUN_ONCE([gl_TIME_H],
 
   gl_NEXT_HEADERS([time.h])
   AC_REQUIRE([gl_CHECK_TYPE_STRUCT_TIMESPEC])
+
+  dnl Check for declarations of anything we want to poison if the
+  dnl corresponding gnulib module is not in use.
+  gl_WARN_ON_USE_PREPARE([[
+#include <time.h>
+    ]], [asctime_r ctime_r])
 
   AC_REQUIRE([AC_C_RESTRICT])
 
@@ -131,6 +137,7 @@ AC_DEFUN([gl_TIME_H_REQUIRE_DEFAULTS],
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_NANOSLEEP])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_STRFTIME])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_STRPTIME])
+    gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIME])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIMEGM])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIMESPEC_GET])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIMESPEC_GETRES])
@@ -163,7 +170,9 @@ AC_DEFUN([gl_TIME_H_DEFAULTS],
   REPLACE_MKTIME=GNULIB_PORTCHECK;       AC_SUBST([REPLACE_MKTIME])
   REPLACE_NANOSLEEP=GNULIB_PORTCHECK;    AC_SUBST([REPLACE_NANOSLEEP])
   REPLACE_STRFTIME=GNULIB_PORTCHECK;     AC_SUBST([REPLACE_STRFTIME])
+  REPLACE_TIME=0;                        AC_SUBST([REPLACE_TIME])
   REPLACE_TIMEGM=GNULIB_PORTCHECK;       AC_SUBST([REPLACE_TIMEGM])
+  REPLACE_TIMESPEC_GET=GNULIB_PORTCHECK; AC_SUBST([REPLACE_TIMESPEC_GET])
   REPLACE_TZSET=GNULIB_PORTCHECK;        AC_SUBST([REPLACE_TZSET])
 
   dnl Hack so that the time module doesn't depend on the sys_time module.

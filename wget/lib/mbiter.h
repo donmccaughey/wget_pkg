@@ -1,5 +1,5 @@
 /* Iterating through multibyte strings: macros for multi-byte encodings.
-   Copyright (C) 2001, 2005, 2007, 2009-2022 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2005, 2007, 2009-2023 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -82,17 +82,18 @@
 #ifndef _MBITER_H
 #define _MBITER_H 1
 
+/* This file uses _GL_INLINE_HEADER_BEGIN, _GL_INLINE.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
+
 #include <assert.h>
-#include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
 #include <wchar.h>
 
 #include "mbchar.h"
 
-#ifndef _GL_INLINE_HEADER_BEGIN
- #error "Please include config.h first."
-#endif
 _GL_INLINE_HEADER_BEGIN
 #ifndef MBITER_INLINE
 # define MBITER_INLINE _GL_INLINE

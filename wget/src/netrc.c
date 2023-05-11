@@ -1,5 +1,5 @@
 /* Read and parse the .netrc file to get hosts, accounts, and passwords.
-   Copyright (C) 1996, 2007-2011, 2015, 2018-2022 Free Software
+   Copyright (C) 1996, 2007-2011, 2015, 2018-2023 Free Software
    Foundation, Inc.
 
 This file is part of GNU Wget.
@@ -486,6 +486,7 @@ free_netrc(acc_t *l)
 const char *
 test_parse_netrc(void)
 {
+#ifdef HAVE_FMEMOPEN
   static const struct test {
     const char *pw_in;
     const char *pw_expected;
@@ -530,6 +531,7 @@ test_parse_netrc(void)
       free_netrc(acc);
     }
 
+#endif // HAVE_FMEMOPEN
   return NULL;
 }
 #endif

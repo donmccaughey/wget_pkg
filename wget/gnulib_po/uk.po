@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib 4.0.0.2567\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"POT-Creation-Date: 2023-05-11 02:59+0200\n"
 "PO-Revision-Date: 2019-05-19 14:26+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 19.03.70\n"
 
-#: lib/error.c:195
+#: lib/error.c:193
 msgid "Unknown system error"
 msgstr "Невідома системна помилка"
 
@@ -146,12 +146,12 @@ msgstr "не вдається змінити поточний каталог"
 msgid "failed to return to initial working directory"
 msgstr "не вдається зберегти поточний каталог"
 
-#: lib/os2-spawn.c:46
+#: lib/os2-spawn.c:45
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "помилка _open_osfhandle"
 
-#: lib/os2-spawn.c:83
+#: lib/os2-spawn.c:82
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "не вдається відновити дескриптор %d: помилка dup2"
@@ -177,11 +177,11 @@ msgstr "не вдається відновити дескриптор %d: пом
 #. If you don't know what to put here, please see
 #. <https://en.wikipedia.org/wiki/Quotation_marks_in_other_languages>
 #. and use glyphs suitable for your language.
-#: lib/quotearg.c:355
+#: lib/quotearg.c:354
 msgid "`"
 msgstr "`"
 
-#: lib/quotearg.c:356
+#: lib/quotearg.c:355
 msgid "'"
 msgstr "'"
 
@@ -257,13 +257,12 @@ msgstr "Неузгоджена ) або \\)"
 msgid "No previous regular expression"
 msgstr "Не вказано попереднього формального виразу"
 
-#: lib/spawn-pipe.c:217 lib/spawn-pipe.c:220 lib/spawn-pipe.c:459
-#: lib/spawn-pipe.c:462
+#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
 #, c-format
 msgid "cannot create pipe"
 msgstr "не вдається створити конвеєр"
 
-#: lib/spawn-pipe.c:597 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
 #, c-format
 msgid "%s subprocess failed"
 msgstr "нащадок %s зазнав невдачі"
@@ -833,8 +832,8 @@ msgstr "пам'ять вичерпано"
 #~ "This is free software: you are free to change and redistribute it.\n"
 #~ "There is NO WARRANTY, to the extent permitted by law.\n"
 #~ msgstr ""
-#~ "Умови ліцензування викладено у GPLv3+: GNU GPL версії 3 або новішій, <"
-#~ "%s>\n"
+#~ "Умови ліцензування викладено у GPLv3+: GNU GPL версії 3 або новішій, "
+#~ "<%s>\n"
 #~ "Це вільне програмне забезпечення: ви можете вільно змінювати і поширювати "
 #~ "його.\n"
 #~ "Вам не надається ЖОДНИХ ГАРАНТІЙ, окрім гарантій передбачених "

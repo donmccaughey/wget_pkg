@@ -1,5 +1,5 @@
 /* Collect URLs from HTML source.
-   Copyright (C) 1998-2012, 2015, 2018-2022 Free Software Foundation,
+   Copyright (C) 1998-2012, 2015, 2018-2023 Free Software Foundation,
    Inc.
 
 This file is part of GNU Wget.
@@ -941,11 +941,9 @@ get_urls_file (const char *file)
       url = url_parse (url_text, &up_error_code, NULL, false);
       if (!url)
         {
-          char *error = url_error (url_text, up_error_code);
           logprintf (LOG_NOTQUIET, _("%s: Invalid URL %s: %s\n"),
-                     file, url_text, error);
+                     file, url_text, url_error (up_error_code));
           xfree (url_text);
-          xfree (error);
           inform_exit_status (URLERROR);
           continue;
         }

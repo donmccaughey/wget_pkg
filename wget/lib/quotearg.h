@@ -1,6 +1,6 @@
 /* quotearg.h - quote arguments for output
 
-   Copyright (C) 1998-2002, 2004, 2006, 2008-2022 Free Software Foundation,
+   Copyright (C) 1998-2002, 2004, 2006, 2008-2023 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,11 @@
 
 #ifndef QUOTEARG_H_
 # define QUOTEARG_H_ 1
+
+/* This file uses _GL_ATTRIBUTE_MALLOC, _GL_ATTRIBUTE_RETURNS_NONNULL.  */
+# if !_GL_CONFIG_H_INCLUDED
+#  error "Please include config.h first."
+# endif
 
 # include <stdlib.h>
 

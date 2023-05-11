@@ -1,6 +1,6 @@
 /* Sizes of structs with flexible array members.
 
-   Copyright 2016-2022 Free Software Foundation, Inc.
+   Copyright 2016-2023 Free Software Foundation, Inc.
 
    This file is part of the GNU C Library.
 
@@ -19,6 +19,11 @@
    <https://www.gnu.org/licenses/>.
 
    Written by Paul Eggert.  */
+
+/* This file uses _Alignof.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
 
 #include <stddef.h>
 

@@ -555,7 +555,7 @@ AX_DQ="\""
 ])
 
 # gpgme.m4 - autoconf macro to detect GPGME.
-# Copyright (C) 2002, 2003, 2004, 2014, 2018 g10 Code GmbH
+# Copyright (C) 2002, 2003, 2004, 2014, 2018, 2022 g10 Code GmbH
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -565,13 +565,102 @@ AX_DQ="\""
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-# Last-changed: 2020-11-20
+# Last-changed: 2022-11-25
 
 
-AC_DEFUN([_AM_PATH_GPGME_CONFIG],
-[ AC_ARG_WITH(gpgme-prefix,
-            AS_HELP_STRING([--with-gpgme-prefix=PFX],
-                           [prefix where GPGME is installed (optional)]),
+dnl
+dnl Find gpgrt-config, which uses .pc file
+dnl (minimum pkg-config functionality, supporting cross build)
+dnl
+dnl _AM_PATH_GPGRT_CONFIG
+AC_DEFUN([_AM_PATH_GPGRT_CONFIG],[dnl
+  AC_PATH_PROG(GPGRT_CONFIG, gpgrt-config, no, [$prefix/bin:$PATH])
+  if test "$GPGRT_CONFIG" != "no"; then
+    # Determine gpgrt_libdir
+    #
+    # Get the prefix of gpgrt-config assuming it's something like:
+    #   <PREFIX>/bin/gpgrt-config
+    gpgrt_prefix=${GPGRT_CONFIG%/*/*}
+    possible_libdir1=${gpgrt_prefix}/lib
+    # Determine by using system libdir-format with CC, it's like:
+    #   Normal style: /usr/lib
+    #   GNU cross style: /usr/<triplet>/lib
+    #   Debian style: /usr/lib/<multiarch-name>
+    #   Fedora/openSUSE style: /usr/lib, /usr/lib32 or /usr/lib64
+    # It is assumed that CC is specified to the one of host on cross build.
+    if libdir_candidates=$(${CC:-cc} -print-search-dirs | \
+          sed -n -e "/^libraries/{s/libraries: =//;s/:/\\
+/g;p;}"); then
+      # From the output of -print-search-dirs, select valid pkgconfig dirs.
+      libdir_candidates=$(for dir in $libdir_candidates; do
+        if p=$(cd $dir 2>/dev/null && pwd); then
+          test -d "$p/pkgconfig" && echo $p;
+        fi
+      done)
+
+      for possible_libdir0 in $libdir_candidates; do
+        # possible_libdir0:
+        #   Fallback candidate, the one of system-installed (by $CC)
+        #   (/usr/<triplet>/lib, /usr/lib/<multiarch-name> or /usr/lib32)
+        # possible_libdir1:
+        #   Another candidate, user-locally-installed
+        #   (<gpgrt_prefix>/lib)
+        # possible_libdir2
+        #   Most preferred
+        #   (<gpgrt_prefix>/<triplet>/lib,
+        #    <gpgrt_prefix>/lib/<multiarch-name> or <gpgrt_prefix>/lib32)
+        if test "${possible_libdir0##*/}" = "lib"; then
+          possible_prefix0=${possible_libdir0%/lib}
+          possible_prefix0_triplet=${possible_prefix0##*/}
+          if test -z "$possible_prefix0_triplet"; then
+            continue
+          fi
+          possible_libdir2=${gpgrt_prefix}/$possible_prefix0_triplet/lib
+        else
+          possible_prefix0=${possible_libdir0%%/lib*}
+          possible_libdir2=${gpgrt_prefix}${possible_libdir0#$possible_prefix0}
+        fi
+        if test -f ${possible_libdir2}/pkgconfig/gpg-error.pc; then
+          gpgrt_libdir=${possible_libdir2}
+        elif test -f ${possible_libdir1}/pkgconfig/gpg-error.pc; then
+          gpgrt_libdir=${possible_libdir1}
+        elif test -f ${possible_libdir0}/pkgconfig/gpg-error.pc; then
+          gpgrt_libdir=${possible_libdir0}
+        fi
+        if test -n "$gpgrt_libdir"; then break; fi
+      done
+      if test -z "$libdir_candidates"; then
+        # No valid pkgconfig dir in any of the system directories, fallback
+        gpgrt_libdir=${possible_libdir1}
+      fi
+    else
+      # When we cannot determine system libdir-format, use this:
+      gpgrt_libdir=${possible_libdir1}
+    fi
+  else
+    unset GPGRT_CONFIG
+  fi
+
+  if test -n "$gpgrt_libdir"; then
+    GPGRT_CONFIG="$GPGRT_CONFIG --libdir=$gpgrt_libdir"
+    if $GPGRT_CONFIG gpg-error >/dev/null 2>&1; then
+      GPG_ERROR_CONFIG="$GPGRT_CONFIG gpg-error"
+      AC_MSG_NOTICE([Use gpgrt-config with $gpgrt_libdir as gpg-error-config])
+      gpg_error_config_version=`$GPG_ERROR_CONFIG --modversion`
+    else
+      unset GPGRT_CONFIG
+    fi
+  elif test "$GPG_ERROR_CONFIG" != "no"; then
+    gpg_error_config_version=`$GPG_ERROR_CONFIG --version`
+    unset GPGRT_CONFIG
+  fi
+])
+
+AC_DEFUN([_AM_PATH_GPGME_CONFIG],[dnl
+AC_REQUIRE([_AM_PATH_GPGRT_CONFIG])dnl
+  AC_ARG_WITH(gpgme-prefix,
+              AS_HELP_STRING([--with-gpgme-prefix=PFX],
+                             [prefix where GPGME is installed (optional)]),
      gpgme_config_prefix="$withval", gpgme_config_prefix="")
   if test x"${GPGME_CONFIG}" = x ; then
      if test x"${gpgme_config_prefix}" != x ; then
@@ -593,7 +682,7 @@ AC_DEFUN([_AM_PATH_GPGME_CONFIG],
   fi
 
   use_gpgrt_config=""
-  if test x"${GPGME_CONFIG}" = x -a x"$GPGRT_CONFIG" != x -a "$GPGRT_CONFIG" != "no"; then
+  if test x"$GPGRT_CONFIG" != x -a "$GPGRT_CONFIG" != "no"; then
     if $GPGRT_CONFIG gpgme --exists; then
       GPGME_CONFIG="$GPGRT_CONFIG gpgme"
       AC_MSG_NOTICE([Use gpgrt-config as gpgme-config])
@@ -725,8 +814,9 @@ dnl                       [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND ]]])
 dnl Test for libgpgme and define GPGME_PTHREAD_CFLAGS
 dnl  and GPGME_PTHREAD_LIBS.
 dnl
-AC_DEFUN([AM_PATH_GPGME_PTHREAD],
-[ AC_REQUIRE([_AM_PATH_GPGME_CONFIG])dnl
+AC_DEFUN([AM_PATH_GPGME_PTHREAD],[
+  AC_OBSOLETE([$0], [; use AM_PATH_GPGME instead to use GPGME_CFLAGS and GPGME_LIBS])dnl
+  AC_REQUIRE([_AM_PATH_GPGME_CONFIG])dnl
   tmp=ifelse([$1], ,1:0.4.2,$1)
   if echo "$tmp" | grep ':' >/dev/null 2>/dev/null ; then
      req_gpgme_api=`echo "$tmp"     | sed 's/\(.*\):\(.*\)/\1/'`
@@ -739,35 +829,37 @@ AC_DEFUN([AM_PATH_GPGME_PTHREAD],
   AC_MSG_CHECKING(for GPGME pthread - version >= $min_gpgme_version)
   ok=no
   if test "$GPGME_CONFIG" != "no" ; then
-    if `$GPGME_CONFIG --thread=pthread 2> /dev/null` ; then
-      req_major=`echo $min_gpgme_version | \
+    req_major=`echo $min_gpgme_version | \
                sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\1/'`
-      req_minor=`echo $min_gpgme_version | \
+    req_minor=`echo $min_gpgme_version | \
                sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\2/'`
-      req_micro=`echo $min_gpgme_version | \
+    req_micro=`echo $min_gpgme_version | \
                sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\3/'`
-      if test "$gpgme_version_major" -gt "$req_major"; then
+    if test "$gpgme_version_major" -gt "$req_major"; then
         ok=yes
-      else
+    else
         if test "$gpgme_version_major" -eq "$req_major"; then
-          if test "$gpgme_version_minor" -gt "$req_minor"; then
-            ok=yes
-          else
-            if test "$gpgme_version_minor" -eq "$req_minor"; then
-              if test "$gpgme_version_micro" -ge "$req_micro"; then
-                ok=yes
-              fi
+            if test "$gpgme_version_minor" -gt "$req_minor"; then
+               ok=yes
+            else
+               if test "$gpgme_version_minor" -eq "$req_minor"; then
+                   if test "$gpgme_version_micro" -ge "$req_micro"; then
+                     ok=yes
+                   fi
+               fi
             fi
-          fi
         fi
-      fi
     fi
   fi
   if test $ok = yes; then
      # If we have a recent GPGME, we should also check that the
      # API is compatible.
      if test "$req_gpgme_api" -gt 0 ; then
-        tmp=`$GPGME_CONFIG --api-version 2>/dev/null || echo 0`
+        if test -z "$use_gpgrt_config"; then
+          tmp=`$GPGME_CONFIG --api-version 2>/dev/null || echo 0`
+        else
+          tmp=`$GPGME_CONFIG --variable=api_version 2>/dev/null || echo 0`
+        fi
         if test "$tmp" -gt 0 ; then
            if test "$req_gpgme_api" -ne "$tmp" ; then
              ok=no
@@ -776,8 +868,8 @@ AC_DEFUN([AM_PATH_GPGME_PTHREAD],
      fi
   fi
   if test $ok = yes; then
-    GPGME_PTHREAD_CFLAGS=`$GPGME_CONFIG --thread=pthread --cflags`
-    GPGME_PTHREAD_LIBS=`$GPGME_CONFIG --thread=pthread --libs`
+    GPGME_PTHREAD_CFLAGS=`$GPGME_CONFIG --cflags`
+    GPGME_PTHREAD_LIBS=`$GPGME_CONFIG --libs`
     AC_MSG_RESULT(yes)
     ifelse([$2], , :, [$2])
     _AM_PATH_GPGME_CONFIG_HOST_CHECK
@@ -2737,10 +2829,12 @@ m4_include([m4/af_alg.m4])
 m4_include([m4/alloca.m4])
 m4_include([m4/arpa_inet_h.m4])
 m4_include([m4/asm-underscore.m4])
+m4_include([m4/assert_h.m4])
 m4_include([m4/base32.m4])
 m4_include([m4/btowc.m4])
 m4_include([m4/builtin-expect.m4])
 m4_include([m4/byteswap.m4])
+m4_include([m4/c-bool.m4])
 m4_include([m4/calloc.m4])
 m4_include([m4/canonicalize.m4])
 m4_include([m4/chdir-long.m4])
@@ -2760,11 +2854,13 @@ m4_include([m4/eealloc.m4])
 m4_include([m4/environ.m4])
 m4_include([m4/errno_h.m4])
 m4_include([m4/error.m4])
+m4_include([m4/error_h.m4])
 m4_include([m4/exponentd.m4])
 m4_include([m4/extensions.m4])
 m4_include([m4/extern-inline.m4])
 m4_include([m4/fatal-signal.m4])
 m4_include([m4/fchdir.m4])
+m4_include([m4/fclose.m4])
 m4_include([m4/fcntl-o.m4])
 m4_include([m4/fcntl.m4])
 m4_include([m4/fcntl_h.m4])
@@ -2867,6 +2963,7 @@ m4_include([m4/mode_t.m4])
 m4_include([m4/msvc-inval.m4])
 m4_include([m4/msvc-nothrow.m4])
 m4_include([m4/multiarch.m4])
+m4_include([m4/musl.m4])
 m4_include([m4/nanosleep.m4])
 m4_include([m4/netdb_h.m4])
 m4_include([m4/netinet_in_h.m4])
@@ -2928,7 +3025,6 @@ m4_include([m4/ssize_t.m4])
 m4_include([m4/stat-time.m4])
 m4_include([m4/stat.m4])
 m4_include([m4/stdalign.m4])
-m4_include([m4/stdbool.m4])
 m4_include([m4/stddef_h.m4])
 m4_include([m4/stdint.m4])
 m4_include([m4/stdint_h.m4])
@@ -2960,6 +3056,7 @@ m4_include([m4/sys_time_h.m4])
 m4_include([m4/sys_types_h.m4])
 m4_include([m4/sys_uio_h.m4])
 m4_include([m4/sys_wait_h.m4])
+m4_include([m4/tcgetattr.m4])
 m4_include([m4/tempname.m4])
 m4_include([m4/threadlib.m4])
 m4_include([m4/time_h.m4])
@@ -2969,6 +3066,9 @@ m4_include([m4/timespec.m4])
 m4_include([m4/tm_gmtoff.m4])
 m4_include([m4/tmpdir.m4])
 m4_include([m4/ungetc.m4])
+m4_include([m4/unicase_h.m4])
+m4_include([m4/unictype_h.m4])
+m4_include([m4/uninorm_h.m4])
 m4_include([m4/unistd-safer.m4])
 m4_include([m4/unistd_h.m4])
 m4_include([m4/unlink.m4])
@@ -2999,5 +3099,4 @@ m4_include([m4/write.m4])
 m4_include([m4/xalloc.m4])
 m4_include([m4/xsize.m4])
 m4_include([m4/xstrndup.m4])
-m4_include([m4/year2038.m4])
 m4_include([m4/zzgnulib.m4])

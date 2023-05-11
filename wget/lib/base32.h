@@ -1,5 +1,5 @@
 /* base32.h -- Encode binary data using printable characters.
-   Copyright (C) 2004-2006, 2009-2022 Free Software Foundation, Inc.
+   Copyright (C) 2004-2006, 2009-2023 Free Software Foundation, Inc.
    Adapted from Simon Josefsson's base64 code by Gijs van Tulder.
 
    This file is free software: you can redistribute it and/or modify
@@ -18,11 +18,13 @@
 #ifndef BASE32_H
 # define BASE32_H
 
+/* This file uses _GL_ATTRIBUTE_CONST.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
+
 /* Get idx_t. */
 # include <idx.h>
-
-/* Get bool. */
-# include <stdbool.h>
 
 /* This uses that the expression (n+(k-1))/k means the smallest
    integer >= n/k, i.e., the ceiling of n/k.  */

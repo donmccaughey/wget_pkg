@@ -1,8 +1,8 @@
-This is wget.info, produced by makeinfo version 6.8 from wget.texi.
+This is wget.info, produced by makeinfo version 7.0.3 from wget.texi.
 
 This file documents the GNU Wget utility for downloading network data.
 
-   Copyright © 1996–2011, 2015, 2018–2022 Free Software Foundation, Inc.
+   Copyright © 1996–2011, 2015, 2018–2023 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -18,12 +18,12 @@ END-INFO-DIR-ENTRY
 
 File: wget.info,  Node: Top,  Next: Overview,  Prev: (dir),  Up: (dir)
 
-Wget 1.21.3
+Wget 1.21.4
 ***********
 
 This file documents the GNU Wget utility for downloading network data.
 
-   Copyright © 1996–2011, 2015, 2018–2022 Free Software Foundation, Inc.
+   Copyright © 1996–2011, 2015, 2018–2023 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1889,11 +1889,12 @@ File: wget.info,  Node: FTP Options,  Next: Recursive Retrieval Options,  Prev: 
 
      When ‘--retr-symlinks=no’ is specified, the linked-to file is not
      downloaded.  Instead, a matching symbolic link is created on the
-     local filesystem.  The pointed-to file will not be retrieved unless
-     this recursive retrieval would have encountered it separately and
-     downloaded it anyway.  This option poses a security risk where a
-     malicious FTP Server may cause Wget to write to files outside of
-     the intended directories through a specially crafted .LISTING file.
+     local file system.  The pointed-to file will not be retrieved
+     unless this recursive retrieval would have encountered it
+     separately and downloaded it anyway.  This option poses a security
+     risk where a malicious FTP Server may cause Wget to write to files
+     outside of the intended directories through a specially crafted
+     .LISTING file.
 
      Note that when retrieving a file (not a directory) because it was
      specified on the command-line, rather than because it was recursed
@@ -3715,7 +3716,7 @@ File: wget.info,  Node: Very Advanced Usage,  Prev: Advanced Usage,  Up: Example
      or ‘application/xhtml+xml’ to ‘NAME.html’.
 
           wget --mirror --convert-links --backup-converted \
-               --html-extension -o /home/me/weeklog        \
+               --adjust-extension -o /home/me/weeklog      \
                https://www.gnu.org/
 
      Or, with less typing:
@@ -3819,8 +3820,8 @@ File: wget.info,  Node: Distribution,  Next: Web Site,  Prev: Proxies,  Up: Vari
 
 Like all GNU utilities, the latest version of Wget can be found at the
 master GNU archive site ftp.gnu.org, and its mirrors.  For example, Wget
-1.21.3 can be found at
-<https://ftp.gnu.org/pub/gnu/wget/wget-1.21.3.tar.gz>
+1.21.4 can be found at
+<https://ftp.gnu.org/pub/gnu/wget/wget-1.21.4.tar.gz>
 
 
 File: wget.info,  Node: Web Site,  Next: Mailing Lists,  Prev: Distribution,  Up: Various
@@ -4257,7 +4258,7 @@ A.1 GNU Free Documentation License
 
                      Version 1.3, 3 November 2008
 
-     Copyright © 2000–2002, 2007–2008, 2015, 2018–2022 Free
+     Copyright © 2000–2002, 2007–2008, 2015, 2018–2023 Free
      Software Foundation, Inc.
      <http://fsf.org/>
 
@@ -5033,59 +5034,59 @@ Concept Index
 
 
 Tag Table:
-Node: Top753
-Node: Overview2094
-Node: Invoking5786
-Node: URL Format6646
-Ref: URL Format-Footnote-19325
-Node: Option Syntax9431
-Node: Basic Startup Options12209
-Node: Logging and Input File Options13067
-Node: Download Options18696
-Node: Directory Options48339
-Node: HTTP Options51190
-Node: HTTPS (SSL/TLS) Options71874
-Node: FTP Options85031
-Node: Recursive Retrieval Options92093
-Node: Recursive Accept/Reject Options102134
-Node: Exit Status106339
-Node: Recursive Download107374
-Node: Following Links110613
-Node: Spanning Hosts111579
-Node: Types of Files113848
-Node: Directory-Based Limits118742
-Node: Relative Links122009
-Node: FTP Links122859
-Node: Time-Stamping123750
-Node: Time-Stamping Usage125422
-Node: HTTP Time-Stamping Internals127293
-Ref: HTTP Time-Stamping Internals-Footnote-1128641
-Node: FTP Time-Stamping Internals128844
-Node: Startup File130331
-Node: Wgetrc Location131271
-Node: Wgetrc Syntax132125
-Node: Wgetrc Commands132890
-Node: Sample Wgetrc149483
-Node: Examples155511
-Node: Simple Usage155872
-Node: Advanced Usage157321
-Node: Very Advanced Usage161137
-Node: Various162681
-Node: Proxies163390
-Node: Distribution166347
-Node: Web Site166691
-Node: Mailing Lists166991
-Node: Internet Relay Chat168728
-Node: Reporting Bugs169023
-Node: Portability171749
-Node: Signals173396
-Node: Appendices174103
-Node: Robot Exclusion174451
-Node: Security Considerations178313
-Node: Contributors179523
-Node: Copying this manual185499
-Node: GNU Free Documentation License185739
-Node: Concept Index211102
+Node: Top755
+Node: Overview2096
+Node: Invoking5788
+Node: URL Format6648
+Ref: URL Format-Footnote-19327
+Node: Option Syntax9433
+Node: Basic Startup Options12211
+Node: Logging and Input File Options13069
+Node: Download Options18698
+Node: Directory Options48341
+Node: HTTP Options51192
+Node: HTTPS (SSL/TLS) Options71876
+Node: FTP Options85033
+Node: Recursive Retrieval Options92101
+Node: Recursive Accept/Reject Options102142
+Node: Exit Status106347
+Node: Recursive Download107382
+Node: Following Links110621
+Node: Spanning Hosts111587
+Node: Types of Files113856
+Node: Directory-Based Limits118750
+Node: Relative Links122017
+Node: FTP Links122867
+Node: Time-Stamping123758
+Node: Time-Stamping Usage125430
+Node: HTTP Time-Stamping Internals127301
+Ref: HTTP Time-Stamping Internals-Footnote-1128649
+Node: FTP Time-Stamping Internals128852
+Node: Startup File130339
+Node: Wgetrc Location131279
+Node: Wgetrc Syntax132133
+Node: Wgetrc Commands132898
+Node: Sample Wgetrc149491
+Node: Examples155519
+Node: Simple Usage155880
+Node: Advanced Usage157329
+Node: Very Advanced Usage161145
+Node: Various162689
+Node: Proxies163398
+Node: Distribution166355
+Node: Web Site166699
+Node: Mailing Lists166999
+Node: Internet Relay Chat168736
+Node: Reporting Bugs169031
+Node: Portability171757
+Node: Signals173404
+Node: Appendices174111
+Node: Robot Exclusion174459
+Node: Security Considerations178321
+Node: Contributors179531
+Node: Copying this manual185507
+Node: GNU Free Documentation License185747
+Node: Concept Index211110
 
 End Tag Table
 

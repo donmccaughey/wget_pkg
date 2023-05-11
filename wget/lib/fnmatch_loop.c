@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2022 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -1039,8 +1039,8 @@ EXT (INT opt, const CHAR *pattern, const CHAR *string, const CHAR *string_end,
             idx_t slen = FLEXSIZEOF (struct patternlist, str, 0);             \
             idx_t new_used = alloca_used + slen;                              \
             idx_t plensize;                                                   \
-            if (INT_MULTIPLY_WRAPV (plen, sizeof (CHAR), &plensize)           \
-                || INT_ADD_WRAPV (new_used, plensize, &new_used))             \
+            if (ckd_mul (&plensize, plen, sizeof (CHAR))                      \
+                || ckd_add (&new_used, new_used, plensize))                   \
               {                                                               \
                 retval = -2;                                                  \
                 goto out;                                                     \

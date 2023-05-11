@@ -1,4 +1,4 @@
-/* Copyright (C) 2002, 2004-2005, 2007, 2009-2022 Free Software Foundation,
+/* Copyright (C) 2002, 2004-2005, 2007, 2009-2023 Free Software Foundation,
    Inc.
    This file is part of the GNU C Library.
 
@@ -29,9 +29,9 @@
 #include <limits.h>
 #include <string.h>
 #include <strings.h>
-#include <stdbool.h>
 
 #ifdef _LIBC
+# include <stdbool.h>
 # include "../locale/localeinfo.h"
 #endif
 

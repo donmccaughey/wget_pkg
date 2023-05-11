@@ -1,6 +1,6 @@
 /* stat-related time functions.
 
-   Copyright (C) 2005, 2007, 2009-2022 Free Software Foundation, Inc.
+   Copyright (C) 2005, 2007, 2009-2023 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -20,16 +20,18 @@
 #ifndef STAT_TIME_H
 #define STAT_TIME_H 1
 
-#include "intprops.h"
+/* This file uses _GL_INLINE_HEADER_BEGIN, _GL_INLINE, _GL_UNUSED,
+   _GL_ATTRIBUTE_PURE, HAVE_STRUCT_STAT_*.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
 
 #include <errno.h>
+#include <stdckdint.h>
 #include <stddef.h>
 #include <sys/stat.h>
 #include <time.h>
 
-#ifndef _GL_INLINE_HEADER_BEGIN
- #error "Please include config.h first."
-#endif
 _GL_INLINE_HEADER_BEGIN
 #ifndef _GL_STAT_TIME_INLINE
 # define _GL_STAT_TIME_INLINE _GL_INLINE
@@ -232,7 +234,7 @@ stat_time_normalize (int result, _GL_UNUSED struct stat *st)
           /* Overflow is possible, as Solaris 11 stat can yield
              tv_sec == TYPE_MINIMUM (time_t) && tv_nsec == -1000000000.
              INT_ADD_WRAPV is OK, since time_t is signed on Solaris.  */
-          if (INT_ADD_WRAPV (q, ts->tv_sec, &ts->tv_sec))
+          if (ckd_add (&ts->tv_sec, q, ts->tv_sec))
             {
               errno = EOVERFLOW;
               return -1;

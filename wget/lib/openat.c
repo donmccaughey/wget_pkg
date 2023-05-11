@@ -1,5 +1,5 @@
 /* provide a replacement openat function
-   Copyright (C) 2004-2022 Free Software Foundation, Inc.
+   Copyright (C) 2004-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,6 @@ orig_openat (int fd, char const *filename, int flags, mode_t mode)
 #include "cloexec.h"
 
 #include <stdarg.h>
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>

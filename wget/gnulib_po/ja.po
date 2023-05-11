@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib 3.0.0.6062.a6b16\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"POT-Creation-Date: 2023-05-11 02:59+0200\n"
 "PO-Revision-Date: 2011-09-02 18:39+0900\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/error.c:195
+#: lib/error.c:193
 msgid "Unknown system error"
 msgstr "不明なシステムエラー"
 
@@ -152,12 +152,12 @@ msgstr "現在の作業ディレクトリを記録することができません
 msgid "failed to return to initial working directory"
 msgstr "初期作業ディレクトリに戻るのに失敗しました"
 
-#: lib/os2-spawn.c:46
+#: lib/os2-spawn.c:45
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "_open_osfhandle に失敗しました"
 
-#: lib/os2-spawn.c:83
+#: lib/os2-spawn.c:82
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "ファイル記述子 (fd) %d をリストアできません: dup2 に失敗しました"
@@ -183,11 +183,11 @@ msgstr "ファイル記述子 (fd) %d をリストアできません: dup2 に�
 #. If you don't know what to put here, please see
 #. <https://en.wikipedia.org/wiki/Quotation_marks_in_other_languages>
 #. and use glyphs suitable for your language.
-#: lib/quotearg.c:355
+#: lib/quotearg.c:354
 msgid "`"
 msgstr "`"
 
-#: lib/quotearg.c:356
+#: lib/quotearg.c:355
 msgid "'"
 msgstr "'"
 
@@ -265,13 +265,12 @@ msgstr ") または \\) が不一致です"
 msgid "No previous regular expression"
 msgstr "以前に正規表現がありません"
 
-#: lib/spawn-pipe.c:217 lib/spawn-pipe.c:220 lib/spawn-pipe.c:459
-#: lib/spawn-pipe.c:462
+#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
 #, c-format
 msgid "cannot create pipe"
 msgstr "パイプを作成できません"
 
-#: lib/spawn-pipe.c:597 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
 #, c-format
 msgid "%s subprocess failed"
 msgstr "%s サブプロセスが失敗しました"

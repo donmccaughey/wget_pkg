@@ -1,5 +1,5 @@
 /* hash - hashing table processing.
-   Copyright (C) 1998-1999, 2001, 2003, 2009-2022 Free Software Foundation,
+   Copyright (C) 1998-1999, 2001, 2003, 2009-2023 Free Software Foundation,
    Inc.
    Written by Jim Meyering <meyering@ascend.com>, 1998.
 
@@ -24,8 +24,14 @@
 #ifndef HASH_H_
 # define HASH_H_
 
+/* This file uses _GL_ATTRIBUTE_DEALLOC, _GL_ATTRIBUTE_DEPRECATED,
+   _GL_ATTRIBUTE_MALLOC, _GL_ATTRIBUTE_NODISCARD, _GL_ATTRIBUTE_PURE,
+   _GL_ATTRIBUTE_RETURNS_NONNULL.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
+
 # include <stdio.h>
-# include <stdbool.h>
 
 # ifdef __cplusplus
 extern "C" {

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib 4.0.0.2567\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"POT-Creation-Date: 2023-05-11 02:59+0200\n"
 "PO-Revision-Date: 2019-05-19 20:02+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
 
-#: lib/error.c:195
+#: lib/error.c:193
 msgid "Unknown system error"
 msgstr "Nieznany błąd systemowy"
 
@@ -148,12 +148,12 @@ msgstr "nie udało się zapisać bieżącego katalogu roboczego"
 msgid "failed to return to initial working directory"
 msgstr "nie udało się wrócić do początkowego katalogu roboczego"
 
-#: lib/os2-spawn.c:46
+#: lib/os2-spawn.c:45
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "_open_osfhandle nie powiodło się"
 
-#: lib/os2-spawn.c:83
+#: lib/os2-spawn.c:82
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "nie można odtworzyć fd %d: dup2 nie powiodło się"
@@ -179,11 +179,11 @@ msgstr "nie można odtworzyć fd %d: dup2 nie powiodło się"
 #. If you don't know what to put here, please see
 #. <https://en.wikipedia.org/wiki/Quotation_marks_in_other_languages>
 #. and use glyphs suitable for your language.
-#: lib/quotearg.c:355
+#: lib/quotearg.c:354
 msgid "`"
 msgstr "`"
 
-#: lib/quotearg.c:356
+#: lib/quotearg.c:355
 msgid "'"
 msgstr "'"
 
@@ -259,13 +259,12 @@ msgstr "Niesparowane ) lub \\)"
 msgid "No previous regular expression"
 msgstr "Brak poprzedniego wyrażenia regularnego"
 
-#: lib/spawn-pipe.c:217 lib/spawn-pipe.c:220 lib/spawn-pipe.c:459
-#: lib/spawn-pipe.c:462
+#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
 #, c-format
 msgid "cannot create pipe"
 msgstr "nie można utworzyć potoku"
 
-#: lib/spawn-pipe.c:597 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
 #, c-format
 msgid "%s subprocess failed"
 msgstr "podproces %s zawiódł"

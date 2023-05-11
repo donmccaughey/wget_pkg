@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib 2.0.0.3462.e9796\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2022-02-26 17:24+0100\n"
+"POT-Creation-Date: 2023-05-11 02:59+0200\n"
 "PO-Revision-Date: 2010-02-26 09:54+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: lib/error.c:195
+#: lib/error.c:193
 msgid "Unknown system error"
 msgstr "未知的系统错误"
 
@@ -151,12 +151,12 @@ msgstr "无法记录当前工作的目录"
 msgid "failed to return to initial working directory"
 msgstr "返回到初始工作目录失败"
 
-#: lib/os2-spawn.c:46
+#: lib/os2-spawn.c:45
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "_open_osfhandle 失败"
 
-#: lib/os2-spawn.c:83
+#: lib/os2-spawn.c:82
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "无法恢复文件描述符 %d: dup2 失败"
@@ -182,11 +182,11 @@ msgstr "无法恢复文件描述符 %d: dup2 失败"
 #. If you don't know what to put here, please see
 #. <https://en.wikipedia.org/wiki/Quotation_marks_in_other_languages>
 #. and use glyphs suitable for your language.
-#: lib/quotearg.c:355
+#: lib/quotearg.c:354
 msgid "`"
 msgstr "“"
 
-#: lib/quotearg.c:356
+#: lib/quotearg.c:355
 msgid "'"
 msgstr "”"
 
@@ -265,13 +265,12 @@ msgstr ") 或 \\) 不匹配"
 msgid "No previous regular expression"
 msgstr "没有前次正则表达式"
 
-#: lib/spawn-pipe.c:217 lib/spawn-pipe.c:220 lib/spawn-pipe.c:459
-#: lib/spawn-pipe.c:462
+#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
 #, c-format
 msgid "cannot create pipe"
 msgstr "无法创建管道"
 
-#: lib/spawn-pipe.c:597 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
 #, c-format
 msgid "%s subprocess failed"
 msgstr "%s 子进程错误"

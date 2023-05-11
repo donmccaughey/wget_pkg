@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2022 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -30,6 +30,7 @@
 #include <errno.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdckdint.h>
 #include <stdlib.h>
 #if defined _LIBC || HAVE_ALLOCA
 # include <alloca.h>
@@ -37,7 +38,6 @@
 #include <wchar.h>
 #include <wctype.h>
 #include <stddef.h>
-#include <stdbool.h>
 
 /* We need some of the locale data (the collation sequence information)
    but there is no interface to get this information in general.  Therefore
@@ -64,7 +64,7 @@ extern int fnmatch (const char *pattern, const char *string, int flags);
 #endif
 
 #ifdef _LIBC
-# if __GNUC__ >= 7
+# if __glibc_has_attribute (__fallthrough__)
 #  define FALLTHROUGH __attribute__ ((__fallthrough__))
 # else
 #  define FALLTHROUGH ((void) 0)
@@ -73,7 +73,6 @@ extern int fnmatch (const char *pattern, const char *string, int flags);
 # include "attribute.h"
 #endif
 
-#include <intprops.h>
 #include <flexmember.h>
 
 #ifdef _LIBC

@@ -1,5 +1,5 @@
 /* Substitute for and wrapper around <fnmatch.h>.
-   Copyright (C) 1991-1993, 1996-1999, 2001-2003, 2005, 2007, 2009-2022 Free
+   Copyright (C) 1991-1993, 1996-1999, 2001-2003, 2005, 2007, 2009-2023 Free
    Software Foundation, Inc.
 
    This file is part of the GNU C Library.
@@ -31,6 +31,11 @@
 
 #ifndef _@GUARD_PREFIX@_FNMATCH_H
 #define _@GUARD_PREFIX@_FNMATCH_H
+
+/* This file uses GNULIB_POSIXCHECK, HAVE_RAW_DECL_*.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
 
 /* The definitions of _GL_FUNCDECL_RPL etc. are copied here.  */
 

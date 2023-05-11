@@ -1,5 +1,5 @@
 /* Safe automatic memory allocation.
-   Copyright (C) 2003-2007, 2009-2022 Free Software Foundation, Inc.
+   Copyright (C) 2003-2007, 2009-2023 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2003.
 
    This file is free software: you can redistribute it and/or modify
@@ -17,6 +17,12 @@
 
 #ifndef _MALLOCA_H
 #define _MALLOCA_H
+
+/* This file uses _GL_ATTRIBUTE_ALLOC_SIZE, _GL_ATTRIBUTE_DEALLOC,
+   _GL_ATTRIBUTE_MALLOC, HAVE_ALLOCA.  */
+#if !_GL_CONFIG_H_INCLUDED
+ #error "Please include config.h first."
+#endif
 
 #include <alloca.h>
 #include <stddef.h>

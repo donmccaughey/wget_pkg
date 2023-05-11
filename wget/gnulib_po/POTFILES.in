@@ -1,5 +1,5 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2022 Free Software Foundation, Inc.
+# Copyright (C) 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@ lib/arpa_inet.in.h
 lib/array-mergesort.h
 lib/asnprintf.c
 lib/asprintf.c
+lib/assert.in.h
 lib/assure.h
 lib/at-func.c
 lib/attribute.h
@@ -87,7 +88,7 @@ lib/dynarray.h
 lib/eloop-threshold.h
 lib/errno.in.h
 lib/error.c
-lib/error.h
+lib/error.in.h
 lib/exitfail.c
 lib/exitfail.h
 lib/fatal-signal.c
@@ -173,6 +174,7 @@ lib/ialloc.h
 lib/iconv.in.h
 lib/idx.h
 lib/inet_ntop.c
+lib/intprops-internal.h
 lib/intprops.h
 lib/inttypes.in.h
 lib/ioctl.c
@@ -204,7 +206,6 @@ lib/malloc/dynarray_finalize.c
 lib/malloc/dynarray_resize.c
 lib/malloc/dynarray_resize_clear.c
 lib/malloc/scratch_buffer.h
-lib/malloc/scratch_buffer_dupfree.c
 lib/malloc/scratch_buffer_grow.c
 lib/malloc/scratch_buffer_grow_preserve.c
 lib/malloc/scratch_buffer_set_array_size.c
@@ -347,8 +348,7 @@ lib/stat-time.h
 lib/stat-w32.c
 lib/stat-w32.h
 lib/stat.c
-lib/stdalign.in.h
-lib/stdbool.in.h
+lib/stdckdint.in.h
 lib/stddef.in.h
 lib/stdint.in.h
 lib/stdio-impl.h

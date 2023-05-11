@@ -2,7 +2,7 @@
 # This Makefile fragment tries to be general-purpose enough to be
 # used by many projects via the gnulib maintainer-makefile module.
 
-## Copyright (C) 2001-2022 Free Software Foundation, Inc.
+## Copyright (C) 2001-2023 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -64,10 +64,10 @@ VC_LIST = $(srcdir)/$(_build-aux)/vc-list-files -C $(srcdir)
 
 # You can override this variable in cfg.mk if your gnulib submodule lives
 # in a different location.
-gnulib_dir ?= $(shell if test -f $(srcdir)/gnulib/gnulib-tool; then \
-			echo $(srcdir)/gnulib; \
+gnulib_dir ?= $(shell if test -n "$(GNULIB_SRCDIR)" && test -f "$(GNULIB_SRCDIR)/gnulib-tool"; then \
+			echo "$(GNULIB_SRCDIR)"; \
 		else \
-			echo ${GNULIB_SRCDIR}; \
+			echo $(srcdir)/gnulib; \
 		fi)
 
 # You can override this variable in cfg.mk to set your own regexp
@@ -622,9 +622,9 @@ sc_prohibit_xalloc_without_use:
 	  $(_sc_header_without_use)
 
 # Extract function names:
-# perl -lne '/^(?:extern )?(?:void|char) \*?(\w+) *\(/ and print $1' lib/hash.h
+# perl -lne '/^(?:extern )?(?:void|char|Hash_table) \*?(\w+) *\(/ and print $1' lib/hash.h
 _hash_re = \
-clear|delete|free|get_(first|next)|insert|lookup|print_statistics|reset_tuning
+hash_(re(set_tuning|move)|xin(itialize|sert)|in(itialize|sert)|get_(firs|nex)t|print_statistics|(delet|fre)e|lookup|clear)
 _hash_fn = \<($(_hash_re)) *\(
 _hash_struct = (struct )?\<[Hh]ash_(table|tuning)\>
 sc_prohibit_hash_without_use:
@@ -765,7 +765,7 @@ sc_prohibit_dirent_without_use:
 # Prohibit the inclusion of verify.h without an actual use.
 sc_prohibit_verify_without_use:
 	@h='verify.h'							\
-	re='\<(verify(true|expr)?|assume|static_assert) *\('		\
+	re='\<(verify(_expr)?|assume) *\('				\
 	  $(_sc_header_without_use)
 
 # Don't include xfreopen.h unless you use one of its functions.
@@ -823,7 +823,7 @@ sc_trailing_blank:
 # Match lines like the following, but where there is only one space
 # between the options and the description:
 #   -D, --all-repeated[=delimit-method]  print all duplicate lines\n
-longopt_re = --[a-z][0-9A-Za-z-]*(\[?=[0-9A-Za-z-]*\]?)?
+longopt_re = --[a-z][0-9A-Za-z-]*(\[?=[0-9A-Za-z-]*]?)?
 sc_two_space_separator_in_usage:
 	@prohibit='^   *(-[A-Za-z],)? $(longopt_re) [^ ].*\\$$'		\
 	halt='help2man requires at least two spaces between an option and its description'\
@@ -1256,6 +1256,12 @@ sc_makefile_path_separator_check:
 	halt=$(msg)							\
 	  $(_sc_search_regexp)
 
+sc_makefile_DISTCHECK_CONFIGURE_FLAGS:
+	@prohibit='^DISTCHECK_CONFIGURE_FLAGS'				\
+	in_vc_files='akefile|\.mk$$'					\
+	halt="use AM_DISTCHECK_CONFIGURE_FLAGS"				\
+	  $(_sc_search_regexp)
+
 # Check that 'make alpha' will not fail at the end of the process,
 # i.e., when pkg-M.N.tar.xz already exists (either in "." or in ../release)
 # and is read-only.
@@ -1286,7 +1292,7 @@ sc_copyright_check:
 	in_vc_files=$(sample-test)					\
 	halt='out of date copyright in $(sample-test); update it'	\
 	  $(_sc_search_regexp)
-	@require='Copyright @copyright\{\} .*'$$(date +%Y)		\
+	@require='Copyright @copyright\{} .*'$$(date +%Y)		\
 	in_vc_files=$(texi)						\
 	halt='out of date copyright in $(texi); update it'		\
 	  $(_sc_search_regexp)
@@ -1367,6 +1373,10 @@ sc_vulnerable_makefile_CVE-2012-3386:
 	  '  see https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2012-3386 for details') \
 	  $(_sc_search_regexp)
 
+sc_unportable_grep_q:
+	@prohibit='grep -q' halt="unportable 'grep -q', use >/dev/null instead" \
+	  $(_sc_search_regexp)
+
 vc-diff-check:
 	$(AM_V_GEN)(unset CDPATH; cd $(srcdir) && $(VC) diff) > vc-diffs || :
 	$(AM_V_at)if test -s vc-diffs; then			\
@@ -1390,7 +1400,12 @@ gpg_key_ID ?=								\
   $$(cd $(srcdir)							\
      && git cat-file tag v$(VERSION)					\
         | $(gpgv) --status-fd 1 --keyring /dev/null - - 2>/dev/null	\
-        | $(AWK) '/^\[GNUPG:\] ERRSIG / {print $$3; exit}')
+        | $(AWK) '/^\[GNUPG:] ERRSIG / {print $$3; exit}')
+gpg_key_email ?=							\
+  $$(gpg --list-key --with-colons $(gpg_key_ID) 2>/dev/null		\
+	| $(AWK) -F: '/^uid/ {print $$10; exit}'			\
+	| $(SED) -n 's/.*<\(.*\)>/\1/p')
+gpg_keyring_url ?= https://savannah.gnu.org/project/release-gpgkeys.php?group=$(PACKAGE)&download=1
 
 translation_project_ ?= coordinator@translationproject.org
 
@@ -1421,6 +1436,10 @@ announcement: NEWS ChangeLog $(rel-files)
 	    --prev=$(PREV_VERSION)					\
 	    --curr=$(VERSION)						\
 	    --gpg-key-id=$(gpg_key_ID)					\
+	    $$(test -n "$(gpg_key_email)" &&				\
+	       echo --gpg-key-email="$(gpg_key_email)")			\
+	    $$(test -n "$(gpg_keyring_url)" &&				\
+	       echo --gpg-keyring-url="$(gpg_keyring_url)")		\
 	    --srcdir=$(srcdir)						\
 	    --news=$(srcdir)/NEWS					\
 	    --bootstrap-tools=$(bootstrap-tools)			\
@@ -1644,8 +1663,8 @@ indent: # Running indent once is not idempotent, but running it twice is.
 	indent $(indent_args) $(INDENT_SOURCES)
 
 sc_indent:
-	@if ! command -v indent > /dev/null; then			\
-	    echo 1>&2 '$(ME): sc_indent: indent is missing';		\
+	@if ! indent --version 2> /dev/null | grep 'GNU indent' > /dev/null; then \
+	    echo 1>&2 '$(ME): sc_indent: GNU indent is missing';	\
 	else								\
 	  fail=0; files="$(INDENT_SOURCES)";				\
 	  for f in $$files; do						\
@@ -1734,8 +1753,8 @@ _gl_TS_unmarked_extern_vars ?=
 # a macro like this: GLOBAL(type, var_name, initializer), then you
 # can override this definition to automatically extract those names:
 # export _gl_TS_var_match = \
-#   /^(?:$(_gl_TS_extern)) .*?\**(\w+)(\[.*?\])?;/ || /\bGLOBAL\(.*?,\s*(.*?),/
-_gl_TS_var_match ?= /^(?:$(_gl_TS_extern)) .*?(\w+)(\[.*?\])?;/
+#   /^(?:$(_gl_TS_extern)) .*?\**(\w+)(\[.*?])?;/ || /\bGLOBAL\(.*?,\s*(.*?),/
+_gl_TS_var_match ?= /^(?:$(_gl_TS_extern)) .*?(\w+)(\[.*?])?;/
 
 # The names of object files in (or relative to) $(_gl_TS_dir).
 _gl_TS_obj_files ?= *.$(OBJEXT)

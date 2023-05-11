@@ -1,5 +1,5 @@
 # rmdir.m4 serial 18
-dnl Copyright (C) 2002, 2005, 2009-2022 Free Software Foundation, Inc.
+dnl Copyright (C) 2002, 2005, 2009-2023 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -36,6 +36,8 @@ AC_DEFUN([gl_FUNC_RMDIR],
        [case "$host_os" in
                            # Guess yes on Linux systems.
           linux-* | linux) gl_cv_func_rmdir_works="guessing yes" ;;
+                           # Guess yes on systems that emulate the Linux system calls.
+          midipix*)        gl_cv_func_rmdir_works="guessing yes" ;;
                            # Guess yes on glibc systems.
           *-gnu* | gnu*)   gl_cv_func_rmdir_works="guessing yes" ;;
                            # Guess no on native Windows.
