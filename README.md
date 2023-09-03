@@ -3,7 +3,7 @@
 This project builds a signed and notarized universal macOS installer package
 for [GNU Wget][1], a command line tool for retrieving files using HTTP, HTTPS,
 FTP and FTPS.  It contains the source distribution of Wget 1.21.4, 
-[libiconv 1.17][2], [OpenSSL 1.1.1t][3] and [zlib 1.2.13][4].
+[libiconv 1.17][2], [OpenSSL 1.1.1v][3] and [zlib 1.2.13][4].
 
 [1]: https://www.gnu.org/software/wget/
 [2]: https://www.gnu.org/software/libiconv/
@@ -49,7 +49,7 @@ To build and sign the executable and installer, run:
         $ make [APP_SIGNING_ID="<cert name 1>"] [INSTALLER_SIGNING_ID="<cert name 2>"] [TMP="<build dir>"]
 
 Intermediate files are generated in the temp directory; the signed installer 
-package is written into the project root with the name `wget-1.21.4-r3.pkg`.  
+package is written into the project root with the name `wget-1.21.4-r2.pkg`.  
 
 To notarize the signed installer package, run:
 
@@ -60,7 +60,7 @@ success.  Check the file `$(TMP)/notarization-log.json` for detailed
 information if notarization fails.  The signed installer is stapled in place
 if notarization succeeds.  Use the command:
 
-        $ xcrun stapler validate --verbose wget-1.21.4-r3.pkg
+        $ xcrun stapler validate --verbose wget-1.21.4-r2.pkg
 
 to check the notarization state of the installer package.
 
