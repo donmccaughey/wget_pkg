@@ -5,9 +5,9 @@ TMP ?= $(abspath tmp)
 
 version := 1.21.4
 libiconv_version := 1.17
-openssl_version := 1.1.1v
+openssl_version := 1.1.1w
 zlib_version := 1.3
-revision := 2
+revision := 3
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
