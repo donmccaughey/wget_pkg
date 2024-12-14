@@ -1,6 +1,6 @@
 /* quotearg.h - quote arguments for output
 
-   Copyright (C) 1998-2002, 2004, 2006, 2008-2023 Free Software Foundation,
+   Copyright (C) 1998-2002, 2004, 2006, 2008-2024 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -155,11 +155,11 @@ enum quoting_style
 
        LC_MESSAGES=C
        quotearg_buffer:
-       "`simple'", "`\\0 \\t\\n\\'\"\\033??/\\\\'", "`a:b'"
+       "'simple'", "'\\0 \\t\\n\\'\"\\033??/\\\\'", "'a:b'"
        quotearg:
-       "`simple'", "`\\0 \\t\\n\\'\"\\033??/\\\\'", "`a:b'"
+       "'simple'", "'\\0 \\t\\n\\'\"\\033??/\\\\'", "'a:b'"
        quotearg_colon:
-       "`simple'", "`\\0 \\t\\n\\'\"\\033??/\\\\'", "`a\\:b'"
+       "'simple'", "'\\0 \\t\\n\\'\"\\033??/\\\\'", "'a\\:b'"
 
        LC_MESSAGES=pt_PT.utf8
        quotearg_buffer:

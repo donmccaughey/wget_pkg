@@ -1,5 +1,5 @@
 /* Start reading the entries of a directory.
-   Copyright (C) 2006-2023 Free Software Foundation, Inc.
+   Copyright (C) 2006-2024 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -44,11 +44,6 @@
 # include <unistd.h>
 #endif
 
-#ifdef __KLIBC__
-# include <io.h>
-# include <fcntl.h>
-#endif
-
 #if defined _WIN32 && ! defined __CYGWIN__
 /* Don't assume that UNICODE is not defined.  */
 # undef WIN32_FIND_DATA
@@ -91,23 +86,6 @@ opendir (const char *dir_name)
   dirp = opendir (dir_name);
   if (dirp == NULL)
     return NULL;
-# endif
-
-# ifdef __KLIBC__
-  {
-    int fd = open (dir_name, O_RDONLY);
-    if (fd == -1 || _gl_register_dirp_fd (fd, dirp))
-      {
-        int saved_errno = errno;
-
-        close (fd);
-        closedir (dirp);
-
-        errno = saved_errno;
-
-        return NULL;
-      }
-  }
 # endif
 
 #else

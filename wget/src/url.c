@@ -1,5 +1,5 @@
 /* URL handling.
-   Copyright (C) 1996-2011, 2015, 2018-2023 Free Software Foundation,
+   Copyright (C) 1996-2011, 2015, 2018-2024 Free Software Foundation,
    Inc.
 
 This file is part of GNU Wget.
@@ -2520,6 +2520,33 @@ test_are_urls_equal(void)
     {
       mu_assert ("test_are_urls_equal: wrong result",
                  are_urls_equal (test_array[i].url1, test_array[i].url2) == test_array[i].expected_result);
+    }
+
+  return NULL;
+}
+
+const char *
+test_uri_merge(void)
+{
+  static const struct test_data {
+    const char *url;
+    const char *link;
+    const char *expected;
+  } test_data[] = {
+    { "http://www.yoyodyne.com/path/", "somepage.html", "http://www.yoyodyne.com/path/somepage.html" },
+    { "http://example.com/path/", "//other.com/somepage.html", "http://other.com/somepage.html" },
+    { "https://example.com/path/", "//other.com/somepage.html", "https://other.com/somepage.html" },
+  };
+
+  for (unsigned i = 0; i < countof(test_data); ++i)
+    {
+      const struct test_data *t = &test_data[i];
+      char *result = uri_merge (t->url, t->link);
+      bool ok = strcmp (result, t->expected) == 0;
+      if (!ok)
+        return aprintf ("test_uri_merge [%u]: expected '%s', got '%s'", i, t->expected, result);
+
+      xfree (result);
     }
 
   return NULL;

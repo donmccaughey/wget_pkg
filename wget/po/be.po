@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget 1.21.3\n"
+"Project-Id-Version: GNU wget 1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2023-03-20 00:32+0300\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-12-30 04:06+0300\n"
 "Last-Translator: Viachaslau Khalikin <viachaslau.vinegret@outlook.com>\n"
 "Language-Team: Belarusian <debian-l10n-belarusian@lists.debian.org>\n"
 "Language: be\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Emacs 28.2, po mode 2.27\n"
+"X-Generator: Emacs 29.1, po mode 2.28\n"
 
 #: src/connect.c:201
 #, c-format
@@ -390,12 +390,12 @@ msgstr "Перадача даных спынена.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Файл %s ужо тут; абмінаем.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(спроба:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -404,7 +404,7 @@ msgstr ""
 "%s (%s) - запісаны ў stdout %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -414,7 +414,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Выдаленьне %s.\n"
@@ -437,7 +437,7 @@ msgstr "Значэньне рэкурсіўнай глыбіні %d больша
 #: src/ftp.c:2291
 #, c-format
 msgid "Remote file no newer than local file %s -- not retrieving.\n"
-msgstr "Аддалены файл не навейшы за мясцовы файл %s -- абмінаем.\n"
+msgstr "Аддалены файл не навейшы за лякальны файл %s -- абмінаем.\n"
 
 #: src/ftp.c:2299
 #, c-format
@@ -445,7 +445,7 @@ msgid ""
 "Remote file is newer than local file %s -- retrieving.\n"
 "\n"
 msgstr ""
-"Аддалены файл навейшы за мясцовы файл %s -- выцягваем.\n"
+"Аддалены файл навейшы за лякальны файл %s -- выцягваем.\n"
 "\n"
 
 #: src/ftp.c:2306
@@ -454,7 +454,7 @@ msgid ""
 "The sizes do not match (local %s) -- retrieving.\n"
 "\n"
 msgstr ""
-"Памеры не супадаюць (мясцовы %s) -- выцягваецца.\n"
+"Памеры не супадаюць (лякальны %s) -- выцягваецца.\n"
 "\n"
 
 #: src/ftp.c:2324
@@ -585,7 +585,7 @@ msgstr "GnuTLS: значэньне %u опцыі «secure-protocol» не рэа
 
 #: src/gnutls.c:791 src/gnutls.c:847 src/host.c:158 src/openssl.c:289
 msgid "Please report this issue to bug-wget@gnu.org\n"
-msgstr "Калі ласка, паведаміце аб гэтай праблеме на bug-wget@gnu.org\n"
+msgstr "Калі ласка, паведаміце пра гэтую праблему на bug-wget@gnu.org\n"
 
 #: src/gnutls.c:846
 #, c-format
@@ -773,7 +773,7 @@ msgstr "Паўторнае выкарыстаньне існуючага злу�
 msgid "Failed reading proxy response: %s\n"
 msgstr "Памылка чытаньня адказу проксі: %s\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s ПАМЫЛКА %d: %s.\n"
@@ -904,51 +904,51 @@ msgstr "Даўжыня: "
 msgid "ignored"
 msgstr "ігнаруецца"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr ""
 "Папярэджаньне! У HTTP не падтрымліваюцца шаблённыя выразы (wildcards).\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "Уключаны рэжым «павука». Праверка наяўнасьці аддаленага файла.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Немагчыма запісаць у %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Абавязковы атрыбут адсутнічае у атрыманым Загалоўку.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Памылка аўтэнтыфікацыі карыстальніка/пароля.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Немагчыма запісаць у файл WARC.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Немагчыма запісаць у часовы файл WARC.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Немагчыма ўсталяваць SSL злучэньне.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Немагчыма выдаліць %s (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "ПАМЫЛКА: Перанакіраваньне (%d) без паказваньня знаходжаньня.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -956,42 +956,42 @@ msgstr ""
 "Немагчыма знайсьці даныя Metalink у адказе HTTP. Спампоўваньне файла з "
 "дапамогай HTTP GET.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Знойдзены загалоўкі Metalink. Пераход у рэжым Metalink.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Аддалены файл не існуе -- зламаная спасылка!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Загаловак Last-Modified адсутнічае -- адбіткі часу адключаныя.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr ""
 "Загаловак Last-Modified нерэчаісны -- адбітак часу будзе ігнаравацца.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
 "\n"
 msgstr ""
-"Файл на сэрвэры не навейшы за мясцовы файл %s -- абмінаем.\n"
+"Файл на сэрвэры не навейшы за лякальны файл %s -- абмінаем.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
-msgstr "Памеры не супадаюць (мясцовы %s) -- выцягваем.\n"
+msgstr "Памеры не супадаюць (лякальны %s) -- выцягваем.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Аддалены файл навейшы, выцягваем.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1001,7 +1001,7 @@ msgstr ""
 "выцягваем.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1009,7 +1009,7 @@ msgstr ""
 "Аддалены файл існуе, але не зьмяшчае ніякіх спасылак -- абмінаем.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1019,7 +1019,7 @@ msgstr ""
 "але рэкурсія адключаная - абмінаем.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1027,12 +1027,12 @@ msgstr ""
 "Аддалены файл існуе.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1041,7 +1041,7 @@ msgstr ""
 "%s (%s) - запісаны ў stdout %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1050,27 +1050,27 @@ msgstr ""
 "%s (%s) - %s захаваны [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Злучэньне закрыта на байце %s. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Памылка чытаньня на байце %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Памылка чытаньня на байце %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Якасьць абароны «%s» не падтрымліваецца.\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Альгарытм «%s» не падтрымліваецца.\n"
@@ -1081,7 +1081,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC спасылаецца на %s, які не даступны з-за памылкі: %s.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Немагчыма прачытаць %s (%s).\n"
@@ -1267,8 +1267,7 @@ msgid ""
 "Mandatory arguments to long options are mandatory for short options too.\n"
 "\n"
 msgstr ""
-"Абавязковыя аргумэнты да доўгіх опцыяў зьяўляюцца абавязковымі й для "
-"кароткіх.\n"
+"Абавязковыя аргумэнты аднолькава належаць да доўгіх і да кароткі опцыяў.\n"
 "\n"
 
 #: src/main.c:592
@@ -1286,7 +1285,7 @@ msgstr "  -h,  --help                      надрукаваць гэтую д�
 
 #: src/main.c:598
 msgid "  -b,  --background                go to background after startup\n"
-msgstr "  -b,  --background                фонавая праца пасьля запуску\n"
+msgstr "  -b,  --background                праца ў фоне пасьля запуску\n"
 
 #: src/main.c:600
 msgid "  -e,  --execute=COMMAND           execute a `.wgetrc'-style command\n"
@@ -1345,15 +1344,15 @@ msgid ""
 "  -i,  --input-file=FILE           download URLs found in local or external "
 "FILE\n"
 msgstr ""
-"  -i,  --input-file=ФАЙЛ           спампоўваць URL, знойдзеныя ў мясцовым ці "
-"ў зьнешнім ФАЙЛе\n"
+"  -i,  --input-file=ФАЙЛ           спампоўваць URL, знойдзеныя ў лякальным "
+"ці ў зьнешнім ФАЙЛе\n"
 
 #: src/main.c:629
 msgid ""
 "       --input-metalink=FILE       download files covered in local Metalink "
 "FILE\n"
 msgstr ""
-"       --input-metalink=ФАЙЛ       спампоўваць файлы, уключаныя ў мясцовы "
+"       --input-metalink=ФАЙЛ       спампоўваць файлы, уключаныя ў лякальны "
 "Metalink ФАЙЛ\n"
 
 #: src/main.c:632
@@ -1405,16 +1404,12 @@ msgstr ""
 "адмоўлена\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=ПАМЫЛКІ   сьпіс (праз коску) памылак HTTP пры "
-"паўторных спробах\n"
+"       --retry-on-host-error       лічыць памылкі вузла некрытычнымі, "
+"кароткачасовымі памылкамі\n"
 
 #: src/main.c:653
 msgid ""
@@ -1470,8 +1465,8 @@ msgid ""
 "       --show-progress             display the progress bar in any verbosity "
 "mode\n"
 msgstr ""
-"       --show-progress             адлюстраваць прагрэсбар у любым рэжыме "
-"падрабязнасьці\n"
+"       --show-progress             адлюстроўваць прагрэсбар незалежна ад "
+"рэжыму падрабязнасьці\n"
 
 #: src/main.c:670
 msgid ""
@@ -1480,7 +1475,7 @@ msgid ""
 "                                     local\n"
 msgstr ""
 "  -N,  --timestamping              не выцягваць паўторна тыя файлы,\n"
-"                                     якія старэйшыя за мясцовыя\n"
+"                                     якія старэйшыя за лякальныя\n"
 
 #: src/main.c:673
 msgid ""
@@ -1488,18 +1483,18 @@ msgid ""
 "get\n"
 "                                     requests in timestamping mode\n"
 msgstr ""
-"       --no-if-modified-since      не выкарыстоўваць умоўныя запыты if-"
+"       --no-if-modified-since      не выкарыстоўваць умоўныя get-запыты if-"
 "modified-since\n"
-"                                     у рэжыме адбітка часу\n"
+"                                     у рэжыме адбіткаў часу\n"
 
 #: src/main.c:676
 msgid ""
 "       --no-use-server-timestamps  don't set the local file's timestamp by\n"
 "                                     the one on the server\n"
 msgstr ""
-"       --no-use-server-timestamps  не ўстанаўліваць мясцоваму файлу той жа "
+"       --no-use-server-timestamps  не ўстанаўліваць лякальнаму файлу той жа "
 "адбітак часу,\n"
-"                                     які на сэрвэры\n"
+"                                     які зададзены на сэрвэры\n"
 
 #: src/main.c:679
 msgid "  -S,  --server-response           print server response\n"
@@ -1595,7 +1590,7 @@ msgid ""
 "host\n"
 msgstr ""
 "       --bind-address=АДРАС        прывязаць АДРАС (назва вузла або IP) "
-"мясцовага вузла\n"
+"лякальнага вузла\n"
 
 #: src/main.c:712
 msgid "       --limit-rate=RATE           limit download rate to RATE\n"
@@ -1682,7 +1677,7 @@ msgstr "       --no-iri                    адключыць падтрымку
 msgid ""
 "       --local-encoding=ENC        use ENC as the local encoding for IRIs\n"
 msgstr ""
-"       --local-encoding=КАД        выкарыстоўваць мясцовую кадоўку КАД для "
+"       --local-encoding=КАД        выкарыстоўваць лякальную кадоўку КАД для "
 "IRI\n"
 
 #: src/main.c:746
@@ -1943,7 +1938,7 @@ msgid ""
 msgstr ""
 "       --content-disposition       улічваць загаловак Content-Disposition "
 "пры\n"
-"                                     выбары імён мясцовых файлаў "
+"                                     выбары імён лякальных файлаў "
 "(ЭКСПЭРЫМЭНТАЛЬНА)\n"
 
 #: src/main.c:838
@@ -1961,7 +1956,7 @@ msgid ""
 "                                     without first waiting for the server's\n"
 "                                     challenge\n"
 msgstr ""
-"       --auth-no-challenge         адпраўляць інфармацыю аб спраўджаньні "
+"       --auth-no-challenge         адпраўляць інфармацыю пра спраўджаньне "
 "Basic HTTP\n"
 "                                     без папярэдняга чаканьня запыту "
 "сэрвэра\n"
@@ -2272,7 +2267,7 @@ msgid ""
 msgstr ""
 "  -k,  --convert-links             ствараць спасылкі ў спампаваных HTML ці "
 "CSS на\n"
-"                                     мясцовыя файлы\n"
+"                                     лякальныя файлы\n"
 
 #: src/main.c:972
 msgid ""
@@ -2442,7 +2437,7 @@ msgid ""
 "and/or open issues at https://savannah.gnu.org/bugs/?"
 "func=additem&group=wget.\n"
 msgstr ""
-"Паведамленьні аб памылках, пытаньні, абмеркаваньні дасылайце на <bug-"
+"Паведамленьні пра памылкі, пытаньні, абмеркаваньні дасылайце на <bug-"
 "wget@gnu.org>\n"
 "і/або для адкрыцьця праблем скарыстайце https://savannah.gnu.org/bugs/?"
 "func=additem&group=wget.\n"
@@ -2567,7 +2562,7 @@ msgstr ""
 #: src/main.c:1348
 msgid "Please send bug reports and questions to <bug-wget@gnu.org>.\n"
 msgstr ""
-"Адпраўляйце справаздачы аб памылках і пытаньні на <bug-wget@gnu.org>.\n"
+"Адпраўляйце справаздачы пра памылкі ды пытаньні на <bug-wget@gnu.org>.\n"
 
 #: src/main.c:1400
 #, c-format
@@ -3023,17 +3018,17 @@ msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr ""
 "%s: %s:%d: папярэджаньне: токен %s сустракаецца перад кожнай назвай машыны\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: невядомы токен «%s»\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Выкарыстаньне: %s NETRC [НАЗВА_ВУЗЛА]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: немагчыма выканаць stat %s: %s\n"
@@ -3064,14 +3059,13 @@ msgid "OpenSSL: unimplemented 'secure-protocol' option value %d\n"
 msgstr "OpenSSL: нерэалізаванае значэньне опцыі «secure-protocol» %d\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr "Ваша вэрсія OpenSSL занадта старая да падтрымкі TLS 1.3\n"
+msgstr "Ваша вэрсія OpenSSL не падтрымлівае опцыю «%s».\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
-msgstr ""
+msgstr "Перазборка Wget ды/ці OpenSSL можа дапамагчы ў гэтым выпадку.\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3201,22 +3195,22 @@ msgstr "Немагчыма адкрыць %s: %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Загружаецца robots.txt; калі ласка, не зьвяртайце ўвагі на памылкі.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Памылка разбору URL проксі %s: %s.\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Памылка ў URL проксі %s: мусіць быць HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "перавышэньне колькасьці перанакіраваньняў (%d).\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3224,7 +3218,7 @@ msgstr ""
 "Здаемся.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3263,20 +3257,16 @@ msgid "No error"
 msgstr "Няма памылак"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "Схема %s не падтрымліваецца"
+msgstr "Схема не падтрымліваецца"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "Падтрымка HTTPS не ўбудавана"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "Падтрымка HTTPS не ўбудавана"
+msgstr "Падтрымка FTPS не ўбудавана"
 
 #: src/url.c:692
 msgid "Scheme missing"
@@ -3394,7 +3384,7 @@ msgstr "Памылка пры супастаўленьні %s: %d\n"
 #: src/utils.c:2852
 #, c-format
 msgid "Skipping key with wrong size (%d/%d): %s\n"
-msgstr "Абмінаем ключ няправільнага памеру (%d/%d): %s\n"
+msgstr "Абмінаем ключ памылковага памеру (%d/%d): %s\n"
 
 #: src/warc.c:217
 msgid "Error setting WARC file position.\n"

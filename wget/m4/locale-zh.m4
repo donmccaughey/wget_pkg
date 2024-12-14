@@ -1,5 +1,5 @@
-# locale-zh.m4 serial 16
-dnl Copyright (C) 2003, 2005-2023 Free Software Foundation, Inc.
+# locale-zh.m4 serial 18
+dnl Copyright (C) 2003, 2005-2024 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -91,7 +91,7 @@ int main ()
         # "ge"(!) or "deu"(!) as "German" or "German_Germany.1252",
         # "ja" as "Japanese" or "Japanese_Japan.932",
         # and similar.
-        mingw*)
+        mingw* | windows*)
           # Test for the hypothetical native Windows locale name.
           if (LC_ALL=Chinese_China.54936 LC_TIME= LC_CTYPE= ./conftest; exit) 2>/dev/null; then
             gt_cv_locale_zh_CN=Chinese_China.54936
@@ -133,5 +133,11 @@ int main ()
     rm -fr conftest*
   ])
   LOCALE_ZH_CN=$gt_cv_locale_zh_CN
+  case $LOCALE_ZH_CN in #(
+    '' | *[[[:space:]\"\$\'*@<:@]]*)
+      dnl This locale name might cause trouble with sh or make.
+      AC_MSG_WARN([invalid locale "$LOCALE_ZH_CN"; assuming "none"])
+      LOCALE_ZH_CN=none;;
+  esac
   AC_SUBST([LOCALE_ZH_CN])
 ])

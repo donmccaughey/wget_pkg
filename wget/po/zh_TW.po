@@ -5,14 +5,14 @@
 # Pofeng Lee <pofeng.lee@ms7.url.com.tw>, 1998.
 # Jing-Jong Shyue <shyue@sonoma.com.tw>, 2000.
 # Abel Cheung <abelcheung@gmail.com>, 2001-2002, 2005.
-# pan93412 <pan93412@gmail.com>, 2018, 2020.
+# Yi-Jyun Pan <pan93412@gmail.com>, 2018, 2020, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.21.3\n"
+"Project-Id-Version: wget 1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2022-02-27 19:17+0800\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-05-23 12:55+0800\n"
 "Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@lists.linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: src/connect.c:201
 #, c-format
@@ -387,12 +387,12 @@ msgstr "已中止傳送資料。\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "已存在檔案「%s」；選擇不接收。\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(嘗試第 %2d 次)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -401,7 +401,7 @@ msgstr ""
 "%s (%s) - 寫入到 stdout %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -411,7 +411,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "刪除 %s。\n"
@@ -764,7 +764,7 @@ msgstr "繼續使用和 %s:%d 的連線。\n"
 msgid "Failed reading proxy response: %s\n"
 msgstr "無法讀取代理伺服器回應: %s。\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s 錯誤 %d: %s。\n"
@@ -895,72 +895,72 @@ msgstr "長度: "
 msgid "ignored"
 msgstr "忽略"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "警告: HTTP 不支援萬用字元。\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "已啟用蜘蛛模式。當遠端檔案存在時則檢查。\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "無法寫到 %s (%s)。\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "接收的標頭缺少所需屬性。\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "使用者或密碼核對失敗。\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "無法寫到 WARC 檔案。\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "無法寫到暫存 WARC 檔案中。\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "無法建立 SSL 連線。\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "無法取消連結 %s (%s)。\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "錯誤: 重新導向 (%d) 但沒有指定位置。\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
 msgstr "HTTP 回應中找不到 Metalink 資料。選擇透過 HTTP GET 下載檔案。\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "已找到 Metalink 標頭資料。選擇切換到 Metalink 模式。\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "遠端檔案不存在 -- 連結損壞！\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "缺少了最後修改時間標頭 ─ 關閉時間標記。\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "無效的最後修改時間標頭 ─ 忽略時間標記。\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -969,16 +969,16 @@ msgstr ""
 "伺服器檔案沒比本機檔案 %s 新 -- 選擇不接收。\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "檔案大小不符 (本機檔案為 %s) -- 會下載檔案。\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "遠端檔案較新，會下載檔案。\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -987,7 +987,7 @@ msgstr ""
 "遠端檔案存在，且可能包含其他資源的連結 -- 選擇接收。\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -995,7 +995,7 @@ msgstr ""
 "遠端檔案存在，但不包含任何連結 -- 選擇不接收。\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1005,7 +1005,7 @@ msgstr ""
 "但遞迴下載已經停用 -- 選擇不接收。\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1013,12 +1013,12 @@ msgstr ""
 "遠端檔案存在。\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL：%s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1027,7 +1027,7 @@ msgstr ""
 "%s (%s) - 已輸出到 stdout %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1036,27 +1036,27 @@ msgstr ""
 "%s (%s) - 已儲存 %s [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - 在 %s 位元組後連線突然中斷。 "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - 讀取至 %s 位元組時發生錯誤 (%s)。"
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - 讀取至 %s/%s 位元組時發生錯誤 (%s)。"
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "不支援的「%s」保護品質。\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "不支援的演算法「%s」。\n"
@@ -1067,7 +1067,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC 對應到 %s - 無法存取，因為該錯誤：%s。\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: 無法讀取 %s (%s)。\n"
@@ -1374,15 +1374,11 @@ msgid ""
 msgstr "       --retry-connrefused         即使連線被拒仍會不斷嘗試\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=錯誤    要重試的 HTTP 錯誤的逗號分割列表。\n"
+"       --retry-on-host-error       將主機錯誤當作是非致命、暫時性的錯誤\n"
 
 #: src/main.c:653
 msgid ""
@@ -2843,17 +2839,17 @@ msgstr "ioctl() 失敗。Socket 不能設定為封鎖狀態 (blocking)。\n"
 msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr "%s：%s:%d：警告：%s 令牌在機器名稱前出現\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: 不明的標記「%s」\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "用法: %s NETRC [主機名稱]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s：無法 stat() %s：%s\n"
@@ -2870,30 +2866,29 @@ msgstr ""
 
 #: src/openssl.c:272
 msgid "Your OpenSSL version is too old to support TLS 1.3\n"
-msgstr "您的 OpenSSL 版本舊到不支援 TLS 1.3\n"
+msgstr "您的 OpenSSL 版本過舊，不支援 TLS 1.3\n"
 
 #: src/openssl.c:278
 msgid "Your OpenSSL version is too old to support TLSv1.1\n"
-msgstr "您的 OpenSSL 版本舊到不支援 TLSv1.1\n"
+msgstr "您的 OpenSSL 版本過舊，不支援 TLSv1.1\n"
 
 #: src/openssl.c:282
 msgid "Your OpenSSL version is too old to support TLSv1.2\n"
-msgstr "您的 OpenSSL 版本舊到不支援 TLSv1.2\n"
+msgstr "您的 OpenSSL 版本過舊，不支援 TLSv1.2\n"
 
 #: src/openssl.c:288
 #, c-format
 msgid "OpenSSL: unimplemented 'secure-protocol' option value %d\n"
-msgstr "OpenSSL：未實做的「secure-protocol」選項值 %d\n"
+msgstr "OpenSSL：未實作的 “secure-protocol” 選項值 %d\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr "您的 OpenSSL 版本舊到不支援 TLS 1.3\n"
+msgstr "您的 OpenSSL 版本不支援 “%s” 選項。\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
-msgstr ""
+msgstr "重新組建 Wget 和/或 OpenSSL 可能有助於解決這個情況。\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3018,22 +3013,22 @@ msgstr "無法開啟 %s：%s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "正在載入 robots.txt；請忽略錯誤訊息。\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "分析代理伺服器 URL %s 時發生錯誤: %s。\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "代理伺服器 URL %s 錯誤: 必須是 HTTP。\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "已超過 %d 次重新導向。\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3041,7 +3036,7 @@ msgstr ""
 "放棄。\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3074,20 +3069,16 @@ msgid "No error"
 msgstr "沒有錯誤"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "不支援的樣式 %s"
+msgstr "不支援的機制 (scheme)"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "未編譯進 HTTPS 支援"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "未編譯進 HTTPS 支援"
+msgstr "未編譯進 FTPS 支援"
 
 #: src/url.c:692
 msgid "Scheme missing"

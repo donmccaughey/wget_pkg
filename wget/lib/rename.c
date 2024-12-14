@@ -1,6 +1,6 @@
 /* Work around rename bugs in some systems.
 
-   Copyright (C) 2001-2003, 2005-2006, 2009-2023 Free Software Foundation, Inc.
+   Copyright (C) 2001-2003, 2005-2006, 2009-2024 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -351,7 +351,7 @@ rpl_rename (char const *src, char const *dst)
           return -1;
         }
 # if RENAME_HARD_LINK_BUG
-      if (SAME_INODE (src_st, dst_st))
+      if (psame_inode (&src_st, &dst_st))
         return 0;
 # endif /* RENAME_HARD_LINK_BUG */
       dst_exists = true;
@@ -360,7 +360,7 @@ rpl_rename (char const *src, char const *dst)
 # if (RENAME_TRAILING_SLASH_SOURCE_BUG || RENAME_DEST_EXISTS_BUG        \
       || RENAME_HARD_LINK_BUG)
   /* If the only bug was that a trailing slash was allowed on a
-     non-existing file destination, as in Solaris 10, then we've
+     nonexistent file destination, as in Solaris 10, then we've
      already covered that situation.  But if there is any problem with
      a trailing slash on an existing source or destination, as in
      Solaris 9, or if a directory can overwrite a symlink, as on

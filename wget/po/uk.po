@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the wget package.
 #
 # Olexander Kunytsa <xakep@snark.ukma.kiev.ua>, 2004.
-# Yuri Chornoivan <yurchor@ukr.net>, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.21.3\n"
+"Project-Id-Version: wget 1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2022-02-27 12:16+0200\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-05-13 08:48+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -69,7 +69,7 @@ msgstr "помилка SO_REUSEADDR setsockopt: %s\n"
 #, c-format
 msgid "Too many fds open.  Cannot use select on a fd >= %d\n"
 msgstr ""
-"Відкрито надто багато файлових дескрипторів. Не можна використовувати вибір "
+"Відкрито надто багато файлових дескрипторів. Не можна використовувати select "
 "для файлового дескриптора >= %d\n"
 
 #: src/convert.c:201
@@ -391,12 +391,12 @@ msgstr "Передачу даних перервано.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Файл %s вже є тут, не завантажуємо.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(спроба:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -405,7 +405,7 @@ msgstr ""
 "%s (%s) - записаний до stdout %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -415,7 +415,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Вилучення %s.\n"
@@ -786,7 +786,7 @@ msgstr "Повторне використання зв'язку з %s:%d.\n"
 msgid "Failed reading proxy response: %s\n"
 msgstr "Не вдалось прочитати відповідь від проксі: %s\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s ПОМИЛКА %d: %s.\n"
@@ -921,54 +921,54 @@ msgstr "Довжина: "
 msgid "ignored"
 msgstr "ігнорується"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Увага: в HTTP не підтримуються шаблони.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr ""
 "Увімкнено режим «павука». Перевірка, чи існує файл на віддаленому "
 "комп'ютері.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Помилка запису в %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "У отриманому заголовку не вистачає потрібного для роботи атрибута.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr ""
 "Спроба пройти розпізнавання за іменем користувача і паролем зазнала "
 "невдачі.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Не вдалося записати дані до файла WARC.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Не вдалося виконати запис до тимчасового файла WARC.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Не вдалося встановити SSL-з'єднання.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "неможливо видалити %s (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "ПОМИЛКА: Перенаправлення (%d) без вказування адреси.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -976,23 +976,23 @@ msgstr ""
 "Не вдалося знайти дані Metalink у HTTP-відповіді. Отримуємо файл за "
 "допомогою GET HTTP.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Виявлено заголовки Metalink. Перемикаємося у режим Metalink.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Віддалений файл не існує -- пошкоджене посилання!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Відсутній заголовок last-modified -- мітки часу вимкнено.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "Некоректний заголовок last-modified -- ігноруємо мітки часу.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -1001,17 +1001,17 @@ msgstr ""
 "Локальний файл %s новіший -- не завантажуємо його.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Довжини файлів не збігаються (локальний %s) -- завантажуємо.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Файл новіший, ніж локальний, завантажуємо.\n"
 
 # Remote file is newer or sizes cannot be matched
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1023,7 +1023,7 @@ msgstr ""
 
 # Remote file is older, file sizes can be compared and
 # are both equal.
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1031,7 +1031,7 @@ msgstr ""
 "Віддалений файл існує, але не містить посилань -- не завантажуємо.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1041,7 +1041,7 @@ msgstr ""
 "але рекурсію вимкнено -- не завантажуємо.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1049,12 +1049,12 @@ msgstr ""
 "Віддалений файл існує.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1063,7 +1063,7 @@ msgstr ""
 "%s (%s) - запис до stdout %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1072,27 +1072,27 @@ msgstr ""
 "%s (%s) - %s збережено [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - З'єднання закрито в позиції %s байт. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Помилка читання в позиції %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Помилка читання в позиції %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Непідтримувана якість захисту «%s».\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Непідтримуваний алгоритм «%s».\n"
@@ -1104,7 +1104,7 @@ msgid ""
 msgstr ""
 "%s: WGETRC вказує на %s, доступ до якого неможливий через таку помилку: %s.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Неможливо прочитати %s (%s).\n"
@@ -1432,16 +1432,12 @@ msgstr ""
 "відмовлено\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=ПОМИЛКИ   список відокремлених комами помилок "
-"HTTP, які призводитимуть до повторних спроб\n"
+"       --retry-on-host-error       вважати помилки вузла некритичними, "
+"тимчасовими помилками\n"
 
 #: src/main.c:653
 msgid ""
@@ -1499,8 +1495,8 @@ msgid ""
 "       --show-progress             display the progress bar in any verbosity "
 "mode\n"
 msgstr ""
-"       --progress=ТИП              задати ТИП індикатора візуалізації\n"
-"                                     процесу роботи\n"
+"       --show-progress             показувати смужку поступу у будь-якому "
+"докладному режимі\n"
 
 #: src/main.c:670
 msgid ""
@@ -1517,8 +1513,8 @@ msgid ""
 "get\n"
 "                                     requests in timestamping mode\n"
 msgstr ""
-"       --no-if-modified-since      не використовували умовні запити якщо-"
-"змінено-з\n"
+"       --no-if-modified-since      не використовували умовні запити if-"
+"modified-since\n"
 "                                     у режимі часових позначок\n"
 
 #: src/main.c:676
@@ -3074,17 +3070,17 @@ msgstr "Помилка ioctl(). Не вдалося встановити бло�
 msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr "%s: %s:%d: попередження: лексема %s перед назвою машини\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: невідома лексема \"%s\"\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Використання: %s NETRC [НАЗВА ВУЗЛА]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: не вдалося виконати stat %s: %s\n"
@@ -3125,16 +3121,14 @@ msgid "OpenSSL: unimplemented 'secure-protocol' option value %d\n"
 msgstr "OpenSSL: не реалізоване значення параметра «secure-protocol», %d\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr ""
-"Ваша версія бібліотеки OpenSSL є надто старою, підтримку TLSv1.3 у ній не "
-"реалізовано\n"
+msgstr "У вашій версії OpenSSL не передбачено підтримки параметра «%s».\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
 msgstr ""
+"Повторне збирання Wget і/або OpenSSL може допомогти виправити помилку.\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3267,22 +3261,22 @@ msgstr "Не вдалося відкрити %s: %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Завантажуємо файл robots.txt; не зважайте на помилки.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Помилка розбору адреси проксі %s: %s.\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Помилка в адресі проксі-сервера %s: має бути HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "%d зациклень - більше, ніж допустимо.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3290,7 +3284,7 @@ msgstr ""
 "Аварійне завершення.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3332,20 +3326,16 @@ msgid "No error"
 msgstr "Без помилок"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "Схема %s не підтримується"
+msgstr "Непідтримувана схема"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "Підтримку HTTPS не скомпільовано"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "Підтримку HTTPS не скомпільовано"
+msgstr "Підтримку FTPS не зібрано у"
 
 #: src/url.c:692
 msgid "Scheme missing"

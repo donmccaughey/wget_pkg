@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wget 1.18.109\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
 "PO-Revision-Date: 2017-01-17 11:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -389,12 +389,12 @@ msgstr "Tobscoireadh an t-aistriú sonraí.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Tá comhad %s ann cheana; ní aisghabhfar é.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(iarracht:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -403,7 +403,7 @@ msgstr ""
 "%s (%s) - scríofa ar stdout %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -413,7 +413,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "%s á bhaint.\n"
@@ -779,7 +779,7 @@ msgstr "Ag baint athúsáid as an gceangal le %s:%d.\n"
 msgid "Failed reading proxy response: %s\n"
 msgstr "Theip ar léamh freagra ón seachfhreastalaí: %s\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s EARRÁID %d: %s.\n"
@@ -912,50 +912,50 @@ msgstr "Fad: "
 msgid "ignored"
 msgstr "rinneadh neamhaird"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Rabhadh: níl saoróga ar fáil i HTTP.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "Cumasaíodh an mód crúbadáin. Seiceáil an bhfuil an cianchomhad ann.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Ní féidir scríobh i gcomhad %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Fuarthas aitreabúid riachtanach a bhí ar iarraidh ón Cheanntásc.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Theip ar fhíordheimhniú Ainm Úsáideora/Focal Faire.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Ní féidir scríobh sa chomhad WARC.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Ní féidir scríobh i gcomhad sealadach WARC.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Ní féidir ceangal SSL a dhéanamh.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Ní féidir %s a dhínascadh (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "EARRÁID: Atreorú (%d) gan suíomh.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -963,24 +963,24 @@ msgstr ""
 "Níor aimsíodh na sonraí Metalink sa fhreagra HTTP. Comhad á íoslódáil trí "
 "HTTP GET.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Aimsíodh na ceanntásca Metalink. Bainfear úsáid as an mód Metalink.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Níl an cianchomhad ann -- nasc briste!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Ceanntásc `Last-modified' ar iarraidh -- ní úsáidfear stampaí ama.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr ""
 "Ceanntásc neamhbhailí `Last-modified' -- tugadh neamhaird ar an stampa ama.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -990,16 +990,16 @@ msgstr ""
 "aisghabhfar é.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Níl an méid céanna ar na comhaid (áitiúil %s) -- á aisghabh.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Tá an cianchomhad níos nuaí, á aisghabháil.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1009,7 +1009,7 @@ msgstr ""
 "-- á aisghabháil.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1017,7 +1017,7 @@ msgstr ""
 "Tá an cianchomhad ann ach níl aon nasc ann -- ní aisghabhfar é.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1027,7 +1027,7 @@ msgstr ""
 "ach díchumasaíodh athchúrsáil -- ní aisghabhfar é.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1035,12 +1035,12 @@ msgstr ""
 "Tá an cianchomhad ann.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "URL %s: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1049,7 +1049,7 @@ msgstr ""
 "%s (%s) - scríofa ar stdout %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1058,27 +1058,27 @@ msgstr ""
 "%s (%s) - %s sábháilte [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Ceangal dúnta ag beart %s. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Earráid léimh ag beart %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Earráid léimh ag beart %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Cáilíocht cosanta nach dtacaítear léi '%s'.\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algartam gan tacaíocht '%s'.\n"
@@ -1090,7 +1090,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: Tá WGETRC dírithe ar %s, agus níl sé seo ann ar chor ar bith.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Ní féidir %s a léamh (%s).\n"
@@ -2993,17 +2993,17 @@ msgstr "Theip ar ioctl(). Níorbh fhéidir an soicéad a shocrú mar bhlocáil.\
 msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr "%s: %s:%d: rabhadh: tagann an teaghrán %s roimh aon ainm meaisín\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: teaghrán anaithnid comharthach \"%s\"\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Úsáid: %s NETRC [ÓSTAINM]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: ní féidir %s a stat: %s\n"
@@ -3174,22 +3174,22 @@ msgstr "Ní féidir %s a oscailt: %s"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "robots.txt á lódáil; déan neamhaird d'earráidí le do thoil.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Earráid agus URL an seachfhreastalaí %s á pharsáil: %s.\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Earráid i URL seachfhreastalaí %s: Ní foláir a bheith HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "níos mó ná %d atreorú.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3197,7 +3197,7 @@ msgstr ""
 "Á éirí as.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"

@@ -1,8 +1,8 @@
-# GNU Wget 1.21.4 for macOS
+# GNU Wget 1.21.5 for macOS
 
 This project builds a signed and notarized universal macOS installer package
 for [GNU Wget][1], a command line tool for retrieving files using HTTP, HTTPS,
-FTP and FTPS.  It contains the source distribution of Wget 1.21.4, 
+FTP and FTPS.  It contains the source distribution of Wget 1.21.5, 
 [libiconv 1.17][2], [OpenSSL 1.1.1w][3] and [zlib 1.3][4].
 
 [1]: https://www.gnu.org/software/wget/

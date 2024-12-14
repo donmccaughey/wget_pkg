@@ -1,15 +1,15 @@
 # Slovak translations for GNU wget
-# Copyright (C) 1999, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 1999, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget package.
 # Miroslav Vasko <vasko@debian.cz>, 1999.
-# Marcel Telka <marcel@telka.sk>, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021, 2022.
+# Marcel Telka <marcel@telka.sk>, 2002, 2003, 2005, 2007, 2008, 2009, 2010, 2012, 2013, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget 1.21.3\n"
+"Project-Id-Version: GNU wget 1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2022-02-27 14:39+0100\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-05-11 17:01+0200\n"
 "Last-Translator: Marcel Telka <marcel@telka.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "Language: sk\n"
@@ -384,12 +384,12 @@ msgstr "Prenos dát bol predčasne ukončený.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Súbor %s je už tam, nebude sa prenášať.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(pokus:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -398,7 +398,7 @@ msgstr ""
 "%s (%s) - zapísané na štandardný výstup %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -408,7 +408,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Odstraňuje sa %s.\n"
@@ -767,7 +767,7 @@ msgstr "Použije sa existujúce spojenie s %s:%d.\n"
 msgid "Failed reading proxy response: %s\n"
 msgstr "Zlyhalo čítanie odpovede z proxy: %s\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s CHYBA %d: %s.\n"
@@ -898,50 +898,50 @@ msgstr "Dĺžka:  "
 msgid "ignored"
 msgstr "ignorované"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Upozornenie: HTTP nepodporuje žolíkové znaky.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "Povolený režim pavúka. Skontrolujte, či vzdialený súbor existuje.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Nie je možné zapísať do %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Prijatá hlavička neobsahuje povinný príznak.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Zlyhalo overenie používateľa/hesla.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Nie je možné zapísať do súboru WARC.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Nie je možné zapísať do dočasného súboru WARC.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Nepodarilo sa nadviazať SSL spojenie.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Nie je možné odstrániť %s (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "CHYBA: Presmerovanie (%d) bez udanej novej adresy.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -949,23 +949,23 @@ msgstr ""
 "Nepodarilo sa v HTTP odpovedi nájsť dáta Metalink. Súbor sa sťahuje pomocou "
 "HTTP GET.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Nájdené hlavičky Metalink. Prepnutie do režimu Metalink.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Vzdialený súbor neexistuje -- poškodený odkaz!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Hlavička Last-modified chýba -- nebudú sa používať časové značky.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "Hlavička Last-modified je neplatná -- časové značky ignorované.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -974,16 +974,16 @@ msgstr ""
 "Súbor na serveri nie je novší ako miestny súbor %s -- neprenáša sa.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Veľkosti se nezhodujú (miestny %s) -- prenáša sa.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Vzdialený súbor je novší, prenáša sa.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -993,7 +993,7 @@ msgstr ""
 "prenáša sa.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1001,7 +1001,7 @@ msgstr ""
 "Vzdialený súbor, ale neobsahuje žiadne odkazy -- neprenáša sa.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1011,7 +1011,7 @@ msgstr ""
 "ale rekurzia nie je povolená -- neprenáša sa.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1019,12 +1019,12 @@ msgstr ""
 "Vzdialený súbor existuje.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1033,7 +1033,7 @@ msgstr ""
 "%s (%s) - zapísané na štandardný výstup %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1042,27 +1042,27 @@ msgstr ""
 "%s (%s) - %s uložené [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Spojenie uzatvorené na bajte %s. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Chyba pri čítaní na bajte %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Chyba pri čítaní na bajte %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Nepodporovaná kvalita ochrany '%s'.\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Nepodporovaný algoritmus '%s'.\n"
@@ -1073,7 +1073,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC ukazuje na %s, ktorý je nedostupný kvôli chybe: %s.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Nie je možné prečítať %s (%s).\n"
@@ -1395,17 +1395,12 @@ msgstr ""
 "odmietnuté\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=CHYBY     čiarkou oddelený zoznam HTTP chýb, "
-"pri ktorých\n"
-"                                         skúsiť znova\n"
+"       --retry-on-host-error       považovať chyby hostiteľa za nezávažné, "
+"dočasné\n"
 
 #: src/main.c:653
 msgid ""
@@ -3031,17 +3026,17 @@ msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr ""
 "%s: %s:%d: upozornenie: token %s je uvedený pred akýmkoľvek názvom počítača\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: neznámy token \"%s\"\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Použitie: %s NETRC [NÁZOV_POČÍTAČA]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: volanie `stat %s' skončilo s chybou: %s\n"
@@ -3072,14 +3067,14 @@ msgid "OpenSSL: unimplemented 'secure-protocol' option value %d\n"
 msgstr "OpenSSL: neimplementovaná hodnota %d voľby 'secure-protocol'\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr "Vaša verzia OpenSSL je príliš stará, aby podporovala TLS 1.3\n"
+msgstr "Vaša verzia OpenSSL nepodporuje voľbu '%s'.\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
 msgstr ""
+"Opätovné preloženie Wget a/alebo OpenSSL môže v tomto prípade pomôcť.\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3210,22 +3205,22 @@ msgstr "Nie je možné otvoriť %s: %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Načítava sa robots.txt. Chybové hlásenia ignorujte, prosím.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Chyba pri analýze proxy URL %s: %s\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Chyba v proxy URL %s: Musí byť HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "Prekročený limit %d presmerovaní.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3233,7 +3228,7 @@ msgstr ""
 "Nemá to zmysel.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3272,20 +3267,16 @@ msgid "No error"
 msgstr "Bez chyby"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "Nepodporovaná schéma %s"
+msgstr "Nepodporovaná schéma"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "Podpora pre HTTPS nie je zakompilovaná"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "Podpora pre HTTPS nie je zakompilovaná"
+msgstr "Podpora pre FTPS nie je zakompilovaná"
 
 #: src/url.c:692
 msgid "Scheme missing"

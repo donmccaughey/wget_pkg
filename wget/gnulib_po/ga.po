@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib 1.1\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
+"POT-Creation-Date: 2024-03-10 15:09+0100\n"
 "PO-Revision-Date: 2007-07-20 12:24-0600\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
 "(n>6 && n<11) ? 3 : 4;\n"
 
-#: lib/error.c:193
+#: lib/error.c:194
 msgid "Unknown system error"
 msgstr "Earráid chórais anaithnid"
 
@@ -99,43 +99,43 @@ msgstr "Níl an teaghrán paraiméadair ionchódaithe i gceart"
 msgid "Unknown error"
 msgstr "Earráid anaithnid"
 
-#: lib/getopt.c:278
+#: lib/getopt.c:282
 #, fuzzy, c-format
 #| msgid "%s: option `%s' is ambiguous\n"
 msgid "%s: option '%s%s' is ambiguous\n"
 msgstr "%s: Tá an rogha `%s' débhríoch\n"
 
-#: lib/getopt.c:284
+#: lib/getopt.c:288
 #, fuzzy, c-format
 #| msgid "%s: option `%s' is ambiguous\n"
 msgid "%s: option '%s%s' is ambiguous; possibilities:"
 msgstr "%s: Tá an rogha `%s' débhríoch\n"
 
-#: lib/getopt.c:319
+#: lib/getopt.c:322
 #, fuzzy, c-format
 #| msgid "%s: unrecognized option `%c%s'\n"
 msgid "%s: unrecognized option '%s%s'\n"
 msgstr "%s: rogha anaithnid `%c%s'\n"
 
-#: lib/getopt.c:345
+#: lib/getopt.c:348
 #, fuzzy, c-format
 #| msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgid "%s: option '%s%s' doesn't allow an argument\n"
 msgstr "%s: ní cheadaítear argóint i ndiaidh na rogha `%c%s'\n"
 
-#: lib/getopt.c:360
+#: lib/getopt.c:363
 #, fuzzy, c-format
 #| msgid "%s: option `%s' requires an argument\n"
 msgid "%s: option '%s%s' requires an argument\n"
 msgstr "%s: tá argóint de dhíth i ndiaidh na rogha `%s'\n"
 
-#: lib/getopt.c:621
+#: lib/getopt.c:624
 #, fuzzy, c-format
 #| msgid "%s: invalid option -- %c\n"
 msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: rogha neamhbhailí -- %c\n"
 
-#: lib/getopt.c:636 lib/getopt.c:682
+#: lib/getopt.c:639 lib/getopt.c:685
 #, fuzzy, c-format
 #| msgid "%s: option requires an argument -- %c\n"
 msgid "%s: option requires an argument -- '%c'\n"

@@ -1,5 +1,5 @@
-# ftello.m4 serial 15
-dnl Copyright (C) 2007-2023 Free Software Foundation, Inc.
+# ftello.m4 serial 16
+dnl Copyright (C) 2007-2024 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -46,7 +46,7 @@ AC_DEFUN([gl_FUNC_FTELLO],
       dnl designates a pipe. See also
       dnl https://github.com/python/cpython/issues/78961#issuecomment-1093800325
       case "$host_os" in
-        mingw*) REPLACE_FTELLO=1 ;;
+        mingw* | windows*) REPLACE_FTELLO=1 ;;
       esac
     fi
     if test $REPLACE_FTELLO = 0; then
@@ -62,12 +62,12 @@ AC_DEFUN([gl_FUNC_FTELLO],
           dnl be opened.
 changequote(,)dnl
           case "$host_os" in
-                      # Guess no on Solaris.
-            solaris*) gl_cv_func_ftello_works="guessing no" ;;
-                      # Guess yes on native Windows.
-            mingw*)   gl_cv_func_ftello_works="guessing yes" ;;
-                      # Guess yes otherwise.
-            *)        gl_cv_func_ftello_works="guessing yes" ;;
+                               # Guess no on Solaris.
+            solaris*)          gl_cv_func_ftello_works="guessing no" ;;
+                               # Guess yes on native Windows.
+            mingw* | windows*) gl_cv_func_ftello_works="guessing yes" ;;
+                               # Guess yes otherwise.
+            *)                 gl_cv_func_ftello_works="guessing yes" ;;
           esac
 changequote([,])dnl
           AC_RUN_IFELSE(

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the wget package.
 # Robert Schmidt <rsc@vingmed.no>, 1998.
 # Åka Sikrom <a4@hush.com>, 2018.
-# Johnny A. Solbu <johnny@solbu.net>, 2021 - 2022
+# Johnny A. Solbu <johnny@solbu.net>, 2021 - 2024
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget-1.21.3\n"
+"Project-Id-Version: wget-1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2022-02-27 21:15+0100\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2024-01-06 16:24+0100\n"
 "Last-Translator: Johnny A. Solbu <johnny@solbu.net>\n"
 "Language-Team: Norwegian Bokmaal <l10n-no@lister.huftis.org>\n"
 "Language: nb\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: src/connect.c:201
 #, c-format
@@ -387,12 +387,12 @@ msgstr "Dataoverføring avbrutt.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Fila %s ligger allerede der, og blir ikke hentet på nytt.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(prøv:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -401,7 +401,7 @@ msgstr ""
 "%s (%s) - skrevet til standard utkanal %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -411,7 +411,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Fjerner %s.\n"
@@ -772,7 +772,7 @@ msgstr "Bruker etablert tilkobling til %s:%d på nytt.\n"
 msgid "Failed reading proxy response: %s\n"
 msgstr "Lesing av respons fra mellomtjener mislyktes: %s\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s PROGRAMFEIL %d: %s.\n"
@@ -904,73 +904,73 @@ msgstr "Lengde: "
 msgid "ignored"
 msgstr "ignorert"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Advarsel: jokertegn støttes ikke i HTTP.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "Edderkoppmodus er slått på. Kontroller om ekstern fil finnes.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Klarte ikke å skrive til %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Obligatorisk attributt mangler på mottatt linje.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Autentisering med brukernavn og passord mislyktes.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Klarte ikke å skrive til WARC-fil.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Klarte ikke å skrive til midlertidig WARC-fil.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Klarte ikke å sette opp SSL-tilkobling.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Klarte ikke å fjerne lenke til %s (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "PROGRAMFEIL: Videresending (%d) uten plassering.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
 msgstr ""
 "Fant ingen Metalink-data i HTTP-svar. Bruker HTTP GET til å laste ned.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Fant Metalink-hoder. Går i Metalink-modus.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Ekstern fil finnes ikke. Død lenke!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Linja «Last-modified» mangler. Tidsstempler er slått av.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "Linja «Last-modified» er ugyldig. Tidsstempler ignoreres.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -980,16 +980,16 @@ msgstr ""
 "lastet ned.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Filene er av ulik størrelse (lokal: %s). Laster ned.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Ekstern versjon av fila er nyest, og blir lastet ned.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -999,7 +999,7 @@ msgstr ""
 "ned.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1007,7 +1007,7 @@ msgstr ""
 "Ekstern fil finnes, men inneholder ingen lenke. Laster ikke ned.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1017,7 +1017,7 @@ msgstr ""
 "men jobbing i undermapper er slått av. Laster ikke ned.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1025,12 +1025,12 @@ msgstr ""
 "Ekstern fil finnes.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s nettadresse: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1039,7 +1039,7 @@ msgstr ""
 "%s (%s) - skrevet til standard utkanal %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1048,27 +1048,27 @@ msgstr ""
 "%s (%s) - %s lagret [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Tilkobling lukket ved byte %s. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Lesefeil ved byte %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Lesefeil ved byte %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Beskyttelseskvalitet «%s» støttes ikke.\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algoritmen «%s» støttes ikke.\n"
@@ -1079,7 +1079,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC peker på %s, som ble avvist på grunn av feil: %s.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Klarte ikke å lese %s (%s).\n"
@@ -1399,16 +1399,12 @@ msgstr ""
 "       --retry-connrefused         prøv på nytt selv om tilkobling nektes\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=FEIL      kommaseparert liste over HTML-tagger "
-"som skal prøves på nytt\n"
+"       --retry-on-http-error       betrakt vertsfeil som ikke-fatale, "
+"forbigående feil\n"
 
 #: src/main.c:653
 msgid ""
@@ -3015,17 +3011,17 @@ msgstr "ioctl() mislyktes. Klarte ikke å sette opp sokkelen som blokkering.\n"
 msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr "%s: %s:%d: advarsel: symbolet %s dukker opp før maskinnavn\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: «%s» er et ukjent symbol\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Bruk: %s NETRC [VERTSNAVN]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: klarte ikke å lage statistikk av %s: %s\n"
@@ -3058,14 +3054,14 @@ msgid "OpenSSL: unimplemented 'secure-protocol' option value %d\n"
 msgstr "OpenSSL: verdi %d er ikke implementert for valget «secure-protocol»\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr "Installert OpenSSL-versjon er for gammel til å støtte TLSv1.3\n"
+msgstr "OpenSSL-versjonen din støtter ikke valget «%s».\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
 msgstr ""
+"Rekompilering av Wget og/eller OpenSSL kan hjelpe i denne situasjonen.\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3194,22 +3190,22 @@ msgstr "Klarte ikke å åpne %s. %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Laster inn «robots.txt». Ignorer feilmeldinger.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Feil ved tolkning av nettadressen %s: %s.\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Feil i mellomtjeneradressen %s. Denne må være HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "%d videresendinger overskredet.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3217,7 +3213,7 @@ msgstr ""
 "Gir opp.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3253,20 +3249,16 @@ msgid "No error"
 msgstr "Ingen feilmelding"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "Skjemaet %s støttes ikke"
+msgstr "Skjemaet støttes ikke"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "HTTPS-støtte er ikke innebygget i denne versjonen"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "HTTPS-støtte er ikke innebygget i denne versjonen"
+msgstr "FTPS-støtte er ikke innebygget i denne versjonen"
 
 #: src/url.c:692
 msgid "Scheme missing"

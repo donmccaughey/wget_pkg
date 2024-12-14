@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wget 1.8.1\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
 "PO-Revision-Date: 2002-03-18 03:11\n"
 "Last-Translator: Yassen Roussev <slona@bulgaria.com>\n"
 "Language-Team: Bulgarian <bg@bulgaria.com>\n"
@@ -409,19 +409,19 @@ msgstr "Трансферът бе прекъснат.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Файлът `%s' е вече тук, няма да го тегля.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(опит:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
 "\n"
 msgstr ""
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, fuzzy, c-format
 #| msgid ""
 #| "%s (%s) - `%s' saved [%ld]\n"
@@ -434,7 +434,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Премахвам %s.\n"
@@ -813,7 +813,7 @@ msgstr "Използване на вече установена връзка к�
 msgid "Failed reading proxy response: %s\n"
 msgstr "Неуспех при запис на HTTP искане: %s.\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s ГРЕШКА: %d: %s.\n"
@@ -938,80 +938,80 @@ msgstr "Дължина: "
 msgid "ignored"
 msgstr "игнориран"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Внимание: уайлдкардс не се поддържат в HTTP.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr ""
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, fuzzy, c-format
 #| msgid "Cannot write to `%s' (%s).\n"
 msgid "Cannot write to %s (%s).\n"
 msgstr "Немога да запиша върху `%s' (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr ""
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr ""
 
-#: src/http.c:4476
+#: src/http.c:4480
 #, fuzzy
 #| msgid "Cannot write to `%s' (%s).\n"
 msgid "Cannot write to WARC file.\n"
 msgstr "Немога да запиша върху `%s' (%s).\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr ""
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Немога да установя SSL връзка.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, fuzzy, c-format
 #| msgid "Cannot write to `%s' (%s).\n"
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Немога да запиша върху `%s' (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "ГРЕШКА: Пре-адресация (%d) без установен адрес.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
 msgstr ""
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr ""
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr ""
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr ""
 "Заглавката съдържаща информация относно последна промяна липсва -- полето за "
 "дата се изключва.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr ""
 "Заглавката съдържаща информация относно последна промяна е невалиднa -- "
 "полето за дата се игнорира.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, fuzzy, c-format
 #| msgid ""
 #| "Server file no newer than local file `%s' -- not retrieving.\n"
@@ -1021,17 +1021,17 @@ msgid ""
 "\n"
 msgstr "Файлът на сървъра не е по-нов от този на диска `%s' -- спирам.\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, fuzzy, c-format
 #| msgid "The sizes do not match (local %ld) -- retrieving.\n"
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Големините не съвпадат (местен %ld) -- продължавам.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Файлът на сървъра е по-нов, продължавам.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 #, fuzzy
 #| msgid ""
 #| "Remote file is newer than local file `%s' -- retrieving.\n"
@@ -1042,7 +1042,7 @@ msgid ""
 "\n"
 msgstr "Файлът на сървъра е по-нов от местния `%s' -- започвам да тeгля.\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 #, fuzzy
 #| msgid "Remote file no newer than local file `%s' -- not retrieving.\n"
 msgid ""
@@ -1050,14 +1050,14 @@ msgid ""
 "\n"
 msgstr "Файлът от сървъра не е по-нов от местния `%s' -- не продължавам.\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
 "\n"
 msgstr ""
 
-#: src/http.c:4697
+#: src/http.c:4701
 #, fuzzy
 #| msgid "Remote file is newer, retrieving.\n"
 msgid ""
@@ -1065,20 +1065,20 @@ msgid ""
 "\n"
 msgstr "Файлът на сървъра е по-нов, продължавам.\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, fuzzy, c-format
 #| msgid "%s ERROR %d: %s.\n"
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s ГРЕШКА: %d: %s.\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
 "\n"
 msgstr ""
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, fuzzy, c-format
 #| msgid ""
 #| "%s (%s) - `%s' saved [%ld/%ld]\n"
@@ -1090,30 +1090,30 @@ msgstr ""
 "%s (%s) - `%s' записан [%ld/%ld]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, fuzzy, c-format
 #| msgid "%s (%s) - Connection closed at byte %ld. "
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Връзката бе преустановена при байт %ld. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, fuzzy, c-format
 #| msgid "%s (%s) - Read error at byte %ld (%s)."
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Грешка при четене, байт %ld (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, fuzzy, c-format
 #| msgid "%s (%s) - Read error at byte %ld/%ld (%s). "
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Грешка при четене, байт %ld/%ld (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr ""
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr ""
@@ -1124,7 +1124,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr ""
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Немога да прочета %s (%s).\n"
@@ -2800,17 +2800,17 @@ msgstr ""
 msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr "%s: %s:%d: внимание: \"%s\" има символ преди името на машината\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: непознат символ \"%s\"\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Употреба: %s NETRC [ИМЕ НА ХОСТ]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: непълен формат %s: %s\n"
@@ -2976,22 +2976,22 @@ msgstr "Немога да преобразувам линковете в %s: %s\
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Зареждам robots.txt; моля игнорирайте грешките.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Грешка при транслирането на прокси УРЛ %s: %s\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Грешка при прокси УРЛ %s: Трябва да е HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "%d пре-адресациите бяха твърде много.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -2999,7 +2999,7 @@ msgstr ""
 "Отказвам се.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"

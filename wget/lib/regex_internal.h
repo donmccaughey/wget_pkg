@@ -1,5 +1,5 @@
 /* Extended regular expression matching and search library.
-   Copyright (C) 2002-2023 Free Software Foundation, Inc.
+   Copyright (C) 2002-2024 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
    Contributed by Isamu Hasegawa <isamu@yamato.ibm.com>.
 
@@ -151,9 +151,6 @@
    as some non-GCC platforms lack them, an issue when this code is
    used in Gnulib.  */
 
-#ifndef SSIZE_MAX
-# define SSIZE_MAX ((ssize_t) (SIZE_MAX / 2))
-#endif
 #ifndef ULONG_WIDTH
 # define ULONG_WIDTH REGEX_UINTEGER_WIDTH (ULONG_MAX)
 /* The number of usable bits in an unsigned integer type with maximum

@@ -1,5 +1,5 @@
 /* Convert unibyte character to wide character.
-   Copyright (C) 2008, 2010-2023 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2010-2024 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2008.
 
    This file is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@ btowc (int c)
       buf[0] = c;
 #if HAVE_MBRTOWC
       mbstate_t state;
-      memset (&state, 0, sizeof (mbstate_t));
+      mbszero (&state);
       size_t ret = mbrtowc (&wc, buf, 1, &state);
       if (!(ret == (size_t)(-1) || ret == (size_t)(-2)))
 #else

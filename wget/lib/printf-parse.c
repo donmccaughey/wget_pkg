@@ -1,5 +1,5 @@
 /* Formatted output to strings.
-   Copyright (C) 1999-2000, 2002-2003, 2006-2023 Free Software Foundation, Inc.
+   Copyright (C) 1999-2000, 2002-2003, 2006-2024 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -555,9 +555,10 @@ PRINTF_PARSE (const CHAR_T *format, DIRECTIVES *d, arguments *a)
                     unsigned_type = TYPE_ULONGINT;
                     pointer_type = TYPE_COUNT_LONGINT_POINTER;
                   }
-                cp++;
+                cp += 3;
               }
 #endif
+            (void) pointer_type;
 
             /* Read the conversion character.  */
             c = *cp++;
@@ -616,9 +617,11 @@ PRINTF_PARSE (const CHAR_T *format, DIRECTIVES *d, arguments *a)
               case 'p':
                 type = TYPE_POINTER;
                 break;
+#if NEED_PRINTF_WITH_N_DIRECTIVE
               case 'n':
                 type = pointer_type;
                 break;
+#endif
 #if ENABLE_UNISTDIO
               /* The unistdio extensions.  */
               case 'U':

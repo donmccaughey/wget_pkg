@@ -1,6 +1,6 @@
 /* pselect - synchronous I/O multiplexing
 
-   Copyright 2011-2023 Free Software Foundation, Inc.
+   Copyright 2011-2024 Free Software Foundation, Inc.
 
    This file is part of gnulib.
 
@@ -59,8 +59,10 @@ pselect (int nfds, fd_set *restrict rfds,
           return -1;
         }
 
-      tv.tv_sec = timeout->tv_sec;
-      tv.tv_usec = (timeout->tv_nsec + 999) / 1000;
+      tv = (struct timeval) {
+        .tv_sec = timeout->tv_sec,
+        .tv_usec = (timeout->tv_nsec + 999) / 1000
+      };
       tvp = &tv;
     }
   else

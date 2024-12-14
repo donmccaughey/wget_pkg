@@ -1,24 +1,32 @@
 # Mesajele în limba română pentru pachetul wget.
-# Copyright (C) 2003 Free Software Foundation, Inc.
+# Copyright © 2003, 2020, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget package.
 #
-# Traducere făcută de FM, pentru versiunea wget 1.21.
+# Eugen Hoanca <eugenh@urban-grafx.ro>, 2003.
+# Florentina Mușat <florentina.musat.28@gmail.com>, 2020 - 2021.
+# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022 - 2023.
+#
+# Cronologia traducerii fișierului „wget”:
+# Traducere inițială, făcută de EH, pentru versiunea wget 1.9.1.
+# Actualizare a traducerii pentru versiunea 1.20, făcută de FM, iun-2020.
+# Actualizare a traducerii pentru versiunea 1.21, făcută de FM, ian-2021.
 # Actualizare a mesajelor, de la fișierul „wget-1.21.2.pot”.
 # Actualizare a algoritmului formelor de plural (de la „trei-vechi” la „trei-actual”).
 # NU și a mesajelor traduse (acestea au rămas neschimbate).
 # Eliminare a mesajelor ce-au dispărut în ultima versiune.
-#
-# Eugen Hoanca <eugenh@urban-grafx.ro>, 2003.
-# Florentina Mușat <florentina.musat.28@gmail.com>, 2020.
 # Actualizări realizate de Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 15.01.2022.
-# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022.
+# Actualizare a traducerii pentru versiunea 1.21.2, făcută de R-GC, ian-2022.
+# Actualizare a traducerii pentru versiunea 1.21.3, făcută de R-GC, mar-2022.
+# Actualizare a traducerii pentru versiunea 1.21.4, făcută de R-GC, mai-2023.
+# Corectare a unei greșeli de dactilografiere prezentă din versiunea 1.21.3, făcută de R-GC, noi-2023.
+# Actualizare a traducerii pentru versiunea Y, făcută de X, Z(luna-anul).
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.21.3\n"
+"Project-Id-Version: wget 1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2022-03-06 15:46+0100\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-11-17 17:09+0100\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -28,7 +36,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/connect.c:201
 #, c-format
@@ -161,7 +169,7 @@ msgstr "Eroare la închiderea a %s: %s\n"
 
 #: src/ftp-ls.c:1045
 msgid "Unsupported listing type, trying Unix listing parser.\n"
-msgstr "Tip de listare nesuportat, se încearcă analizatorul de listări Unix.\n"
+msgstr "Tip de listare neacceptat, se încearcă analizatorul de listări Unix.\n"
 
 #: src/ftp-ls.c:1096 src/ftp-ls.c:1098
 #, c-format
@@ -418,7 +426,7 @@ msgstr "%s tocmai a fost creat.\n"
 #: src/ftp.c:1601
 #, c-format
 msgid "%s: %s, closing control connection.\n"
-msgstr "%s: %s, se închide conexiunea de control.n\n"
+msgstr "%s: %s, se închide conexiunea de control.\n"
 
 #: src/ftp.c:1613
 #, c-format
@@ -445,12 +453,12 @@ msgstr "Transferul de date a fost întrerupt.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Fișierul %s există deja; nu se recuperează.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(încercarea: %2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -459,7 +467,7 @@ msgstr ""
 "%s (%s) - scris la stdout %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -469,7 +477,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Se elimină %s.\n"
@@ -537,7 +545,7 @@ msgstr "Se creează legătura simbolică %s -> %s\n"
 #, c-format
 msgid "Symlinks not supported, skipping symlink %s.\n"
 msgstr ""
-"Legăturile simbolice nu sunt suportate, se omite legătura simbolică %s.\n"
+"Legăturile simbolice nu sunt acceptate, se omite legătura simbolică %s.\n"
 
 #: src/ftp.c:2387
 #, c-format
@@ -639,7 +647,7 @@ msgstr ""
 
 #: src/gnutls.c:777 src/gnutls.c:841
 msgid "Your GnuTLS version is too old to support TLS 1.3\n"
-msgstr "Versiunea GnuTLS este prea veche pentru a suporta TLS 1.3\n"
+msgstr "Versiunea GnuTLS este prea veche pentru a fi compatibilă cu TLS 1.3\n"
 
 #: src/gnutls.c:789
 #, c-format
@@ -866,7 +874,7 @@ msgstr "Nu s-a putut citi răspunsul proxy: %s\n"
 # R-GC, scrie:
 # inițial, traducerea era așa:
 # „EROARE %s %d: %s.”
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s EROARE %d: %s.\n"
@@ -1008,51 +1016,51 @@ msgstr "ignorat"
 # R-GC, scrie:
 # am modificat traducerea inițială:
 # „Avertisment: selecțiile globale(wildcards) nu sunt permise în HTTP.”
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Avertisment: metacaracterele nu sunt permise în HTTP.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr ""
 "Modul păianjen activat. Verifică dacă fișierul de la distanță există.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Nu se poate scrie la %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Atributul necesar care lipsește din Antet a fost primit.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Autentificarea nume de utilizator/parolă a eșuat.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Nu se poate scrie în fișierul WARC.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Nu se poate scrie în fișierul temporar WARC.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Nu s-a putut stabili o conexiune SSL.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Nu se poate desface legătura %s (%s).\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "EROARE: Redirecționare (%d) fără locație.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -1060,25 +1068,25 @@ msgstr ""
 "Nu s-au putut găsi datele Metalink în răspunsul HTTP. Se descarcă fișierul "
 "utilizând HTTP GET.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Antetele Metalink au fost găsite. Se comută la modul Metalink.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Fișierul de la distanță nu există -- legătură deteriorată!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr ""
 "Lipsește antetul „Last-modified” -- marcările de timp au fost oprite.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr ""
 "Antetul „Last-modified” nu este valid -- marcajul de timp este ignorat.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -1088,16 +1096,16 @@ msgstr ""
 "recuperează.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Dimensiunile nu se potrivesc (local %s) -- se recuperează.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Fișierul de la distanță este mai nou, se aduce.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1107,7 +1115,7 @@ msgstr ""
 "resurse -- se recuperează.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1116,7 +1124,7 @@ msgstr ""
 "recuperează.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1126,7 +1134,7 @@ msgstr ""
 "dar recursivitatea este dezactivată -- nu se obține.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1134,12 +1142,12 @@ msgstr ""
 "Fișierul de la distanță există.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1148,7 +1156,7 @@ msgstr ""
 "%s (%s) - scris la stdout %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1157,30 +1165,30 @@ msgstr ""
 "%s (%s) - %s salvat [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Conexiune închisă la octetul %s. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Eroare de citire la octetul %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Eroare de citire la octetul %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
-msgstr "Calitate nesuportată a protecției „%s”.\n"
+msgstr "Calitate neacceptată a protecției „%s”.\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
-msgstr "Algoritm nesuportat „%s”.\n"
+msgstr "Algoritm neacceptat „%s”.\n"
 
 #: src/init.c:583
 #, c-format
@@ -1189,7 +1197,7 @@ msgid ""
 msgstr ""
 "%s: WGETRC arată către %s, care nu a putut fi accesat din cauza erorii: %s.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Nu s-a putut citi %s (%s).\n"
@@ -1333,7 +1341,7 @@ msgstr "Codificarea %s nu este validă\n"
 #: src/iri.c:140 src/url.c:1612
 #, c-format
 msgid "Conversion from %s to %s isn't supported\n"
-msgstr "Conversia de la %s la %s nu este suportată\n"
+msgstr "Conversia de la %s la %s nu este permisă\n"
 
 #: src/iri.c:180 src/url.c:1642
 msgid "Incomplete or invalid multibyte sequence encountered\n"
@@ -1527,16 +1535,12 @@ msgstr ""
 "este refuzată\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=ERORI   listă separată prin virgule a erorilor "
-"HTTP pentru care se încearcă din nou\n"
+"       --retry-on-host-error       consideră erorile gazdei drept erori "
+"tranzitorii nefatale\n"
 
 #: src/main.c:653
 msgid ""
@@ -2237,8 +2241,8 @@ msgid ""
 "       --hsts-file                 path of HSTS database (will override "
 "default)\n"
 msgstr ""
-"       --hsts-file                   calea bazei de date HSTS (va suprascrie "
-"valoarea implicită)\n"
+"       --hsts-file                   ruta la baza de date HSTS (va "
+"suprascrie valoarea implicită)\n"
 
 #: src/main.c:900
 msgid "FTP options:\n"
@@ -2327,8 +2331,8 @@ msgid ""
 "       --ftps-fallback-to-ftp          fall back to FTP if FTPS is not "
 "supported in the target server\n"
 msgstr ""
-"       --ftps-fallback-to-ftp        revine la FTP dacă FTPS nu este "
-"suportat în serverul țintă\n"
+"       --ftps-fallback-to-ftp        revine la FTP dacă FTPS nu este admis "
+"în serverul țintă\n"
 
 #: src/main.c:936
 msgid "WARC options:\n"
@@ -3028,7 +3032,7 @@ msgstr "Cota de descărcare de %s, a fost DEPĂȘITĂ!\n"
 #: src/metalink.c:93
 msgid "-O not supported for metalink download. Ignoring.\n"
 msgstr ""
-"Opțiunea „-O” nu este suportată pentru descărcarea metalink. Se ignoră.\n"
+"Opțiunea „-O” nu este acceptată pentru descărcarea metalink. Se ignoră.\n"
 
 #: src/metalink.c:172
 #, c-format
@@ -3076,7 +3080,7 @@ msgstr "Procesarea metaurl-urilor a terminat cu eroare.\n"
 #: src/metalink.c:386
 #, c-format
 msgid "Resource type %s not supported, ignoring...\n"
-msgstr "Tipul de resursă %s nu este suportat, se ignoră...\n"
+msgstr "Tipul de resursă %s nu este acceptat, se ignoră...\n"
 
 #: src/metalink.c:507
 msgid "Could not open downloaded file.\n"
@@ -3232,17 +3236,17 @@ msgstr ""
 "%s: %s:%d: avertisment: cuvântul cheie %s apare înainte de oricare nume de "
 "mașină\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: cuvânt cheie necunoscut „%s”\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Utilizare: %s NETRC [NUME_HOST]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: nu se poate stabili starea lui %s: %s\n"
@@ -3258,15 +3262,15 @@ msgstr ""
 
 #: src/openssl.c:272
 msgid "Your OpenSSL version is too old to support TLS 1.3\n"
-msgstr "Versiunea OpenSSL este prea veche pentru a suporta TLS 1.3\n"
+msgstr "Versiunea OpenSSL este prea veche pentru a fi compatibilă cu TLS 1.3\n"
 
 #: src/openssl.c:278
 msgid "Your OpenSSL version is too old to support TLSv1.1\n"
-msgstr "Versiunea OpenSSL este prea veche pentru a suporta TLSv1.1\n"
+msgstr "Versiunea OpenSSL este prea veche pentru a fi compatibilă cu TLSv1.1\n"
 
 #: src/openssl.c:282
 msgid "Your OpenSSL version is too old to support TLSv1.2\n"
-msgstr "Versiunea OpenSSL este prea veche pentru a suporta TLSv1.2\n"
+msgstr "Versiunea OpenSSL este prea veche pentru a fi compatibilă cu TLSv1.2\n"
 
 #: src/openssl.c:288
 #, c-format
@@ -3274,14 +3278,13 @@ msgid "OpenSSL: unimplemented 'secure-protocol' option value %d\n"
 msgstr "OpenSSL: valoare de opțiune neimplementată „secure-protocol” %d\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr "Versiunea OpenSSL este prea veche pentru a suporta TLS 1.3\n"
+msgstr "Versiunea dvs. OpenSSL nu acceptă opțiunea „%s”.\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
-msgstr ""
+msgstr "Reconstruirea Wget și/sau OpenSSL poate ajuta în această situație.\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3428,22 +3431,22 @@ msgstr "Nu se poate deschide %s: %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Se încarcă robots.txt; ignoraţi erorile.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Eroare la analizarea adresei URL proxy: %s: %s.\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Eroare în adresa URL proxy %s: Trebuie să fie HTTP.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "%d redirecționări depășite.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3451,7 +3454,7 @@ msgstr ""
 "Renunţ.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3499,20 +3502,16 @@ msgid "No error"
 msgstr "Nici o eroare"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "Schemă nesuportată %s"
+msgstr "Schemă neacceptată"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "Suportul HTTPS nu a fost compilat"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "Suportul HTTPS nu a fost compilat"
+msgstr "Suportul FTPS nu a fost compilat"
 
 #: src/url.c:692
 msgid "Scheme missing"
@@ -3536,7 +3535,7 @@ msgstr "Adresă numerică IPv6 neterminată"
 
 #: src/url.c:697
 msgid "IPv6 addresses not supported"
-msgstr "Adresele IPv6 nu sunt suportate"
+msgstr "Adresele IPv6 nu sunt acceptate"
 
 #: src/url.c:698
 msgid "Invalid IPv6 numeric address"

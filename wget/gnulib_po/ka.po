@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib 4.0.0.2567\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
+"POT-Creation-Date: 2024-03-10 15:09+0100\n"
 "PO-Revision-Date: 2022-12-23 14:32+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <(nothing)>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: lib/error.c:193
+#: lib/error.c:194
 msgid "Unknown system error"
 msgstr "სისტემის უცნობი შეცდომა"
 
@@ -99,37 +99,37 @@ msgstr "პარამეტრის სტრიქონი არასწ�
 msgid "Unknown error"
 msgstr "უცნობი შეცდომა"
 
-#: lib/getopt.c:278
+#: lib/getopt.c:282
 #, c-format
 msgid "%s: option '%s%s' is ambiguous\n"
 msgstr "%s: პარამეტრი '%s%s' გაურკვეველია\n"
 
-#: lib/getopt.c:284
+#: lib/getopt.c:288
 #, c-format
 msgid "%s: option '%s%s' is ambiguous; possibilities:"
 msgstr "%s: პარამეტრი '%s%s' გაურკვეველია; შესაძლო ვარიანტები:"
 
-#: lib/getopt.c:319
+#: lib/getopt.c:322
 #, c-format
 msgid "%s: unrecognized option '%s%s'\n"
 msgstr "%s: უცნობი პარამეტრი '%s%s'\n"
 
-#: lib/getopt.c:345
+#: lib/getopt.c:348
 #, c-format
 msgid "%s: option '%s%s' doesn't allow an argument\n"
 msgstr "%s: პარამეტრს \"%s%s' არგუმენტი არ სჭირდება\n"
 
-#: lib/getopt.c:360
+#: lib/getopt.c:363
 #, c-format
 msgid "%s: option '%s%s' requires an argument\n"
 msgstr "%s: პარამეტრს \"%s%s\" არგუმენტი ესაჭიროება\n"
 
-#: lib/getopt.c:621
+#: lib/getopt.c:624
 #, c-format
 msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: არასწორი პარამეტრი -- '%c'\n"
 
-#: lib/getopt.c:636 lib/getopt.c:682
+#: lib/getopt.c:639 lib/getopt.c:685
 #, c-format
 msgid "%s: option requires an argument -- '%c'\n"
 msgstr "%s: პარამეტრს ესაჭიროება არგუმენტი -- '%c'\n"

@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget-1.21.3\n"
+"Project-Id-Version: wget-1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2023-04-21 20:26-0300\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-05-13 20:23-0300\n"
 "Last-Translator: Rodolfo Ribeiro Gomes <rodolforg@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
 "net>\n"
@@ -415,13 +415,13 @@ msgid "File %s already there; not retrieving.\n"
 msgstr "O arquivo %s já existe, não será baixado.\n"
 
 # , c-format
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(tentativa:%2d)"
 
 # , c-format
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -431,7 +431,7 @@ msgstr ""
 "\n"
 
 # , c-format
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -442,7 +442,7 @@ msgstr ""
 
 # , c-format
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Removendo %s.\n"
@@ -823,7 +823,7 @@ msgid "Failed reading proxy response: %s\n"
 msgstr "Falhou em ler a resposta do proxy: %s\n"
 
 # , c-format
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s ERRO %d: %s.\n"
@@ -961,55 +961,55 @@ msgstr "Tamanho: "
 msgid "ignored"
 msgstr "ignorado"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Aviso: Não há suporte para caracteres coringa no HTTP.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "O modo aranha está habilitado. Verifique se o arquivo remoto existe.\n"
 
 # , c-format
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Não foi possível escrever em %s (%s).\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Ausência de atributo obrigatório no cabeçalho recebido.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Autenticação de nome/senha falhou.\n"
 
 # , c-format
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "Não foi possível escrever em arquivo WARC.\n"
 
 # , c-format
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Não foi possível escrever em arquivo WARC temporário.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Não foi possível estabelecer conexão segura (SSL).\n"
 
 # , c-format
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Não foi possível remover %s (%s).\n"
 
 # , c-format
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "ERRO: Redirecionamento (%d) sem Location.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -1017,23 +1017,23 @@ msgstr ""
 "Não foi possível localizar os dados de Metalink na resposta HTTP. Baixando "
 "arquivo usando HTTP GET.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Cabeçalhos de Metalink encontrados. Alternando para modo Metalink.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "O arquivo remoto não existe -- link quebrado!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Está faltando o cabeçalho Last-modified -- horários desligados.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "O cabeçalho Last-modified é inválido -- horário ignorado.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -1042,16 +1042,16 @@ msgstr ""
 "O arquivo no servidor não é mais novo que o local %s -- ignorando.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Os tamanhos não coincidem (local %s) -- baixando.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "O arquivo remoto é mais novo, baixando.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1060,7 +1060,7 @@ msgstr ""
 "O arquivo remoto existe e pode conter links para outras fontes -- baixando.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1068,7 +1068,7 @@ msgstr ""
 "O arquivo remoto existe mas não contém link algum -- ignorando.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1078,7 +1078,7 @@ msgstr ""
 "mas a recursão está desabilitada -- ignorando.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1087,13 +1087,13 @@ msgstr ""
 "\n"
 
 # , c-format
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
 # , c-format
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1103,7 +1103,7 @@ msgstr ""
 "\n"
 
 # , c-format
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1112,27 +1112,27 @@ msgstr ""
 "%s (%s) - %s salvo [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Conexão fechada no byte %s. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Erro de leitura no byte %s (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Erro de leitura no byte %s/%s (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Não há suporte para a qualidade de proteção \"%s\".\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Não há suporte para o algoritmo \"%s\".\n"
@@ -1144,7 +1144,7 @@ msgid ""
 msgstr ""
 "%s: WGETRC aponta para %s, que não pôde ser acessado devido a erro: %s.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: Não foi possível ler %s (%s).\n"
@@ -1477,17 +1477,13 @@ msgstr ""
 "                                     recusada\n"
 
 #: src/main.c:651
-#, fuzzy
-#| msgid ""
-#| "       --retry-on-http-error=ERRORS    comma-separated list of HTTP "
-#| "errors to retry\n"
 msgid ""
 "       --retry-on-host-error       consider host errors as non-fatal, "
 "transient errors\n"
 msgstr ""
-"       --retry-on-http-error=ERROS     lista separada por vírgula de erros "
-"HTTP para\n"
-"                                           tentar de novo\n"
+"       --retry-on-host-error       considera erros de máquina como não "
+"fatais, erros\n"
+"                                     transitórios\n"
 
 #: src/main.c:653
 msgid ""
@@ -3165,19 +3161,19 @@ msgstr ""
 "%s: %s:%d: aviso: o termo %s aparece antes de qualquer nome de máquina\n"
 
 # , c-format
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: o termo \"%s\" é desconhecido\n"
 
 # , c-format
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Uso: %s NETRC [NOME DA MÁQUINA]\n"
 
 # , c-format
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: não foi possível acessar %s: %s\n"
@@ -3210,14 +3206,13 @@ msgstr ""
 "OpenSSL: não há implementação para o valor da opção \"secure-protocol\" %d\n"
 
 #: src/openssl.c:295
-#, fuzzy, c-format
-#| msgid "Your OpenSSL version is too old to support TLS 1.3\n"
+#, c-format
 msgid "Your OpenSSL version does not support option '%s'.\n"
-msgstr "Sua versão do OpenSSL é muito antiga para suportar TLS 1.3\n"
+msgstr "Sua versão do OpenSSL não oferece suporte para opção \"%s\"\n"
 
 #: src/openssl.c:296
 msgid "Rebuilding Wget and/or OpenSSL may help in this situation.\n"
-msgstr ""
+msgstr "Recompilar Wget ou OpenSSL pode ajudar nesta situação.\n"
 
 #: src/openssl.c:341
 #, c-format
@@ -3355,24 +3350,24 @@ msgstr "Não é possível abrir %s: %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Carregando robots.txt; por favor ignore qualquer erro.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Erro ao analisar URL do proxy %s: %s\n"
 
 # , c-format
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Erro no URL do proxy %s: Tem que ser HTTP.\n"
 
 # , c-format
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "Excedeu os %d redirecionamentos.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3380,7 +3375,7 @@ msgstr ""
 "Desistindo.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3416,20 +3411,16 @@ msgid "No error"
 msgstr "Nenhum erro"
 
 #: src/url.c:689
-#, fuzzy
-#| msgid "Unsupported scheme %s"
 msgid "Unsupported scheme"
-msgstr "Não há suporte para o esquema %s"
+msgstr "Não há suporte para este esquema"
 
 #: src/url.c:690
 msgid "HTTPS support not compiled in"
 msgstr "Compilado sem suporte a HTTPS"
 
 #: src/url.c:691
-#, fuzzy
-#| msgid "HTTPS support not compiled in"
 msgid "FTPS support not compiled in"
-msgstr "Compilado sem suporte a HTTPS"
+msgstr "Compilado sem suporte a FTPS"
 
 #: src/url.c:692
 msgid "Scheme missing"

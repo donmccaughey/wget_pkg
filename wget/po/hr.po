@@ -9,13 +9,13 @@
 # Domagoj Margan <sartrum@gmail.com>, 2010-2011.
 # Vedran Miletić <rivanvx@gmail.com>, 2010-2011.
 # Tomislav Krznar <tomislav.krznar@gmail.com>, 2012.
-# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget-1.21.3\n"
+"Project-Id-Version: GNU wget-1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2023-05-01 16:13-0700\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2023-05-26 20:49-0700\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -120,7 +120,7 @@ msgstr "Nije moguće dobiti kolačić za %s\n"
 #: src/cookies.c:464
 #, c-format
 msgid "Syntax error in Set-Cookie: %s at position %d.\n"
-msgstr "Sintaktična greška u Set-Cookie“: %s na poziciji %d\n"
+msgstr "sintaktička greška u Set-Cookie“: %s na poziciji %d\n"
 
 #: src/cookies.c:777
 #, c-format
@@ -394,12 +394,12 @@ msgstr "Prijenos podataka je prekinut\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "Datoteka %s već postoji -- ne preuzima se\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(pokušaj:%2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -408,7 +408,7 @@ msgstr ""
 "%s (%s) - zapisano na standardni izlaz %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -418,7 +418,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "Uklanja se %s\n"
@@ -482,7 +482,8 @@ msgstr "Kreira se simbolička poveznica %s -> %s\n"
 #: src/ftp.c:2372
 #, c-format
 msgid "Symlinks not supported, skipping symlink %s.\n"
-msgstr "Simboličke poveznice nisu podržane -- preskače se simveza %s\n"
+msgstr ""
+"Simboličke poveznice (simveza) nisu podržane -- preskače se simveza %s\n"
 
 #: src/ftp.c:2387
 #, c-format
@@ -741,7 +742,7 @@ msgid ""
 "File %s already there; not retrieving.\n"
 "\n"
 msgstr ""
-"Datoteka %s već postoji -- ne preuzima \n"
+"Datoteka %s već postoji -- ne preuzima\n"
 "\n"
 
 #: src/http.c:1834
@@ -779,7 +780,7 @@ msgstr ""
 "Nije uspjelo pročitati odgovor proxy-a: %s.\n"
 "   \n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s GREŠKA %d: %s.\n"
@@ -917,50 +918,50 @@ msgstr "Duljina: "
 msgid "ignored"
 msgstr "zanemareno"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Upozorenje: HTTP ne podržava višeznačnike (wildcards)\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "Spider je omogućen. Provjerite postoji li datoteka na serveru.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "Nije moguće pisati u %s (%s)\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Obvezni atribut manjkaju u preuzetom zaglavlju\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Autentifikacija korisnik/lozinka nije uspjela\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "U WARC datoteku nije moguće pisati\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "U privremenu WARC datoteku nije moguće pisati\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "Nije moguće uspostaviti SSL poveznicu\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "Poveznicu %s (%s) nije moguće ukloniti\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "GREŠKA: Preusmjeravanje (%d) bez cilja (adrese).\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
@@ -968,23 +969,23 @@ msgstr ""
 "Nema Metalink podataka u HTTP odgovoru. Datoteka se preuzima pomoću HTTP "
 "GET.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Nađeno je Metalink zaglavlje. Prelazi se na Metalink način rada.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Datoteka ne postoji na serveru -- nevaljani hyperlink!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Manjka Last-modified zaglavlje -- vremenske oznake se isključuju\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "Nevaljano Last-modified zaglavlje -- vremenska oznaka je zanemarena\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -993,16 +994,16 @@ msgstr ""
 "Lokalna datoteka %s je novija od one na serveru -- ne preuzima se\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Veličine se ne slažu (lokalno %s) -- preuzimamo\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Datoteka na serveru je novija -- preuzima se\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1012,7 +1013,7 @@ msgstr ""
 "preuzima se\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1020,7 +1021,7 @@ msgstr ""
 "Datoteka na serveru postoji, ali nema nikakvih poveznica -- ne preuzima se\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1030,7 +1031,7 @@ msgstr ""
 "ali rekurzija je onemogućena -- ne preuzima se\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1038,12 +1039,12 @@ msgstr ""
 "Datoteka na serveru postoji\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1052,7 +1053,7 @@ msgstr ""
 "%s (%s) - zapisano na standardni izlaz %s[%s/%s]\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1061,27 +1062,27 @@ msgstr ""
 "%s (%s) - %s spremljeno [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - Veza zatvorena na bajtu %s "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - Greška čitanja na bajtu %s (%s)"
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - Greška čitanja na bajtu %s/%s (%s) "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Nepodržana kvaliteta zaštite „%s“\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Nepodržani algoritam „%s“\n"
@@ -1093,7 +1094,7 @@ msgid ""
 msgstr ""
 "%s: WGETRC pokazuje na %s a kojem nije moguće pristupiti zbog greške: %s\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: nije moguće pročitati %s (%s)\n"
@@ -1106,7 +1107,7 @@ msgstr "%s: greška u %s u retku %d\n"
 #: src/init.c:718
 #, c-format
 msgid "%s: Syntax error in %s at line %d.\n"
-msgstr "%s: sintaktična greška u %s u retku %d\n"
+msgstr "%s: sintaktička greška u %s u retku %d\n"
 
 # c-format
 #: src/init.c:723
@@ -3098,17 +3099,17 @@ msgstr ""
 "%s: %s:%d: upozorenje: simbol %s se pojavljuje prije bilo kojeg imena "
 "računala\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: nepoznati simbol „%s“\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Uporaba: %s NETRC [HOSTNAME]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: ne može se dobiti status od %s: %s\n"
@@ -3283,22 +3284,22 @@ msgstr "Nije moguće otvoriti %s: %s\n"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "Učitava se robots.txt; molimo zanemarite greške\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Greška pri obradi proxy URL-a %s: %s\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Greška u proxy URL adresi %s: mora biti HTTP\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "%d: prekoračen je broj preusmjerenja\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3306,7 +3307,7 @@ msgstr ""
 "Završeno.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"

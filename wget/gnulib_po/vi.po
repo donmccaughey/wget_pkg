@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnulib-3.0.0.6062.a6b16\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
+"POT-Creation-Date: 2024-03-10 15:09+0100\n"
 "PO-Revision-Date: 2014-01-13 08:31+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: lib/error.c:193
+#: lib/error.c:194
 msgid "Unknown system error"
 msgstr "Gặp lỗi hệ thống chưa biết"
 
@@ -102,42 +102,42 @@ msgstr "Chuỗi tham số không phải được mã hóa đúng"
 msgid "Unknown error"
 msgstr "Gặp lỗi không rõ"
 
-#: lib/getopt.c:278
+#: lib/getopt.c:282
 #, fuzzy, c-format
 #| msgid "%s: option '-W %s' is ambiguous\n"
 msgid "%s: option '%s%s' is ambiguous\n"
 msgstr "%s: tùy chọn “-W %s” chưa rõ ràng\n"
 
-#: lib/getopt.c:284
+#: lib/getopt.c:288
 #, fuzzy, c-format
 #| msgid "%s: option '%s' is ambiguous; possibilities:"
 msgid "%s: option '%s%s' is ambiguous; possibilities:"
 msgstr "%s: tùy chọn “%s” chưa rõ ràng; khả năng là:"
 
-#: lib/getopt.c:319
+#: lib/getopt.c:322
 #, fuzzy, c-format
 #| msgid "%s: unrecognized option '%c%s'\n"
 msgid "%s: unrecognized option '%s%s'\n"
 msgstr "%s: không nhận ra tùy chọn “%c%s”\n"
 
-#: lib/getopt.c:345
+#: lib/getopt.c:348
 #, fuzzy, c-format
 #| msgid "%s: option '%c%s' doesn't allow an argument\n"
 msgid "%s: option '%s%s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn “%c%s” không cho phép đối số\n"
 
-#: lib/getopt.c:360
+#: lib/getopt.c:363
 #, fuzzy, c-format
 #| msgid "%s: option '--%s' requires an argument\n"
 msgid "%s: option '%s%s' requires an argument\n"
 msgstr "%s: tùy chọn “--%s” yêu cầu một đối số\n"
 
-#: lib/getopt.c:621
+#: lib/getopt.c:624
 #, c-format
 msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: tùy chọn không hợp lệ -- “%c”\n"
 
-#: lib/getopt.c:636 lib/getopt.c:682
+#: lib/getopt.c:639 lib/getopt.c:685
 #, c-format
 msgid "%s: option requires an argument -- '%c'\n"
 msgstr "%s: tùy chọn yêu cầu một đối số -- “%c”\n"

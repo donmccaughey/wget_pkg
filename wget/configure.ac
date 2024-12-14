@@ -1,5 +1,5 @@
 dnl Template file for GNU Autoconf
-dnl Copyright (C) 1995-1997, 2001, 2007-2014, 2018-2023 Free Software
+dnl Copyright (C) 1995-1997, 2001, 2007-2014, 2018-2024 Free Software
 dnl Foundation, Inc.
 
 dnl This program is free software; you can redistribute it and/or modify
@@ -952,6 +952,21 @@ AS_IF([test x"$with_metalink" != xno], [
 ])
 
 dnl
+dnl libproxy support
+dnl
+with_libproxy=no
+AC_ARG_ENABLE(libproxy,
+  [  --enable-libproxy       libproxy support for system wide proxy configuration])
+AS_IF([test "${enable_libproxy}" = "yes"], [
+  with_libproxy=yes
+  PKG_CHECK_MODULES([LIBPROXY], [libproxy-1.0], [
+    LIBS="$LIBPROXY_LIBS $LIBS"
+    CFLAGS="$LIBPROXY_CFLAGS $CFLAGS"
+    AC_DEFINE([HAVE_LIBPROXY], [1], [Define if using libproxy.])
+  ])
+])
+
+dnl
 dnl Extended Attribute support
 dnl
 
@@ -1022,4 +1037,5 @@ AC_MSG_NOTICE([Summary of build options:
   GPGME:             $have_gpg
   IRI:               $iri
   Fuzzing build:     $enable_fuzzing, $LIB_FUZZING_ENGINE
+  libproxy:          $with_libproxy
 ])

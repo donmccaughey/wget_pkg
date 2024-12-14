@@ -6,14 +6,14 @@
 # Volkan Gezer <vlkngzr@gmail.com>, 2013.
 # Alper Tekinalp <alper.tekinalp@gmail.com>, 2017.
 # Mesutcan Kurt <mesutcank@gmail.com>, 2017.
-# Muhammet Kara <muhammetk@gmail.com>, 2016, 2017.
+# Muhammet Kara <muhammetk@gmail.com>, 2016-2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wget 1.18.109\n"
+"Project-Id-Version: wget 1.21.4\n"
 "Report-Msgid-Bugs-To: bug-wget@gnu.org\n"
-"POT-Creation-Date: 2023-05-11 02:59+0200\n"
-"PO-Revision-Date: 2017-06-27 09:52+0300\n"
+"POT-Creation-Date: 2024-03-10 15:08+0100\n"
+"PO-Revision-Date: 2024-02-14 00:16+0300\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 45.3\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "X-POOTLE-MTIME: 1494368779.000000\n"
 
@@ -93,7 +93,7 @@ msgstr "birşey yapılmadı.\n"
 #: src/convert.c:246
 #, c-format
 msgid "%d.\n"
-msgstr ""
+msgstr "%d.\n"
 
 #: src/convert.c:252 src/convert.c:276
 #, c-format
@@ -204,10 +204,8 @@ msgid " (unauthoritative)\n"
 msgstr " (yetkin değil)\n"
 
 #: src/ftp.c:403
-#, fuzzy
-#| msgid "Could not initialize SSL. It will be disabled."
 msgid "Could not initialize SSL. It will be disabled.\n"
-msgstr "SSL ilklendirilemedi. Devre dışı bırakılacak."
+msgstr "SSL ilklendirilemedi. Devre dışı bırakılacak.\n"
 
 #: src/ftp.c:485
 #, c-format
@@ -393,12 +391,12 @@ msgstr "Veri aktarımı kesildi.\n"
 msgid "File %s already there; not retrieving.\n"
 msgstr "%s dosyası zaten orada; indirilmiyor.\n"
 
-#: src/ftp.c:1955 src/http.c:4360
+#: src/ftp.c:1955 src/http.c:4364
 #, c-format
 msgid "(try:%2d)"
 msgstr "(deneme: %2d)"
 
-#: src/ftp.c:2047 src/http.c:4790
+#: src/ftp.c:2047 src/http.c:4794
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s]\n"
@@ -407,7 +405,7 @@ msgstr ""
 "%s (%s) - şuraya yazıldı stdout %s[%s]\n"
 "\n"
 
-#: src/ftp.c:2048 src/http.c:4791
+#: src/ftp.c:2048 src/http.c:4795
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s]\n"
@@ -417,7 +415,7 @@ msgstr ""
 "\n"
 
 #: src/ftp.c:2108 src/main.c:2178 src/metalink.c:1133 src/recur.c:511
-#: src/recur.c:750 src/retr.c:1299
+#: src/recur.c:750 src/retr.c:1303
 #, c-format
 msgid "Removing %s.\n"
 msgstr "%s kaldırılıyor.\n"
@@ -517,13 +515,12 @@ msgstr "%s dışlandığı/dahil edilmediği için alçalmıyor.\n"
 #: src/ftp.c:2644
 #, c-format
 msgid "Rejecting %s.\n"
-msgstr "%s iptal ediliyor.\n"
+msgstr "%s reddediliyor.\n"
 
 #: src/ftp.c:2654
-#, fuzzy, c-format
-#| msgid "Rejecting %s.\n"
+#, c-format
 msgid "Rejecting %s (Invalid Entry).\n"
-msgstr "%s iptal ediliyor.\n"
+msgstr "%s reddediliyor (Geçersiz Girdi).\n"
 
 #: src/ftp.c:2675
 #, fuzzy, c-format
@@ -780,7 +777,7 @@ msgstr "Bağlantı tekrar kullanılıyor: %s:%d.\n"
 msgid "Failed reading proxy response: %s\n"
 msgstr "Vekilin yanıtı okunamadı: %s\n"
 
-#: src/http.c:2183 src/http.c:3460 src/http.c:4586
+#: src/http.c:2183 src/http.c:3460 src/http.c:4590
 #, c-format
 msgid "%s ERROR %d: %s.\n"
 msgstr "%s HATA %d: %s.\n"
@@ -911,73 +908,73 @@ msgstr "Uzunluk: "
 msgid "ignored"
 msgstr "yoksayıldı"
 
-#: src/http.c:4268
+#: src/http.c:4272
 msgid "Warning: wildcards not supported in HTTP.\n"
 msgstr "Uyarı: HTTP ile genel arama karakterleri kullanılamaz.\n"
 
-#: src/http.c:4350
+#: src/http.c:4354
 msgid "Spider mode enabled. Check if remote file exists.\n"
 msgstr "Örümcek kipi etkin. Uzak dosyanın mevcut olup olmadığını denetleyin.\n"
 
-#: src/http.c:4443
+#: src/http.c:4447
 #, c-format
 msgid "Cannot write to %s (%s).\n"
 msgstr "%s (%s) konumuna yazılamıyor.\n"
 
-#: src/http.c:4465
+#: src/http.c:4469
 msgid "Required attribute missing from Header received.\n"
 msgstr "Alınan Başlıktan gerekli nitelik eksik.\n"
 
-#: src/http.c:4470
+#: src/http.c:4474
 msgid "Username/Password Authentication Failed.\n"
 msgstr "Kullanıcı Adı/Parola Kimlik Doğrulaması Başarısız.\n"
 
-#: src/http.c:4476
+#: src/http.c:4480
 msgid "Cannot write to WARC file.\n"
 msgstr "WARC dosyasına yazılamıyor.\n"
 
-#: src/http.c:4482
+#: src/http.c:4486
 msgid "Cannot write to temporary WARC file.\n"
 msgstr "Geçici WARC dosyasına yazılamıyor.\n"
 
-#: src/http.c:4487
+#: src/http.c:4491
 msgid "Unable to establish SSL connection.\n"
 msgstr "SSL bağlantısı kurulamıyor.\n"
 
-#: src/http.c:4493
+#: src/http.c:4497
 #, c-format
 msgid "Cannot unlink %s (%s).\n"
 msgstr "%s (%s) bağlantısı kesilemiyor.\n"
 
-#: src/http.c:4503
+#: src/http.c:4507
 #, c-format
 msgid "ERROR: Redirection (%d) without location.\n"
 msgstr "HATA: Yönlendirmede (%d) yer belirtilmemiş.\n"
 
-#: src/http.c:4525
+#: src/http.c:4529
 msgid ""
 "Could not find Metalink data in HTTP response. Downloading file using HTTP "
 "GET.\n"
 msgstr ""
 "Metalink verisi HTTP yanıtında bulunamadı. Dosya HTTP GET ile indiriliyor.\n"
 
-#: src/http.c:4534
+#: src/http.c:4538
 msgid "Metalink headers found. Switching to Metalink mode.\n"
 msgstr "Metalink başlıkları bulundu. Metalink moduna geçiliyor.\n"
 
-#: src/http.c:4575
+#: src/http.c:4579
 msgid "Remote file does not exist -- broken link!!!\n"
 msgstr "Uzak dosya bulunamıyor -- kırık adres!!!\n"
 
-#: src/http.c:4603
+#: src/http.c:4607
 msgid "Last-modified header missing -- time-stamps turned off.\n"
 msgstr "Last-modified başlığı kayıp -- zaman damgası kapatıldı.\n"
 
-#: src/http.c:4611
+#: src/http.c:4615
 msgid "Last-modified header invalid -- time-stamp ignored.\n"
 msgstr "Last-modified başlığı geçersiz -- zaman damgası yoksayıldı.\n"
 
-#: src/http.c:4641
+#: src/http.c:4645
 #, c-format
 msgid ""
 "Server file no newer than local file %s -- not retrieving.\n"
@@ -986,16 +983,16 @@ msgstr ""
 "Sunucudaki dosya yerel dosya %s ile aynı -- tekrar indirilmiyor.\n"
 "\n"
 
-#: src/http.c:4649
+#: src/http.c:4653
 #, c-format
 msgid "The sizes do not match (local %s) -- retrieving.\n"
 msgstr "Uzunlukları aynı değil (bizdeki %s), -- alınıyor.\n"
 
-#: src/http.c:4658
+#: src/http.c:4662
 msgid "Remote file is newer, retrieving.\n"
 msgstr "Uzak dosya daha yeni, alınıyor.\n"
 
-#: src/http.c:4676
+#: src/http.c:4680
 msgid ""
 "Remote file exists and could contain links to other resources -- "
 "retrieving.\n"
@@ -1005,7 +1002,7 @@ msgstr ""
 "getiriliyor.\n"
 "\n"
 
-#: src/http.c:4682
+#: src/http.c:4686
 msgid ""
 "Remote file exists but does not contain any link -- not retrieving.\n"
 "\n"
@@ -1013,7 +1010,7 @@ msgstr ""
 "Uzak dosya buluntu fakat herhangi bir bağlantı içermiyor -- alınamıyor.\n"
 "\n"
 
-#: src/http.c:4691
+#: src/http.c:4695
 msgid ""
 "Remote file exists and could contain further links,\n"
 "but recursion is disabled -- not retrieving.\n"
@@ -1023,7 +1020,7 @@ msgstr ""
 "fakat önyineleme devredışı -- alınamıyor.\n"
 "\n"
 
-#: src/http.c:4697
+#: src/http.c:4701
 msgid ""
 "Remote file exists.\n"
 "\n"
@@ -1031,12 +1028,12 @@ msgstr ""
 "Uzak dosya mevcut.\n"
 "\n"
 
-#: src/http.c:4706
+#: src/http.c:4710
 #, c-format
 msgid "%s URL: %s %2d %s\n"
 msgstr "%s URL: %s %2d %s\n"
 
-#: src/http.c:4754
+#: src/http.c:4758
 #, c-format
 msgid ""
 "%s (%s) - written to stdout %s[%s/%s]\n"
@@ -1045,7 +1042,7 @@ msgstr ""
 "%s (%s) - stdout %s[%s/%s] içine yazıldı\n"
 "\n"
 
-#: src/http.c:4755
+#: src/http.c:4759
 #, c-format
 msgid ""
 "%s (%s) - %s saved [%s/%s]\n"
@@ -1054,27 +1051,27 @@ msgstr ""
 "%s (%s) - %s kaydedildi [%s/%s]\n"
 "\n"
 
-#: src/http.c:4821
+#: src/http.c:4825
 #, c-format
 msgid "%s (%s) - Connection closed at byte %s. "
 msgstr "%s (%s) - %s baytta bağlantı kesildi. "
 
-#: src/http.c:4844
+#: src/http.c:4848
 #, c-format
 msgid "%s (%s) - Read error at byte %s (%s)."
 msgstr "%s (%s) - %s. baytta okuma hatası (%s)."
 
-#: src/http.c:4853
+#: src/http.c:4857
 #, c-format
 msgid "%s (%s) - Read error at byte %s/%s (%s). "
 msgstr "%s (%s) - %s/%s baytta okuma hatası (%s). "
 
-#: src/http.c:5110
+#: src/http.c:5114
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Desteklenmeyen koruma kalitesi '%s'.\n"
 
-#: src/http.c:5115
+#: src/http.c:5119
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Desteklenmeyen algoritma '%s'.\n"
@@ -1086,7 +1083,7 @@ msgid ""
 "%s: WGETRC points to %s, which couldn't be accessed because of error: %s.\n"
 msgstr "%s: WGETRC olmayan %s dosyasını gösteriyor.\n"
 
-#: src/init.c:695 src/netrc.c:454
+#: src/init.c:695 src/netrc.c:456
 #, c-format
 msgid "%s: Cannot read %s (%s).\n"
 msgstr "%s: %s okunamadı (%s).\n"
@@ -3030,17 +3027,17 @@ msgid "%s: %s:%d: warning: %s token appears before any machine name\n"
 msgstr ""
 "%s: %s:%d: uyarı: %s andacı herhangi bir makine adından önce görünüyor\n"
 
-#: src/netrc.c:414
+#: src/netrc.c:416
 #, c-format
 msgid "%s: %s:%d: unknown token \"%s\"\n"
 msgstr "%s: %s:%d: bilinmeyen dizgecik \"%s\"\n"
 
-#: src/netrc.c:555
+#: src/netrc.c:557
 #, c-format
 msgid "Usage: %s NETRC [HOSTNAME]\n"
 msgstr "Kullanım: %s NETRC [MAKİNA-ADI]\n"
 
-#: src/netrc.c:573
+#: src/netrc.c:575
 #, c-format
 msgid "%s: cannot stat %s: %s\n"
 msgstr "%s: %s durumlanamadı: %s\n"
@@ -3212,22 +3209,22 @@ msgstr "%s açılamıyor: %s"
 msgid "Loading robots.txt; please ignore errors.\n"
 msgstr "robots.txt yükleniyor; lütfen hataları yoksayın.\n"
 
-#: src/retr.c:921
+#: src/retr.c:925
 #, c-format
 msgid "Error parsing proxy URL %s: %s.\n"
 msgstr "Vekil URLsi %s çözümlenirken hata: %s\n"
 
-#: src/retr.c:934
+#: src/retr.c:938
 #, c-format
 msgid "Error in proxy URL %s: Must be HTTP.\n"
 msgstr "Vekil URLsi %s: HTTP olmalı.\n"
 
-#: src/retr.c:1063
+#: src/retr.c:1067
 #, c-format
 msgid "%d redirections exceeded.\n"
 msgstr "%d yönlendirme geçildi.\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Giving up.\n"
 "\n"
@@ -3235,7 +3232,7 @@ msgstr ""
 "Vazgeçiliyor.\n"
 "\n"
 
-#: src/retr.c:1323
+#: src/retr.c:1327
 msgid ""
 "Retrying.\n"
 "\n"
@@ -3554,51 +3551,39 @@ msgstr ""
 #~ msgid "Parameter string not correctly encoded"
 #~ msgstr "Parametre dizgesi doğru bir şekilde kodlanmamış"
 
-#, c-format
 #~ msgid "%s: option '%s' is ambiguous; possibilities:"
 #~ msgstr "%s: '%s' seçeneği belirsiz; olasılıklar:"
 
-#, c-format
 #~ msgid "%s: option '%s' is ambiguous\n"
 #~ msgstr "%s: '%s' seçeneği belirsiz\n"
 
-#, c-format
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: '--%s' seçeneği bağımsız değişkene izin vermiyor\n"
 
-#, c-format
 #~ msgid "%s: option '%c%s' doesn't allow an argument\n"
 #~ msgstr "%s: '%c%s' seçeneği bağımsız değişkene izin vermiyor\n"
 
-#, c-format
 #~ msgid "%s: option '--%s' requires an argument\n"
 #~ msgstr "%s: '--%s' seçeneği bağımsız bir değişken gerektiriyor\n"
 
-#, c-format
 #~ msgid "%s: unrecognized option '--%s'\n"
 #~ msgstr "%s: tanınmayan seçenek '--%s'\n"
 
-#, c-format
 #~ msgid "%s: unrecognized option '%c%s'\n"
 #~ msgstr "%s: tanınmayan seçenek '%c%s'\n"
 
-#, c-format
 #~ msgid "%s: invalid option -- '%c'\n"
 #~ msgstr "%s: geçersiz seçenek -- '%c'\n"
 
-#, c-format
 #~ msgid "%s: option requires an argument -- '%c'\n"
 #~ msgstr "%s: seçenek bir bağımsız değişken gerektiriyor -- '%c'\n"
 
-#, c-format
 #~ msgid "%s: option '-W %s' is ambiguous\n"
 #~ msgstr "%s: '-W %s' seçeneği belirsiz\n"
 
-#, c-format
 #~ msgid "%s: option '-W %s' doesn't allow an argument\n"
 #~ msgstr "%s: '-W %s' seçeneği bağımsız bir değişkene izin vermiyor\n"
 
-#, c-format
 #~ msgid "%s: option '-W %s' requires an argument\n"
 #~ msgstr "%s: '-W %s' seçeneği bağımsız bir değişken gerektiriyor\n"
 
@@ -3662,27 +3647,21 @@ msgstr ""
 #~ msgid "No previous regular expression"
 #~ msgstr "Önceki düzenli ifade yok"
 
-#, c-format
 #~ msgid "cannot create pipe"
 #~ msgstr "veriyolu oluşturulamıyor"
 
-#, c-format
 #~ msgid "%s subprocess failed"
 #~ msgstr "%s alt süreç başarısız"
 
-#, c-format
 #~ msgid "_open_osfhandle failed"
 #~ msgstr "_open_osfhandle başarısız"
 
-#, c-format
 #~ msgid "cannot restore fd %d: dup2 failed"
 #~ msgstr "fd geri yüklenemiyor %d: dup2 başarısız"
 
-#, c-format
 #~ msgid "%s subprocess"
 #~ msgstr "%s alt süreç"
 
-#, c-format
 #~ msgid "%s subprocess got fatal signal %d"
 #~ msgstr "%s alt süreci %d ölümcül sinyalini aldı"
 
@@ -3693,7 +3672,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Yazılım hatalarını ve önerilerinizi <bug-wget@gnu.org> adresine bildirin\n"
 
-#, c-format
 #~ msgid "File `%s' already there; not retrieving.\n"
 #~ msgstr "`%s' dosyası zaten var; alınmayacak.\n"
 

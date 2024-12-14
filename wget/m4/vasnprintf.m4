@@ -1,5 +1,5 @@
-# vasnprintf.m4 serial 49
-dnl Copyright (C) 2002-2004, 2006-2023 Free Software Foundation, Inc.
+# vasnprintf.m4 serial 52
+dnl Copyright (C) 2002-2004, 2006-2024 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -94,6 +94,7 @@ AC_DEFUN_ONCE([gl_PREREQ_VASNPRINTF],
 # Prerequisites of lib/vasnwprintf.c.
 AC_DEFUN_ONCE([gl_PREREQ_VASNWPRINTF],
 [
+  AC_REQUIRE([AC_CANONICAL_HOST]) dnl for cross-compiles
   AC_CHECK_FUNCS_ONCE([swprintf wcsnlen mbrtowc])
   AC_CHECK_DECLS([_snwprintf], , , [[#include <stdio.h>]])
   AC_CHECK_DECLS([wcsnlen], , , [[#include <wchar.h>]])
@@ -107,13 +108,56 @@ AC_DEFUN_ONCE([gl_PREREQ_VASNWPRINTF],
   esac
   gl_MBRTOWC_C_LOCALE
   case "$gl_cv_func_mbrtowc_C_locale_sans_EILSEQ" in
-    *yes) ;;
-    *)
-      AC_DEFINE([NEED_WPRINTF_DIRECTIVE_C], [1],
-        [Define if the vasnwprintf implementation needs special code for
-         the 'c' directive.])
+    *yes)
+      AC_CACHE_CHECK([whether swprintf in the C locale is free of encoding errors],
+        [gl_cv_func_swprintf_C_locale_sans_EILSEQ],
+        [
+          AC_RUN_IFELSE(
+            [AC_LANG_SOURCE([[
+#ifndef __USE_MINGW_ANSI_STDIO
+# define __USE_MINGW_ANSI_STDIO 1
+#endif
+#include <stdio.h>
+#include <wchar.h>
+int main()
+{
+  int result = 0;
+  { /* This test fails on glibc 2.35, musl libc 1.2.4, FreeBSD 13.2, NetBSD 9.3,
+       OpenBSD 7.2, Cygwin 2.9.0.
+       Reported at <https://www.openwall.com/lists/musl/2023/06/12/2>.  */
+    wchar_t buf[12];
+    int ret = swprintf (buf, 12, L"%c", '\377');
+    if (ret < 0)
+      result |= 1;
+  }
+  return result;
+}]])],
+            [gl_cv_func_swprintf_C_locale_sans_EILSEQ=yes],
+            [gl_cv_func_swprintf_C_locale_sans_EILSEQ=no],
+            [case "$host_os" in
+                                   # Guess no on glibc systems.
+               *-gnu* | gnu*)      gl_cv_func_swprintf_C_locale_sans_EILSEQ="guessing yes";;
+                                   # Guess no on musl systems.
+               *-musl* | midipix*) gl_cv_func_swprintf_C_locale_sans_EILSEQ="guessing no";;
+                                   # If we don't know, obey --enable-cross-guesses.
+               *)                  gl_cv_func_swprintf_C_locale_sans_EILSEQ="$gl_cross_guess_normal";;
+             esac
+            ])
+        ])
       ;;
   esac
+  if case "$gl_cv_func_mbrtowc_C_locale_sans_EILSEQ" in
+       *yes) false ;;
+       *) true ;;
+     esac \
+     || case "$gl_cv_func_swprintf_C_locale_sans_EILSEQ" in
+          *yes) false ;;
+          *) true ;;
+        esac; then
+    AC_DEFINE([NEED_WPRINTF_DIRECTIVE_C], [1],
+      [Define if the vasnwprintf implementation needs special code for
+       the 'c' directive.])
+  fi
   gl_SWPRINTF_DIRECTIVE_LA
   case "$gl_cv_func_swprintf_directive_la" in
     *yes) ;;
@@ -121,6 +165,15 @@ AC_DEFUN_ONCE([gl_PREREQ_VASNWPRINTF],
       AC_DEFINE([NEED_WPRINTF_DIRECTIVE_LA], [1],
         [Define if the vasnwprintf implementation needs special code for
          the 'a' directive with 'long double' arguments.])
+      ;;
+  esac
+  gl_SWPRINTF_DIRECTIVE_LC
+  case "$gl_cv_func_swprintf_directive_lc" in
+    *yes) ;;
+    *)
+      AC_DEFINE([NEED_WPRINTF_DIRECTIVE_LC], [1],
+        [Define if the vasnwprintf implementation needs special code for
+         the 'lc' directive.])
       ;;
   esac
   gl_MUSL_LIBC
@@ -315,6 +368,22 @@ AC_DEFUN([gl_PREREQ_VASNPRINTF_FLAG_ZERO],
   esac
 ])
 
+# Extra prerequisites of lib/vasnprintf.c for supporting the # flag with a
+# zero precision and a zero value in the 'x' and 'X' directives.
+AC_DEFUN([gl_PREREQ_VASNPRINTF_FLAG_ALT_PRECISION_ZERO],
+[
+  AC_REQUIRE([gl_PRINTF_FLAG_ALT_PRECISION_ZERO])
+  case "$gl_cv_func_printf_flag_alt_precision_zero" in
+    *yes)
+      ;;
+    *)
+      AC_DEFINE([NEED_PRINTF_FLAG_ALT_PRECISION_ZERO], [1],
+        [Define if the vasnprintf implementation needs special code for the
+         # flag with a zero precision and a zero value in the 'x' and 'X' directives.])
+      ;;
+  esac
+])
+
 # Extra prerequisites of lib/vasnprintf.c for supporting large precisions.
 AC_DEFUN([gl_PREREQ_VASNPRINTF_PRECISION],
 [
@@ -373,6 +442,7 @@ AC_DEFUN([gl_PREREQ_VASNPRINTF_WITH_POSIX_EXTRAS],
   gl_PREREQ_VASNPRINTF_FLAG_GROUPING
   gl_PREREQ_VASNPRINTF_FLAG_LEFTADJUST
   gl_PREREQ_VASNPRINTF_FLAG_ZERO
+  gl_PREREQ_VASNPRINTF_FLAG_ALT_PRECISION_ZERO
   gl_PREREQ_VASNPRINTF_PRECISION
   gl_PREREQ_VASNPRINTF_ENOMEM
 ])

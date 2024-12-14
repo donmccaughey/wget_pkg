@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2023 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2024 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This file is free software: you can redistribute it and/or modify
@@ -114,13 +114,21 @@
    FIXME - if the kernel ever adds support for multi-thread safety for
    avoiding standard fds, then we should use opendir_safer and
    openat_safer.  */
-#ifdef GNULIB_defined_opendir
+#ifdef GNULIB_defined_DIR
+# undef DIR
 # undef opendir
-#endif
-#ifdef GNULIB_defined_closedir
 # undef closedir
+# undef readdir
+# undef rewinddir
+#else
+# ifdef GNULIB_defined_opendir
+#  undef opendir
+# endif
+# ifdef GNULIB_defined_closedir
+#  undef closedir
+# endif
 #endif
-
+
 #if defined _WIN32 && !defined __CYGWIN__
 # if HAVE_MSVC_INVALID_PARAMETER_HANDLER
 static char *

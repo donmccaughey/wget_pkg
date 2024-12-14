@@ -1,6 +1,6 @@
 /* Provide a more complete sys/file.h.
 
-   Copyright (C) 2007-2023 Free Software Foundation, Inc.
+   Copyright (C) 2007-2024 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -43,7 +43,7 @@
 # define LOCK_EX 2       /* Exclusive lock.  */
 # define LOCK_UN 8       /* Unlock.  */
 
-/* Can be OR'd in to one of the above.  */
+/* Can be OR'd into one of the above.  */
 # define LOCK_NB 4       /* Don't block when locking.  */
 #endif
 

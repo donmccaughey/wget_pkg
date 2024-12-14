@@ -1,5 +1,5 @@
 /* Guts of POSIX spawn interface.  Generic POSIX.1 version.
-   Copyright (C) 2000-2006, 2008-2023 Free Software Foundation, Inc.
+   Copyright (C) 2000-2006, 2008-2024 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This file is free software: you can redistribute it and/or modify
@@ -857,7 +857,7 @@ __spawni (pid_t *pid, const char *prog_filename,
 /* The warning "warning: 'vfork' is deprecated: Use posix_spawn or fork" seen
    on macOS 12 is pointless, as we use vfork only when it is safe or when the
    user has explicitly requested it.  Silence this warning.  */
-#if __GNUC__ >= 3
+#if _GL_GNUC_PREREQ (4, 2)
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
