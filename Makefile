@@ -4,7 +4,7 @@ NOTARIZATION_KEYCHAIN_PROFILE ?= Donald McCaughey
 TMP ?= $(abspath tmp)
 
 version := 1.25.0
-libiconv_version := 1.17
+libiconv_version := 1.18
 openssl_version := 3.4.0
 zlib_version := 1.3.1
 revision := 1
