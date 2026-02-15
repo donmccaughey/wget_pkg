@@ -6,6 +6,7 @@ TMP ?= $(abspath tmp)
 version := 1.25.0
 libiconv_version := 1.18
 openssl_version := 3.5.5
+pcre2_version := 10.47
 zlib_version := 1.3.1
 revision := 1
 archs := arm64 x86_64
@@ -226,6 +227,46 @@ $(TMP)/openssl/install/usr/local/lib :
 	mkdir -p $@
 
 
+#### pcre2 ##########
+
+pcre2_config_options := \
+		--disable-shared \
+		--enable-jit \
+		--enable-static \
+		CFLAGS='$(CFLAGS)'
+
+pcre2_sources := $(shell find pcre2 -type f \! -name .DS_Store)
+
+$(TMP)/pcre2/install/usr/local/include/pcre2.h \
+$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a : $(TMP)/pcre2/installed.stamp.txt
+	@:
+
+$(TMP)/pcre2/installed.stamp.txt : \
+		$(TMP)/pcre2/build/src/pcre2.h \
+		$(TMP)/pcre2/build/.libs/libpcre2-8.a \
+		| $$(dir $$@)
+	cd $(TMP)/pcre2/build && $(MAKE) DESTDIR=$(TMP)/pcre2/install install
+	date > $@
+
+$(TMP)/pcre2/build/src/pcre2.h \
+$(TMP)/pcre2/build/.libs/libpcre2-8.a : $(TMP)/pcre2/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/pcre2/built.stamp.txt : $(TMP)/pcre2/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/pcre2/build && $(MAKE)
+	date > $@
+
+$(TMP)/pcre2/configured.stamp.txt : $(pcre2_sources) | $(TMP)/pcre2/build
+	cd $(TMP)/pcre2/build \
+			&& $(abspath pcre2/configure) $(pcre2_config_options)
+	date > $@
+
+$(TMP)/pcre2 \
+$(TMP)/pcre2/build \
+$(TMP)/pcre2/install :
+	mkdir -p $@
+
+
 #### zlib ##########
 
 zlib_config_options := \
@@ -269,13 +310,14 @@ $(TMP)/zlib/install :
 wget_configure_options := \
 		--disable-silent-rules \
 		--disable-iri \
-		--disable-pcre2 \
 		--disable-pcre \
 		--without-libpsl \
 		--with-ssl=openssl \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
 		CFLAGS='$(CFLAGS)' \
+		PCRE2_CFLAGS='-I $(TMP)/pcre2/install/usr/local/include' \
+		PCRE2_LIBS='$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a' \
 		ZLIB_CFLAGS='-I $(TMP)/zlib/install/usr/local/include' \
 		ZLIB_LIBS='-lz -L$(TMP)/zlib/install/usr/local/lib'
 
@@ -298,6 +340,8 @@ $(TMP)/wget/build/config.status : \
 				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
 				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
 				$(TMP)/openssl/install/usr/local/lib/libssl.a \
+				$(TMP)/pcre2/install/usr/local/include/pcre2.h \
+				$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a \
 				$(TMP)/zlib/install/usr/local/include/zlib.h \
 				$(TMP)/zlib/install/usr/local/lib/libz.a \
 				| $(TMP)/wget/build
@@ -372,6 +416,7 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Software Version: %s\n' "$(version)" >> $@
 	printf 'libiconv Version: %s\n' "$(libiconv_version)" >> $@
 	printf 'OpenSSL Version: %s\n' "$(openssl_version)" >> $@
+	printf 'PCRE2 Version: %s\n' "$(pcre2_version)" >> $@
 	printf 'zlib Version: %s\n' "$(zlib_version)" >> $@
 	printf 'Installer Revision: %s\n' "$(revision)" >> $@
 	printf 'Architectures: %s\n' "$(arch_list)" >> $@
