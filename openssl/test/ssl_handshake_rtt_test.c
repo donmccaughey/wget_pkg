@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2023-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -12,7 +12,7 @@
  * when the deprecated calls are not hidden
  */
 #ifndef OPENSSL_NO_DEPRECATED_3_0
-# define OPENSSL_SUPPRESS_DEPRECATED
+#define OPENSSL_SUPPRESS_DEPRECATED
 #endif
 
 #include <stdio.h>
@@ -30,6 +30,7 @@
 #include "internal/ktls.h"
 #include "../ssl/ssl_local.h"
 #include "../ssl/statem/statem_local.h"
+#include "internal/ssl_unwrap.h"
 
 static OSSL_LIB_CTX *libctx = NULL;
 static char *cert = NULL;
@@ -61,13 +62,13 @@ static int test_handshake_rtt(int tst)
 #endif
 
     if (!TEST_true(create_ssl_ctx_pair(libctx, TLS_server_method(),
-                                       TLS_client_method(),
-                                       TLS1_VERSION,
-                                       (tst <= 1) ? TLS1_2_VERSION
-                                                  : TLS1_3_VERSION,
-                                       &sctx, &cctx, cert, privkey))
-            || !TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL)))
+            TLS_client_method(),
+            TLS1_VERSION,
+            (tst <= 1) ? TLS1_2_VERSION
+                       : TLS1_3_VERSION,
+            &sctx, &cctx, cert, privkey))
+        || !TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
+            NULL, NULL)))
         goto end;
 
     s = SSL_CONNECTION_FROM_SSL(tst % 2 == 0 ? clientssl : serverssl);
@@ -121,7 +122,7 @@ static int test_handshake_rtt(int tst)
 
     testresult = 1;
 
- end:
+end:
     SSL_free(serverssl);
     SSL_free(clientssl);
     SSL_CTX_free(sctx);

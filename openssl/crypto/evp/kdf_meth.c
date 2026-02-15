@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2019-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -56,8 +56,8 @@ static void *evp_kdf_new(void)
 }
 
 static void *evp_kdf_from_algorithm(int name_id,
-                                    const OSSL_ALGORITHM *algodef,
-                                    OSSL_PROVIDER *prov)
+    const OSSL_ALGORITHM *algodef,
+    OSSL_PROVIDER *prov)
 {
     const OSSL_DISPATCH *fns = algodef->implementation;
     EVP_KDF *kdf = NULL;
@@ -68,10 +68,9 @@ static void *evp_kdf_from_algorithm(int name_id,
         return NULL;
     }
     kdf->name_id = name_id;
-    if ((kdf->type_name = ossl_algorithm_get1_first_name(algodef)) == NULL) {
-        evp_kdf_free(kdf);
-        return NULL;
-    }
+    if ((kdf->type_name = ossl_algorithm_get1_first_name(algodef)) == NULL)
+        goto err;
+
     kdf->description = algodef->algorithm_description;
 
     for (; fns->function_id != 0; fns++) {
@@ -107,20 +106,17 @@ static void *evp_kdf_from_algorithm(int name_id,
         case OSSL_FUNC_KDF_GETTABLE_PARAMS:
             if (kdf->gettable_params != NULL)
                 break;
-            kdf->gettable_params =
-                OSSL_FUNC_kdf_gettable_params(fns);
+            kdf->gettable_params = OSSL_FUNC_kdf_gettable_params(fns);
             break;
         case OSSL_FUNC_KDF_GETTABLE_CTX_PARAMS:
             if (kdf->gettable_ctx_params != NULL)
                 break;
-            kdf->gettable_ctx_params =
-                OSSL_FUNC_kdf_gettable_ctx_params(fns);
+            kdf->gettable_ctx_params = OSSL_FUNC_kdf_gettable_ctx_params(fns);
             break;
         case OSSL_FUNC_KDF_SETTABLE_CTX_PARAMS:
             if (kdf->settable_ctx_params != NULL)
                 break;
-            kdf->settable_ctx_params =
-                OSSL_FUNC_kdf_settable_ctx_params(fns);
+            kdf->settable_ctx_params = OSSL_FUNC_kdf_settable_ctx_params(fns);
             break;
         case OSSL_FUNC_KDF_GET_PARAMS:
             if (kdf->get_params != NULL)
@@ -145,23 +141,27 @@ static void *evp_kdf_from_algorithm(int name_id,
          * a derive function, and a complete set of context management
          * functions.
          */
-        evp_kdf_free(kdf);
         ERR_raise(ERR_LIB_EVP, EVP_R_INVALID_PROVIDER_FUNCTIONS);
-        return NULL;
+        goto err;
     }
+    if (prov != NULL && !ossl_provider_up_ref(prov))
+        goto err;
+
     kdf->prov = prov;
-    if (prov != NULL)
-        ossl_provider_up_ref(prov);
 
     return kdf;
+
+err:
+    evp_kdf_free(kdf);
+    return NULL;
 }
 
 EVP_KDF *EVP_KDF_fetch(OSSL_LIB_CTX *libctx, const char *algorithm,
-                       const char *properties)
+    const char *properties)
 {
     return evp_generic_fetch(libctx, OSSL_OP_KDF, algorithm, properties,
-                             evp_kdf_from_algorithm, evp_kdf_up_ref,
-                             evp_kdf_free);
+        evp_kdf_from_algorithm, evp_kdf_up_ref,
+        evp_kdf_free);
 }
 
 int EVP_KDF_up_ref(EVP_KDF *kdf)
@@ -222,10 +222,10 @@ const OSSL_PARAM *EVP_KDF_CTX_settable_params(EVP_KDF_CTX *ctx)
 }
 
 void EVP_KDF_do_all_provided(OSSL_LIB_CTX *libctx,
-                             void (*fn)(EVP_KDF *kdf, void *arg),
-                             void *arg)
+    void (*fn)(EVP_KDF *kdf, void *arg),
+    void *arg)
 {
     evp_generic_do_all(libctx, OSSL_OP_KDF,
-                       (void (*)(void *, void *))fn, arg,
-                       evp_kdf_from_algorithm, evp_kdf_up_ref, evp_kdf_free);
+        (void (*)(void *, void *))fn, arg,
+        evp_kdf_from_algorithm, evp_kdf_up_ref, evp_kdf_free);
 }

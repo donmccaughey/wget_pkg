@@ -1,5 +1,5 @@
 /*
- * Copyright 2005-2023 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2005-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -8,9 +8,10 @@
  */
 
 #include "ssl_local.h"
+#include "internal/ssl_unwrap.h"
 
 int dtls1_write_app_data_bytes(SSL *s, uint8_t type, const void *buf_,
-                               size_t len, size_t *written)
+    size_t len, size_t *written)
 {
     int i;
     SSL_CONNECTION *sc = SSL_CONNECTION_FROM_SSL_ONLY(s);
@@ -39,7 +40,7 @@ int dtls1_write_app_data_bytes(SSL *s, uint8_t type, const void *buf_,
 int dtls1_dispatch_alert(SSL *ssl)
 {
     int i, j;
-    void (*cb) (const SSL *ssl, int type, int val) = NULL;
+    void (*cb)(const SSL *ssl, int type, int val) = NULL;
     unsigned char buf[DTLS1_AL_HEADER_LENGTH];
     unsigned char *ptr = &buf[0];
     size_t written;
@@ -63,7 +64,7 @@ int dtls1_dispatch_alert(SSL *ssl)
 
         if (s->msg_callback)
             s->msg_callback(1, s->version, SSL3_RT_ALERT, s->s3.send_alert,
-                            2, ssl, s->msg_callback_arg);
+                2, ssl, s->msg_callback_arg);
 
         if (s->info_callback != NULL)
             cb = s->info_callback;

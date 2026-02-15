@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# Copyright 2023-2024 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2023-2025 The OpenSSL Project Authors. All Rights Reserved.
 #
 # Licensed under the Apache License 2.0 (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
@@ -80,6 +80,7 @@ my %params = (
     'OBJECT_PARAM_REFERENCE' =>         "reference",# OCTET_STRING
     'OBJECT_PARAM_DATA' =>              "data",# OCTET_STRING or UTF8_STRING
     'OBJECT_PARAM_DESC' =>              "desc",     # UTF8_STRING
+    'OBJECT_PARAM_INPUT_TYPE' =>        "input-type", # UTF8_STRING
 
 # Algorithm parameters
 # If "engine",or "properties",are specified, they should always be paired
@@ -124,6 +125,7 @@ my %params = (
     'CIPHER_PARAM_NUM' =>                  "num",         # uint
     'CIPHER_PARAM_ROUNDS' =>               "rounds",      # uint
     'CIPHER_PARAM_AEAD_TAG' =>             "tag",         # octet_string
+    'CIPHER_PARAM_PIPELINE_AEAD_TAG' =>    "pipeline-tag",# octet_ptr
     'CIPHER_PARAM_AEAD_TLS1_AAD' =>        "tlsaad",      # octet_string
     'CIPHER_PARAM_AEAD_TLS1_AAD_PAD' =>    "tlsaadpad",   # size_t
     'CIPHER_PARAM_AEAD_TLS1_IV_FIXED' =>   "tlsivfixed",  # octet_string
@@ -302,6 +304,9 @@ my %params = (
     'PKEY_PARAM_DIST_ID' =>             "distid",
     'PKEY_PARAM_PUB_KEY' =>             "pub",
     'PKEY_PARAM_PRIV_KEY' =>            "priv",
+    # PKEY_PARAM_IMPLICIT_REJECTION isn't actually used, or meaningful.  We keep
+    # it for API stability, but please use ASYM_CIPHER_PARAM_IMPLICIT_REJECTION
+    # instead.
     'PKEY_PARAM_IMPLICIT_REJECTION' =>  "implicit-rejection",
     'PKEY_PARAM_FIPS_DIGEST_CHECK' =>   "digest-check",
     'PKEY_PARAM_FIPS_KEY_CHECK' =>      "key-check",
@@ -413,6 +418,14 @@ my %params = (
 # EC, X25519 and X448 Key generation parameters
     'PKEY_PARAM_DHKEM_IKM' =>        "dhkem-ikm",
 
+# ML-KEM parameters
+    'PKEY_PARAM_ML_KEM_SEED' => "seed",
+    'PKEY_PARAM_ML_KEM_PREFER_SEED' => "ml-kem.prefer_seed",
+    'PKEY_PARAM_ML_KEM_RETAIN_SEED' => "ml-kem.retain_seed",
+    'PKEY_PARAM_ML_KEM_INPUT_FORMATS' => "ml-kem.input_formats",
+    'PKEY_PARAM_ML_KEM_OUTPUT_FORMATS' => "ml-kem.output_formats",
+    'PKEY_PARAM_ML_KEM_IMPORT_PCT_TYPE' => "ml-kem.import_pct_type",
+
 # Key generation parameters
     'PKEY_PARAM_FFC_TYPE' =>         "type",
     'PKEY_PARAM_FFC_PBITS' =>        "pbits",
@@ -426,6 +439,16 @@ my %params = (
     'PKEY_PARAM_EC_INCLUDE_PUBLIC' =>          "include-public",
     'PKEY_PARAM_FIPS_SIGN_CHECK' =>            "sign-check",
     'PKEY_PARAM_FIPS_APPROVED_INDICATOR' => '*ALG_PARAM_FIPS_APPROVED_INDICATOR',
+
+# ML_DSA Key generation parameter
+    'PKEY_PARAM_ML_DSA_SEED' =>             "seed",
+    'PKEY_PARAM_ML_DSA_RETAIN_SEED' =>      "ml-dsa.retain_seed",
+    'PKEY_PARAM_ML_DSA_PREFER_SEED' =>      "ml-dsa.prefer_seed",
+    'PKEY_PARAM_ML_DSA_INPUT_FORMATS' =>    "ml-dsa.input_formats",
+    'PKEY_PARAM_ML_DSA_OUTPUT_FORMATS' =>   "ml-dsa.output_formats",
+
+# SLH_DSA Key generation parameters
+    'PKEY_PARAM_SLH_DSA_SEED' =>              "seed",
 
 # Key Exchange parameters
     'EXCHANGE_PARAM_PAD' =>                   "pad",# uint
@@ -462,6 +485,11 @@ my %params = (
     'SIGNATURE_PARAM_FIPS_SIGN_X931_PAD_CHECK' => "sign-x931-pad-check",
     'SIGNATURE_PARAM_FIPS_APPROVED_INDICATOR' => '*ALG_PARAM_FIPS_APPROVED_INDICATOR',
     'SIGNATURE_PARAM_SIGNATURE' =>          "signature",
+    'SIGNATURE_PARAM_MESSAGE_ENCODING' =>   "message-encoding",
+    'SIGNATURE_PARAM_DETERMINISTIC' =>      "deterministic",
+    'SIGNATURE_PARAM_MU' =>                 "mu", # int
+    'SIGNATURE_PARAM_TEST_ENTROPY' =>       "test-entropy",
+    'SIGNATURE_PARAM_ADD_RANDOM' =>         "additional-random",
 
 # Asym cipher parameters
     'ASYM_CIPHER_PARAM_DIGEST' =>                   '*PKEY_PARAM_DIGEST',
@@ -545,6 +573,8 @@ my %params = (
     'CAPABILITY_TLS_SIGALG_SECURITY_BITS' =>     "tls-sigalg-sec-bits",
     'CAPABILITY_TLS_SIGALG_MIN_TLS' =>           "tls-min-tls",
     'CAPABILITY_TLS_SIGALG_MAX_TLS' =>           "tls-max-tls",
+    'CAPABILITY_TLS_SIGALG_MIN_DTLS' =>          "tls-min-dtls",
+    'CAPABILITY_TLS_SIGALG_MAX_DTLS' =>          "tls-max-dtls",
 
 # storemgmt parameters
 
@@ -587,6 +617,10 @@ my %params = (
     'LIBSSL_RECORD_LAYER_PARAM_MAX_EARLY_DATA' => "max_early_data",
     'LIBSSL_RECORD_LAYER_PARAM_BLOCK_PADDING' =>  "block_padding",
     'LIBSSL_RECORD_LAYER_PARAM_HS_PADDING' =>     "hs_padding",
+
+# Symmetric Key parameters
+    'SKEY_PARAM_RAW_BYTES' => "raw-bytes",
+    'SKEY_PARAM_KEY_LENGTH' => "key-length",
 );
 
 # Generate string based macros for public consumption

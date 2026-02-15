@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2024 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2022-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -18,9 +18,10 @@
 #include "crypto/riscv_arch.h"
 
 #ifdef OSSL_RISCV_HWPROBE
-# include <unistd.h>
-# include <sys/syscall.h>
-# include <asm/hwprobe.h>
+#include <unistd.h>
+#include <sys/syscall.h>
+#include <asm/hwprobe.h>
+#include <sys/auxv.h>
 #endif
 
 extern size_t riscv_vlen_asm(void);
@@ -29,6 +30,10 @@ static void parse_env(const char *envstr);
 static void strtoupper(char *str);
 
 static size_t vlen = 0;
+
+#ifdef OSSL_RISCV_HWPROBE
+unsigned int OPENSSL_riscv_hwcap_P = 0;
+#endif
 
 uint32_t OPENSSL_rdtsc(void)
 {
@@ -71,16 +76,15 @@ static void parse_env(const char *envstr)
         BIO_snprintf(buf, BUFLEN, "_%s", RISCV_capabilities[i].name);
         if (strstr(envstrupper, buf) != NULL) {
             /* Match, set relevant bit in OPENSSL_riscvcap_P[] */
-            OPENSSL_riscvcap_P[RISCV_capabilities[i].index] |=
-                (1 << RISCV_capabilities[i].bit_offset);
+            OPENSSL_riscvcap_P[RISCV_capabilities[i].index] |= (1 << RISCV_capabilities[i].bit_offset);
         }
     }
 }
 
 #ifdef OSSL_RISCV_HWPROBE
 static long riscv_hwprobe(struct riscv_hwprobe *pairs, size_t pair_count,
-                          size_t cpu_count, unsigned long *cpus,
-                          unsigned int flags)
+    size_t cpu_count, unsigned long *cpus,
+    unsigned int flags)
 {
     return syscall(__NR_riscv_hwprobe, pairs, pair_count, cpu_count, cpus, flags);
 }
@@ -98,11 +102,11 @@ static void hwprobe_to_cap(void)
         for (size_t i = 0; i < kRISCVNumCaps; ++i) {
             for (size_t j = 0; j != OSSL_RISCV_HWPROBE_PAIR_COUNT; ++j) {
                 if (pairs[j].key == RISCV_capabilities[i].hwprobe_key
-                        && (pairs[j].value & RISCV_capabilities[i].hwprobe_value)
-                           != 0)
-                    /* Match, set relevant bit in OPENSSL_riscvcap_P[] */
-                    OPENSSL_riscvcap_P[RISCV_capabilities[i].index] |=
-                        (1 << RISCV_capabilities[i].bit_offset);
+                    && (pairs[j].value & RISCV_capabilities[i].hwprobe_value)
+                        != 0)
+                    if (!IS_IN_DEPEND_VECTOR(RISCV_capabilities[i].bit_offset) || VECTOR_CAPABLE)
+                        /* Match, set relevant bit in OPENSSL_riscvcap_P[] */
+                        OPENSSL_riscvcap_P[RISCV_capabilities[i].index] |= (1 << RISCV_capabilities[i].bit_offset);
             }
         }
     }
@@ -114,9 +118,9 @@ size_t riscv_vlen(void)
     return vlen;
 }
 
-# if defined(__GNUC__) && __GNUC__>=2
-__attribute__ ((constructor))
-# endif
+#if defined(__GNUC__) && __GNUC__ >= 2
+__attribute__((constructor))
+#endif
 void OPENSSL_cpuid_setup(void)
 {
     char *e;
@@ -131,6 +135,7 @@ void OPENSSL_cpuid_setup(void)
     }
 #ifdef OSSL_RISCV_HWPROBE
     else {
+        OPENSSL_riscv_hwcap_P = getauxval(AT_HWCAP);
         hwprobe_to_cap();
     }
 #endif

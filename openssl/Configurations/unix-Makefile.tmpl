@@ -3,6 +3,8 @@
 ##
 ## {- join("\n## ", @autowarntext) -}
 {-
+     use Time::Piece;
+
      use OpenSSL::Util;
 
      our $makedep_scheme = $config{makedep_scheme};
@@ -74,6 +76,15 @@ FIPSKEY={- $config{FIPSKEY} -}
 
 VERSION={- "$config{full_version}" -}
 VERSION_NUMBER={- "$config{version}" -}
+RELEASE_DATE={- my $t = localtime;
+		if ($config{"release_date"}) {
+			# Provide the user with a more meaningful error message
+			# than the default internal parsing error from
+			# `Time::Piece->strptime(..)`.
+			eval { $t = Time::Piece->strptime($config{"release_date"}, "%d %b %Y"); } ||
+				die "Parsing \$config{release_date} ('$config{release_date}') failed: $@";
+		}
+		$t->strftime("%Y-%m-%d") -}
 MAJOR={- $config{major} -}
 MINOR={- $config{minor} -}
 SHLIB_VERSION_NUMBER={- $config{shlib_version} -}
@@ -135,7 +146,7 @@ GENERATED_PODS={- # common0.tmpl provides @generated
                        fill_lines(" ", $COLUMNS - 15,
                                   map { my $x = $_;
                                         (
-                                          grep { 
+                                          grep {
                                                  $unified_info{attributes}->{depends}
                                                  ->{$x}->{$_}->{pod} // 0
                                                }
@@ -809,12 +820,12 @@ install_dev: install_runtime_libs
 		cp $$e "$(DESTDIR)$(PKGCONFIGDIR)/$$fn"; \
 		chmod 644 "$(DESTDIR)$(PKGCONFIGDIR)/$$fn"; \
 	done
-	@$(PERL) $(SRCDIR)/util/mkdir-p.pl $(DESTDIR)$(CMAKECONFIGDIR)
+	@$(PERL) $(SRCDIR)/util/mkdir-p.pl "$(DESTDIR)$(CMAKECONFIGDIR)"
 	@for e in $(INSTALL_EXPORTERS_CMAKE); do \
 		fn=`basename $$e`; \
 		$(ECHO) "install $$e -> $(DESTDIR)$(CMAKECONFIGDIR)/$$fn"; \
-		cp $$e $(DESTDIR)$(CMAKECONFIGDIR)/$$fn; \
-		chmod 644 $(DESTDIR)$(CMAKECONFIGDIR)/$$fn; \
+		cp $$e "$(DESTDIR)$(CMAKECONFIGDIR)/$$fn"; \
+		chmod 644 "$(DESTDIR)$(CMAKECONFIGDIR)/$$fn"; \
 	done
 
 uninstall_dev: uninstall_runtime_libs
@@ -869,6 +880,7 @@ uninstall_dev: uninstall_runtime_libs
 	done
 	-$(RMDIR) "$(DESTDIR)$(PKGCONFIGDIR)"
 	-$(RMDIR) "$(DESTDIR)$(CMAKECONFIGDIR)"
+	-$(RMDIR) "$(DESTDIR)$(libdir)/cmake"
 	-$(RMDIR) "$(DESTDIR)$(libdir)"
 
 _install_modules_deps: install_runtime_libs build_modules
@@ -1173,7 +1185,7 @@ generate_buildinfo: generate_doc_buildinfo
 
 .PHONY: doc-nits md-nits
 doc-nits: build_generated_pods ## Evaluate OpenSSL documentation
-	$(PERL) $(SRCDIR)/util/find-doc-nits -c -n -l -e
+	$(PERL) $(SRCDIR)/util/find-doc-nits -c -n -l -e -i
 
 # This uses "mdl", the markdownlint application, which is written in ruby.
 # The source is at https://github.com/markdownlint/markdownlint
@@ -1194,10 +1206,18 @@ lint: ## Evaluate C code via "splint"
            echo splint -DLINT -posixlib -preproc -D__gnuc_va_list=void \
 	   -I. -Iinclude -Iapps/include $(CRYPTOHEADERS) $(SSLHEADERS) $(SRCS) )
 
-.PHONY: check-format
-check-format: ## Evaluate C code according to OpenSSL coding standards
-	( cd $(SRCDIR); $(PERL) util/check-format.pl \
-			$(SRCS) \$(CRYPTOHEADERS) $(SSLHEADERS) )
+CLANG_FORMAT_DIFF = clang-format-diff
+
+.PHONY: check-format check-clang-format-diff-cmd
+check-clang-format-diff-cmd:
+	@if ! command -v "$(CLANG_FORMAT_DIFF)" >/dev/null; then \
+		echo "Unable to find ${CLANG_FORMAT_DIFF}";\
+		echo "Please set the CLANG_FORMAT_DIFF variable to your clang-format-diff command";\
+		exit 1;\
+	fi
+
+check-format: check-clang-format-diff-cmd ## Evaluate C code according to OpenSSL coding standards
+	( cd $(SRCDIR); git diff -U0 --no-prefix --no-color | $(CLANG_FORMAT_DIFF) )
 
 generate_apps:
 	( cd $(SRCDIR); $(PERL) VMS/VMSify-conf.pl \
@@ -1338,8 +1358,7 @@ errors:
            include/internal/asn1.h
            include/internal/sslconf.h );
    my @cryptoskipheaders = ( @sslheaders_tmpl,
-       qw( include/openssl/asn1_mac.h
-           include/openssl/conf_api.h
+       qw( include/openssl/conf_api.h
            include/openssl/ebcdic.h
            include/openssl/opensslconf.h
            include/openssl/symhacks.h ) );
@@ -1566,7 +1585,8 @@ EOF
           return <<"EOF";
 $args{src}: $pod
 	pod2man --name=$name --section=$section\$(MANSUFFIX) --center=OpenSSL \\
-		--release=\$(VERSION) $pod >\$\@
+		--date=\$(RELEASE_DATE) --release=\$(VERSION) \\
+		$pod >\$\@
 EOF
       } elsif (platform->isdef($args{src})) {
           #

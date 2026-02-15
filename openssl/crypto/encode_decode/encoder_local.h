@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2023 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2019-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -12,6 +12,7 @@
 #include <openssl/safestack.h>
 #include <openssl/encoder.h>
 #include <openssl/decoder.h>
+#include "crypto/decoder.h"
 #include "internal/cryptlib.h"
 #include "internal/passphrase.h"
 #include "internal/property.h"
@@ -55,9 +56,9 @@ struct ossl_decoder_st {
 };
 
 struct ossl_encoder_instance_st {
-    OSSL_ENCODER *encoder;        /* Never NULL */
-    void *encoderctx;             /* Never NULL */
-    const char *output_type;      /* Never NULL */
+    OSSL_ENCODER *encoder; /* Never NULL */
+    void *encoderctx; /* Never NULL */
+    const char *output_type; /* Never NULL */
     const char *output_structure; /* May be NULL */
 };
 
@@ -103,11 +104,13 @@ struct ossl_encoder_ctx_st {
 };
 
 struct ossl_decoder_instance_st {
-    OSSL_DECODER *decoder;       /* Never NULL */
-    void *decoderctx;            /* Never NULL */
-    const char *input_type;      /* Never NULL */
+    OSSL_DECODER *decoder; /* Never NULL */
+    void *decoderctx; /* Never NULL */
+    const char *input_type; /* Never NULL */
     const char *input_structure; /* May be NULL */
     int input_type_id;
+    int order; /* For stable ordering of decoders wrt proqs */
+    int score; /* For ordering decoders wrt proqs */
 
     unsigned int flag_input_structure_was_set : 1;
 };
@@ -156,6 +159,9 @@ struct ossl_decoder_ctx_st {
 
     /* For any function that needs a passphrase reader */
     struct ossl_passphrase_data_st pwdata;
+
+    /* Signal that further processing should not continue. */
+    int harderr;
 };
 
 const OSSL_PROPERTY_LIST *
@@ -164,4 +170,4 @@ const OSSL_PROPERTY_LIST *
 ossl_encoder_parsed_properties(const OSSL_ENCODER *encoder);
 
 int ossl_decoder_fast_is_a(OSSL_DECODER *decoder,
-                           const char *name, int *id_cache);
+    const char *name, int *id_cache);

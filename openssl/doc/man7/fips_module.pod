@@ -212,7 +212,7 @@ application. If any OpenSSL functions get called that require the use of
 cryptographic functions before this occurs then, if no provider has yet been
 loaded, then the default provider will be automatically loaded. If you then
 later explicitly load the FIPS provider then you will have both the FIPS and the
-default provider loaded at the same time. It is undefined which implementation
+default provider loaded at the same time. It is unspecified which implementation
 of an algorithm will be used if multiple implementations are available and you
 have not explicitly specified via a property query (see below) which one should
 be used.
@@ -244,7 +244,7 @@ standards you can specify the property query C<fips=yes> like this:
     sha256 = EVP_MD_fetch(NULL, "SHA2-256", "fips=yes");
 
 If no property query is specified, or more than one implementation matches the
-property query then it is undefined which implementation of a particular
+property query then it is unspecified which implementation of a particular
 algorithm will be returned.
 
 This example shows an explicit request for an implementation of SHA256 from the
@@ -515,7 +515,7 @@ See L<EVP_PKEY-EC(7)/Common EC parameters>
 
 "pkcs1" padding is no longer approved.
 
-See L<EVP_ASYM_CIPHER-RSA(7)/RSA Asymmetric Cipher parameters> and 
+See L<EVP_ASYM_CIPHER-RSA(7)/RSA Asymmetric Cipher parameters> and
 L<EVP_KEM-RSA(7)/RSA KEM parameters>
 
 =item RSA Signatures
@@ -614,7 +614,7 @@ FIPS indicators were added in OpenSSL 3.4.
 
 =head1 COPYRIGHT
 
-Copyright 2021-2024 The OpenSSL Project Authors. All Rights Reserved.
+Copyright 2021-2025 The OpenSSL Project Authors. All Rights Reserved.
 
 Licensed under the Apache License 2.0 (the "License").  You may not use
 this file except in compliance with the License.  You can obtain a copy

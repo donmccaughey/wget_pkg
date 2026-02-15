@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2024-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -27,11 +27,11 @@ typedef struct {
     int no_nl;
 } test_case;
 
-#define BUFMAX 0xa0000          /* Encode at most 640kB. */
-#define sEOF "-EOF"             /* '-' as in PEM and MIME boundaries */
-#define junk "#foo"             /* Skipped initial content */
+#define BUFMAX 0xa0000 /* Encode at most 640kB. */
+#define sEOF "-EOF" /* '-' as in PEM and MIME boundaries */
+#define junk "#foo" /* Skipped initial content */
 
-#define EOF_RETURN (-1729)      /* Distinct from -1, etc., internal results */
+#define EOF_RETURN (-1729) /* Distinct from -1, etc., internal results */
 #define NLEN 6
 #define NVAR 5
 /*
@@ -91,10 +91,9 @@ static int memoutws(BIO *mem, char c, unsigned wscnt, unsigned llen, int *pos)
  * before some of the base64 code points.
  */
 static int encode(unsigned const char *buf, unsigned buflen, char *encoded,
-                  int trunc, unsigned llen, unsigned wscnt, BIO *mem)
+    int trunc, unsigned llen, unsigned wscnt, BIO *mem)
 {
-    static const unsigned char b64[65] =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    static const unsigned char b64[65] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     int pos = 0;
     char nl = '\n';
 
@@ -149,8 +148,8 @@ static int encode(unsigned const char *buf, unsigned buflen, char *encoded,
 }
 
 static int genb64(char *prefix, char *suffix, unsigned const char *buf,
-                  unsigned buflen, int trunc, char *encoded, unsigned llen,
-                  unsigned wscnt, char **out)
+    unsigned buflen, int trunc, char *encoded, unsigned llen,
+    unsigned wscnt, char **out)
 {
     int preflen = strlen(prefix);
     int sufflen = strlen(suffix);
@@ -162,11 +161,9 @@ static int genb64(char *prefix, char *suffix, unsigned const char *buf,
     if (mem == NULL)
         return -1;
 
-    if ((*prefix && (BIO_write(mem, prefix, preflen) != preflen
-                     || BIO_write(mem, &newline, 1) != 1))
+    if ((*prefix && (BIO_write(mem, prefix, preflen) != preflen || BIO_write(mem, &newline, 1) != 1))
         || encode(buf, buflen, encoded, trunc, llen, wscnt, mem) <= 0
-        || (*suffix && (BIO_write(mem, suffix, sufflen) != sufflen
-                        || BIO_write(mem, &newline, 1) != 1))) {
+        || (*suffix && (BIO_write(mem, suffix, sufflen) != sufflen || BIO_write(mem, &newline, 1) != 1))) {
         BIO_free(mem);
         return -1;
     }
@@ -176,7 +173,7 @@ static int genb64(char *prefix, char *suffix, unsigned const char *buf,
     *out = bptr->data;
     outlen = bptr->length;
     bptr->data = NULL;
-    (void) BIO_set_close(mem, BIO_NOCLOSE);
+    (void)BIO_set_close(mem, BIO_NOCLOSE);
     BIO_free(mem);
     BUF_MEM_free(bptr);
 
@@ -217,7 +214,7 @@ static int test_bio_base64_run(test_case *t, int llen, int wscnt)
     }
 
     elen = genb64(t->prefix, t->suffix, raw, t->bytes, t->trunc, t->encoded,
-                  llen, wscnt, &encoded);
+        llen, wscnt, &encoded);
     if (elen < 0 || (bio = BIO_new(BIO_s_mem())) == NULL) {
         OPENSSL_free(raw);
         OPENSSL_free(out);
@@ -232,7 +229,7 @@ static int test_bio_base64_run(test_case *t, int llen, int wscnt)
 
     /*
      * When the input is long enough, and the source bio is retriable, exercise
-     * retries by writting the input to the underlying BIO in two steps (1024
+     * retries by writing the input to the underlying BIO in two steps (1024
      * bytes, then the rest) and trying to decode some data after each write.
      */
     n1 = elen;
@@ -268,7 +265,7 @@ static int test_bio_base64_run(test_case *t, int llen, int wscnt)
     if (t->retry)
         BIO_set_mem_eof_return(bio, 0);
 
-    if (n < (int) out_len)
+    if (n < (int)out_len)
         /* Perform the last read, checking its result */
         ret = BIO_read(b64, out + n, out_len - n);
     else {
@@ -293,8 +290,8 @@ static int test_bio_base64_run(test_case *t, int llen, int wscnt)
         if ((ret = ret < 0 ? 0 : -1) != 0)
             TEST_error("Final read result was non-negative");
     } else if (ret != 0
-             || n != (int) t->bytes
-             || (n > 0 && memcmp(raw, out, n) != 0)) {
+        || n != (int)t->bytes
+        || (n > 0 && memcmp(raw, out, n) != 0)) {
         TEST_error("Failed to decode expected data");
         ret = -1;
     }
@@ -386,10 +383,10 @@ static int test_bio_base64_generated(int idx)
 
     t.prefix = prefixes[variant];
     t.encoded = NULL;
-    t.bytes  = lengths[lencase];
+    t.bytes = lengths[lencase];
     t.trunc = 0;
     if (padcase && padcase < 3)
-        t.bytes  += padcase;
+        t.bytes += padcase;
     else if (padcase >= 3)
         t.trunc = padcase - 2;
     t.suffix = suffixes[variant];
@@ -424,7 +421,7 @@ static int test_bio_base64_corner_case_bug(int idx)
 
     /* Expected decode length */
     t.bytes = 6;
-    t.trunc = 0;    /* ignored */
+    t.trunc = 0; /* ignored */
 
     return generic_case(&t, 0);
 }
@@ -457,7 +454,7 @@ int setup_tests(void)
      *
      * Followed by zero, one or two additional bytes that may involve padding,
      * or else (truncation) 1, 2 or 3 bytes with missing padding.
-     * Only the the first four variants make sense with padding or truncated
+     * Only the first four variants make sense with padding or truncated
      * groups.
      *
      * With two types of underlying BIO

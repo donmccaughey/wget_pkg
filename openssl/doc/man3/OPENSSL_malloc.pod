@@ -121,6 +121,10 @@ before ultimately calling OPENSSL_free(). If the argument to OPENSSL_free() is
 NULL, nothing is done.
 
 OPENSSL_cleanse() fills B<ptr> of size B<len> with a string of 0's.
+It is useful in cases when it is needed to ensure that memory (that contains
+sensitive information) is overwritten (for example, before it is reclaimed,
+or when it is stored on stack), and such operation is not optimised out
+by compiler optimisations such as dead store elimination (as memset(3) may be).
 Use OPENSSL_cleanse() with care if the memory is a mapping of a file.
 If the storage controller uses write compression, then it's possible
 that sensitive tail bytes will survive zeroization because the block of
@@ -171,7 +175,8 @@ It is a set of fields separated by semicolons, which each field is a count
 to 100).  If the count is zero, then it lasts forever.  For example,
 C<100;@25> or C<100@0;0@25> means the first 100 allocations pass, then all
 other allocations (until the program exits or crashes) have a 25% chance of
-failing.
+failing. The length of the value of B<OPENSSL_MALLOC_FAILURES> must be 256 or
+fewer characters.
 
 If the variable B<OPENSSL_MALLOC_FD> is parsed as a positive integer, then
 it is taken as an open file descriptor. This is used in conjunction with
@@ -248,7 +253,8 @@ CRYPTO_mem_leaks_cb(), CRYPTO_set_mem_debug(), CRYPTO_mem_ctrl()
 were deprecated in OpenSSL 3.0.
 The memory-leak checking has been deprecated in OpenSSL 3.0 in favor of
 clang's memory and leak sanitizer.
-OPENSSL_aligned_alloc(), CRYPTO_aligned_alloc() were added in OpenSSL 3.4.0
+OPENSSL_aligned_alloc(), CRYPTO_aligned_alloc(), OPENSSL_strtoul() were
+added in OpenSSL 3.4.
 
 =head1 COPYRIGHT
 

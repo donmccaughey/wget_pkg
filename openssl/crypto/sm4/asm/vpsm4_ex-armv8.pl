@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# Copyright 2022-2024 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2022-2026 The OpenSSL Project Authors. All Rights Reserved.
 #
 # Licensed under the Apache License 2.0 (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
@@ -475,12 +475,13 @@ sub load_sbox () {
 	my $data = shift;
 
 $code.=<<___;
-	ldr $MaskQ, .Lsbox_magic
-	ldr $TAHMatQ, .Lsbox_magic+16
-	ldr $TALMatQ, .Lsbox_magic+32
-	ldr $ATAHMatQ, .Lsbox_magic+48
-	ldr $ATALMatQ, .Lsbox_magic+64
-	ldr $ANDMaskQ, .Lsbox_magic+80
+	adrp $xtmp2, .Lsbox_magic
+	ldr $MaskQ, [$xtmp2, #:lo12:.Lsbox_magic]
+	ldr $TAHMatQ, [$xtmp2, #:lo12:.Lsbox_magic+16]
+	ldr $TALMatQ, [$xtmp2, #:lo12:.Lsbox_magic+32]
+	ldr $ATAHMatQ, [$xtmp2, #:lo12:.Lsbox_magic+48]
+	ldr $ATALMatQ, [$xtmp2, #:lo12:.Lsbox_magic+64]
+	ldr $ANDMaskQ, [$xtmp2, #:lo12:.Lsbox_magic+80]
 ___
 }
 
@@ -525,7 +526,8 @@ sub compute_tweak_vec() {
 	my $std = shift;
 	&rbit(@vtmp[2],$src,$std);
 $code.=<<___;
-	ldr  @qtmp[0], .Lxts_magic
+	adrp  $xtmp2, .Lxts_magic
+	ldr  @qtmp[0], [$xtmp2, #:lo12:.Lxts_magic]
 	shl  $des.16b, @vtmp[2].16b, #1
 	ext  @vtmp[1].16b, @vtmp[2].16b, @vtmp[2].16b,#15
 	ushr @vtmp[1].16b, @vtmp[1].16b, #7
@@ -557,13 +559,25 @@ _${prefix}_consts:
 .Lshuffles:
 	.quad 0x0B0A090807060504,0x030201000F0E0D0C
 .Lxts_magic:
+#ifndef __AARCH64EB__
 	.quad 0x0101010101010187,0x0101010101010101
+#else
+	.quad 0x0101010101010101,0x0101010101010187
+#endif
 .Lsbox_magic:
+#ifndef __AARCH64EB__
 	.quad 0x0b0e0104070a0d00,0x0306090c0f020508
 	.quad 0x62185a2042387a00,0x22581a6002783a40
 	.quad 0x15df62a89e54e923,0xc10bb67c4a803df7
 	.quad 0xb9aa6b78c1d21300,0x1407c6d56c7fbead
 	.quad 0x6404462679195b3b,0xe383c1a1fe9edcbc
+#else
+	.quad 0x0306090c0f020508,0x0b0e0104070a0d00
+	.quad 0x22581a6002783a40,0x62185a2042387a00
+	.quad 0xc10bb67c4a803df7,0x15df62a89e54e923
+	.quad 0x1407c6d56c7fbead,0xb9aa6b78c1d21300
+	.quad 0xe383c1a1fe9edcbc,0x6404462679195b3b
+#endif
 	.quad 0x0f0f0f0f0f0f0f0f,0x0f0f0f0f0f0f0f0f
 
 .size	_${prefix}_consts,.-_${prefix}_consts
@@ -583,13 +597,16 @@ ___
 	&load_sbox();
 	&rev32($vkey,$vkey);
 $code.=<<___;
-	adr	$pointer,.Lshuffles
+	adrp	$pointer,.Lshuffles
+	add	$pointer,$pointer,#:lo12:.Lshuffles
 	ld1	{$vmap.2d},[$pointer]
-	adr	$pointer,.Lfk
+	adrp	$pointer,.Lfk
+	add	$pointer,$pointer,#:lo12:.Lfk
 	ld1	{$vfk.2d},[$pointer]
 	eor	$vkey.16b,$vkey.16b,$vfk.16b
 	mov	$schedules,#32
-	adr	$pointer,.Lck
+	adrp	$pointer,.Lck
+	add	$pointer,$pointer,#:lo12:.Lck
 	movi	@vtmp[0].16b,#64
 	cbnz	$enc,1f
 	add	$keys,$keys,124

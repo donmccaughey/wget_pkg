@@ -9,6 +9,7 @@ openssl-req - PKCS#10 certificate request and certificate generating command
 
 B<openssl> B<req>
 [B<-help>]
+[B<-cipher>]
 [B<-inform> B<DER>|B<PEM>]
 [B<-outform> B<DER>|B<PEM>]
 [B<-in> I<filename>]
@@ -85,6 +86,12 @@ The output format; unspecified by default.
 See L<openssl-format-options(1)> for details.
 
 The data is a PKCS#10 object.
+
+=item B<-cipher> I<name>
+
+Specify the cipher to be used for encrypting the private key.
+If no cipher is specified, AES-256-CBC will be used by default.
+You can override this by providing any valid OpenSSL cipher name.
 
 =item B<-in> I<filename>
 
@@ -396,7 +403,7 @@ If an extension is added using this option that has the same OID as one
 defined in the extension section of the config file, it overrides that one.
 
 This option can be given multiple times.
-Doing so, the same key most not be given more than once.
+Doing so, the same key must not be given more than once.
 
 =item B<-precert>
 
@@ -652,6 +659,10 @@ Examine and verify certificate request:
 
  openssl req -in req.pem -text -verify -noout
 
+Specify the cipher to be used for encrypting the private key:
+
+ openssl req -newkey rsa:2048 -keyout privatekey.pem -out request.csr -cipher aes-256-cbc
+
 Create a private key and then generate a certificate request from it:
 
  openssl genrsa -out key.pem 2048
@@ -694,7 +705,7 @@ Sample configuration file prompting for field values:
  attributes             = req_attributes
  req_extensions         = v3_ca
 
- dirstring_type = nobmp
+ dirstring_type = nombstr
 
  [ req_distinguished_name ]
  countryName                    = Country Name (2 letter code)
@@ -824,6 +835,8 @@ L<x509v3_config(5)>
 
 =head1 HISTORY
 
+The default encryption cipher was changed from 3DES to AES-256 in OpenSSL 3.5.
+
 The B<-section> option was added in OpenSSL 3.0.0.
 
 The B<-multivalue-rdn> option has become obsolete in OpenSSL 3.0.0 and
@@ -842,7 +855,7 @@ Since OpenSSL 3.3, the B<-verify> option will exit with 1 on failure.
 
 =head1 COPYRIGHT
 
-Copyright 2000-2024 The OpenSSL Project Authors. All Rights Reserved.
+Copyright 2000-2025 The OpenSSL Project Authors. All Rights Reserved.
 
 Licensed under the Apache License 2.0 (the "License").  You may not use
 this file except in compliance with the License.  You can obtain a copy

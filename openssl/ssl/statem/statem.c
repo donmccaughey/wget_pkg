@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2015-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the Apache License 2.0 (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -7,12 +7,15 @@
  * https://www.openssl.org/source/license.html
  */
 
+#include "internal/e_os.h"
+
 #if defined(__TANDEM) && defined(_SPT_MODEL_)
-# include <spthread.h>
-# include <spt_extensions.h> /* timeval */
+#include <spthread.h>
+#include <spt_extensions.h> /* timeval */
 #endif
 
 #include "internal/cryptlib.h"
+#include "internal/ssl_unwrap.h"
 #include <openssl/rand.h>
 #include "../ssl_local.h"
 #include "statem_local.h"
@@ -145,7 +148,7 @@ void ossl_statem_send_fatal(SSL_CONNECTION *s, int al)
 {
     /* We shouldn't call SSLfatal() twice. Once is enough */
     if (s->statem.in_init && s->statem.state == MSG_FLOW_ERROR)
-      return;
+        return;
     ossl_statem_set_in_init(s, 1);
     s->statem.state = MSG_FLOW_ERROR;
     if (al != SSL_AD_NO_ALERT)
@@ -159,7 +162,7 @@ void ossl_statem_send_fatal(SSL_CONNECTION *s, int al)
  * This is a permanent error for the current connection.
  */
 void ossl_statem_fatal(SSL_CONNECTION *s, int al, int reason,
-                       const char *fmt, ...)
+    const char *fmt, ...)
 {
     va_list args;
 
@@ -175,10 +178,10 @@ void ossl_statem_fatal(SSL_CONNECTION *s, int al, int reason,
  * a fatal error state. We verify that we are, and set it if not (this would
  * indicate a bug).
  */
-#define check_fatal(s) \
-    do { \
-        if (!ossl_assert((s)->statem.in_init \
-                         && (s)->statem.state == MSG_FLOW_ERROR)) \
+#define check_fatal(s)                                               \
+    do {                                                             \
+        if (!ossl_assert((s)->statem.in_init                         \
+                && (s)->statem.state == MSG_FLOW_ERROR))             \
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_R_MISSING_FATAL); \
     } while (0)
 
@@ -224,8 +227,8 @@ int ossl_statem_skip_early_data(SSL_CONNECTION *s)
         return 0;
 
     if (!s->server
-            || s->statem.hand_state != TLS_ST_EARLY_DATA
-            || s->hello_retry_request == SSL_HRR_COMPLETE)
+        || s->statem.hand_state != TLS_ST_EARLY_DATA
+        || s->hello_retry_request == SSL_HRR_COMPLETE)
         return 0;
 
     return 1;
@@ -239,11 +242,11 @@ int ossl_statem_skip_early_data(SSL_CONNECTION *s)
  * attempting to read data (SSL_read*()), or -1 if we are in SSL_do_handshake()
  * or similar.
  */
-void ossl_statem_check_finish_init(SSL_CONNECTION *s, int sending)
+int ossl_statem_check_finish_init(SSL_CONNECTION *s, int sending)
 {
     if (sending == -1) {
         if (s->statem.hand_state == TLS_ST_PENDING_EARLY_DATA_END
-                || s->statem.hand_state == TLS_ST_EARLY_DATA) {
+            || s->statem.hand_state == TLS_ST_EARLY_DATA) {
             ossl_statem_set_in_init(s, 1);
             if (s->early_data_state == SSL_EARLY_DATA_WRITE_RETRY) {
                 /*
@@ -254,10 +257,9 @@ void ossl_statem_check_finish_init(SSL_CONNECTION *s, int sending)
             }
         }
     } else if (!s->server) {
-        if ((sending && (s->statem.hand_state == TLS_ST_PENDING_EARLY_DATA_END
-                      || s->statem.hand_state == TLS_ST_EARLY_DATA)
-                  && s->early_data_state != SSL_EARLY_DATA_WRITING)
-                || (!sending && s->statem.hand_state == TLS_ST_EARLY_DATA)) {
+        if ((sending && (s->statem.hand_state == TLS_ST_PENDING_EARLY_DATA_END || s->statem.hand_state == TLS_ST_EARLY_DATA)
+                && s->early_data_state != SSL_EARLY_DATA_WRITING)
+            || (!sending && s->statem.hand_state == TLS_ST_EARLY_DATA)) {
             ossl_statem_set_in_init(s, 1);
             /*
              * SSL_write() has been called directly. We don't allow any more
@@ -268,9 +270,10 @@ void ossl_statem_check_finish_init(SSL_CONNECTION *s, int sending)
         }
     } else {
         if (s->early_data_state == SSL_EARLY_DATA_FINISHED_READING
-                && s->statem.hand_state == TLS_ST_EARLY_DATA)
+            && s->statem.hand_state == TLS_ST_EARLY_DATA)
             ossl_statem_set_in_init(s, 1);
     }
+    return 1;
 }
 
 void ossl_statem_set_hello_verify_done(SSL_CONNECTION *s)
@@ -307,7 +310,7 @@ int ossl_statem_accept(SSL *s)
     return state_machine(sc, 1);
 }
 
-typedef void (*info_cb) (const SSL *, int, int);
+typedef void (*info_cb)(const SSL *, int, int);
 
 static info_cb get_callback(SSL_CONNECTION *s)
 {
@@ -352,11 +355,12 @@ static info_cb get_callback(SSL_CONNECTION *s)
 static int state_machine(SSL_CONNECTION *s, int server)
 {
     BUF_MEM *buf = NULL;
-    void (*cb) (const SSL *ssl, int type, int val) = NULL;
+    void (*cb)(const SSL *ssl, int type, int val) = NULL;
     OSSL_STATEM *st = &s->statem;
     int ret = -1;
     int ssret;
     SSL *ssl = SSL_CONNECTION_GET_SSL(s);
+    SSL *ussl = SSL_CONNECTION_GET_USER_SSL(s);
 
     if (st->state == MSG_FLOW_ERROR) {
         /* Shouldn't have been called if we're already in the error state */
@@ -384,13 +388,13 @@ static int state_machine(SSL_CONNECTION *s, int server)
          * identifier other than 0.
          */
         BIO_ctrl(SSL_get_wbio(ssl), BIO_CTRL_DGRAM_SCTP_SET_IN_HANDSHAKE,
-                 st->in_handshake, NULL);
+            st->in_handshake, NULL);
     }
 #endif
 
     /* Initialise state machine */
     if (st->state == MSG_FLOW_UNINITED
-            || st->state == MSG_FLOW_FINISHED) {
+        || st->state == MSG_FLOW_FINISHED) {
         if (st->state == MSG_FLOW_UNINITED) {
             st->hand_state = TLS_ST_BEFORE;
             st->request_state = TLS_ST_BEFORE;
@@ -399,7 +403,7 @@ static int state_machine(SSL_CONNECTION *s, int server)
         s->server = server;
         if (cb != NULL) {
             if (SSL_IS_FIRST_HANDSHAKE(s) || !SSL_CONNECTION_IS_TLS13(s))
-                cb(ssl, SSL_CB_HANDSHAKE_START, 1);
+                cb(ussl, SSL_CB_HANDSHAKE_START, 1);
         }
 
         /*
@@ -409,8 +413,7 @@ static int state_machine(SSL_CONNECTION *s, int server)
          */
 
         if (SSL_CONNECTION_IS_DTLS(s)) {
-            if ((s->version & 0xff00) != (DTLS1_VERSION & 0xff00) &&
-                (server || (s->version & 0xff00) != (DTLS1_BAD_VER & 0xff00))) {
+            if ((s->version & 0xff00) != (DTLS1_VERSION & 0xff00) && (server || (s->version & 0xff00) != (DTLS1_BAD_VER & 0xff00))) {
                 SSLfatal(s, SSL_AD_NO_ALERT, ERR_R_INTERNAL_ERROR);
                 goto end;
             }
@@ -459,7 +462,7 @@ static int state_machine(SSL_CONNECTION *s, int server)
             }
 
         if ((SSL_in_before(ssl))
-                || s->renegotiate) {
+            || s->renegotiate) {
             if (!tls_setup_handshake(s)) {
                 /* SSLfatal() already called */
                 goto end;
@@ -504,7 +507,7 @@ static int state_machine(SSL_CONNECTION *s, int server)
 
     ret = 1;
 
- end:
+end:
     st->in_handshake--;
 
 #ifndef OPENSSL_NO_SCTP
@@ -514,16 +517,16 @@ static int state_machine(SSL_CONNECTION *s, int server)
          * identifier other than 0.
          */
         BIO_ctrl(SSL_get_wbio(ssl), BIO_CTRL_DGRAM_SCTP_SET_IN_HANDSHAKE,
-                 st->in_handshake, NULL);
+            st->in_handshake, NULL);
     }
 #endif
 
     BUF_MEM_free(buf);
     if (cb != NULL) {
         if (server)
-            cb(ssl, SSL_CB_ACCEPT_EXIT, ret);
+            cb(ussl, SSL_CB_ACCEPT_EXIT, ret);
         else
-            cb(ssl, SSL_CB_CONNECT_EXIT, ret);
+            cb(ussl, SSL_CB_CONNECT_EXIT, ret);
     }
     return ret;
 }
@@ -538,7 +541,8 @@ static void init_read_state_machine(SSL_CONNECTION *s)
     st->read_state = READ_STATE_HEADER;
 }
 
-static int grow_init_buf(SSL_CONNECTION *s, size_t size) {
+static int grow_init_buf(SSL_CONNECTION *s, size_t size)
+{
 
     size_t msg_offset = (char *)s->init_msg - s->init_buf->data;
 
@@ -584,13 +588,13 @@ static SUB_STATE_RETURN read_state_machine(SSL_CONNECTION *s)
     OSSL_STATEM *st = &s->statem;
     int ret, mt;
     size_t len = 0;
-    int (*transition) (SSL_CONNECTION *s, int mt);
+    int (*transition)(SSL_CONNECTION *s, int mt);
     PACKET pkt;
-    MSG_PROCESS_RETURN(*process_message) (SSL_CONNECTION *s, PACKET *pkt);
-    WORK_STATE(*post_process_message) (SSL_CONNECTION *s, WORK_STATE wst);
-    size_t (*max_message_size) (SSL_CONNECTION *s);
-    void (*cb) (const SSL *ssl, int type, int val) = NULL;
-    SSL *ssl = SSL_CONNECTION_GET_SSL(s);
+    MSG_PROCESS_RETURN (*process_message)(SSL_CONNECTION *s, PACKET *pkt);
+    WORK_STATE (*post_process_message)(SSL_CONNECTION *s, WORK_STATE wst);
+    size_t (*max_message_size)(SSL_CONNECTION *s);
+    void (*cb)(const SSL *ssl, int type, int val) = NULL;
+    SSL *ssl = SSL_CONNECTION_GET_USER_SSL(s);
 
     cb = get_callback(s);
 
@@ -645,15 +649,14 @@ static SUB_STATE_RETURN read_state_machine(SSL_CONNECTION *s)
 
             if (s->s3.tmp.message_size > max_message_size(s)) {
                 SSLfatal(s, SSL_AD_ILLEGAL_PARAMETER,
-                         SSL_R_EXCESSIVE_MESSAGE_SIZE);
+                    SSL_R_EXCESSIVE_MESSAGE_SIZE);
                 return SUB_STATE_ERROR;
             }
 
             /* dtls_get_message already did this */
             if (!SSL_CONNECTION_IS_DTLS(s)
-                    && s->s3.tmp.message_size > 0
-                    && !grow_init_buf(s, s->s3.tmp.message_size
-                                         + SSL3_HM_HEADER_LENGTH)) {
+                && s->s3.tmp.message_size > 0
+                && !grow_init_buf(s, s->s3.tmp.message_size + SSL3_HM_HEADER_LENGTH)) {
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR, ERR_R_BUF_LIB);
                 return SUB_STATE_ERROR;
             }
@@ -723,6 +726,7 @@ static SUB_STATE_RETURN read_state_machine(SSL_CONNECTION *s)
                 st->read_state = READ_STATE_HEADER;
                 break;
 
+            case WORK_FINISHED_SWAP:
             case WORK_FINISHED_STOP:
                 if (SSL_CONNECTION_IS_DTLS(s)) {
                     dtls1_stop_timer(s);
@@ -802,18 +806,18 @@ static SUB_STATE_RETURN write_state_machine(SSL_CONNECTION *s)
 {
     OSSL_STATEM *st = &s->statem;
     int ret;
-    WRITE_TRAN(*transition) (SSL_CONNECTION *s);
-    WORK_STATE(*pre_work) (SSL_CONNECTION *s, WORK_STATE wst);
-    WORK_STATE(*post_work) (SSL_CONNECTION *s, WORK_STATE wst);
-    int (*get_construct_message_f) (SSL_CONNECTION *s,
-                                    CON_FUNC_RETURN (**confunc) (SSL_CONNECTION *s,
-                                                                 WPACKET *pkt),
-                                    int *mt);
-    void (*cb) (const SSL *ssl, int type, int val) = NULL;
-    CON_FUNC_RETURN (*confunc) (SSL_CONNECTION *s, WPACKET *pkt);
+    WRITE_TRAN (*transition)(SSL_CONNECTION *s);
+    WORK_STATE (*pre_work)(SSL_CONNECTION *s, WORK_STATE wst);
+    WORK_STATE (*post_work)(SSL_CONNECTION *s, WORK_STATE wst);
+    int (*get_construct_message_f)(SSL_CONNECTION *s,
+        CON_FUNC_RETURN (**confunc)(SSL_CONNECTION *s,
+            WPACKET *pkt),
+        int *mt);
+    void (*cb)(const SSL *ssl, int type, int val) = NULL;
+    CON_FUNC_RETURN (*confunc)(SSL_CONNECTION *s, WPACKET *pkt);
     int mt;
     WPACKET pkt;
-    SSL *ssl = SSL_CONNECTION_GET_SSL(s);
+    SSL *ssl = SSL_CONNECTION_GET_USER_SSL(s);
 
     cb = get_callback(s);
 
@@ -847,7 +851,6 @@ static SUB_STATE_RETURN write_state_machine(SSL_CONNECTION *s)
 
             case WRITE_TRAN_FINISHED:
                 return SUB_STATE_FINISHED;
-                break;
 
             case WRITE_TRAN_ERROR:
                 check_fatal(s);
@@ -869,6 +872,9 @@ static SUB_STATE_RETURN write_state_machine(SSL_CONNECTION *s)
                 st->write_state = WRITE_STATE_SEND;
                 break;
 
+            case WORK_FINISHED_SWAP:
+                return SUB_STATE_FINISHED;
+
             case WORK_FINISHED_STOP:
                 return SUB_STATE_END_HANDSHAKE;
             }
@@ -883,7 +889,7 @@ static SUB_STATE_RETURN write_state_machine(SSL_CONNECTION *s)
                 break;
             }
             if (!WPACKET_init(&pkt, s->init_buf)
-                    || !ssl_set_handshake_header(s, &pkt, mt)) {
+                || !ssl_set_handshake_header(s, &pkt, mt)) {
                 WPACKET_cleanup(&pkt);
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR, ERR_R_INTERNAL_ERROR);
                 return SUB_STATE_ERROR;
@@ -908,7 +914,7 @@ static SUB_STATE_RETURN write_state_machine(SSL_CONNECTION *s)
                 } /* else success */
             }
             if (!ssl_close_construct_packet(s, &pkt, mt)
-                    || !WPACKET_finish(&pkt)) {
+                || !WPACKET_finish(&pkt)) {
                 WPACKET_cleanup(&pkt);
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR, ERR_R_INTERNAL_ERROR);
                 return SUB_STATE_ERROR;
@@ -941,6 +947,9 @@ static SUB_STATE_RETURN write_state_machine(SSL_CONNECTION *s)
             case WORK_FINISHED_CONTINUE:
                 st->write_state = WRITE_STATE_TRANSITION;
                 break;
+
+            case WORK_FINISHED_SWAP:
+                return SUB_STATE_FINISHED;
 
             case WORK_FINISHED_STOP:
                 return SUB_STATE_END_HANDSHAKE;
@@ -1013,7 +1022,7 @@ int ossl_statem_app_data_allowed(SSL_CONNECTION *s)
 int ossl_statem_export_allowed(SSL_CONNECTION *s)
 {
     return s->s3.previous_server_finished_len != 0
-           && s->statem.hand_state != TLS_ST_SW_FINISHED;
+        && s->statem.hand_state != TLS_ST_SW_FINISHED;
 }
 
 /*
@@ -1028,5 +1037,5 @@ int ossl_statem_export_early_allowed(SSL_CONNECTION *s)
      * as we have sent early_data.
      */
     return s->ext.early_data == SSL_EARLY_DATA_ACCEPTED
-           || (!s->server && s->ext.early_data != SSL_EARLY_DATA_NOT_SENT);
+        || (!s->server && s->ext.early_data != SSL_EARLY_DATA_NOT_SENT);
 }
