@@ -115,33 +115,40 @@ CFLAGS += $(arch_flags)
 ##### libiconv ##########
 
 libiconv_config_options := \
-			--disable-shared \
-			CFLAGS='$(CFLAGS)'
+		--disable-shared \
+		CFLAGS='$(CFLAGS)'
 
 libiconv_sources := $(shell find libiconv -type f \! -name .DS_Store)
 
 $(TMP)/libiconv/install/usr/local/include/iconv.h \
-$(TMP)/libiconv/install/usr/local/lib/libiconv.a : $(TMP)/libiconv/installed.stamp.txt
+$(TMP)/libiconv/install/usr/local/lib/libiconv.a : \
+		$(TMP)/libiconv/installed.stamp.txt
 	@:
 
 $(TMP)/libiconv/installed.stamp.txt : \
-			$(TMP)/libiconv/build/include/iconv.h \
-			$(TMP)/libiconv/build/lib/.libs/libiconv.a \
-			| $$(dir $$@)
+		$(TMP)/libiconv/build/include/iconv.h \
+		$(TMP)/libiconv/build/lib/.libs/libiconv.a \
+		| $$(dir $$@)
 	cd $(TMP)/libiconv/build && $(MAKE) DESTDIR=$(TMP)/libiconv/install install
 #	libpsl `make` chokes on relocated libtool .la files so remove them
 	rm -f $(TMP)/libiconv/install/usr/local/lib/*.la
 	date > $@
 
 $(TMP)/libiconv/build/include/iconv.h \
-$(TMP)/libiconv/build/lib/.libs/libiconv.a : $(TMP)/libiconv/built.stamp.txt | $$(dir $$@)
+$(TMP)/libiconv/build/lib/.libs/libiconv.a : \
+		$(TMP)/libiconv/built.stamp.txt \
+		| $$(dir $$@)
 	@:
 
-$(TMP)/libiconv/built.stamp.txt : $(TMP)/libiconv/configured.stamp.txt | $$(dir $$@)
+$(TMP)/libiconv/built.stamp.txt : \
+		$(TMP)/libiconv/configured.stamp.txt \
+		| $$(dir $$@)
 	cd $(TMP)/libiconv/build && $(MAKE)
 	date > $@
 
-$(TMP)/libiconv/configured.stamp.txt : $(libiconv_sources) | $(TMP)/libiconv/build
+$(TMP)/libiconv/configured.stamp.txt : \
+		$(libiconv_sources) \
+		| $(TMP)/libiconv/build
 	cd $(TMP)/libiconv/build \
 			&& $(abspath libiconv/configure) $(libiconv_config_options)
 	date > $@
@@ -218,7 +225,8 @@ libpsl_config_options := \
 libpsl_sources := $(shell find libpsl -type f \! -name .DS_Store)
 
 $(TMP)/libpsl/install/usr/local/include/libpsl.h \
-$(TMP)/libpsl/install/usr/local/lib/libpsl.a : $(TMP)/libpsl/installed.stamp.txt
+$(TMP)/libpsl/install/usr/local/lib/libpsl.a : \
+		$(TMP)/libpsl/installed.stamp.txt
 	@:
 
 $(TMP)/libpsl/installed.stamp.txt : \
@@ -229,10 +237,14 @@ $(TMP)/libpsl/installed.stamp.txt : \
 	date > $@
 
 $(TMP)/libpsl/build/include/libpsl.h \
-$(TMP)/libpsl/build/src/.libs/libpsl.a : $(TMP)/libpsl/built.stamp.txt | $$(dir $$@)
+$(TMP)/libpsl/build/src/.libs/libpsl.a : \
+		$(TMP)/libpsl/built.stamp.txt \
+		| $$(dir $$@)
 	@:
 
-$(TMP)/libpsl/built.stamp.txt : $(TMP)/libpsl/configured.stamp.txt | $$(dir $$@)
+$(TMP)/libpsl/built.stamp.txt : \
+		$(TMP)/libpsl/configured.stamp.txt \
+		| $$(dir $$@)
 	cd $(TMP)/libpsl/build && $(MAKE)
 	date > $@
 
@@ -278,7 +290,8 @@ libunistring_config_options := \
 libunistring_sources := $(shell find libunistring -type f \! -name .DS_Store)
 
 $(TMP)/libunistring/install/usr/local/include/unistr.h \
-$(TMP)/libunistring/install/usr/local/lib/libunistring.a : $(TMP)/libunistring/installed.stamp.txt
+$(TMP)/libunistring/install/usr/local/lib/libunistring.a : \
+		$(TMP)/libunistring/installed.stamp.txt
 	@:
 
 $(TMP)/libunistring/installed.stamp.txt : \
@@ -294,7 +307,9 @@ $(TMP)/libunistring/installed.stamp.txt : \
 	date > $@
 
 $(TMP)/libunistring/build/lib/unistr.h \
-$(TMP)/libunistring/build/lib/.libs/libunistring.a : $(TMP)/libunistring/built.stamp.txt | $$(dir $$@)
+$(TMP)/libunistring/build/lib/.libs/libunistring.a : \
+		$(TMP)/libunistring/built.stamp.txt \
+		| $$(dir $$@)
 	@:
 
 $(TMP)/libunistring/built.stamp.txt : \
@@ -307,7 +322,9 @@ $(TMP)/libunistring/built.stamp.txt : \
 	rm -f libunistring/lib/libunistring.sym-t1
 	date > $@
 
-$(TMP)/libunistring/configured.stamp.txt : $(libunistring_sources) | $(TMP)/libunistring/build
+$(TMP)/libunistring/configured.stamp.txt : \
+		$(libunistring_sources) \
+		| $(TMP)/libunistring/build
 	cd $(TMP)/libunistring/build \
 			&& $(abspath libunistring/configure) $(libunistring_config_options)
 	date > $@
@@ -336,25 +353,33 @@ $(TMP)/openssl :
 
 $(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
 $(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
-$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a : $(TMP)/openssl/arm64/installed.stamp.txt
+$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a : \
+		$(TMP)/openssl/arm64/installed.stamp.txt
 	@:
 
 $(TMP)/openssl/arm64/installed.stamp.txt : \
 				$(TMP)/openssl/arm64/build/libssl.a \
 				$(TMP)/openssl/arm64/build/libcrypto.a \
 				| $(TMP)/openssl/arm64/install
-	cd $(TMP)/openssl/arm64/build && $(MAKE) DESTDIR=$(TMP)/openssl/arm64/install install_sw
+	cd $(TMP)/openssl/arm64/build \
+			&& $(MAKE) DESTDIR=$(TMP)/openssl/arm64/install install_sw
 	date > $@
 
 $(TMP)/openssl/arm64/build/libssl.a \
-$(TMP)/openssl/arm64/build/libcrypto.a : $(TMP)/openssl/arm64/built.stamp.txt | $$(dir $$@)
+$(TMP)/openssl/arm64/build/libcrypto.a : \
+		$(TMP)/openssl/arm64/built.stamp.txt \
+		| $$(dir $$@)
 	@:
 
-$(TMP)/openssl/arm64/built.stamp.txt : $(TMP)/openssl/arm64/configured.stamp.txt | $$(dir $$@)
+$(TMP)/openssl/arm64/built.stamp.txt : \
+		$(TMP)/openssl/arm64/configured.stamp.txt \
+		| $$(dir $$@)
 	cd $(TMP)/openssl/arm64/build && $(MAKE)
 	date > $@
 
-$(TMP)/openssl/arm64/configured.stamp.txt : $(openssl_sources) | $(TMP)/openssl/arm64/build
+$(TMP)/openssl/arm64/configured.stamp.txt : \
+		$(openssl_sources) \
+		| $(TMP)/openssl/arm64/build
 	cd $(TMP)/openssl/arm64/build \
 			&& $(abspath openssl/Configure) \
 					$(openssl_config_options) darwin64-arm64-cc
@@ -370,25 +395,33 @@ $(TMP)/openssl/arm64/install :
 
 $(TMP)/openssl/x86_64/install/usr/local/include/openssl/ssl.h \
 $(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
-$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a : $(TMP)/openssl/x86_64/installed.stamp.txt
+$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a : \
+		$(TMP)/openssl/x86_64/installed.stamp.txt
 	@:
 
 $(TMP)/openssl/x86_64/installed.stamp.txt : \
 				$(TMP)/openssl/x86_64/build/libssl.a \
 				$(TMP)/openssl/x86_64/build/libcrypto.a \
 				| $(TMP)/openssl/x86_64/install
-	cd $(TMP)/openssl/x86_64/build && $(MAKE) DESTDIR=$(TMP)/openssl/x86_64/install install_sw
+	cd $(TMP)/openssl/x86_64/build \
+			&& $(MAKE) DESTDIR=$(TMP)/openssl/x86_64/install install_sw
 	date > $@
 
 $(TMP)/openssl/x86_64/build/libssl.a \
-$(TMP)/openssl/x86_64/build/libcrypto.a : $(TMP)/openssl/x86_64/built.stamp.txt | $$(dir $$@)
+$(TMP)/openssl/x86_64/build/libcrypto.a : \
+		$(TMP)/openssl/x86_64/built.stamp.txt \
+		| $$(dir $$@)
 	@:
 
-$(TMP)/openssl/x86_64/built.stamp.txt : $(TMP)/openssl/x86_64/configured.stamp.txt | $$(dir $$@)
+$(TMP)/openssl/x86_64/built.stamp.txt : \
+		$(TMP)/openssl/x86_64/configured.stamp.txt \
+		| $$(dir $$@)
 	cd $(TMP)/openssl/x86_64/build && $(MAKE)
 	date > $@
 
-$(TMP)/openssl/x86_64/configured.stamp.txt : $(openssl_sources) | $(TMP)/openssl/x86_64/build
+$(TMP)/openssl/x86_64/configured.stamp.txt : \
+		$(openssl_sources) \
+		| $(TMP)/openssl/x86_64/build
 	cd $(TMP)/openssl/x86_64/build \
 			&& $(abspath openssl/Configure) \
 					$(openssl_config_options) darwin64-x86_64-cc
@@ -403,21 +436,21 @@ $(TMP)/openssl/x86_64/install :
 ##### openssl fat binaries ##########
 
 $(TMP)/openssl/install/usr/local/include/openssl/ssl.h : \
-				$(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
-				| $(TMP)/openssl/install/usr/local/include
+		$(TMP)/openssl/arm64/install/usr/local/include/openssl/ssl.h \
+		| $(TMP)/openssl/install/usr/local/include
 	cp -R $(dir $<) $(dir $@)
 
 $(TMP)/openssl/install/usr/local/lib/libcrypto.a : \
-				$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
-				$(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
-				| $$(dir $$@)
+		$(TMP)/openssl/arm64/install/usr/local/lib/libcrypto.a \
+		$(TMP)/openssl/x86_64/install/usr/local/lib/libcrypto.a \
+		| $$(dir $$@)
 	lipo -create $^ -output $@
 
 
 $(TMP)/openssl/install/usr/local/lib/libssl.a : \
-				$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a \
-				$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a \
-				| $$(dir $$@)
+		$(TMP)/openssl/arm64/install/usr/local/lib/libssl.a \
+		$(TMP)/openssl/x86_64/install/usr/local/lib/libssl.a \
+		| $$(dir $$@)
 	lipo -create $^ -output $@
 
 $(TMP)/openssl/install/usr/local/include \
@@ -436,7 +469,8 @@ pcre2_config_options := \
 pcre2_sources := $(shell find pcre2 -type f \! -name .DS_Store)
 
 $(TMP)/pcre2/install/usr/local/include/pcre2.h \
-$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a : $(TMP)/pcre2/installed.stamp.txt
+$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a : \
+		$(TMP)/pcre2/installed.stamp.txt
 	@:
 
 $(TMP)/pcre2/installed.stamp.txt : \
@@ -447,7 +481,9 @@ $(TMP)/pcre2/installed.stamp.txt : \
 	date > $@
 
 $(TMP)/pcre2/build/src/pcre2.h \
-$(TMP)/pcre2/build/.libs/libpcre2-8.a : $(TMP)/pcre2/built.stamp.txt | $$(dir $$@)
+$(TMP)/pcre2/build/.libs/libpcre2-8.a : \
+		$(TMP)/pcre2/built.stamp.txt \
+		| $$(dir $$@)
 	@:
 
 $(TMP)/pcre2/built.stamp.txt : $(TMP)/pcre2/configured.stamp.txt | $$(dir $$@)
@@ -478,9 +514,9 @@ $(TMP)/zlib/install/usr/local/lib/libz.a : $(TMP)/zlib/installed.stamp.txt
 	@:
 
 $(TMP)/zlib/installed.stamp.txt : \
-			$(TMP)/zlib/build/zconf.h \
-			$(TMP)/zlib/build/libz.a \
-			| $$(dir $$@)
+		$(TMP)/zlib/build/zconf.h \
+		$(TMP)/zlib/build/libz.a \
+		| $$(dir $$@)
 	cd $(TMP)/zlib/build && $(MAKE) DESTDIR=$(TMP)/zlib/install install
 	date > $@
 
@@ -524,7 +560,9 @@ wget_configure_options := \
 
 wget_sources := $(shell find wget -type f \! -name .DS_Store)
 
-$(TMP)/wget/install/usr/local/bin/wget : $(TMP)/wget/build/src/wget | $(TMP)/wget/install
+$(TMP)/wget/install/usr/local/bin/wget : \
+		$(TMP)/wget/build/src/wget \
+		| $(TMP)/wget/install
 	cd $(TMP)/wget/build && $(MAKE) DESTDIR=$(TMP)/wget/install install
 	xcrun codesign \
 		--sign "$(APP_SIGNING_ID)" \
@@ -535,24 +573,25 @@ $(TMP)/wget/build/src/wget : $(TMP)/wget/build/config.status $(wget_sources)
 	cd $(TMP)/wget/build && $(MAKE)
 
 $(TMP)/wget/build/config.status : \
-				wget/configure \
-				$(TMP)/libiconv/install/usr/local/include/iconv.h \
-				$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
-				$(TMP)/libidn2/install/usr/local/include/idn2.h \
-				$(TMP)/libidn2/install/usr/local/lib/libidn2.a \
-				$(TMP)/libpsl/install/usr/local/include/libpsl.h \
-				$(TMP)/libpsl/install/usr/local/lib/libpsl.a \
-				$(TMP)/libunistring/install/usr/local/include/unistr.h \
-				$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
-				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
-				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
-				$(TMP)/openssl/install/usr/local/lib/libssl.a \
-				$(TMP)/pcre2/install/usr/local/include/pcre2.h \
-				$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a \
-				$(TMP)/zlib/install/usr/local/include/zlib.h \
-				$(TMP)/zlib/install/usr/local/lib/libz.a \
-				| $(TMP)/wget/build
-	cd $(TMP)/wget/build && sh $(abspath wget/configure) $(wget_configure_options)
+		wget/configure \
+		$(TMP)/libiconv/install/usr/local/include/iconv.h \
+		$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
+		$(TMP)/libidn2/install/usr/local/include/idn2.h \
+		$(TMP)/libidn2/install/usr/local/lib/libidn2.a \
+		$(TMP)/libpsl/install/usr/local/include/libpsl.h \
+		$(TMP)/libpsl/install/usr/local/lib/libpsl.a \
+		$(TMP)/libunistring/install/usr/local/include/unistr.h \
+		$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
+		$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
+		$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
+		$(TMP)/openssl/install/usr/local/lib/libssl.a \
+		$(TMP)/pcre2/install/usr/local/include/pcre2.h \
+		$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a \
+		$(TMP)/zlib/install/usr/local/include/zlib.h \
+		$(TMP)/zlib/install/usr/local/lib/libz.a \
+		| $(TMP)/wget/build
+	cd $(TMP)/wget/build \
+			&& sh $(abspath wget/configure) $(wget_configure_options)
 
 $(TMP)/wget/build \
 $(TMP)/wget/install :
@@ -561,8 +600,7 @@ $(TMP)/wget/install :
 
 ##### pkg ##########
 
-$(TMP)/wget.pkg : \
-		$(TMP)/wget/install/usr/local/bin/uninstall-wget
+$(TMP)/wget.pkg : $(TMP)/wget/install/usr/local/bin/uninstall-wget
 	pkgbuild \
 		--root $(TMP)/wget/install \
 		--identifier cc.donm.pkg.wget \
