@@ -5,6 +5,7 @@ TMP ?= $(abspath tmp)
 
 version := 1.25.0
 libiconv_version := 1.18
+libidn2_version := 2.3.8
 libunistring_version := 1.4.1
 openssl_version := 3.5.5
 pcre2_version := 10.47
@@ -36,9 +37,11 @@ clean :
 .PHONY : check
 check :
 	test "$(shell lipo -archs $(TMP)/libiconv/install/usr/local/lib/libiconv.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/libidn2/install/usr/local/lib/libidn2.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/libunistring/install/usr/local/lib/libunistring.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/zlib/install/usr/local/lib/libz.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
 	test "$(shell ./tools/dylibs --no-sys-libs --count $(TMP)/wget/install/usr/local/bin/wget) dylibs" = "0 dylibs"
@@ -51,8 +54,15 @@ check :
 
 .PHONY : libiconv
 libiconv : \
-			$(TMP)/libiconv/install/usr/local/include/iconv.h \
-			$(TMP)/libiconv/install/usr/local/lib/libiconv.a
+		$(TMP)/libiconv/install/usr/local/include/iconv.h \
+		$(TMP)/libiconv/install/usr/local/lib/libiconv.a
+
+
+.PHONY : libidn2
+libidn2 : \
+		$(TMP)/libidn2/install/usr/local/include/idn2.h \
+		$(TMP)/libidn2/install/usr/local/lib/libidn2.a
+
 
 .PHONY : libunistring
 libunistring : \
@@ -62,15 +72,21 @@ libunistring : \
 
 .PHONY : openssl
 openssl : \
-			$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
-			$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
-			$(TMP)/openssl/install/usr/local/lib/libssl.a
+		$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
+		$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
+		$(TMP)/openssl/install/usr/local/lib/libssl.a
+
+
+.PHONY : pcre2
+pcre2 : \
+		$(TMP)/pcre2/install/usr/local/include/pcre2.h \
+		$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a
 
 
 .PHONY : zlib
 zlib : \
-			$(TMP)/zlib/install/usr/local/include/zlib.h \
-			$(TMP)/zlib/install/usr/local/lib/libz.a
+		$(TMP)/zlib/install/usr/local/include/zlib.h \
+		$(TMP)/zlib/install/usr/local/lib/libz.a
 
 
 .PHONY : wget
@@ -124,6 +140,47 @@ $(TMP)/libiconv/configured.stamp.txt : $(libiconv_sources) | $(TMP)/libiconv/bui
 $(TMP)/libiconv \
 $(TMP)/libiconv/build \
 $(TMP)/libiconv/install :
+	mkdir -p $@
+
+
+##### libidn2 ##########
+
+libidn2_config_options := \
+		--disable-doc \
+		--disable-shared \
+		--with-included-libunistring \
+		--with-libiconv-prefix='$(TMP)/libiconv/install/usr/local' \
+		--with-libunistring-prefix='$(TMP)/libunistring/install/usr/local' \
+		CFLAGS='$(CFLAGS)'
+
+libidn2_sources := $(shell find libidn2 -type f \! -name .DS_Store)
+
+$(TMP)/libidn2/install/usr/local/include/idn2.h \
+$(TMP)/libidn2/install/usr/local/lib/libidn2.a : $(TMP)/libidn2/installed.stamp.txt
+	@:
+
+$(TMP)/libidn2/installed.stamp.txt : \
+		libidn2/lib/idn2.h \
+		$(TMP)/libidn2/build/lib/.libs/libidn2.a \
+		| $$(dir $$@)
+	cd $(TMP)/libidn2/build && $(MAKE) DESTDIR=$(TMP)/libidn2/install install
+	date > $@
+
+$(TMP)/libidn2/build/lib/.libs/libidn2.a : $(TMP)/libidn2/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/libidn2/built.stamp.txt : $(TMP)/libidn2/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/libidn2/build && $(MAKE)
+	date > $@
+
+$(TMP)/libidn2/configured.stamp.txt : $(libidn2_sources) | $(TMP)/libidn2/build
+	cd $(TMP)/libidn2/build \
+			&& $(abspath libidn2/configure) $(libidn2_config_options)
+	date > $@
+
+$(TMP)/libidn2 \
+$(TMP)/libidn2/build \
+$(TMP)/libidn2/install :
 	mkdir -p $@
 
 
@@ -364,13 +421,14 @@ $(TMP)/zlib/install :
 
 wget_configure_options := \
 		--disable-silent-rules \
-		--disable-iri \
 		--disable-pcre \
 		--without-libpsl \
 		--with-ssl=openssl \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
 		CFLAGS='$(CFLAGS)' \
+		LIBIDN2_CFLAGS='-I $(TMP)/libidn2/install/usr/local/include' \
+		LIBIDN2_LIBS='$(TMP)/libidn2/install/usr/local/lib/libidn2.a' \
 		PCRE2_CFLAGS='-I $(TMP)/pcre2/install/usr/local/include' \
 		PCRE2_LIBS='$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a' \
 		ZLIB_CFLAGS='-I $(TMP)/zlib/install/usr/local/include' \
@@ -392,6 +450,8 @@ $(TMP)/wget/build/config.status : \
 				wget/configure \
 				$(TMP)/libiconv/install/usr/local/include/iconv.h \
 				$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
+				$(TMP)/libidn2/install/usr/local/include/idn2.h \
+				$(TMP)/libidn2/install/usr/local/lib/libidn2.a \
 				$(TMP)/libunistring/install/usr/local/include/unistr.h \
 				$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
 				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
@@ -472,6 +532,7 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Build Date: %s\n' "$(date)" > $@
 	printf 'Software Version: %s\n' "$(version)" >> $@
 	printf 'libiconv Version: %s\n' "$(libiconv_version)" >> $@
+	printf 'libidn2 Version: %s\n' "$(libidn2_version)" >> $@
 	printf 'libunistring Version: %s\n' "$(libunistring_version)" >> $@
 	printf 'OpenSSL Version: %s\n' "$(openssl_version)" >> $@
 	printf 'PCRE2 Version: %s\n' "$(pcre2_version)" >> $@
@@ -496,6 +557,7 @@ $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
 		-e 's/{{date}}/$(date)/g' \
 		-e 's/{{macos}}/$(macos)/g' \
 		-e 's/{{libiconv_version}}/$(libiconv_version)/g' \
+		-e 's/{{libidn2_version}}/$(libidn2_version)/g' \
 		-e 's/{{libunistring_version}}/$(libunistring_version)/g' \
 		-e 's/{{openssl_version}}/$(openssl_version)/g' \
 		-e 's/{{pcre2_version}}/$(pcre2_version)/g' \

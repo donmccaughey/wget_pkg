@@ -3,11 +3,12 @@
 This project builds a signed and notarized universal macOS installer package
 for [GNU Wget][1], a command line tool for retrieving files using HTTP, HTTPS,
 FTP and FTPS.  It contains the source distribution of Wget 1.25.0, 
-[libiconv 1.18][2], [libunistring 1.4.1][4], [OpenSSL 3.5.5 LTS][5],
-[PCRE2 10.47][6] and [zlib 1.3.1][7].
+[libiconv 1.18][2], [libidn2 2.3.8][3], [libunistring 1.4.1][4],
+[OpenSSL 3.5.5 LTS][5], [PCRE2 10.47][6] and [zlib 1.3.1][7].
 
 [1]: https://www.gnu.org/software/wget/
 [2]: https://www.gnu.org/software/libiconv/
+[3]: https://www.gnu.org/software/libidn/#libidn2
 [4]: https://www.gnu.org/software/libunistring/
 [5]: https://openssl-library.org/source/
 [6]: https://www.pcre.org
@@ -24,11 +25,11 @@ to generate the credentials needed to sign and notarize.
 
 ## Building
 
-The [`Makefile`][8] in the project root directory builds the installer package.
+The [`Makefile`][10] in the project root directory builds the installer package.
 The following makefile variables can be set from the command line:
 
 - `APP_SIGNING_ID`: The name of the 
-    [Apple _Developer ID Application_ certificate][10] used to sign the 
+    [Apple _Developer ID Application_ certificate][11] used to sign the 
     `wget` executable.  The certificate must be installed on the build 
     machine's Keychain.  Defaults to "Developer ID Application: Donald 
     McCaughey" if not specified.

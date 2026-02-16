@@ -1,0 +1,115 @@
+2025-03-08  Simon Josefsson  <simon@josefsson.org>
+
+	version 2.3.8
+	* NEWS: Record release date.
+
+	Minor DEPENDENCIES fixes.
+
+	Fix make syntax-check.
+
+	Cleanups related to DEPENDENCIES.
+
+2025-03-08  Bruno Haible  <bruno@clisp.org>
+
+	Add DEPENDENCIES.  Closes: #128.
+
+2025-03-08  Simon Josefsson  <simon@josefsson.org>
+
+	cicd: Fix gettext-related build failures.
+
+	bootstrap: Create LINGUAS.
+
+2025-03-07  Simon Josefsson  <simon@josefsson.org>
+
+	Remake idn2 and idn2.1 when package version changes.
+
+	Drop explicit aclocal -I that triggers tarball irreproducibility.
+
+	Version fixes.
+
+2025-03-05  Simon Josefsson  <simon@josefsson.org>
+
+	maint: Run 'make update-po' for new translations.
+
+	Store translations in git as po/*.po.in and let ./bootstrap use them.
+
+	announce-gen: Use direct URLs instead of ftpmirror.
+
+	cicd: Fixes.
+
+	Silence perl uninitialized value warning.
+
+2025-03-04  Simon Josefsson  <simon@josefsson.org>
+
+	Mark U+19DA as DISALLOWED with Unicode 15.1.0.
+
+	Update for Unicode 15.1.0.
+
+	NEWS: Doc fixes.
+
+	Fix abidiff failure on macOS.
+
+	cicd: Fix pipeline.
+
+	Don't hardcode perl as /usr/bin/perl, for Guix.
+
+2025-02-25  Simon Josefsson  <simon@josefsson.org>
+
+	Fix po/*.pot reproducability bug.
+
+	Fix reproducability bug in ax_am_macros_static.m4.
+
+	maint: Run 'make -f cfg.mk aximport'.
+
+	maint: gen-ChangeLog: Shorten ChangeLog a bit.
+
+	maint: Add guix to boostrapping tools, for announce-gen.
+
+	maint: Use AC_CONFIG_MACRO_DIRS instead of ACLOCAL_AMFLAGS.
+
+	Add .tarball-version-git for git-version-gen.
+
+	Reproducability and git-archive fixes.
+
+	Drop DISTCHECK_CONFIGURE_FLAGS.
+
+	Use tar --format=ustar, for long filenames.
+
+	Fix clang -Werror,-Wformat.
+
+	Fix -Werror=missing-variable-declarations.
+
+	Fix -Werror=missing-variable-declarations.
+
+	Run './bootstrap --bootstrap-sync'.
+
+	Use gnulib l10n gettext domain.
+
+	Fix syntax-check sc_prefer_angle_bracket_headers.
+
+	Bump COPYING texts to latest gnulib versions.
+
+	maint: Run 'make my-update-copyright update-NEWS-hash'.
+
+	bootstrap.conf: Fix gtk-docize.
+
+	Use GNULIB_REVISION instead of gnulib submodule.
+
+2024-11-19  Simon Josefsson  <simon@josefsson.org>
+
+	Put GPLv3 in COPYING, moving old licensing info to README.md.
+
+2024-01-27  Simon Josefsson  <simon@josefsson.org>
+
+	cicd: Fix debci git clone branch post release.
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+	version 2.3.7
+	* NEWS: Record release date.
+
+
+See the source repo for older entries
