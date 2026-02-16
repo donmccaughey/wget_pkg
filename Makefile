@@ -6,6 +6,7 @@ TMP ?= $(abspath tmp)
 version := 1.25.0
 libiconv_version := 1.18
 libidn2_version := 2.3.8
+libpsl_version := 0.21.5
 libunistring_version := 1.4.1
 openssl_version := 3.5.5
 pcre2_version := 10.47
@@ -38,6 +39,7 @@ clean :
 check :
 	test "$(shell lipo -archs $(TMP)/libiconv/install/usr/local/lib/libiconv.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/libidn2/install/usr/local/lib/libidn2.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/libpsl/install/usr/local/lib/libpsl.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/libunistring/install/usr/local/lib/libunistring.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
@@ -62,6 +64,11 @@ libiconv : \
 libidn2 : \
 		$(TMP)/libidn2/install/usr/local/include/idn2.h \
 		$(TMP)/libidn2/install/usr/local/lib/libidn2.a
+
+.PHONY : libpsl
+libpsl : \
+		$(TMP)/libpsl/install/usr/local/include/psl.h \
+		$(TMP)/libpsl/install/usr/local/lib/libpsl.a
 
 
 .PHONY : libunistring
@@ -122,6 +129,8 @@ $(TMP)/libiconv/installed.stamp.txt : \
 			$(TMP)/libiconv/build/lib/.libs/libiconv.a \
 			| $$(dir $$@)
 	cd $(TMP)/libiconv/build && $(MAKE) DESTDIR=$(TMP)/libiconv/install install
+#	libpsl `make` chokes on relocated libtool .la files so remove them
+	rm -f $(TMP)/libiconv/install/usr/local/lib/*.la
 	date > $@
 
 $(TMP)/libiconv/build/include/iconv.h \
@@ -164,6 +173,8 @@ $(TMP)/libidn2/installed.stamp.txt : \
 		$(TMP)/libidn2/build/lib/.libs/libidn2.a \
 		| $$(dir $$@)
 	cd $(TMP)/libidn2/build && $(MAKE) DESTDIR=$(TMP)/libidn2/install install
+#	libpsl `make` chokes on relocated libtool .la files so remove them
+	rm -f $(TMP)/libidn2/install/usr/local/lib/*.la
 	date > $@
 
 $(TMP)/libidn2/build/lib/.libs/libidn2.a : $(TMP)/libidn2/built.stamp.txt | $$(dir $$@)
@@ -173,7 +184,13 @@ $(TMP)/libidn2/built.stamp.txt : $(TMP)/libidn2/configured.stamp.txt | $$(dir $$
 	cd $(TMP)/libidn2/build && $(MAKE)
 	date > $@
 
-$(TMP)/libidn2/configured.stamp.txt : $(libidn2_sources) | $(TMP)/libidn2/build
+$(TMP)/libidn2/configured.stamp.txt : \
+		$(libidn2_sources) \
+		$(TMP)/libiconv/install/usr/local/include/iconv.h \
+		$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
+		$(TMP)/libunistring/install/usr/local/include/unistr.h \
+		$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
+		| $(TMP)/libidn2/build
 	cd $(TMP)/libidn2/build \
 			&& $(abspath libidn2/configure) $(libidn2_config_options)
 	date > $@
@@ -182,6 +199,73 @@ $(TMP)/libidn2 \
 $(TMP)/libidn2/build \
 $(TMP)/libidn2/install :
 	mkdir -p $@
+
+
+##### libpsl ##########
+
+libpsl_config_options := \
+		--disable-gtk-doc-html \
+		--disable-man \
+		--disable-shared \
+		--enable-runtime=libidn2 \
+		--enable-static \
+		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
+		CFLAGS='$(CFLAGS) -I$(TMP)/libiconv/install/usr/local/include -I$(TMP)/libunistring/install/usr/local/include' \
+		LDFLAGS='-L$(TMP)/libiconv/install/usr/local/lib -L$(TMP)/libunistring/install/usr/local/lib' \
+		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
+		LIBIDN2_LIBS='-lidn2 -L$(TMP)/libidn2/install/usr/local/lib'
+
+libpsl_sources := $(shell find libpsl -type f \! -name .DS_Store)
+
+$(TMP)/libpsl/install/usr/local/include/libpsl.h \
+$(TMP)/libpsl/install/usr/local/lib/libpsl.a : $(TMP)/libpsl/installed.stamp.txt
+	@:
+
+$(TMP)/libpsl/installed.stamp.txt : \
+		$(TMP)/libpsl/build/include/libpsl.h \
+		$(TMP)/libpsl/build/src/.libs/libpsl.a \
+		| $$(dir $$@)
+	cd $(TMP)/libpsl/build && $(MAKE) DESTDIR=$(TMP)/libpsl/install install
+	date > $@
+
+$(TMP)/libpsl/build/include/libpsl.h \
+$(TMP)/libpsl/build/src/.libs/libpsl.a : $(TMP)/libpsl/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/libpsl/built.stamp.txt : $(TMP)/libpsl/configured.stamp.txt | $$(dir $$@)
+	cd $(TMP)/libpsl/build && $(MAKE)
+	date > $@
+
+$(TMP)/libpsl/configured.stamp.txt : \
+		$(libpsl_sources) \
+		$(TMP)/libiconv/install/usr/local/include/iconv.h \
+		$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
+		$(TMP)/libidn2/install/usr/local/include/idn2.h \
+		$(TMP)/libidn2/install/usr/local/lib/libidn2.a \
+		$(TMP)/libunistring/install/usr/local/include/unistr.h \
+		$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
+		| $(TMP)/libpsl/build
+	cd $(TMP)/libpsl/build \
+			&& $(abspath libpsl/configure) $(libpsl_config_options)
+	date > $@
+
+$(TMP)/libpsl \
+$(TMP)/libpsl/build \
+$(TMP)/libpsl/install :
+	mkdir -p $@
+
+.PHONY : pslclean
+pslclean :
+	rm -rf $(TMP)/libpsl
+
+.PHONY : pslconfig
+pslconfig : $(TMP)/libpsl/configured.stamp.txt
+
+.PHONY : pslbuild
+pslbuild : $(TMP)/libpsl/built.stamp.txt
+
+.PHONY : pslinstall
+pslinstall : $(TMP)/libpsl/installed.stamp.txt
 
 
 ##### libunistring ##########
@@ -203,6 +287,8 @@ $(TMP)/libunistring/installed.stamp.txt : \
 		| $$(dir $$@)
 	cd $(TMP)/libunistring/build \
 			&& $(MAKE) DESTDIR=$(TMP)/libunistring/install install
+#	libpsl `make` chokes on relocated libtool .la files so remove them
+	rm -f $(TMP)/libunistring/install/usr/local/lib/*.la
 # 	libunistring `make install` adds this empty file to the dist directory
 	rm -f libunistring/lib/libunistring.sym-t1
 	date > $@
@@ -427,11 +513,13 @@ wget_configure_options := \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
 		CFLAGS='$(CFLAGS)' \
-		LIBIDN2_CFLAGS='-I $(TMP)/libidn2/install/usr/local/include' \
+		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
 		LIBIDN2_LIBS='$(TMP)/libidn2/install/usr/local/lib/libidn2.a' \
-		PCRE2_CFLAGS='-I $(TMP)/pcre2/install/usr/local/include' \
+		LIBPSL_CFLAGS='-I$(TMP)/libpsl/install/usr/local/include' \
+		LIBPSL_LIBS='$(TMP)/libpsl/install/usr/local/lib/libpsl.a' \
+		PCRE2_CFLAGS='-I$(TMP)/pcre2/install/usr/local/include' \
 		PCRE2_LIBS='$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a' \
-		ZLIB_CFLAGS='-I $(TMP)/zlib/install/usr/local/include' \
+		ZLIB_CFLAGS='-I$(TMP)/zlib/install/usr/local/include' \
 		ZLIB_LIBS='-lz -L$(TMP)/zlib/install/usr/local/lib'
 
 wget_sources := $(shell find wget -type f \! -name .DS_Store)
@@ -452,6 +540,8 @@ $(TMP)/wget/build/config.status : \
 				$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
 				$(TMP)/libidn2/install/usr/local/include/idn2.h \
 				$(TMP)/libidn2/install/usr/local/lib/libidn2.a \
+				$(TMP)/libpsl/install/usr/local/include/libpsl.h \
+				$(TMP)/libpsl/install/usr/local/lib/libpsl.a \
 				$(TMP)/libunistring/install/usr/local/include/unistr.h \
 				$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
 				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
@@ -533,6 +623,7 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Software Version: %s\n' "$(version)" >> $@
 	printf 'libiconv Version: %s\n' "$(libiconv_version)" >> $@
 	printf 'libidn2 Version: %s\n' "$(libidn2_version)" >> $@
+	printf 'libpsl Version: %s\n' "$(libpsl_version)" >> $@
 	printf 'libunistring Version: %s\n' "$(libunistring_version)" >> $@
 	printf 'OpenSSL Version: %s\n' "$(openssl_version)" >> $@
 	printf 'PCRE2 Version: %s\n' "$(pcre2_version)" >> $@
@@ -558,6 +649,7 @@ $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
 		-e 's/{{macos}}/$(macos)/g' \
 		-e 's/{{libiconv_version}}/$(libiconv_version)/g' \
 		-e 's/{{libidn2_version}}/$(libidn2_version)/g' \
+		-e 's/{{libpsl_version}}/$(libpsl_version)/g' \
 		-e 's/{{libunistring_version}}/$(libunistring_version)/g' \
 		-e 's/{{openssl_version}}/$(openssl_version)/g' \
 		-e 's/{{pcre2_version}}/$(pcre2_version)/g' \
