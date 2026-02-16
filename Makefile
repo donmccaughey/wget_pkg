@@ -210,6 +210,15 @@ $(TMP)/libidn2/install :
 
 ##### libpsl ##########
 
+libpsl_cflags := \
+		$(CFLAGS) \
+		-I$(TMP)/libiconv/install/usr/local/include \
+		-I$(TMP)/libunistring/install/usr/local/include
+
+libpsl_ldflags := \
+		-L$(TMP)/libiconv/install/usr/local/lib \
+		-L$(TMP)/libunistring/install/usr/local/lib
+
 libpsl_config_options := \
 		--disable-gtk-doc-html \
 		--disable-man \
@@ -217,8 +226,8 @@ libpsl_config_options := \
 		--enable-runtime=libidn2 \
 		--enable-static \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
-		CFLAGS='$(CFLAGS) -I$(TMP)/libiconv/install/usr/local/include -I$(TMP)/libunistring/install/usr/local/include' \
-		LDFLAGS='-L$(TMP)/libiconv/install/usr/local/lib -L$(TMP)/libunistring/install/usr/local/lib' \
+		CFLAGS='$(libpsl_cflags)' \
+		LDFLAGS='$(libpsl_ldflags)' \
 		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
 		LIBIDN2_LIBS='-lidn2 -L$(TMP)/libidn2/install/usr/local/lib'
 
