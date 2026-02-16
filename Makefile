@@ -266,19 +266,6 @@ $(TMP)/libpsl/build \
 $(TMP)/libpsl/install :
 	mkdir -p $@
 
-.PHONY : pslclean
-pslclean :
-	rm -rf $(TMP)/libpsl
-
-.PHONY : pslconfig
-pslconfig : $(TMP)/libpsl/configured.stamp.txt
-
-.PHONY : pslbuild
-pslbuild : $(TMP)/libpsl/built.stamp.txt
-
-.PHONY : pslinstall
-pslinstall : $(TMP)/libpsl/installed.stamp.txt
-
 
 ##### libunistring ##########
 
