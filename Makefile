@@ -5,6 +5,7 @@ TMP ?= $(abspath tmp)
 
 version := 1.25.0
 libiconv_version := 1.18
+libunistring_version := 1.4.1
 openssl_version := 3.5.5
 pcre2_version := 10.47
 zlib_version := 1.3.1
@@ -35,6 +36,7 @@ clean :
 .PHONY : check
 check :
 	test "$(shell lipo -archs $(TMP)/libiconv/install/usr/local/lib/libiconv.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/libunistring/install/usr/local/lib/libunistring.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
 	test "$(shell lipo -archs $(TMP)/zlib/install/usr/local/lib/libz.a)" = "x86_64 arm64"
@@ -51,6 +53,11 @@ check :
 libiconv : \
 			$(TMP)/libiconv/install/usr/local/include/iconv.h \
 			$(TMP)/libiconv/install/usr/local/lib/libiconv.a
+
+.PHONY : libunistring
+libunistring : \
+		$(TMP)/libunistring/install/usr/local/include/unistr.h \
+		$(TMP)/libunistring/install/usr/local/lib/libunistring.a
 
 
 .PHONY : openssl
@@ -117,6 +124,54 @@ $(TMP)/libiconv/configured.stamp.txt : $(libiconv_sources) | $(TMP)/libiconv/bui
 $(TMP)/libiconv \
 $(TMP)/libiconv/build \
 $(TMP)/libiconv/install :
+	mkdir -p $@
+
+
+##### libunistring ##########
+
+libunistring_config_options := \
+		--disable-shared \
+		--with-libiconv-prefix='$(TMP)/libiconv/install/usr/local' \
+		CFLAGS='$(CFLAGS)'
+
+libunistring_sources := $(shell find libunistring -type f \! -name .DS_Store)
+
+$(TMP)/libunistring/install/usr/local/include/unistr.h \
+$(TMP)/libunistring/install/usr/local/lib/libunistring.a : $(TMP)/libunistring/installed.stamp.txt
+	@:
+
+$(TMP)/libunistring/installed.stamp.txt : \
+		$(TMP)/libunistring/build/lib/unistr.h \
+		$(TMP)/libunistring/build/lib/.libs/libunistring.a \
+		| $$(dir $$@)
+	cd $(TMP)/libunistring/build \
+			&& $(MAKE) DESTDIR=$(TMP)/libunistring/install install
+# 	libunistring `make install` adds this empty file to the dist directory
+	rm -f libunistring/lib/libunistring.sym-t1
+	date > $@
+
+$(TMP)/libunistring/build/lib/unistr.h \
+$(TMP)/libunistring/build/lib/.libs/libunistring.a : $(TMP)/libunistring/built.stamp.txt | $$(dir $$@)
+	@:
+
+$(TMP)/libunistring/built.stamp.txt : \
+		$(TMP)/libunistring/configured.stamp.txt \
+		$(TMP)/libiconv/install/usr/local/include/iconv.h \
+		$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
+		| $$(dir $$@)
+	cd $(TMP)/libunistring/build && $(MAKE)
+# 	libunistring `make` adds this empty file to the dist directory
+	rm -f libunistring/lib/libunistring.sym-t1
+	date > $@
+
+$(TMP)/libunistring/configured.stamp.txt : $(libunistring_sources) | $(TMP)/libunistring/build
+	cd $(TMP)/libunistring/build \
+			&& $(abspath libunistring/configure) $(libunistring_config_options)
+	date > $@
+
+$(TMP)/libunistring \
+$(TMP)/libunistring/build \
+$(TMP)/libunistring/install :
 	mkdir -p $@
 
 
@@ -227,7 +282,7 @@ $(TMP)/openssl/install/usr/local/lib :
 	mkdir -p $@
 
 
-#### pcre2 ##########
+##### pcre2 ##########
 
 pcre2_config_options := \
 		--disable-shared \
@@ -267,7 +322,7 @@ $(TMP)/pcre2/install :
 	mkdir -p $@
 
 
-#### zlib ##########
+##### zlib ##########
 
 zlib_config_options := \
 		--static \
@@ -337,6 +392,8 @@ $(TMP)/wget/build/config.status : \
 				wget/configure \
 				$(TMP)/libiconv/install/usr/local/include/iconv.h \
 				$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
+				$(TMP)/libunistring/install/usr/local/include/unistr.h \
+				$(TMP)/libunistring/install/usr/local/lib/libunistring.a \
 				$(TMP)/openssl/install/usr/local/include/openssl/ssl.h \
 				$(TMP)/openssl/install/usr/local/lib/libcrypto.a \
 				$(TMP)/openssl/install/usr/local/lib/libssl.a \
@@ -415,6 +472,7 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'Build Date: %s\n' "$(date)" > $@
 	printf 'Software Version: %s\n' "$(version)" >> $@
 	printf 'libiconv Version: %s\n' "$(libiconv_version)" >> $@
+	printf 'libunistring Version: %s\n' "$(libunistring_version)" >> $@
 	printf 'OpenSSL Version: %s\n' "$(openssl_version)" >> $@
 	printf 'PCRE2 Version: %s\n' "$(pcre2_version)" >> $@
 	printf 'zlib Version: %s\n' "$(zlib_version)" >> $@
@@ -438,7 +496,9 @@ $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
 		-e 's/{{date}}/$(date)/g' \
 		-e 's/{{macos}}/$(macos)/g' \
 		-e 's/{{libiconv_version}}/$(libiconv_version)/g' \
+		-e 's/{{libunistring_version}}/$(libunistring_version)/g' \
 		-e 's/{{openssl_version}}/$(openssl_version)/g' \
+		-e 's/{{pcre2_version}}/$(pcre2_version)/g' \
 		-e 's/{{zlib_version}}/$(zlib_version)/g' \
 		-e 's/{{revision}}/$(revision)/g' \
 		-e 's/{{version}}/$(version)/g' \
