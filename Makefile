@@ -637,9 +637,17 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'TMP directory: %s\n' "$(TMP)" >> $@
 	printf 'CFLAGS: %s\n' "$(CFLAGS)" >> $@
 	printf 'Tag: v%s-r%s\n' "$(version)" "$(revision)" >> $@
-	printf 'Tag Title: wget %s for macOS rev %s\n' "$(version)" "$(revision)" >> $@
-	printf 'Tag Message: A signed and notarized universal installer package for `wget` %s, built with libiconv %s, OpenSSL %s and zlib %s.\n' \
-		"$(version)" "$(libiconv_version)" "$(openssl_version)" "$(zlib_version)" >> $@
+	printf 'Tag Title: wget %s' "$(version)" >> $@
+	printf ' for macOS rev %s\n' "$(revision)" >> $@
+	printf 'Tag Message: A signed and notarized universal installer' >> $@
+	printf ' package for `wget` %s, built with' "$(version)" >> $@
+	printf ' libiconv %s,' "$(libiconv_version)" >> $@
+	printf ' libidn2 %s,' "$(libidn2_version)" >> $@
+	printf ' libpsl %s,' "$(libpsl_version)" >> $@
+	printf ' libunistring %s,' "$(libunistring_version)" >> $@
+	printf ' OpenSSL %s,' "$(openssl_version)" >> $@
+	printf ' PCRE2 %s' "$(pcre2_version)" >> $@
+	printf ' and zlib %s.\n' "$(zlib_version)" >> $@
 
 $(TMP)/distribution.xml \
 $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
