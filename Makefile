@@ -229,7 +229,7 @@ libpsl_config_options := \
 		CFLAGS='$(libpsl_cflags)' \
 		LDFLAGS='$(libpsl_ldflags)' \
 		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
-		LIBIDN2_LIBS='-lidn2 -L$(TMP)/libidn2/install/usr/local/lib'
+		LIBIDN2_LIBS='-L$(TMP)/libidn2/install/usr/local/lib -lidn2'
 
 libpsl_sources := $(shell find libpsl -type f \! -name .DS_Store)
 
@@ -546,13 +546,13 @@ wget_configure_options := \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
 		CFLAGS='$(CFLAGS)' \
 		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
-		LIBIDN2_LIBS='$(TMP)/libidn2/install/usr/local/lib/libidn2.a' \
+		LIBIDN2_LIBS='-L$(TMP)/libidn2/install/usr/local/lib -lidn2' \
 		LIBPSL_CFLAGS='-I$(TMP)/libpsl/install/usr/local/include' \
-		LIBPSL_LIBS='$(TMP)/libpsl/install/usr/local/lib/libpsl.a' \
+		LIBPSL_LIBS='-L$(TMP)/libpsl/install/usr/local/lib -lpsl' \
 		PCRE2_CFLAGS='-I$(TMP)/pcre2/install/usr/local/include' \
-		PCRE2_LIBS='$(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a' \
+		PCRE2_LIBS='-L$(TMP)/pcre2/install/usr/local/lib -lpcre2-8' \
 		ZLIB_CFLAGS='-I$(TMP)/zlib/install/usr/local/include' \
-		ZLIB_LIBS='-lz -L$(TMP)/zlib/install/usr/local/lib'
+		ZLIB_LIBS='-L$(TMP)/zlib/install/usr/local/lib -lz'
 
 wget_sources := $(shell find wget -type f \! -name .DS_Store)
 
