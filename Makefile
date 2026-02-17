@@ -11,7 +11,7 @@ libunistring_version := 1.4.1
 openssl_version := 3.5.5
 pcre2_version := 10.47
 zlib_version := 1.3.1
-revision := 1
+revision := 2
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
@@ -540,11 +540,11 @@ $(TMP)/zlib/install :
 wget_configure_options := \
 		--disable-silent-rules \
 		--disable-pcre \
-		--without-libpsl \
 		--with-ssl=openssl \
 		--with-libiconv-prefix=$(TMP)/libiconv/install/usr/local \
 		--with-libssl-prefix=$(TMP)/openssl/install/usr/local \
 		CFLAGS='$(CFLAGS)' \
+		LDFLAGS='-L$(TMP)/libunistring/install/usr/local/lib -lunistring' \
 		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
 		LIBIDN2_LIBS='-L$(TMP)/libidn2/install/usr/local/lib -lidn2' \
 		LIBPSL_CFLAGS='-I$(TMP)/libpsl/install/usr/local/include' \
