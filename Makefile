@@ -43,22 +43,7 @@ clean :
 
 
 .PHONY : check
-check :
-	test "$(shell lipo -archs $(TMP)/libiconv/install/usr/local/lib/libiconv.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/libidn2/install/usr/local/lib/libidn2.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/libpsl/install/usr/local/lib/libpsl.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/libunistring/install/usr/local/lib/libunistring.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/zlib/install/usr/local/lib/libz.a)" = "x86_64 arm64"
-	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
-	test "$(shell ./tools/dylibs --no-sys-libs --count $(TMP)/wget/install/usr/local/bin/wget) dylibs" = "0 dylibs"
-	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
-	$(TMP)/wget/install/usr/local/bin/wget --output-document - https://donm.cc > /dev/null
-	pkgutil --check-signature wget-$(ver).pkg
-	spctl --assess --type install wget-$(ver).pkg
-	xcrun stapler validate wget-$(ver).pkg
+check : $(TMP)/checked-package.stamp.txt
 
 
 .PHONY : libiconv
@@ -733,3 +718,20 @@ $(TMP)/notarized.stamp.txt : $(TMP)/notarization-log.json | $$(dir $$@)
 wget-$(ver).pkg : $(TMP)/wget-$(ver)-unnotarized.pkg $(TMP)/notarized.stamp.txt
 	cp $< $@
 	xcrun stapler staple $@
+
+$(TMP)/checked-package.stamp.txt : wget-$(ver).pkg
+	test "$(shell lipo -archs $(TMP)/libiconv/install/usr/local/lib/libiconv.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/libidn2/install/usr/local/lib/libidn2.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/libpsl/install/usr/local/lib/libpsl.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/libunistring/install/usr/local/lib/libunistring.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libcrypto.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/openssl/install/usr/local/lib/libssl.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/pcre2/install/usr/local/lib/libpcre2-8.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/zlib/install/usr/local/lib/libz.a)" = "x86_64 arm64"
+	test "$(shell lipo -archs $(TMP)/wget/install/usr/local/bin/wget)" = "x86_64 arm64"
+	test "$(shell ./tools/dylibs --no-sys-libs --count $(TMP)/wget/install/usr/local/bin/wget) dylibs" = "0 dylibs"
+	codesign --verify --strict $(TMP)/wget/install/usr/local/bin/wget
+	$(TMP)/wget/install/usr/local/bin/wget --output-document - https://donm.cc > /dev/null
+	pkgutil --check-signature wget-$(ver).pkg
+	spctl --assess --type install wget-$(ver).pkg
+	xcrun stapler validate wget-$(ver).pkg
