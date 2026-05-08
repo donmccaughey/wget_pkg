@@ -15,6 +15,13 @@ revision := 2
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
+tag := v"$(version)-r$(revision)
+tag-message := A signed and notarized universal installer package for \`wget\` \
+	$(version), built with libiconv $(libiconv_version), libidn2 \
+	$(libidn2_version), libpsl $(libpsl_version), libunistring \
+	$(libunistring_version), OpenSSL $(openssl_version), PCRE2 $(pcre2_version) \
+	and zlib $(zlib_version).
+tag-title := wget $(version) for macOS rev $(revision)
 ver := $(version)$(rev)
 
 
@@ -670,18 +677,9 @@ $(TMP)/build-report.txt : | $$(dir $$@)
 	printf 'INSTALLER_SIGNING_ID: %s\n' "$(INSTALLER_SIGNING_ID)" >> $@
 	printf 'TMP directory: %s\n' "$(TMP)" >> $@
 	printf 'CFLAGS: %s\n' "$(CFLAGS)" >> $@
-	printf 'Tag: v%s-r%s\n' "$(version)" "$(revision)" >> $@
-	printf 'Tag Title: wget %s' "$(version)" >> $@
-	printf ' for macOS rev %s\n' "$(revision)" >> $@
-	printf 'Tag Message: A signed and notarized universal installer' >> $@
-	printf ' package for `wget` %s, built with' "$(version)" >> $@
-	printf ' libiconv %s,' "$(libiconv_version)" >> $@
-	printf ' libidn2 %s,' "$(libidn2_version)" >> $@
-	printf ' libpsl %s,' "$(libpsl_version)" >> $@
-	printf ' libunistring %s,' "$(libunistring_version)" >> $@
-	printf ' OpenSSL %s,' "$(openssl_version)" >> $@
-	printf ' PCRE2 %s' "$(pcre2_version)" >> $@
-	printf ' and zlib %s.\n' "$(zlib_version)" >> $@
+	printf 'Tag: %s\n' "$(tag)" >> $@
+	printf 'Tag Title: %s\n' "$(tag-title)" >> $@
+	printf 'Tag Message: %s\n' "$(tag-message)" >> $@
 
 $(TMP)/distribution.xml \
 $(TMP)/resources/welcome.html : $(TMP)/% : % | $$(dir $$@)
@@ -735,4 +733,3 @@ $(TMP)/notarized.stamp.txt : $(TMP)/notarization-log.json | $$(dir $$@)
 wget-$(ver).pkg : $(TMP)/wget-$(ver)-unnotarized.pkg $(TMP)/notarized.stamp.txt
 	cp $< $@
 	xcrun stapler staple $@
-
