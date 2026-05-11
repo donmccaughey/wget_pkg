@@ -5,7 +5,7 @@ for [GNU Wget][1], a command line tool for retrieving files using HTTP, HTTPS,
 FTP and FTPS.  It contains the source distribution of Wget 1.25.0, 
 [libiconv 1.19][2], [libidn2 2.3.8][3], [libpsl 0.21.5][4],
 [libunistring 1.4.1][5], [OpenSSL 3.5.6 LTS][6], [PCRE2 10.47][7] and
-[zlib 1.3.1][8].
+[zlib 1.3.2][8].
 
 [1]: https://www.gnu.org/software/wget/
 [2]: https://www.gnu.org/software/libiconv/

@@ -10,7 +10,7 @@ libpsl_version := 0.21.5
 libunistring_version := 1.4.1
 openssl_version := 3.5.6
 pcre2_version := 10.47
-zlib_version := 1.3.1
+zlib_version := 1.3.2
 revision := 3
 archs := arm64 x86_64
 
