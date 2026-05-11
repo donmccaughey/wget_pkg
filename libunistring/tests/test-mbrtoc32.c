@@ -1,5 +1,5 @@
 /* Test of conversion of multibyte character to 32-bit wide character.
-   Copyright (C) 2008-2025 Free Software Foundation, Inc.
+   Copyright (C) 2008-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -67,11 +67,10 @@ main (int argc, char *argv[])
 
   /* Test single-byte input.  */
   {
-    int c;
     char buf[1];
 
     memset (&state, '\0', sizeof (mbstate_t));
-    for (c = 0; c < 0x100; c++)
+    for (int c = 0; c < 0x100; c++)
       switch (c)
         {
         case '\t': case '\v': case '\f':
@@ -141,11 +140,10 @@ main (int argc, char *argv[])
       case '1':
         /* C or POSIX locale.  */
         {
-          int c;
           char buf[1];
 
           memset (&state, '\0', sizeof (mbstate_t));
-          for (c = 0; c < 0x100; c++)
+          for (int c = 0; c < 0x100; c++)
             if (c != 0)
               {
                 /* We are testing all nonnull bytes.  */

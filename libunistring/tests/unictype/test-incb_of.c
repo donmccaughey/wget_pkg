@@ -1,5 +1,5 @@
 /* Test the Unicode character Indic_Conjunct_Break attribute functions.
-   Copyright (C) 2011-2025 Free Software Foundation, Inc.
+   Copyright (C) 2011-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2024.
 
    This program is free software: you can redistribute it and/or modify it
@@ -35,10 +35,9 @@ int
 main ()
 {
   unsigned int c;
-  size_t i;
 
   c = 0;
-  for (i = 0; i < SIZEOF (mapping); i++)
+  for (size_t i = 0; i < SIZEOF (mapping); i++)
     {
       for (; c < mapping[i].ch; c++)
         ASSERT (uc_indic_conjunct_break (c) == UC_INDIC_CONJUNCT_BREAK_NONE);

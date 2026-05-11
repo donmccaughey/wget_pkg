@@ -1,5 +1,5 @@
 /* Test of conversion from UTF-32 to legacy encodings.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,13 +31,12 @@ main ()
 #if HAVE_ICONV
   static enum iconv_ilseq_handler handlers[] =
     { iconveh_error, iconveh_question_mark, iconveh_escape_sequence };
-  size_t h;
 
   /* Assume that iconv() supports at least the encodings ASCII, ISO-8859-1,
      ISO-8859-2, and UTF-8.  */
 
   /* Test conversion from UTF-32 to ISO-8859-1 with no errors.  */
-  for (h = 0; h < SIZEOF (handlers); h++)
+  for (size_t h = 0; h < SIZEOF (handlers); h++)
     {
       enum iconv_ilseq_handler handler = handlers[h];
       static const uint32_t input[] = /* Ärger mit bösen Bübchen ohne Augenmaß */
@@ -54,7 +53,7 @@ main ()
     }
 
   /* Test conversion from UTF-32 to ISO-8859-1 with EILSEQ.  */
-  for (h = 0; h < SIZEOF (handlers); h++)
+  for (size_t h = 0; h < SIZEOF (handlers); h++)
     {
       enum iconv_ilseq_handler handler = handlers[h];
       static const uint32_t input[] = /* Rafał Maszkowski */

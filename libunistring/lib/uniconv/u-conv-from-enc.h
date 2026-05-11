@@ -1,5 +1,5 @@
 /* Conversion to UTF-16/UTF-32 from legacy encodings.
-   Copyright (C) 2002, 2006-2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006-2007, 2009-2026 Free Software Foundation, Inc.
 
    This file is free software.
    It is dual-licensed under "the GNU LGPLv3+ or the GNU GPLv2+".
@@ -40,9 +40,8 @@ FUNC (const char *fromcode,
     {
       /* Convert 'char *' offsets to 'UNIT *' offsets.  */
       size_t *offsets_end = offsets + srclen;
-      size_t *o;
 
-      for (o = offsets; o < offsets_end; o++)
+      for (size_t *o = offsets; o < offsets_end; o++)
         if (*o != (size_t)(-1))
           *o = *o / sizeof (UNIT);
     }
@@ -51,16 +50,14 @@ FUNC (const char *fromcode,
   *lengthp = length / sizeof (UNIT);
   return (UNIT *) result;
 #else
-  uint8_t *utf8_string;
   size_t utf8_length;
-  UNIT *result;
-
-  utf8_string =
+  uint8_t *utf8_string =
     u8_conv_from_encoding (fromcode, handler, src, srclen, offsets,
                            NULL, &utf8_length);
   if (utf8_string == NULL)
     return NULL;
-  result = U8_TO_U (utf8_string, utf8_length, resultbuf, lengthp);
+
+  UNIT *result = U8_TO_U (utf8_string, utf8_length, resultbuf, lengthp);
   if (result == NULL)
     {
       int saved_errno = errno;
@@ -72,11 +69,10 @@ FUNC (const char *fromcode,
     {
       size_t length = *lengthp;
       size_t *offsets_end = offsets + srclen;
-      size_t *o;
-      size_t off8 = 0;  /* offset into utf8_string */
-      size_t offunit = 0;       /* offset into result */
 
-      for (o = offsets; o < offsets_end; o++)
+      size_t off8 = 0;          /* offset into utf8_string */
+      size_t offunit = 0;       /* offset into result */
+      for (size_t *o = offsets; o < offsets_end; o++)
         if (*o != (size_t)(-1))
           {
             while (off8 < *o)

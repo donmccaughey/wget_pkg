@@ -1,5 +1,5 @@
 /* Determine display width of UTF-32 string.
-   Copyright (C) 2001-2002, 2006, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2001-2002, 2006, 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
    This file is free software.
@@ -37,12 +37,11 @@ u32_width (const uint32_t *s, size_t n, const char *encoding)
   while (s < s_end)
     {
       ucs4_t uc = *s++;
-      int w;
 
       if (uc == 0)
         break; /* end of string reached */
 
-      w = uc_width (uc, encoding);
+      int w = uc_width (uc, encoding);
       if (w >= 0) /* ignore control characters in the string */
         width += w;
     }

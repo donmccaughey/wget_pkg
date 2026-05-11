@@ -1,5 +1,5 @@
 /* Test of optional automatic memory allocation.
-   Copyright (C) 2005, 2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2005, 2007, 2009-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -37,10 +37,8 @@ int
 main ()
 {
 #if HAVE_ALLOCA
-  int i;
-
   /* Repeat a lot of times, to make sure there's no memory leak.  */
-  for (i = 0; i < 100000; i++)
+  for (int i = 0; i < 100000; i++)
     {
       /* Try various values.
          n = 0 gave a crash on Alpha with gcc-2.5.8.

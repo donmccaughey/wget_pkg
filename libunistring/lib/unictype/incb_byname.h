@@ -1,4 +1,4 @@
-/* ANSI-C code produced by gperf version 3.2 */
+/* ANSI-C code produced by gperf version 3.3 */
 /* Command-line: gperf -m 10 unictype/incb_byname.gperf  */
 /* Computed positions: -k'1' */
 
@@ -138,6 +138,10 @@ static const struct indic_conjunct_break_stringpool_t indic_conjunct_break_strin
   };
 #define indic_conjunct_break_stringpool ((const char *) &indic_conjunct_break_stringpool_contents)
 
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
 static const struct named_indic_conjunct_break indic_conjunct_break_names[] =
   {
     {-1}, {-1}, {-1}, {-1},
@@ -152,6 +156,9 @@ static const struct named_indic_conjunct_break indic_conjunct_break_names[] =
 #line 38 "unictype/incb_byname.gperf"
     {(int)(size_t)&((struct indic_conjunct_break_stringpool_t *)0)->indic_conjunct_break_stringpool_str9, UC_INDIC_CONJUNCT_BREAK_CONSONANT}
   };
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic pop
+#endif
 
 static const struct named_indic_conjunct_break *
 uc_indic_conjunct_break_lookup (register const char *str, register size_t len)
@@ -172,5 +179,5 @@ uc_indic_conjunct_break_lookup (register const char *str, register size_t len)
             }
         }
     }
-  return 0;
+  return (struct named_indic_conjunct_break *) 0;
 }

@@ -1,5 +1,5 @@
 /* Test of c32islower() function.
-   Copyright (C) 2020-2025 Free Software Foundation, Inc.
+   Copyright (C) 2020-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -67,53 +67,49 @@ main (int argc, char *argv[])
        - in the "POSIX" locale (which is usually the same as the "C" locale),
          the lowercase characters include only the ASCII a ... z characters.
    */
-  {
-    int c;
-
-    for (c = 0; c < 0x100; c++)
-      switch (c)
-        {
-        case '\t': case '\v': case '\f':
-        case ' ': case '!': case '"': case '#': case '%':
-        case '&': case '\'': case '(': case ')': case '*':
-        case '+': case ',': case '-': case '.': case '/':
-        case '0': case '1': case '2': case '3': case '4':
-        case '5': case '6': case '7': case '8': case '9':
-        case ':': case ';': case '<': case '=': case '>':
-        case '?':
-        case 'A': case 'B': case 'C': case 'D': case 'E':
-        case 'F': case 'G': case 'H': case 'I': case 'J':
-        case 'K': case 'L': case 'M': case 'N': case 'O':
-        case 'P': case 'Q': case 'R': case 'S': case 'T':
-        case 'U': case 'V': case 'W': case 'X': case 'Y':
-        case 'Z':
-        case '[': case '\\': case ']': case '^': case '_':
-        case 'a': case 'b': case 'c': case 'd': case 'e':
-        case 'f': case 'g': case 'h': case 'i': case 'j':
-        case 'k': case 'l': case 'm': case 'n': case 'o':
-        case 'p': case 'q': case 'r': case 's': case 't':
-        case 'u': case 'v': case 'w': case 'x': case 'y':
-        case 'z': case '{': case '|': case '}': case '~':
-          /* c is in the ISO C "basic character set".  */
-          buf[0] = (unsigned char) c;
-          is = for_character (buf, 1);
-          switch (c)
-            {
-            case 'a': case 'b': case 'c': case 'd': case 'e':
-            case 'f': case 'g': case 'h': case 'i': case 'j':
-            case 'k': case 'l': case 'm': case 'n': case 'o':
-            case 'p': case 'q': case 'r': case 's': case 't':
-            case 'u': case 'v': case 'w': case 'x': case 'y':
-            case 'z':
-              ASSERT (is != 0);
-              break;
-            default:
-              ASSERT (is == 0);
-              break;
-            }
-          break;
-        }
-  }
+  for (int c = 0; c < 0x100; c++)
+    switch (c)
+      {
+      case '\t': case '\v': case '\f':
+      case ' ': case '!': case '"': case '#': case '%':
+      case '&': case '\'': case '(': case ')': case '*':
+      case '+': case ',': case '-': case '.': case '/':
+      case '0': case '1': case '2': case '3': case '4':
+      case '5': case '6': case '7': case '8': case '9':
+      case ':': case ';': case '<': case '=': case '>':
+      case '?':
+      case 'A': case 'B': case 'C': case 'D': case 'E':
+      case 'F': case 'G': case 'H': case 'I': case 'J':
+      case 'K': case 'L': case 'M': case 'N': case 'O':
+      case 'P': case 'Q': case 'R': case 'S': case 'T':
+      case 'U': case 'V': case 'W': case 'X': case 'Y':
+      case 'Z':
+      case '[': case '\\': case ']': case '^': case '_':
+      case 'a': case 'b': case 'c': case 'd': case 'e':
+      case 'f': case 'g': case 'h': case 'i': case 'j':
+      case 'k': case 'l': case 'm': case 'n': case 'o':
+      case 'p': case 'q': case 'r': case 's': case 't':
+      case 'u': case 'v': case 'w': case 'x': case 'y':
+      case 'z': case '{': case '|': case '}': case '~':
+        /* c is in the ISO C "basic character set".  */
+        buf[0] = (unsigned char) c;
+        is = for_character (buf, 1);
+        switch (c)
+          {
+          case 'a': case 'b': case 'c': case 'd': case 'e':
+          case 'f': case 'g': case 'h': case 'i': case 'j':
+          case 'k': case 'l': case 'm': case 'n': case 'o':
+          case 'p': case 'q': case 'r': case 's': case 't':
+          case 'u': case 'v': case 'w': case 'x': case 'y':
+          case 'z':
+            ASSERT (is != 0);
+            break;
+          default:
+            ASSERT (is == 0);
+            break;
+          }
+        break;
+      }
 
   if (argc > 1)
     switch (argv[1][0])
@@ -202,7 +198,7 @@ main (int argc, char *argv[])
           /* U+00B2 SUPERSCRIPT TWO */
           is = for_character ("\302\262", 2);
           ASSERT (is == 0);
-        #if !(defined __GLIBC__ || defined MUSL_LIBC || (defined __APPLE__ && defined __MACH__) || defined __FreeBSD__ || defined __DragonFly__ || defined __NetBSD__ || defined __OpenBSD__ || defined _AIX || defined __sun || defined __CYGWIN__ || (defined _WIN32 && !defined __CYGWIN__) || defined __ANDROID__)
+        #if !(defined __GLIBC__ || defined MUSL_LIBC || (defined __APPLE__ && defined __MACH__) || defined __FreeBSD__ || defined __DragonFly__ || defined __NetBSD__ || defined __OpenBSD__ || defined _AIX || defined __sun || defined __CYGWIN__ || (defined _WIN32 && !defined __CYGWIN__) || defined __ANDROID__ || defined __HAIKU__)
           /* U+00B5 MICRO SIGN */
           is = for_character ("\302\265", 2);
           ASSERT (is == 0);

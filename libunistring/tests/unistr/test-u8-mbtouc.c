@@ -1,5 +1,5 @@
 /* Test of u8_mbtouc() function.
-   Copyright (C) 2010-2025 Free Software Foundation, Inc.
+   Copyright (C) 2010-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -78,10 +78,9 @@ test_safe_function (int (*my_u8_mbtouc) (ucs4_t *, const uint8_t *, size_t))
   }
   /* 3.2. Lonely start characters.  */
   {
-    ucs4_t c;
     uint8_t input[2];
 
-    for (c = 0xC0; c <= 0xFF; c++)
+    for (ucs4_t c = 0xC0; c <= 0xFF; c++)
       {
         input[0] = c;
         input[1] = ' ';

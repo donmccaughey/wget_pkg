@@ -1,5 +1,5 @@
 /* Test of ulc_[v]asnprintf() functions.
-   Copyright (C) 2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007, 2009-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,11 +20,10 @@ static void
 test_function (char * (*my_asnprintf) (char *, size_t *, const char *, ...))
 {
   char buf[8];
-  int size;
 
   /* Test return value convention.  */
 
-  for (size = 0; size <= 8; size++)
+  for (int size = 0; size <= 8; size++)
     {
       size_t length = size;
       char *result = my_asnprintf (NULL, &length, "%d", 12345);
@@ -34,7 +33,7 @@ test_function (char * (*my_asnprintf) (char *, size_t *, const char *, ...))
       free (result);
     }
 
-  for (size = 0; size <= 8; size++)
+  for (int size = 0; size <= 8; size++)
     {
       size_t length;
       char *result;

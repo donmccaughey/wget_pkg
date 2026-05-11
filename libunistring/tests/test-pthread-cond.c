@@ -1,5 +1,5 @@
 /* Test of condition variables in multithreaded situations.
-   Copyright (C) 2008-2025 Free Software Foundation, Inc.
+   Copyright (C) 2008-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -204,11 +204,11 @@ test_pthread_cond_timedwait (void)
                           pthread_cond_timedwait_routine, &skipped)
           == 0);
 
-  /* Sleep for 2 seconds.  */
+  /* Sleep for 3 seconds.  */
   {
     struct timespec remaining;
 
-    remaining.tv_sec = 2;
+    remaining.tv_sec = 3;
     remaining.tv_nsec = 0;
 
     do

@@ -1,3 +1,6 @@
+New in 1.4.2:
+* Fixed a build failure on systems with glibc 2.43.
+
 New in 1.4.1:
 * Fixed a compilation error in C++ mode.
 

@@ -1,5 +1,5 @@
 /* Test the Unicode character type functions.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,9 +26,8 @@ int
 main ()
 {
   uc_property_t pr = UC_PROPERTY_COMPOSITE;
-  unsigned int c;
 
-  for (c = 0; c < 0x110000; c++)
+  for (unsigned int c = 0; c < 0x110000; c++)
     ASSERT (uc_is_property (c, pr) == uc_is_property_composite (c));
 
   return test_exit_status;

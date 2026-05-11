@@ -1,5 +1,5 @@
 /* Decomposition and composition of Unicode strings.
-   Copyright (C) 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This file is free software: you can redistribute it and/or modify
@@ -24,16 +24,7 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
 
   /* The result being accumulated.  */
   UNIT *result;
-  size_t length;
   size_t allocated;
-  /* The buffer for sorting.  */
-  #define SORTBUF_PREALLOCATED 64
-  struct ucs4_with_ccc sortbuf_preallocated[2 * SORTBUF_PREALLOCATED];
-  struct ucs4_with_ccc *sortbuf; /* array of size 2 * sortbuf_allocated */
-  size_t sortbuf_allocated;
-  size_t sortbuf_count;
-
-  /* Initialize the accumulator.  */
   if (resultbuf == NULL)
     {
       result = NULL;
@@ -44,12 +35,15 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
       result = resultbuf;
       allocated = *lengthp;
     }
-  length = 0;
+  size_t length = 0;
 
-  /* Initialize the buffer for sorting.  */
-  sortbuf = sortbuf_preallocated;
-  sortbuf_allocated = SORTBUF_PREALLOCATED;
-  sortbuf_count = 0;
+  /* The buffer for sorting.  */
+  #define SORTBUF_PREALLOCATED 64
+  struct ucs4_with_ccc sortbuf_preallocated[2 * SORTBUF_PREALLOCATED];
+  struct ucs4_with_ccc *sortbuf = /* array of size 2 * sortbuf_allocated */
+    sortbuf_preallocated;
+  size_t sortbuf_allocated = SORTBUF_PREALLOCATED;
+  size_t sortbuf_count = 0;
 
   {
     const UNIT *s_end = s + n;
@@ -59,7 +53,6 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
         int count;
         ucs4_t decomposed[UC_DECOMPOSITION_MAX_LENGTH];
         int decomposed_count;
-        int i;
 
         if (s < s_end)
           {
@@ -73,46 +66,40 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
                the size of the decomposition tables, because for example for
                U+1FC1 the recursive canonical decomposition and the recursive
                compatibility decomposition are different.  */
-            {
-              int curr;
+            for (int curr = 0; curr < decomposed_count; )
+              {
+                /* Invariant: decomposed[0..curr-1] is fully decomposed, i.e.
+                   all elements are atomic.  */
+                ucs4_t curr_decomposed[UC_DECOMPOSITION_MAX_LENGTH];
+                int curr_decomposed_count;
 
-              for (curr = 0; curr < decomposed_count; )
-                {
-                  /* Invariant: decomposed[0..curr-1] is fully decomposed, i.e.
-                     all elements are atomic.  */
-                  ucs4_t curr_decomposed[UC_DECOMPOSITION_MAX_LENGTH];
-                  int curr_decomposed_count;
+                curr_decomposed_count = decomposer (decomposed[curr], curr_decomposed);
+                if (curr_decomposed_count >= 0)
+                  {
+                    /* Move curr_decomposed[0..curr_decomposed_count-1] over
+                       decomposed[curr], making room.  It's not worth using
+                       memcpy() here, since the counts are so small.  */
+                    int shift = curr_decomposed_count - 1;
 
-                  curr_decomposed_count = decomposer (decomposed[curr], curr_decomposed);
-                  if (curr_decomposed_count >= 0)
-                    {
-                      /* Move curr_decomposed[0..curr_decomposed_count-1] over
-                         decomposed[curr], making room.  It's not worth using
-                         memcpy() here, since the counts are so small.  */
-                      int shift = curr_decomposed_count - 1;
-
-                      if (shift < 0)
-                        abort ();
-                      if (shift > 0)
-                        {
-                          int j;
-
-                          decomposed_count += shift;
-                          if (decomposed_count > UC_DECOMPOSITION_MAX_LENGTH)
-                            abort ();
-                          for (j = decomposed_count - 1 - shift; j > curr; j--)
-                            decomposed[j + shift] = decomposed[j];
-                        }
-                      for (; shift >= 0; shift--)
-                        decomposed[curr + shift] = curr_decomposed[shift];
-                    }
-                  else
-                    {
-                      /* decomposed[curr] is atomic.  */
-                      curr++;
-                    }
-                }
-            }
+                    if (shift < 0)
+                      abort ();
+                    if (shift > 0)
+                      {
+                        decomposed_count += shift;
+                        if (decomposed_count > UC_DECOMPOSITION_MAX_LENGTH)
+                          abort ();
+                        for (int j = decomposed_count - 1 - shift; j > curr; j--)
+                          decomposed[j + shift] = decomposed[j];
+                      }
+                    for (; shift >= 0; shift--)
+                      decomposed[curr + shift] = curr_decomposed[shift];
+                  }
+                else
+                  {
+                    /* decomposed[curr] is atomic.  */
+                    curr++;
+                  }
+              }
           }
         else
           {
@@ -120,7 +107,7 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
             decomposed_count = 0;
           }
 
-        i = 0;
+        int i = 0;
         for (;;)
           {
             ucs4_t uc;
@@ -143,8 +130,6 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
 
             if (ccc == 0)
               {
-                size_t j;
-
                 /* Apply the canonical ordering algorithm to the accumulated
                    sequence of characters.  */
                 if (sortbuf_count > 1)
@@ -175,7 +160,7 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
                             (also a starter).  */
                     if (sortbuf_count > 0 && sortbuf[0].ccc == 0)
                       {
-                        for (j = 1; j < sortbuf_count; )
+                        for (size_t j = 1; j < sortbuf_count; )
                           {
                             if (sortbuf[j].ccc > sortbuf[j - 1].ccc)
                               {
@@ -183,11 +168,9 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
                                   composer (sortbuf[0].code, sortbuf[j].code);
                                 if (combined)
                                   {
-                                    size_t k;
-
                                     sortbuf[0].code = combined;
                                     /* sortbuf[0].ccc = 0, still valid.  */
-                                    for (k = j + 1; k < sortbuf_count; k++)
+                                    for (size_t k = j + 1; k < sortbuf_count; k++)
                                       sortbuf[k - 1] = sortbuf[k];
                                     sortbuf_count--;
                                     continue;
@@ -212,7 +195,7 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
                       }
                   }
 
-                for (j = 0; j < sortbuf_count; j++)
+                for (size_t j = 0; j < sortbuf_count; j++)
                   {
                     ucs4_t muc = sortbuf[j].code;
 
@@ -303,12 +286,10 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
             /* Append (uc, ccc) to sortbuf.  */
             if (sortbuf_count == sortbuf_allocated)
               {
-                struct ucs4_with_ccc *new_sortbuf;
-
                 sortbuf_allocated = 2 * sortbuf_allocated;
                 if (sortbuf_allocated < sortbuf_count) /* integer overflow? */
                   abort ();
-                new_sortbuf =
+                struct ucs4_with_ccc *new_sortbuf =
                   (struct ucs4_with_ccc *) malloc (2 * sortbuf_allocated * sizeof (struct ucs4_with_ccc));
                 if (new_sortbuf == NULL)
                   {
@@ -352,9 +333,7 @@ FUNC (uninorm_t nf, const UNIT *s, size_t n,
   else if (result != resultbuf && length < allocated)
     {
       /* Shrink the allocated memory if possible.  */
-      UNIT *memory;
-
-      memory = (UNIT *) realloc (result, length * sizeof (UNIT));
+      UNIT *memory = (UNIT *) realloc (result, length * sizeof (UNIT));
       if (memory != NULL)
         result = memory;
     }

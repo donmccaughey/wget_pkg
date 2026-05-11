@@ -723,12 +723,12 @@ GL_COND_OBJ_STRERROR_FALSE
 GL_COND_OBJ_STRERROR_TRUE
 GL_COND_OBJ_STPCPY_FALSE
 GL_COND_OBJ_STPCPY_TRUE
+GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE
+GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE
 GL_COND_OBJ_STDIO_WRITE_FALSE
 GL_COND_OBJ_STDIO_WRITE_TRUE
 GL_COND_OBJ_STDIO_READ_FALSE
 GL_COND_OBJ_STDIO_READ_TRUE
-GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE
-GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE
 NEXT_AS_FIRST_DIRECTIVE_STDIO_H
 NEXT_STDIO_H
 GL_COND_OBJ_STAT_FALSE
@@ -2621,6 +2621,8 @@ HAVE_OFF64_T
 WINDOWS_64_BIT_OFF_T
 NEXT_AS_FIRST_DIRECTIVE_SYS_TYPES_H
 NEXT_SYS_TYPES_H
+GL_COND_OBJ_STRNCPY_FALSE
+GL_COND_OBJ_STRNCPY_TRUE
 GL_COND_OBJ_STRNCAT_FALSE
 GL_COND_OBJ_STRNCAT_TRUE
 NEXT_AS_FIRST_DIRECTIVE_STRING_H
@@ -2657,6 +2659,7 @@ NEXT_SCHED_H
 HAVE_SYS_CDEFS_H
 REPLACE_SCHED_YIELD
 HAVE_SCHED_YIELD
+LIBDL
 reloc_final_prefix_c_make
 reloc_final_prefix_c
 RELOCATABLE
@@ -2797,6 +2800,7 @@ REPLACE_STRCASESTR
 REPLACE_STRSTR
 REPLACE_STRNLEN
 REPLACE_STRNDUP
+REPLACE_STRNCPY
 REPLACE_STRNCAT
 REPLACE_STRDUP
 REPLACE_STRCHRNUL
@@ -2863,6 +2867,7 @@ GL_GNULIB_MBSNLEN
 GL_GNULIB_MBSLEN
 GL_GNULIB_STR_ENDSWITH
 GL_GNULIB_STR_STARTSWITH
+GL_GNULIB_STRNUL
 GL_GNULIB_STRTOK_R
 GL_GNULIB_STRCASESTR
 GL_GNULIB_STRSTR
@@ -2870,6 +2875,7 @@ GL_GNULIB_STRSEP
 GL_GNULIB_STRPBRK
 GL_GNULIB_STRNLEN
 GL_GNULIB_STRNDUP
+GL_GNULIB_STRNCPY
 GL_GNULIB_STRNCAT
 GL_GNULIB_STRINGEQ
 GL_GNULIB_STRDUP
@@ -3121,6 +3127,7 @@ GL_GNULIB_SQRTF
 GL_GNULIB_SINHF
 GL_GNULIB_SINL
 GL_GNULIB_SINF
+GL_GNULIB_SIGNBIT_NO_CXX
 GL_GNULIB_SIGNBIT
 GL_GNULIB_SETPAYLOADSIGL
 GL_GNULIB_SETPAYLOADSIGF
@@ -3165,8 +3172,11 @@ GL_GNULIB_LDEXP
 GL_GNULIB_ISNANL
 GL_GNULIB_ISNAND
 GL_GNULIB_ISNANF
+GL_GNULIB_ISNAN_NO_CXX
 GL_GNULIB_ISNAN
+GL_GNULIB_ISINF_NO_CXX
 GL_GNULIB_ISINF
+GL_GNULIB_ISFINITE_NO_CXX
 GL_GNULIB_ISFINITE
 GL_GNULIB_ILOGBL
 GL_GNULIB_ILOGBF
@@ -3231,6 +3241,7 @@ REPLACE_TANHF
 REPLACE_TANF
 REPLACE_SQRTL
 REPLACE_SQRTF
+REPLACE_SINL
 REPLACE_SINHF
 REPLACE_SINF
 REPLACE_SIGNBIT_USING_BUILTINS
@@ -3518,6 +3529,7 @@ REPLACE_ABORT
 REPLACE__EXIT
 HAVE_DECL_UNSETENV
 HAVE_UNLOCKPT
+HAVE_SYS_PROCESS_H
 HAVE_SYS_LOADAVG_H
 HAVE_STRUCT_RANDOM_DATA
 HAVE_STRTOULL
@@ -3574,6 +3586,7 @@ NEXT_AS_FIRST_DIRECTIVE_FLOAT_H
 NEXT_FLOAT_H
 GL_GNULIB_MDA_OPEN
 GL_GNULIB_MDA_CREAT
+GL_GNULIB_OPENAT2
 GL_GNULIB_OPENAT
 GL_GNULIB_OPEN
 GL_GNULIB_NONBLOCKING
@@ -3585,6 +3598,7 @@ REPLACE_OPENAT
 REPLACE_OPEN
 REPLACE_FCNTL
 REPLACE_CREAT
+HAVE_OPENAT2
 HAVE_OPENAT
 HAVE_FCNTL
 GL_GENERATE_ERRNO_H_FALSE
@@ -5951,6 +5965,7 @@ as_fn_append ac_func_c_list " _set_invalid_parameter_handler HAVE__SET_INVALID_P
 as_fn_append ac_header_c_list " error.h error_h HAVE_ERROR_H"
 as_fn_append ac_func_c_list " fcntl HAVE_FCNTL"
 as_fn_append ac_func_c_list " getdtablesize HAVE_GETDTABLESIZE"
+as_fn_append ac_header_c_list " sys/process.h sys_process_h HAVE_SYS_PROCESS_H"
 as_fn_append ac_func_c_list " getexecname HAVE_GETEXECNAME"
 as_fn_append ac_func_c_list " gettimeofday HAVE_GETTIMEOFDAY"
 as_fn_append ac_header_c_list " netdb.h netdb_h HAVE_NETDB_H"
@@ -9864,8 +9879,8 @@ esac
   # Code from module setsockopt-tests:
   # Code from module signal-h:
   # Code from module signal-h-tests:
-  # Code from module signbit:
-  # Code from module signbit-tests:
+  # Code from module signbit-no-c++:
+  # Code from module signbit-no-c++-tests:
   # Code from module signed-nan:
   # Code from module signed-snan:
   # Code from module sigprocmask:
@@ -9902,6 +9917,7 @@ esac
 
 
   # Code from module stdio-h-tests:
+  # Code from module stdio-windows:
   # Code from module stdlib-h:
   # Code from module stdlib-h-tests:
   # Code from module stpcpy:
@@ -9909,7 +9925,7 @@ esac
   # Code from module str_endswith-tests:
   # Code from module str_startswith:
   # Code from module str_startswith-tests:
-  # Code from module streq:
+  # Code from module streq-opt:
   # Code from module strerror:
   # Code from module strerror-override:
   # Code from module strerror-tests:
@@ -9924,6 +9940,8 @@ esac
   # Code from module stringeq:
   # Code from module strncat:
   # Code from module strncat-tests:
+  # Code from module strncpy:
+  # Code from module strncpy-tests:
   # Code from module strstr:
   # Code from module strstr-simple:
   # Code from module strstr-tests:
@@ -22771,6 +22789,7 @@ printf "%s\n" "#define HAVE___HEADER_INLINE 1" >>confdefs.h
 
     HAVE_FCNTL=1;
   HAVE_OPENAT=1;
+  HAVE_OPENAT2=0;
   REPLACE_CREAT=0;
   REPLACE_FCNTL=0;
   REPLACE_OPEN=0;
@@ -23193,6 +23212,10 @@ printf "%s\n" "$gl_cv_next_fcntl_h" >&6; }
 
 
 
+  GL_GNULIB_OPENAT2=0
+
+
+
   GL_GNULIB_MDA_CREAT=1
 
 
@@ -23488,6 +23511,7 @@ printf "%s\n" "#define AC_APPLE_UNIVERSAL_BUILD 1" >>confdefs.h
   HAVE_STRTOULL=1;
   HAVE_STRUCT_RANDOM_DATA=1;
   HAVE_SYS_LOADAVG_H=0;
+  HAVE_SYS_PROCESS_H=0;
   HAVE_UNLOCKPT=1;
   HAVE_DECL_UNSETENV=1;
   REPLACE__EXIT=0;
@@ -23936,6 +23960,7 @@ printf "%s\n" "#define AC_APPLE_UNIVERSAL_BUILD 1" >>confdefs.h
   REPLACE_SIGNBIT_USING_BUILTINS=0;
   REPLACE_SINF=0;
   REPLACE_SINHF=0;
+  REPLACE_SINL=0;
   REPLACE_SQRTF=0;
   REPLACE_SQRTL=0;
   REPLACE_TANF=0;
@@ -24201,11 +24226,23 @@ printf "%s\n" "#define HAVE_DECL_ALARM $ac_have_decl" >>confdefs.h
 
 
 
+  GL_GNULIB_ISFINITE_NO_CXX=0
+
+
+
   GL_GNULIB_ISINF=0
 
 
 
+  GL_GNULIB_ISINF_NO_CXX=0
+
+
+
   GL_GNULIB_ISNAN=0
+
+
+
+  GL_GNULIB_ISNAN_NO_CXX=0
 
 
 
@@ -24382,6 +24419,10 @@ printf "%s\n" "#define HAVE_DECL_ALARM $ac_have_decl" >>confdefs.h
 
 
   GL_GNULIB_SIGNBIT=0
+
+
+
+  GL_GNULIB_SIGNBIT_NO_CXX=0
 
 
 
@@ -24594,8 +24635,8 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
         LIBS="$saved_LIBS"
         test $gl_pthread_api = yes && break
       done
-      echo "$as_me:24597: gl_pthread_api=$gl_pthread_api" >&5
-      echo "$as_me:24598: LIBPTHREAD=$LIBPTHREAD" >&5
+      echo "$as_me:24638: gl_pthread_api=$gl_pthread_api" >&5
+      echo "$as_me:24639: LIBPTHREAD=$LIBPTHREAD" >&5
 
       gl_pthread_in_glibc=no
       # On Linux with glibc >= 2.34, libc contains the fully functional
@@ -24624,7 +24665,7 @@ rm -rf conftest*
   *) :
      ;;
 esac
-      echo "$as_me:24627: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
+      echo "$as_me:24668: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
 
       # Test for libpthread by looking for pthread_kill.
       if test $gl_pthread_api = yes && test -z "$LIBPTHREAD"
@@ -24876,7 +24917,7 @@ fi
 fi
 
 fi
-      echo "$as_me:24879: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
+      echo "$as_me:24920: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
 
 fi
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether POSIX threads API is available" >&5
@@ -25299,6 +25340,8 @@ then :
   case "$host_os" in
             cygwin*) # Guess no on Cygwin.
               gl_cv_func_getlocalename_l_works="guessing no" ;;
+            haiku*)  # Guess no on Haiku.
+              gl_cv_func_getlocalename_l_works="guessing no" ;;
             *)       # Guess yes otherwise.
               gl_cv_func_getlocalename_l_works="guessing yes" ;;
           esac
@@ -25311,8 +25354,21 @@ else case e in #(
 #include <string.h>
 int main ()
 {
-  const char *ret = getlocalename_l (LC_COLLATE, LC_GLOBAL_LOCALE);
-  return strlen (ret) == 0;
+  int result = 0;
+  /* Check against the Cygwin bug.  */
+  {
+    const char *ret = getlocalename_l (LC_COLLATE, LC_GLOBAL_LOCALE);
+    if (strlen (ret) == 0)
+      result |= 1;
+  }
+  /* Check against the Haiku oddity.  */
+  {
+    const char *ret =
+      getlocalename_l (LC_COLLATE, newlocale (LC_ALL_MASK, "C", NULL));
+    if (strcmp (ret, "C") != 0)
+      result |= 2;
+  }
+  return result;
 }
 _ACEOF
 if ac_fn_c_try_run "$LINENO"
@@ -30502,8 +30558,8 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
         LIBS="$saved_LIBS"
         test $gl_pthread_api = yes && break
       done
-      echo "$as_me:30505: gl_pthread_api=$gl_pthread_api" >&5
-      echo "$as_me:30506: LIBPTHREAD=$LIBPTHREAD" >&5
+      echo "$as_me:30561: gl_pthread_api=$gl_pthread_api" >&5
+      echo "$as_me:30562: LIBPTHREAD=$LIBPTHREAD" >&5
 
       gl_pthread_in_glibc=no
       # On Linux with glibc >= 2.34, libc contains the fully functional
@@ -30532,7 +30588,7 @@ rm -rf conftest*
   *) :
      ;;
 esac
-      echo "$as_me:30535: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
+      echo "$as_me:30591: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
 
       # Test for libpthread by looking for pthread_kill.
       if test $gl_pthread_api = yes && test -z "$LIBPTHREAD"
@@ -30784,7 +30840,7 @@ fi
 fi
 
 fi
-      echo "$as_me:30787: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
+      echo "$as_me:30843: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
 
 fi
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether POSIX threads API is available" >&5
@@ -31074,8 +31130,8 @@ rm -f core conftest.err conftest.$ac_objext conftest.beam \
         LIBS="$saved_LIBS"
         test $gl_pthread_api = yes && break
       done
-      echo "$as_me:31077: gl_pthread_api=$gl_pthread_api" >&5
-      echo "$as_me:31078: LIBPTHREAD=$LIBPTHREAD" >&5
+      echo "$as_me:31133: gl_pthread_api=$gl_pthread_api" >&5
+      echo "$as_me:31134: LIBPTHREAD=$LIBPTHREAD" >&5
 
       gl_pthread_in_glibc=no
       # On Linux with glibc >= 2.34, libc contains the fully functional
@@ -31104,7 +31160,7 @@ rm -rf conftest*
   *) :
      ;;
 esac
-      echo "$as_me:31107: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
+      echo "$as_me:31163: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
 
       # Test for libpthread by looking for pthread_kill.
       if test $gl_pthread_api = yes && test -z "$LIBPTHREAD"
@@ -31356,7 +31412,7 @@ fi
 fi
 
 fi
-      echo "$as_me:31359: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
+      echo "$as_me:31415: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
 
 fi
     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether POSIX threads API is available" >&5
@@ -31775,14 +31831,14 @@ fi
 
 
 
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether malloc, realloc, calloc set errno on failure" >&5
-printf %s "checking whether malloc, realloc, calloc set errno on failure... " >&6; }
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether malloc, calloc set errno on failure" >&5
+printf %s "checking whether malloc, calloc set errno on failure... " >&6; }
 if test ${gl_cv_func_malloc_posix+y}
 then :
   printf %s "(cached) " >&6
 else case e in #(
   e)
-                                    case "$host_os" in
+                                          case "$host_os" in
         mingw* | windows*)
                                         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -31810,6 +31866,7 @@ fi
 rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
           ;;
         solaris*)
+
 
           gl_cv_func_malloc_posix=no ;;
         *)
@@ -32314,6 +32371,10 @@ printf "%s\n" "$gl_cv_header_math_huge_val_works" >&6; }
 
 
 
+  GL_GNULIB_STRNCPY=0
+
+
+
   GL_GNULIB_STRNDUP=0
 
 
@@ -32339,6 +32400,10 @@ printf "%s\n" "$gl_cv_header_math_huge_val_works" >&6; }
 
 
   GL_GNULIB_STRTOK_R=0
+
+
+
+  GL_GNULIB_STRNUL=0
 
 
 
@@ -32493,6 +32558,7 @@ printf "%s\n" "$gl_cv_header_math_huge_val_works" >&6; }
   REPLACE_STRCHRNUL=0;
   REPLACE_STRDUP=0;
   REPLACE_STRNCAT=0;
+  REPLACE_STRNCPY=0;
   REPLACE_STRNDUP=0;
   REPLACE_STRNLEN=0;
   REPLACE_STRSTR=0;
@@ -33181,6 +33247,82 @@ printf "%s\n" "#define INSTALLPREFIX ${reloc_final_prefix_c}" >>confdefs.h
   if test $RELOCATABLE = yes; then
 
 printf "%s\n" "#define ENABLE_RELOCATABLE 1" >>confdefs.h
+
+  fi
+
+          { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for library needed for dlopen and dlsym" >&5
+printf %s "checking for library needed for dlopen and dlsym... " >&6; }
+if test ${gl_cv_lib_dl+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <dlfcn.h>
+
+int
+main (void)
+{
+return ! dlsym (RTLD_DEFAULT, "main");
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  gl_cv_lib_dl=none
+else case e in #(
+  e) gl_cv_lib_dl=maybe ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+     if test $gl_cv_lib_dl = maybe; then
+       saved_LIBS="$LIBS"
+       LIBS="$LIBS -ldl"
+       cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <dlfcn.h>
+
+int
+main (void)
+{
+return ! dlsym (RTLD_DEFAULT, "main");
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"
+then :
+  gl_cv_lib_dl='-ldl'
+else case e in #(
+  e) gl_cv_lib_dl=none ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+       LIBS="$saved_LIBS"
+     fi
+     ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_lib_dl" >&5
+printf "%s\n" "$gl_cv_lib_dl" >&6; }
+  case "$gl_cv_lib_dl" in
+    none) LIBDL='' ;;
+    *)    LIBDL="$gl_cv_lib_dl" ;;
+  esac
+
+
+  if test -z "$LIBDL"; then
+    ac_fn_c_check_func "$LINENO" "dladdr" "ac_cv_func_dladdr"
+if test "x$ac_cv_func_dladdr" = xyes
+then :
+
+printf "%s\n" "#define HAVE_DLADDR_IN_LIBC 1" >>confdefs.h
+
+
+fi
 
   fi
 
@@ -34062,6 +34204,116 @@ printf "%s\n" "$gl_cv_func_strncat_works" >&6; }
   case "$gl_cv_func_strncat_works" in
     *yes) ;;
     *) REPLACE_STRNCAT=1 ;;
+  esac
+
+
+
+
+
+
+
+
+
+          { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether strncpy works" >&5
+printf %s "checking whether strncpy works... " >&6; }
+if test ${gl_cv_func_strncpy_works+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test "$cross_compiling" = yes
+then :
+
+        case "$host_os" in
+                                 # Guess no on FreeBSD.
+          freebsd* | dragonfly*) gl_cv_func_strncpy_works="guessing no" ;;
+                                 # Guess yes on native Windows.
+          mingw* | windows*)     gl_cv_func_strncpy_works="guessing yes" ;;
+                                 # Guess yes otherwise.
+          *)                     gl_cv_func_strncpy_works="guessing yes" ;;
+        esac
+
+else case e in #(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+#include <string.h>
+#if HAVE_SYS_MMAN_H
+# include <fcntl.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/mman.h>
+#endif
+
+
+$gl_mda_defines
+
+int
+main (void)
+{
+
+  char *fence = NULL;
+#if HAVE_SYS_MMAN_H && HAVE_MPROTECT
+  {
+    long int pagesize = sysconf (_SC_PAGESIZE);
+    char *two_pages =
+      (char *) mmap (NULL, 2 * pagesize, PROT_READ | PROT_WRITE,
+                     MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+    if (two_pages != (char *)(-1)
+        && mprotect (two_pages + pagesize, pagesize, PROT_NONE) == 0)
+      fence = two_pages + pagesize;
+  }
+#endif
+  if (fence)
+    {
+      char dest[8];
+
+      dest[0] = 'a';
+      dest[1] = 'b';
+      dest[2] = 'c';
+      dest[3] = 'd';
+      dest[4] = 'e';
+      dest[5] = 'f';
+      dest[6] = 'g';
+
+      *(fence - 3) = '7';
+      *(fence - 2) = '2';
+      *(fence - 1) = '9';
+
+      if (strncpy (dest + 1, fence - 3, 3) != dest + 1)
+        return 1;
+      if (dest[0] != 'a')
+        return 2;
+      if (dest[1] != '7' || dest[2] != '2' || dest[3] != '9')
+        return 3;
+      if (dest[4] != 'e')
+        return 4;
+    }
+  return 0;
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_run "$LINENO"
+then :
+  gl_cv_func_strncpy_works=yes
+else case e in #(
+  e) gl_cv_func_strncpy_works=no ;;
+esac
+fi
+rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+  conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+
+     ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_func_strncpy_works" >&5
+printf "%s\n" "$gl_cv_func_strncpy_works" >&6; }
+  case "$gl_cv_func_strncpy_works" in
+    *yes) ;;
+    *) REPLACE_STRNCPY=1 ;;
   esac
 
 
@@ -40637,6 +40889,7 @@ printf "%s\n" "#define HAVE_DECL_GETDTABLESIZE $ac_have_decl" >>confdefs.h
 
 
 
+
     HAVE_GETTIMEOFDAY=1;
   HAVE_STRUCT_TIMEVAL=1;
   HAVE_SYS_TIME_H=1;
@@ -43438,7 +43691,7 @@ printf "%s\n" "#define HAVE_DECL_UNSETENV $ac_have_decl" >>confdefs.h
       -Wno-sign-conversion
       -Wno-type-limits
       #endif
-      #if (__GNUC__ + (__GNUC_MINOR__ >= 4) > 4 && !defined __clang__) || (__clang_major__ + (__clang_minor__ >= 9) > 3)
+      #if (__GNUC__ + (__GNUC_MINOR__ >= 1) > 6 && !defined __clang__) || (__clang_major__ + (__clang_minor__ >= 9) > 3)
       -Wno-unused-const-variable
       #endif
       #if (__GNUC__ + (__GNUC_MINOR__ >= 5) > 4 && !defined __clang__)
@@ -50699,13 +50952,13 @@ fi
 
 
 
-          GL_GNULIB_SIGNBIT=1
+          GL_GNULIB_SIGNBIT_NO_CXX=1
 
 
 
 
 
-printf "%s\n" "#define GNULIB_TEST_SIGNBIT 1" >>confdefs.h
+printf "%s\n" "#define GNULIB_TEST_SIGNBIT_NO_CXX 1" >>confdefs.h
 
 
 
@@ -51121,6 +51374,52 @@ fi
 
 
 printf "%s\n" "#define GNULIB_TEST_STRNCAT 1" >>confdefs.h
+
+
+
+
+
+     if test $REPLACE_STRNCPY = 1; then
+  GL_COND_OBJ_STRNCPY_TRUE=
+  GL_COND_OBJ_STRNCPY_FALSE='#'
+else
+  GL_COND_OBJ_STRNCPY_TRUE='#'
+  GL_COND_OBJ_STRNCPY_FALSE=
+fi
+:
+    if test -z "${GL_COND_OBJ_STRNCPY_TRUE}" && test -z "${GL_COND_OBJ_STRNCPY_FALSE}"; then
+    GL_COND_OBJ_STRNCPY_TRUE='#'
+    GL_COND_OBJ_STRNCPY_FALSE='#'
+  fi
+
+  if test -z "$GL_COND_OBJ_STRNCPY_TRUE"; then :
+
+
+  :
+
+
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_STRNCPY=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_STRNCPY 1" >>confdefs.h
 
 
 
@@ -75612,6 +75911,12 @@ printf "%s\n" "#define GNULIB_TEST_GETDTABLESIZE 1" >>confdefs.h
 
 
 
+  if test $ac_cv_header_sys_process_h = yes; then
+    HAVE_SYS_PROCESS_H=1
+  else
+    HAVE_SYS_PROCESS_H=0
+  fi
+
 
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for getprogname" >&5
 printf %s "checking for getprogname... " >&6; }
@@ -76110,7 +76415,7 @@ printf "%s\n" "#define HAVE_DUPLOCALE 1" >>confdefs.h
 
 
 
-                HAVE_INET_PTON=1
+                  HAVE_INET_PTON=1
   INET_PTON_LIB=
 
 
@@ -76182,7 +76487,7 @@ return inet_pton ();
   return 0;
 }
 _ACEOF
-for ac_lib in '' nsl resolv network
+for ac_lib in '' nsl resolv network socket
 do
   if test -z "$ac_lib"; then
     ac_res="none required"
@@ -77598,6 +77903,46 @@ printf "%s\n" "#define HAVE_BUG_BIG_NANOSLEEP 1" >>confdefs.h
        ;;
    esac
  else
+   # Replace the static inline function on mingw which requires linking to
+   # libwinpthreads.
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for static inline nanosleep" >&5
+printf %s "checking for static inline nanosleep... " >&6; }
+if test ${gl_cv_static_inline_nanosleep+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <time.h>
+int
+main (void)
+{
+
+              static struct timespec ts1;
+              static struct timespec ts2;
+              return nanosleep (&ts1, &ts2);
+
+  ;
+  return 0;
+}
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  gl_cv_static_inline_nanosleep=yes
+else case e in #(
+  e) gl_cv_static_inline_nanosleep=no ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+    ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_static_inline_nanosleep" >&5
+printf "%s\n" "$gl_cv_static_inline_nanosleep" >&6; }
+   if test $gl_cv_static_inline_nanosleep = yes; then
+     REPLACE_NANOSLEEP=1
+   fi
    HAVE_NANOSLEEP=0
  fi
  LIBS=$gl_saved_LIBS
@@ -80094,13 +80439,75 @@ printf "%s\n" "#define GNULIB_TEST_RANDOM_R 1" >>confdefs.h
 
 
 
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether realloc sets errno on failure" >&5
+printf %s "checking whether realloc sets errno on failure... " >&6; }
+if test ${gl_cv_func_realloc_posix+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e)
+                  case "$host_os" in
+        darwin* | freebsd* | dragonfly* | midnightbsd* | netbsd* | openbsd*)
+          if test "$cross_compiling" = yes
+then :
+  case "$host_os" in
+               freebsd*) gl_cv_func_realloc_posix="guessing no" ;;
+               *)        gl_cv_func_realloc_posix="guessing yes" ;;
+             esac
+
+else case e in #(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <errno.h>
+                 #include <stdlib.h>
+                 int main (int argc, char **argv)
+                 {
+                   void *p;
+                   errno = 1729;
+                   p = realloc (malloc (1), (size_t)(-1) / 100 * 49);
+                   return (!p && errno == 1729);
+                 }
+
+
+_ACEOF
+if ac_fn_c_try_run "$LINENO"
+then :
+  gl_cv_func_realloc_posix=yes
+else case e in #(
+  e) gl_cv_func_realloc_posix=no ;;
+esac
+fi
+rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+  conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+
+          ;;
+        *)
+          gl_cv_func_realloc_posix="$gl_cv_func_malloc_posix"
+          ;;
+      esac
+     ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_func_realloc_posix" >&5
+printf "%s\n" "$gl_cv_func_realloc_posix" >&6; }
+  case "$gl_cv_func_realloc_posix" in
+    *yes)
+
+printf "%s\n" "#define HAVE_REALLOC_POSIX 1" >>confdefs.h
+
+      ;;
+    *)
+      REPLACE_REALLOC_FOR_REALLOC_POSIX=1
+      ;;
+  esac
+
   if test "$gl_cv_func_realloc_sanitize" != no; then
     REPLACE_REALLOC_FOR_REALLOC_POSIX=1
 
 printf "%s\n" "#define NEED_SANITIZED_REALLOC 1" >>confdefs.h
 
-  else
-    REPLACE_REALLOC_FOR_REALLOC_POSIX=$REPLACE_MALLOC_FOR_MALLOC_POSIX
   fi
 
 
@@ -81515,40 +81922,6 @@ fi
 
 
 
-  USES_MSVCRT=0
-  case "$host_os" in
-    mingw* | windows*)
-      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-  #ifndef _UCRT
-   Special
-  #endif
-
-_ACEOF
-if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
-  $EGREP_TRADITIONAL "Special" >/dev/null 2>&1
-then :
-  USES_MSVCRT=1
-fi
-rm -rf conftest*
-
-      ;;
-  esac
-
-     if test $USES_MSVCRT = 1; then
-  GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE=
-  GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE='#'
-else
-  GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE='#'
-  GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE=
-fi
-:
-    if test -z "${GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE}" && test -z "${GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE}"; then
-    GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE='#'
-    GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE='#'
-  fi
-
 
      if test $REPLACE_STDIO_READ_FUNCS = 1; then
   GL_COND_OBJ_STDIO_READ_TRUE=
@@ -82012,6 +82385,48 @@ printf "%s\n" "#define GNULIB_TEST_FWRITE 1" >>confdefs.h
 
 
 
+
+
+  USES_MSVCRT=0
+  case "$host_os" in
+    mingw* | windows*)
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+  #ifndef _UCRT
+   Special
+  #endif
+
+_ACEOF
+if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+  $EGREP_TRADITIONAL "Special" >/dev/null 2>&1
+then :
+  USES_MSVCRT=1
+fi
+rm -rf conftest*
+
+      ;;
+  esac
+
+     if test $USES_MSVCRT = 1; then
+  GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE=
+  GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE='#'
+else
+  GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE='#'
+  GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE=
+fi
+:
+    if test -z "${GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE}" && test -z "${GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE}"; then
+    GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE='#'
+    GL_COND_OBJ_STDIO_CONSOLESAFE_FALSE='#'
+  fi
+
+  ac_fn_c_check_func "$LINENO" "vasprintf" "ac_cv_func_vasprintf"
+if test "x$ac_cv_func_vasprintf" = xyes
+then :
+  printf "%s\n" "#define HAVE_VASPRINTF 1" >>confdefs.h
+
+fi
 
 
 
@@ -82512,6 +82927,9 @@ printf "%s\n" "#define GNULIB_TEST_STRERROR_R 1" >>confdefs.h
 
 
 printf "%s\n" "#define GNULIB_STRERROR_R_POSIX $gl_module_indicator_condition" >>confdefs.h
+
+
+
 
 
 

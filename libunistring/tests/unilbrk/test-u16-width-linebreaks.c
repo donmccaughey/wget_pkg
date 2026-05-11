@@ -1,5 +1,5 @@
 /* Test of line breaking of UTF-16 strings.
-   Copyright (C) 2008-2025 Free Software Foundation, Inc.
+   Copyright (C) 2008-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,10 +44,9 @@ test_function (int (*my_u16_width_linebreaks) (const uint16_t *, size_t, int, in
 
     {
       char *p = (char *) malloc (SIZEOF (input));
-      size_t i;
 
       my_u16_width_linebreaks (input, SIZEOF (input), 25, 0, 0, NULL, "GB18030", p);
-      for (i = 0; i < 61; i++)
+      for (size_t i = 0; i < 61; i++)
         {
           ASSERT (p[i] == (i == 60 ? UC_BREAK_MANDATORY :
                            i == 25 || i == 45 ? UC_BREAK_POSSIBLE :
@@ -58,10 +57,9 @@ test_function (int (*my_u16_width_linebreaks) (const uint16_t *, size_t, int, in
 
     {
       char *p = (char *) malloc (SIZEOF (input));
-      size_t i;
 
       my_u16_width_linebreaks (input, SIZEOF (input), 25, 0, 0, NULL, "GB2312", p);
-      for (i = 0; i < 61; i++)
+      for (size_t i = 0; i < 61; i++)
         {
           ASSERT (p[i] == (i == 60 ? UC_BREAK_MANDATORY :
                            i == 11 || i == 25 || i == 45 ? UC_BREAK_POSSIBLE :

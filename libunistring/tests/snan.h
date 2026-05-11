@@ -1,5 +1,5 @@
 /* Macros for signalling not-a-number.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -216,7 +216,7 @@ construct_memory_SNaNl (long double quiet_value)
 {
   memory_long_double m;
   m.value = quiet_value;
-  #if defined __powerpc__ && LDBL_MANT_DIG == 106
+  #if defined _ARCH_PPC && LDBL_MANT_DIG == 106
     /* This is PowerPC "double double", a pair of two doubles.  Inf and NaN are
        represented as the corresponding 64-bit IEEE values in the first double;
        the second is ignored.  Manipulate only the first double.  */

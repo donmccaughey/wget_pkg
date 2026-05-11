@@ -1,5 +1,5 @@
 /* Test of uN_strcpy() functions.
-   Copyright (C) 2010-2025 Free Software Foundation, Inc.
+   Copyright (C) 2010-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,22 +22,20 @@ main ()
   /* Test small copying operations.  */
   {
     static const UNIT src[] = { 'c', 'l', 'i', 'm', 'a', 't', 'e', 0 };
-    size_t n;
 
-    for (n = 1; n <= SIZEOF (src); n++)
+    for (size_t n = 1; n <= SIZEOF (src); n++)
       {
         UNIT dest[1 + SIZEOF (src) + 1] =
           { MAGIC, MAGIC, MAGIC, MAGIC, MAGIC, MAGIC, MAGIC, MAGIC, MAGIC,
             MAGIC
           };
         UNIT *result;
-        size_t i;
 
         result = U_STRCPY (dest + 1, src + SIZEOF (src) - n);
         ASSERT (result == dest + 1);
 
         ASSERT (dest[0] == MAGIC);
-        for (i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
           ASSERT (dest[1 + i] == src[SIZEOF (src) - n + i]);
         ASSERT (dest[1 + n] == MAGIC);
       }

@@ -1,5 +1,5 @@
 /* Test of u16_strmbtouc() function.
-   Copyright (C) 2010-2025 Free Software Foundation, Inc.
+   Copyright (C) 2010-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,10 +39,9 @@ main ()
 
   /* Test ISO 646 unit input.  */
   {
-    ucs4_t c;
     uint16_t buf[2];
 
-    for (c = 1; c < 0x80; c++)
+    for (ucs4_t c = 1; c < 0x80; c++)
       {
         buf[0] = c;
         buf[1] = 0;

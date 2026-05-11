@@ -1,4 +1,4 @@
-/* ANSI-C code produced by gperf version 3.2 */
+/* ANSI-C code produced by gperf version 3.3 */
 /* Command-line: gperf -m 10 iconv_open-solaris.gperf  */
 /* Computed positions: -k'10' */
 
@@ -84,9 +84,9 @@ mapping_hash (register const char *str, register size_t len)
     {
       default:
         hval += asso_values[(unsigned char)str[9]];
-#if defined __cplusplus && (__cplusplus >= 201703L || (__cplusplus >= 201103L && defined __clang_major__ && defined __clang_minor__ && __clang_major__ + (__clang_minor__ >= 9) > 3))
+#if (defined __cplusplus && (__cplusplus >= 201703L || (__cplusplus >= 201103L && defined __clang__ && __clang_major__ + (__clang_minor__ >= 9) > 3))) || (defined __STDC_VERSION__ && __STDC_VERSION__ >= 202000L && ((defined __GNUC__ && __GNUC__ >= 10) || (defined __clang__ && __clang_major__ >= 9)))
       [[fallthrough]];
-#elif defined __GNUC__ && __GNUC__ >= 7
+#elif (defined __GNUC__ && __GNUC__ >= 7) || (defined __clang__ && __clang_major__ >= 10)
       __attribute__ ((__fallthrough__));
 #endif
       /*FALLTHROUGH*/
@@ -134,6 +134,10 @@ static const struct stringpool_t stringpool_contents =
   };
 #define stringpool ((const char *) &stringpool_contents)
 
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
 static const struct mapping mappings[] =
   {
     {-1}, {-1}, {-1}, {-1}, {-1},
@@ -165,6 +169,9 @@ static const struct mapping mappings[] =
 #line 37 "iconv_open-solaris.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str19, "ISO8859-2"}
   };
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic pop
+#endif
 
 const struct mapping *
 mapping_lookup (register const char *str, register size_t len)
@@ -185,5 +192,5 @@ mapping_lookup (register const char *str, register size_t len)
             }
         }
     }
-  return 0;
+  return (struct mapping *) 0;
 }

@@ -1,5 +1,5 @@
 /* Categories of Unicode characters.
-   Copyright (C) 2002, 2006-2007, 2011-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006-2007, 2011-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
    This file is free software.
@@ -81,13 +81,10 @@ enum
 uc_general_category_t
 uc_general_category_byname (const char *category_name)
 {
-  size_t len;
-
-  len = strlen (category_name);
+  size_t len = strlen (category_name);
   if (len <= MAX_WORD_LENGTH)
     {
       char buf[MAX_WORD_LENGTH + 1];
-      const struct named_category *found;
 
       /* Copy category_name into buf, converting '_' and '-' to ' '.  */
       {
@@ -108,7 +105,8 @@ uc_general_category_byname (const char *category_name)
       /* Here q == buf + len.  */
 
       /* Do a hash table lookup, with case-insensitive comparison.  */
-      found = uc_general_category_lookup (buf, len);
+      const struct named_category *found =
+        uc_general_category_lookup (buf, len);
       if (found != NULL)
         /* Use a 'switch' statement here, because a table would introduce
            load-time relocations.  */

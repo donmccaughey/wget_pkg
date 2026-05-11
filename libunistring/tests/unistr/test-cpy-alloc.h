@@ -1,5 +1,5 @@
 /* Test of uN_cpy_alloc() functions.
-   Copyright (C) 2010-2025 Free Software Foundation, Inc.
+   Copyright (C) 2010-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,15 +22,13 @@ main ()
   /* Test small copying operations.  */
   {
     static const UNIT src[] = { 'c', 'l', 'i', 'm', 'a', 't', 'e' };
-    size_t n;
 
-    for (n = 0; n <= SIZEOF (src); n++)
+    for (size_t n = 0; n <= SIZEOF (src); n++)
       {
         UNIT *result = U_CPY_ALLOC (src, n);
-        size_t i;
 
         ASSERT (result != NULL);
-        for (i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
           ASSERT (result[i] == src[i]);
 
         free (result);

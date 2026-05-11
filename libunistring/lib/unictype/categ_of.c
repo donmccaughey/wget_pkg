@@ -1,5 +1,5 @@
 /* Categories of Unicode characters.
-   Copyright (C) 2002, 2006-2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006-2007, 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
    This file is free software: you can redistribute it and/or modify
@@ -68,10 +68,10 @@ uc_general_category_t
 uc_general_category (ucs4_t uc)
 {
   int bit = lookup_withtable (uc);
-  uc_general_category_t result;
 
   if (bit >= 0)
     {
+      uc_general_category_t result;
       result.bitmask = 1 << bit;
       result.generic = 1;
       result.lookup.lookup_fn = &uc_is_general_category_withtable;

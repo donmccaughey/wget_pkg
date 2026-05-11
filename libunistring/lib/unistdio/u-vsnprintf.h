@@ -1,5 +1,5 @@
 /* Formatted output to strings.
-   Copyright (C) 1999, 2002, 2006-2025 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2002, 2006-2026 Free Software Foundation, Inc.
 
    This file is free software.
    It is dual-licensed under "the GNU LGPLv3+ or the GNU GPLv2+".
@@ -26,13 +26,12 @@ int
 VSNPRINTF (DCHAR_T *buf, size_t size, const FCHAR_T *format, va_list args)
 {
   size_t length;
-  DCHAR_T *result;
 
   if (size == 0)
     buf = NULL;
   else
     length = size;
-  result = VASNPRINTF (buf, &length, format, args);
+  DCHAR_T *result = VASNPRINTF (buf, &length, format, args);
   if (result == NULL)
     return -1;
 

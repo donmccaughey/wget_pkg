@@ -1,6 +1,6 @@
 /* Locale dependent transformation for case insensitive comparison of Unicode
    strings.
-   Copyright (C) 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This file is free software.
@@ -28,28 +28,22 @@ char *
 FUNC (const UNIT *s, size_t n, const char *iso639_language, uninorm_t nf,
       char *resultbuf, size_t *lengthp)
 {
-  UNIT foldedsbuf[2048 / sizeof (UNIT)];
-  UNIT *foldeds;
-  size_t foldeds_length;
-  char convsbuf[2048];
-  char *convs;
-  size_t convs_length;
-  char *result;
-
   /* Casefold and normalize the Unicode string.  */
-  foldeds_length = sizeof (foldedsbuf) / sizeof (UNIT);
-  foldeds = U_CASEFOLD (s, n, iso639_language, nf, foldedsbuf, &foldeds_length);
+  UNIT foldedsbuf[2048 / sizeof (UNIT)];
+  size_t foldeds_length = sizeof (foldedsbuf) / sizeof (UNIT);
+  UNIT *foldeds = U_CASEFOLD (s, n, iso639_language, nf, foldedsbuf, &foldeds_length);
   if (foldeds == NULL)
     /* errno is set here.  */
     return NULL;
 
   /* Convert it to locale encoding.  */
-  convs_length = sizeof (convsbuf) - 1;
-  convs = U_CONV_TO_ENCODING (locale_charset (),
-                              iconveh_error,
-                              foldeds, foldeds_length,
-                              NULL,
-                              convsbuf, &convs_length);
+  char convsbuf[2048];
+  size_t convs_length = sizeof (convsbuf) - 1;
+  char *convs = U_CONV_TO_ENCODING (locale_charset (),
+                                    iconveh_error,
+                                    foldeds, foldeds_length,
+                                    NULL,
+                                    convsbuf, &convs_length);
   if (convs == NULL)
     {
       if (foldeds != foldedsbuf)
@@ -78,7 +72,7 @@ FUNC (const UNIT *s, size_t n, const char *iso639_language, uninorm_t nf,
     }
 
   /* Apply locale dependent transformations for comparison.  */
-  result = amemxfrm (convs, convs_length, resultbuf, lengthp);
+  char *result = amemxfrm (convs, convs_length, resultbuf, lengthp);
   if (result == NULL)
     {
       if (convs != convsbuf)

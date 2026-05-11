@@ -1,6 +1,6 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
 ## Process this file with automake to produce Makefile.in.
-# Copyright (C) 2002-2025 Free Software Foundation, Inc.
+# Copyright (C) 2002-2026 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2093,14 +2093,14 @@ EXTRA_DIST += test-signal-h.c
 
 ## end   gnulib module signal-h-tests
 
-## begin gnulib module signbit-tests
+## begin gnulib module signbit-no-c++-tests
 
 TESTS += test-signbit
 check_PROGRAMS += test-signbit
 
 EXTRA_DIST += test-signbit.c minus-zero.h infinity.h macros.h
 
-## end   gnulib module signbit-tests
+## end   gnulib module signbit-no-c++-tests
 
 ## begin gnulib module signed-nan
 
@@ -2442,9 +2442,6 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	$(AM_V_at)mv $@-t3 $@
 MOSTLYCLEANFILES += stdio.h stdio.h-t1 stdio.h-t2 stdio.h-t3
 
-if GL_COND_OBJ_STDIO_CONSOLESAFE
-libtests_a_SOURCES += stdio-consolesafe.c
-endif
 if GL_COND_OBJ_STDIO_READ
 libtests_a_SOURCES += stdio-read.c
 endif
@@ -2463,6 +2460,14 @@ check_PROGRAMS += test-stdio-h
 EXTRA_DIST += test-stdio-h.c macros.h
 
 ## end   gnulib module stdio-h-tests
+
+## begin gnulib module stdio-windows
+
+if GL_COND_OBJ_STDIO_CONSOLESAFE
+libtests_a_SOURCES += stdio-consolesafe.c
+endif
+
+## end   gnulib module stdio-windows
 
 ## begin gnulib module stdlib-h-tests
 
@@ -2587,6 +2592,14 @@ check_PROGRAMS += test-strncat
 EXTRA_DIST += test-strncat.c unistr/test-strncat.h zerosize-ptr.h signature.h macros.h
 
 ## end   gnulib module strncat-tests
+
+## begin gnulib module strncpy-tests
+
+TESTS += test-strncpy
+check_PROGRAMS += test-strncpy
+EXTRA_DIST += test-strncpy.c zerosize-ptr.h macros.h
+
+## end   gnulib module strncpy-tests
 
 ## begin gnulib module strstr-tests
 

@@ -1,5 +1,5 @@
 /* Set the current locale.  -*- coding: utf-8 -*-
-   Copyright (C) 2009, 2011-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2011-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -638,31 +638,23 @@ search (const struct table_entry *table, size_t table_size, const char *string,
           /* Found an i with
                strcmp (language_table[i].code, string) == 0.
              Find the entire interval of such i.  */
-          {
-            size_t i;
-
-            for (i = mid; i > lo; )
-              {
-                i--;
-                if (strcmp (table[i].code, string) < 0)
-                  {
-                    lo = i + 1;
-                    break;
-                  }
-              }
-          }
-          {
-            size_t i;
-
-            for (i = mid + 1; i < hi; i++)
-              {
-                if (strcmp (table[i].code, string) > 0)
-                  {
-                    hi = i;
-                    break;
-                  }
-              }
-          }
+          for (size_t i = mid; i > lo; )
+            {
+              i--;
+              if (strcmp (table[i].code, string) < 0)
+                {
+                  lo = i + 1;
+                  break;
+                }
+            }
+          for (size_t i = mid + 1; i < hi; i++)
+            {
+              if (strcmp (table[i].code, string) > 0)
+                {
+                  hi = i;
+                  break;
+                }
+            }
           /* The set of i with
                strcmp (language_table[i].code, string) == 0
              is the interval [lo, hi-1].  */
@@ -679,10 +671,6 @@ static char *
 setlocale_unixlike (int category, const char *locale)
 {
   int is_utf8 = (GetACP () == 65001);
-  char *result;
-  char llCC_buf[64];
-  char ll_buf[64];
-  char CC_buf[64];
 
   /* The native Windows implementation of setlocale understands the special
      locale name "C", but not "POSIX".  Therefore map "POSIX" to "C".  */
@@ -699,13 +687,14 @@ setlocale_unixlike (int category, const char *locale)
     locale = "English_United States.65001";
 
   /* First, try setlocale with the original argument unchanged.  */
-  result = setlocale_mtsafe (category, locale);
+  char *result = setlocale_mtsafe (category, locale);
   if (result != NULL)
     return result;
 
   /* Otherwise, assume the argument is in the form
        language[_territory][.codeset][@modifier]
      and try to map it using the tables.  */
+  char llCC_buf[64];
   if (strlen (locale) < sizeof (llCC_buf))
     {
       /* Second try: Remove the codeset part.  */
@@ -745,14 +734,13 @@ setlocale_unixlike (int category, const char *locale)
       /* Look it up in language_table.  */
       {
         range_t range;
-        size_t i;
 
         search (language_table,
                 sizeof (language_table) / sizeof (language_table[0]),
                 llCC_buf,
                 &range);
 
-        for (i = range.lo; i < range.hi; i++)
+        for (size_t i = range.lo; i < range.hi; i++)
           {
             /* Try the replacement in language_table[i].  */
             if (is_utf8)
@@ -781,9 +769,11 @@ setlocale_unixlike (int category, const char *locale)
             if (territory_end == NULL)
               territory_end = territory_start + strlen (territory_start);
 
+            char ll_buf[64];
             memcpy (ll_buf, llCC_buf, underscore - llCC_buf);
             strcpy (ll_buf + (underscore - llCC_buf), territory_end);
 
+            char CC_buf[64];
             memcpy (CC_buf, territory_start, territory_end - territory_start);
             CC_buf[territory_end - territory_start] = '\0';
 
@@ -805,58 +795,49 @@ setlocale_unixlike (int category, const char *locale)
                           CC_buf,
                           &country_range);
                   if (country_range.lo < country_range.hi)
-                    {
-                      size_t i;
-                      size_t j;
+                    for (size_t i = language_range.lo; i < language_range.hi; i++)
+                      for (size_t j = country_range.lo; j < country_range.hi; j++)
+                        {
+                          /* Concatenate the replacements.  */
+                          const char *part1 = language_table[i].english;
+                          size_t part1_len = strlen (part1);
+                          const char *part2 = country_table[j].english;
+                          size_t part2_len = strlen (part2) + 1;
+                          char buf[64+64+6];
 
-                      for (i = language_range.lo; i < language_range.hi; i++)
-                        for (j = country_range.lo; j < country_range.hi; j++)
-                          {
-                            /* Concatenate the replacements.  */
-                            const char *part1 = language_table[i].english;
-                            size_t part1_len = strlen (part1);
-                            const char *part2 = country_table[j].english;
-                            size_t part2_len = strlen (part2) + 1;
-                            char buf[64+64+6];
+                          if (!(part1_len + 1 + part2_len + 6 <= sizeof (buf)))
+                            abort ();
+                          memcpy (buf, part1, part1_len);
+                          buf[part1_len] = '_';
+                          memcpy (buf + part1_len + 1, part2, part2_len);
+                          if (is_utf8)
+                            strcat (buf, ".65001");
 
-                            if (!(part1_len + 1 + part2_len + 6 <= sizeof (buf)))
-                              abort ();
-                            memcpy (buf, part1, part1_len);
-                            buf[part1_len] = '_';
-                            memcpy (buf + part1_len + 1, part2, part2_len);
-                            if (is_utf8)
-                              strcat (buf, ".65001");
-
-                            /* Try the concatenated replacements.  */
-                            result = setlocale (category, buf);
-                            if (result != NULL)
-                              return result;
-                          }
-                    }
+                          /* Try the concatenated replacements.  */
+                          result = setlocale (category, buf);
+                          if (result != NULL)
+                            return result;
+                        }
 
                   /* Try omitting the country entirely.  This may set a locale
                      corresponding to the wrong country, but is better than
                      failing entirely.  */
-                  {
-                    size_t i;
-
-                    for (i = language_range.lo; i < language_range.hi; i++)
-                      {
-                        /* Try only the language replacement.  */
-                        if (is_utf8)
-                          {
-                            char buf[64+6];
-                            strcpy (buf, language_table[i].english);
-                            strcat (buf, ".65001");
-                            result = setlocale (category, buf);
-                          }
-                        else
-                          result =
-                            setlocale (category, language_table[i].english);
-                        if (result != NULL)
-                          return result;
-                      }
-                  }
+                  for (size_t i = language_range.lo; i < language_range.hi; i++)
+                    {
+                      /* Try only the language replacement.  */
+                      if (is_utf8)
+                        {
+                          char buf[64+6];
+                          strcpy (buf, language_table[i].english);
+                          strcat (buf, ".65001");
+                          result = setlocale (category, buf);
+                        }
+                      else
+                        result =
+                          setlocale (category, language_table[i].english);
+                      if (result != NULL)
+                        return result;
+                    }
                 }
             }
           }
@@ -960,7 +941,7 @@ static char const locales_with_principal_territory[][6 + 1] =
     "cr_CA",    /* Cree         Canada */
     /* Don't put "crh_UZ" or "crh_UA" here.  That would be asking for fruitless
        political discussion.  */
-    "cs_CZ",    /* Czech        Czech Republic */
+    "cs_CZ",    /* Czech        Czechia */
     "csb_PL",   /* Kashubian    Poland */
     "cy_GB",    /* Welsh        Britain */
     "da_DK",    /* Danish       Denmark */
@@ -1140,9 +1121,6 @@ static int
 langcmp (const char *locale1, const char *locale2)
 {
   size_t locale1_len;
-  size_t locale2_len;
-  int cmp;
-
   {
     const char *locale1_end = strchr (locale1, '_');
     if (locale1_end != NULL)
@@ -1150,6 +1128,7 @@ langcmp (const char *locale1, const char *locale2)
     else
       locale1_len = strlen (locale1);
   }
+  size_t locale2_len;
   {
     const char *locale2_end = strchr (locale2, '_');
     if (locale2_end != NULL)
@@ -1158,6 +1137,7 @@ langcmp (const char *locale1, const char *locale2)
       locale2_len = strlen (locale2);
   }
 
+  int cmp;
   if (locale1_len < locale2_len)
     {
       cmp = memcmp (locale1, locale2, locale1_len);
@@ -1267,7 +1247,7 @@ static char const locales_with_principal_language[][6 + 1] =
     "es_CU",    /* Spanish      Cuba */
     /* Curaçao has three official languages: "nl_CW", "pap_CW", "en_CW".  */
     "el_CY",    /* Greek        Cyprus */
-    "cs_CZ",    /* Czech        Czech Republic */
+    "cs_CZ",    /* Czech        Czechia */
     "de_DE",    /* German       Germany */
     /* Djibouti has two official languages: "ar_DJ" and "fr_DJ".  */
     "da_DK",    /* Danish       Denmark */
@@ -1461,12 +1441,9 @@ setlocale_improved (int category, const char *locale)
               LC_MONETARY,
               LC_MESSAGES
             };
-          char *saved_locale;
-          const char *base_name;
-          unsigned int i;
 
           /* Back up the old locale, in case one of the steps fails.  */
-          saved_locale = setlocale (LC_ALL, NULL);
+          char *saved_locale = setlocale (LC_ALL, NULL);
           if (saved_locale == NULL)
             return NULL;
           saved_locale = strdup (saved_locale);
@@ -1476,11 +1453,12 @@ setlocale_improved (int category, const char *locale)
           /* Set LC_CTYPE category.  Set all other categories (except possibly
              LC_MESSAGES) to the same value in the same call; this is likely to
              save calls.  */
-          base_name =
+          const char *base_name =
             gl_locale_name_environ (LC_CTYPE, category_to_name (LC_CTYPE));
           if (base_name == NULL)
             base_name = gl_locale_name_default ();
 
+          unsigned int i;
           if (setlocale_unixlike (LC_ALL, base_name) != NULL)
             {
               /* LC_CTYPE category already set.  */
@@ -1508,9 +1486,8 @@ setlocale_improved (int category, const char *locale)
           for (; i < sizeof (categories) / sizeof (categories[0]); i++)
             {
               int cat = categories[i];
-              const char *name;
-
-              name = gl_locale_name_environ (cat, category_to_name (cat));
+              const char *name =
+                gl_locale_name_environ (cat, category_to_name (cat));
               if (name == NULL)
                 name = gl_locale_name_default ();
 

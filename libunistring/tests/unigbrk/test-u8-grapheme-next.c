@@ -1,5 +1,5 @@
 /* Next grapheme cluster length test.
-   Copyright (C) 2010-2025 Free Software Foundation, Inc.
+   Copyright (C) 2010-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify it
    under the terms of the GNU Lesser General Public License as published
@@ -33,14 +33,12 @@ test_u8_grapheme_next (const char *input, size_t n, size_t len)
   const uint8_t *next = u8_grapheme_next (s, s + n);
   if (next != s + len)
     {
-      size_t i;
-
       if (next == NULL)
         fputs ("u8_grapheme_next returned NULL", stderr);
       else
         fprintf (stderr, "u8_grapheme_next skipped %tu bytes", next - s);
       fprintf (stderr, ", expected %zu:\n", len);
-      for (i = 0; i < n; i++)
+      for (size_t i = 0; i < n; i++)
         fprintf (stderr, " %02x", s[i]);
       putc ('\n', stderr);
       fflush (stderr);

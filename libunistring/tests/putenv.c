@@ -1,4 +1,4 @@
-/* Copyright (C) 1991, 1994, 1997-1998, 2000, 2003-2025 Free Software
+/* Copyright (C) 1991, 1994, 1997-1998, 2000, 2003-2026 Free Software
    Foundation, Inc.
 
    NOTE: The canonical source of this file is maintained with the GNU C
@@ -70,7 +70,6 @@ int
 putenv (char *string)
 {
   const char *name_end = strchr (string, '=');
-  char **ep;
 
   if (name_end == NULL)
     {
@@ -97,15 +96,14 @@ putenv (char *string)
       /* _putenv ("NAME=") unsets NAME, so invoke _putenv ("NAME= ")
          to allocate the environ vector and then replace the new
          entry with "NAME=".  */
-      int putenv_result;
       char *name_x = malloc (name_end - string + sizeof "= ");
       if (!name_x)
         return -1;
       memcpy (name_x, string, name_end - string + 1);
       name_x[name_end - string + 1] = ' ';
       name_x[name_end - string + 2] = 0;
-      putenv_result = _putenv (name_x);
-      for (ep = environ; *ep; ep++)
+      int putenv_result = _putenv (name_x);
+      for (char **ep = environ; *ep; ep++)
         if (streq (*ep, name_x))
           {
             *ep = string;
@@ -125,6 +123,7 @@ putenv (char *string)
       return putenv_result;
     }
 #else
+  char **ep;
   for (ep = environ; *ep; ep++)
     if (strncmp (*ep, string, name_end - string) == 0
         && (*ep)[name_end - string] == '=')

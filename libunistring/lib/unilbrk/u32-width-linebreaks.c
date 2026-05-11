@@ -1,5 +1,5 @@
 /* Line breaking of UTF-32 strings.
-   Copyright (C) 2001-2003, 2006-2025 Free Software Foundation, Inc.
+   Copyright (C) 2001-2003, 2006-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2001.
 
    This file is free software.
@@ -38,17 +38,12 @@ u32_width_linebreaks_internal (const uint32_t *s, size_t n,
                               const char *o, const char *encoding, int cr,
                               char *p)
 {
-  const uint32_t *s_end;
-  char *last_p;
-  int last_column;
-  int piece_width;
-
   u32_possible_linebreaks_loop (s, n, encoding, cr, p);
 
-  s_end = s + n;
-  last_p = NULL;
-  last_column = start_column;
-  piece_width = 0;
+  const uint32_t *s_end = s + n;
+  char *last_p = NULL;
+  int last_column = start_column;
+  int piece_width = 0;
   while (s < s_end)
     {
       ucs4_t uc = *s;
@@ -80,8 +75,6 @@ u32_width_linebreaks_internal (const uint32_t *s, size_t n,
       else
         {
           /* uc is not a line break character.  */
-          int w;
-
           if (*p == UC_BREAK_POSSIBLE)
             {
               /* Start a new piece.  */
@@ -94,7 +87,7 @@ u32_width_linebreaks_internal (const uint32_t *s, size_t n,
 
           *p = UC_BREAK_PROHIBITED;
 
-          w = uc_width (uc, encoding);
+          int w = uc_width (uc, encoding);
           if (w >= 0) /* ignore control characters in the string */
             piece_width += w;
         }

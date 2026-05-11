@@ -1,5 +1,5 @@
 /* Test of strerror_r() function.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -88,21 +88,19 @@ main (void)
      that no out-of-bounds writes occur.  */
   {
     int errs[] = { EACCES, 0, -3, };
-    int j;
 
     buf[sizeof buf - 1] = '\0';
-    for (j = 0; j < SIZEOF (errs); j++)
+    for (int j = 0; j < SIZEOF (errs); j++)
       {
         int err = errs[j];
         char buf2[sizeof buf] = "";
         size_t len;
-        size_t i;
 
         strerror_r (err, buf2, sizeof buf2);
         len = strlen (buf2);
         ASSERT (len < sizeof buf);
 
-        for (i = 0; i <= len; i++)
+        for (size_t i = 0; i <= len; i++)
           {
             memset (buf, '^', sizeof buf - 1);
             errno = 0;

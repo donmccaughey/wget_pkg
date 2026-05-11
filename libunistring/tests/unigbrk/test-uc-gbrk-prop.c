@@ -1,5 +1,5 @@
 /* Test the Unicode grapheme break property function.
-   Copyright (C) 2010-2025 Free Software Foundation, Inc.
+   Copyright (C) 2010-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -63,11 +63,10 @@ graphemebreakproperty_to_string (int gbp)
 int
 main (void)
 {
-  const struct uc_gbrk_prop_range *r;
   ucs4_t uc;
 
   uc = 0;
-  for (r = set; r < set + SIZEOF (set); r++)
+  for (const struct uc_gbrk_prop_range *r = set; r < set + SIZEOF (set); r++)
     {
       for (; uc < r->end; uc++)
         {

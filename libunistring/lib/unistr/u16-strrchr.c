@@ -1,5 +1,5 @@
 /* Search character in UTF-16 string.
-   Copyright (C) 1999, 2002, 2006-2007, 2009-2025 Free Software Foundation,
+   Copyright (C) 1999, 2002, 2006-2007, 2009-2026 Free Software Foundation,
    Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
@@ -38,7 +38,6 @@ u16_strrchr (const uint16_t *s, ucs4_t uc)
   /* Calling u16_strlen and then searching from the other end would cause more
      memory accesses. Avoid that, at the cost of a few more comparisons.  */
   uint16_t *result = NULL;
-  uint16_t c[2];
 
   if (uc < 0x10000)
     {
@@ -53,24 +52,28 @@ u16_strrchr (const uint16_t *s, ucs4_t uc)
         }
     }
   else
-    switch (u16_uctomb_aux (c, uc, 2))
-      {
-      case 2:
-        if (*s)
-          {
-            uint16_t c0 = c[0];
-            uint16_t c1 = c[1];
+    {
+      uint16_t c[2];
 
-            /* FIXME: Maybe walking the string via u16_mblen is a win?  */
-            for (;; s++)
-              {
-                if (s[1] == 0)
-                  break;
-                if (*s == c0 && s[1] == c1)
-                  result = (uint16_t *) s;
-              }
-          }
-        break;
-      }
+      switch (u16_uctomb_aux (c, uc, 2))
+        {
+        case 2:
+          if (*s)
+            {
+              uint16_t c0 = c[0];
+              uint16_t c1 = c[1];
+
+              /* FIXME: Maybe walking the string via u16_mblen is a win?  */
+              for (;; s++)
+                {
+                  if (s[1] == 0)
+                    break;
+                  if (*s == c0 && s[1] == c1)
+                    result = (uint16_t *) s;
+                }
+            }
+          break;
+        }
+    }
   return result;
 }

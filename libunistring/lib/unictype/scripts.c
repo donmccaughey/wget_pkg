@@ -1,5 +1,5 @@
 /* Scripts of Unicode characters.
-   Copyright (C) 2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007, 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2007.
 
    This file is free software: you can redistribute it and/or modify
@@ -52,9 +52,8 @@ uc_script (ucs4_t uc)
 const uc_script_t *
 uc_script_byname (const char *script_name)
 {
-  const struct named_script *found;
-
-  found = uc_script_lookup (script_name, strlen (script_name));
+  const struct named_script *found =
+    uc_script_lookup (script_name, strlen (script_name));
   if (found != NULL)
     return &scripts[found->index];
   else

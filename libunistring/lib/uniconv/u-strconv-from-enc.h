@@ -1,5 +1,5 @@
 /* Conversion to UTF-8/UTF-16/UTF-32 from legacy encodings.
-   Copyright (C) 2002, 2006-2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006-2007, 2009-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -19,10 +19,8 @@ FUNC (const char *string,
       const char *fromcode,
       enum iconv_ilseq_handler handler)
 {
-  UNIT *result;
   size_t length;
-
-  result =
+  UNIT *result =
     U_CONV_FROM_ENCODING (fromcode, handler,
                           string, strlen (string) + 1, NULL,
                           NULL, &length);

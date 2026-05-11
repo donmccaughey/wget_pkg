@@ -1,5 +1,5 @@
 /* Test of character handling in C locale.
-   Copyright (C) 2005, 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2005, 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,9 +30,7 @@
 static void
 test_agree_with_C_locale (void)
 {
-  int c;
-
-  for (c = 0; c <= UCHAR_MAX; c++)
+  for (int c = 0; c <= UCHAR_MAX; c++)
     {
       if (c_isascii (c))
         {
@@ -57,10 +55,9 @@ test_agree_with_C_locale (void)
 static void
 test_all (void)
 {
-  int c;
   int n_isascii = 0;
 
-  for (c = CHAR_MIN; c <= UCHAR_MAX; c++)
+  for (int c = CHAR_MIN; c <= UCHAR_MAX; c++)
     {
       if (! (0 <= c && c <= CHAR_MAX))
         {

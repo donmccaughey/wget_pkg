@@ -1,5 +1,5 @@
 /* Test the Unicode character type functions.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,10 +20,9 @@ int
 main ()
 {
   unsigned int c;
-  size_t i;
 
   c = 0;
-  for (i = 0; i < SIZEOF (set); i++)
+  for (size_t i = 0; i < SIZEOF (set); i++)
     {
       for (; c < set[i].start; c++)
         ASSERT (!PREDICATE (c));

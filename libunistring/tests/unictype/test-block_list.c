@@ -1,5 +1,5 @@
 /* Test the Unicode character type functions.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,9 +33,8 @@ main ()
   {
     const uc_block_t *latin_block = NULL;
     const uc_block_t *hebrew_block = NULL;
-    size_t i;
 
-    for (i = 0; i < nblocks; i++)
+    for (size_t i = 0; i < nblocks; i++)
       {
         if (strcmp (blocks[i].name, "Latin") == 0)
           latin_block = &blocks[i];

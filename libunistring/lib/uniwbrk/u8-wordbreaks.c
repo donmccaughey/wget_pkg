@@ -1,5 +1,5 @@
 /* Word breaks in UTF-8 strings.
-   Copyright (C) 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This file is free software.
@@ -54,7 +54,6 @@ read_file (FILE *stream)
   char *buf = NULL;
   int alloc = 0;
   int size = 0;
-  int count;
 
   while (! feof (stream))
     {
@@ -70,7 +69,7 @@ read_file (FILE *stream)
               exit (1);
             }
         }
-      count = fread (buf + size, 1, BUFSIZE, stream);
+      int count = fread (buf + size, 1, BUFSIZE, stream);
       if (count == 0)
         {
           if (ferror (stream))
@@ -102,11 +101,10 @@ main (int argc, char * argv[])
       char *input = read_file (stdin);
       int length = strlen (input);
       char *breaks = malloc (length);
-      int i;
 
       u8_wordbreaks ((uint8_t *) input, length, breaks);
 
-      for (i = 0; i < length; i++)
+      for (int i = 0; i < length; i++)
         {
           switch (breaks[i])
             {

@@ -1,6 +1,6 @@
 /* A correct <float.h>.
 
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -119,7 +119,7 @@ extern const union gl_long_double_union gl_LDBL_MAX;
    wrong.
    Assume these bugs are fixed in any GCC new enough
    to define __LDBL_NORM_MAX__.  */
-#if (defined __powerpc__ && LDBL_MANT_DIG == 106 \
+#if (defined _ARCH_PPC && LDBL_MANT_DIG == 106 \
      && defined __GNUC__ && !defined __LDBL_NORM_MAX__)
 # undef LDBL_MIN_EXP
 # define LDBL_MIN_EXP (-968)

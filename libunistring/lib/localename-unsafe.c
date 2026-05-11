@@ -1,5 +1,5 @@
 /* Determine name of the currently selected locale.
-   Copyright (C) 1995-2025 Free Software Foundation, Inc.
+   Copyright (C) 1995-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -1153,7 +1153,7 @@ void
 gl_locale_name_canonicalize (char *name)
 {
   /* This conversion is based on a posting by
-     Deborah GoldSmith <goldsmit@apple.com> on 2005-03-08,
+     Deborah Goldsmith <goldsmit@apple.com> on 2005-03-08,
      https://lists.apple.com/archives/carbon-dev/2005/Mar/msg00293.html */
 
   /* Convert legacy (NeXTstep inherited) English names to Unix (ISO 639 and
@@ -1387,51 +1387,55 @@ gl_locale_name_canonicalize (char *name)
   /* Step 2: Convert using langtag_table and script_table.  */
   if (strlen (name) == 7 && name[2] == '-')
     {
-      unsigned int i1, i2;
-      i1 = 0;
-      i2 = sizeof (langtag_table) / sizeof (langtag_entry);
-      while (i2 - i1 > 1)
-        {
-          /* At this point we know that if name occurs in langtag_table,
-             its index must be >= i1 and < i2.  */
-          unsigned int i = (i1 + i2) >> 1;
-          const langtag_entry *p = &langtag_table[i];
-          if (strcmp (name, p->langtag) < 0)
-            i2 = i;
-          else
-            i1 = i;
-        }
-      if (streq (name, langtag_table[i1].langtag))
-        {
-          strcpy (name, langtag_table[i1].unixy);
-          return;
-        }
+      {
+        unsigned int i1, i2;
+        i1 = 0;
+        i2 = sizeof (langtag_table) / sizeof (langtag_entry);
+        while (i2 - i1 > 1)
+          {
+            /* At this point we know that if name occurs in langtag_table,
+               its index must be >= i1 and < i2.  */
+            unsigned int i = (i1 + i2) >> 1;
+            const langtag_entry *p = &langtag_table[i];
+            if (strcmp (name, p->langtag) < 0)
+              i2 = i;
+            else
+              i1 = i;
+          }
+        if (streq (name, langtag_table[i1].langtag))
+          {
+            strcpy (name, langtag_table[i1].unixy);
+            return;
+          }
+      }
 
-      i1 = 0;
-      i2 = sizeof (script_table) / sizeof (script_entry);
-      while (i2 - i1 > 1)
-        {
-          /* At this point we know that if (name + 3) occurs in script_table,
-             its index must be >= i1 and < i2.  */
-          unsigned int i = (i1 + i2) >> 1;
-          const script_entry *p = &script_table[i];
-          if (strcmp (name + 3, p->script) < 0)
-            i2 = i;
-          else
-            i1 = i;
-        }
-      if (streq (name + 3, script_table[i1].script))
-        {
-          name[2] = '@';
-          strcpy (name + 3, script_table[i1].unixy);
-          return;
-        }
+      {
+        unsigned int i1, i2;
+        i1 = 0;
+        i2 = sizeof (script_table) / sizeof (script_entry);
+        while (i2 - i1 > 1)
+          {
+            /* At this point we know that if (name + 3) occurs in script_table,
+               its index must be >= i1 and < i2.  */
+            unsigned int i = (i1 + i2) >> 1;
+            const script_entry *p = &script_table[i];
+            if (strcmp (name + 3, p->script) < 0)
+              i2 = i;
+            else
+              i1 = i;
+          }
+        if (streq (name + 3, script_table[i1].script))
+          {
+            name[2] = '@';
+            strcpy (name + 3, script_table[i1].unixy);
+            return;
+          }
+      }
     }
 
   /* Step 3: Convert new-style dash to Unix underscore. */
   {
-    char *p;
-    for (p = name; *p != '\0'; p++)
+    for (char *p = name; *p != '\0'; p++)
       if (*p == '-')
         *p = '_';
   }
@@ -1454,9 +1458,7 @@ gl_locale_name_canonicalize (char *name)
 {
   /* FIXME: This is probably incomplete: it does not handle "zh-Hans" and
      "zh-Hant".  */
-  char *p;
-
-  for (p = name; *p != '\0'; p++)
+  for (char *p = name; *p != '\0'; p++)
     if (*p == '-')
       {
         *p = '_';
@@ -1511,11 +1513,9 @@ gl_locale_name_from_win32_LANGID (LANGID langid)
   #define N(name)           (is_utf8 ? name ".UTF-8" : name)
   #define NM(name,modifier) (is_utf8 ? name ".UTF-8" modifier : name modifier)
   {
-    int primary, sub;
-
     /* Split into language and territory part.  */
-    primary = PRIMARYLANGID (langid);
-    sub = SUBLANGID (langid);
+    int primary = PRIMARYLANGID (langid);
+    int sub = SUBLANGID (langid);
 
     /* Dispatch on language.
        See also https://www.unicode.org/unicode/onlinedat/languages.html .
@@ -2532,10 +2532,8 @@ static
 const char *
 gl_locale_name_from_win32_LCID (LCID lcid)
 {
-  LANGID langid;
-
   /* Strip off the sorting rules, keep only the language part.  */
-  langid = LANGIDFROMLCID (lcid);
+  LANGID langid = LANGIDFROMLCID (lcid);
 
   return gl_locale_name_from_win32_LANGID (langid);
 }
@@ -2552,11 +2550,11 @@ static BOOL CALLBACK
 enum_locales_fn (LPSTR locale_num_str)
 {
   char *endp;
-  char locval[2 * LOCALE_NAME_MAX_LENGTH + 1 + 1];
   LCID try_lcid = strtoul (locale_num_str, &endp, 16);
 
+  char locval[2 * LOCALE_NAME_MAX_LENGTH + 1 + 1];
   if (GetLocaleInfo (try_lcid, LOCALE_SENGLANGUAGE,
-                    locval, LOCALE_NAME_MAX_LENGTH))
+                     locval, LOCALE_NAME_MAX_LENGTH))
     {
       strcat (locval, "_");
       if (GetLocaleInfo (try_lcid, LOCALE_SENGCOUNTRY,
@@ -2582,33 +2580,111 @@ static glwthread_mutex_t get_lcid_lock = GLWTHREAD_MUTEX_INIT;
 /* Return the Locale ID (LCID) number given the locale's name, a
    string, in LOCALE_NAME.  This works by enumerating all the locales
    supported by the system, until we find one whose name matches
-   LOCALE_NAME.  */
+   LOCALE_NAME.  Return 0 if LOCALE_NAME does not correspond to a locale
+   supported by the system.  */
 static LCID
 get_lcid (const char *locale_name)
 {
-  /* A simple cache.  */
-  static LCID last_lcid;
-  static char last_locale[1000];
+  /* A least-recently-used cache with at most N = 6 entries.
+     (Because there are 6 locale categories.)  */
 
-  /* Lock while looking for an LCID, to protect access to static
-     variables: last_lcid, last_locale, found_lcid, and lname.  */
+  /* Number of bits for a index into the cache.  */
+  enum { nbits = 3 };
+  /* Maximum number of entries in the cache.  */
+  enum { N = 6 }; /* <= (1 << nbits) */
+  /* An entry in the cache.  */
+  typedef struct { LCID e_lcid; char e_locale[sizeof (lname)]; } entry_t;
+  /* An unsigned integer type with at least N * nbits bits.
+     Used as an array:
+       element [0] = bits nbits-1 .. 0,
+       element [1] = bits 2*nbits-1 .. nbits,
+       element [2] = bits 3*nbits-1 .. 2*nbits,
+       and so on.  */
+  typedef unsigned int indices_t;
+
+  /* Number of entries in the cache.  */
+  static size_t n; /* <= N */
+  /* The entire cache.  Only elements 0..n-1 are in use.  */
+  static entry_t lru[N];
+  /* Indices of used cache entries.  Only elements 0..n-1 are in use.  */
+  static indices_t indices;
+
+  /* Lock while looking for an LCID, to protect access to static variables:
+     found_lcid, lname, and the cache.  */
   glwthread_mutex_lock (&get_lcid_lock);
-  if (last_lcid > 0 && streq (locale_name, last_locale))
+
+  /* Look up locale_name in the cache.  */
+  size_t found = (size_t)(-1);
+  size_t i;
+  for (i = 0; i < n; i++)
     {
-      glwthread_mutex_unlock (&get_lcid_lock);
-      return last_lcid;
+      size_t j = /* indices[i] */
+        (indices >> (nbits * i)) & ((1U << nbits) - 1U);
+      if (streq (locale_name, lru[j].e_locale))
+        {
+          found = j;
+          break;
+        }
     }
-  strncpy (lname, locale_name, sizeof (lname) - 1);
-  lname[sizeof (lname) - 1] = '\0';
-  found_lcid = 0;
-  EnumSystemLocales (enum_locales_fn, LCID_SUPPORTED);
-  if (found_lcid > 0)
+  LCID result;
+  if (i < n)
     {
-      last_lcid = found_lcid;
-      strcpy (last_locale, locale_name);
+      /* We have a cache hit.  0 <= found < n.  */
+      result = lru[found].e_lcid;
+      if (i > 0)
+        {
+          /* Perform these assignments in parallel:
+             indices[0] := indices[i]
+             indices[1] := indices[0]
+             ...
+             indices[i] := indices[i-1]  */
+          indices = (indices & (-1U << (nbits * (i + 1))))
+                    | ((indices & ((1U << (nbits * i)) - 1U)) << nbits)
+                    | found;
+        }
+    }
+  else
+    {
+      /* We have a cache miss.  */
+      strncpy (lname, locale_name, sizeof (lname) - 1);
+      lname[sizeof (lname) - 1] = '\0';
+
+      found_lcid = 0;
+      EnumSystemLocales (enum_locales_fn, LCID_SUPPORTED);
+
+      size_t j;
+      if (n < N)
+        {
+          /* There is still room in the cache.  */
+          j = n;
+          /* Perform these assignments in parallel:
+             indices[0] := n
+             indices[1] := indices[0]
+             ...
+             indices[n] := indices[n-1]  */
+          indices = (indices << nbits) | n;
+          n++;
+        }
+      else /* n == N */
+        {
+          /* The cache is full.  Drop the least recently used entry and
+             reuse it.  */
+          j = /* indices[N-1] */
+            (indices >> (nbits * (N - 1))) & ((1U << nbits) - 1U);
+          /* Perform these assignments in parallel:
+             indices[0] := j
+             indices[1] := indices[0]
+             ...
+             indices[N-1] := indices[N-2]  */
+          indices = ((indices & ((1U << (nbits * (N - 1))) - 1U)) << nbits) | j;
+        }
+      strcpy (lru[j].e_locale, lname);
+      lru[j].e_lcid = found_lcid;
+
+      result = found_lcid;
     }
   glwthread_mutex_unlock (&get_lcid_lock);
-  return found_lcid;
+  return result;
 }
 
 # endif
@@ -2849,19 +2925,21 @@ gl_locale_name_default (void)
 const char *
 gl_locale_name_unsafe (int category, const char *categoryname)
 {
-  const char *retval;
-
   if (category == LC_ALL)
     /* Invalid argument.  */
     abort ();
 
-  retval = gl_locale_name_thread_unsafe (category, categoryname);
-  if (retval != NULL)
-    return retval;
+  {
+    const char *retval = gl_locale_name_thread_unsafe (category, categoryname);
+    if (retval != NULL)
+      return retval;
+  }
 
-  retval = gl_locale_name_posix_unsafe (category, categoryname);
-  if (retval != NULL)
-    return retval;
+  {
+    const char *retval = gl_locale_name_posix_unsafe (category, categoryname);
+    if (retval != NULL)
+      return retval;
+  }
 
   return gl_locale_name_default ();
 }

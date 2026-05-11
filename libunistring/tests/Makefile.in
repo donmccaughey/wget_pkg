@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# Copyright (C) 2002-2025 Free Software Foundation, Inc.
+# Copyright (C) 2002-2026 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -198,13 +198,13 @@ TESTS = test-accept$(EXEEXT) test-alignasof$(EXEEXT) \
 	test-strerror$(EXEEXT) test-strerror_r$(EXEEXT) \
 	test-striconveh$(EXEEXT) test-striconveha$(EXEEXT) \
 	test-string-h$(EXEEXT) test-strncat$(EXEEXT) \
-	test-strstr$(EXEEXT) test-symlink$(EXEEXT) \
-	test-sys_ioctl-h$(EXEEXT) test-sys_select-h$(EXEEXT) \
-	test-sys_socket-h$(EXEEXT) test-sys_stat-h$(EXEEXT) \
-	test-sys_time-h$(EXEEXT) test-sys_types-h$(EXEEXT) \
-	test-sys_uio-h$(EXEEXT) test-init.sh test-thread_self$(EXEEXT) \
-	test-thread_create$(EXEEXT) test-time-h$(EXEEXT) \
-	test-time$(EXEEXT) test-uchar-h$(EXEEXT) \
+	test-strncpy$(EXEEXT) test-strstr$(EXEEXT) \
+	test-symlink$(EXEEXT) test-sys_ioctl-h$(EXEEXT) \
+	test-sys_select-h$(EXEEXT) test-sys_socket-h$(EXEEXT) \
+	test-sys_stat-h$(EXEEXT) test-sys_time-h$(EXEEXT) \
+	test-sys_types-h$(EXEEXT) test-sys_uio-h$(EXEEXT) test-init.sh \
+	test-thread_self$(EXEEXT) test-thread_create$(EXEEXT) \
+	test-time-h$(EXEEXT) test-time$(EXEEXT) test-uchar-h$(EXEEXT) \
 	test-unicase-h$(EXEEXT) test-cased$(EXEEXT) \
 	test-ignorable$(EXEEXT) unicase/test-locale-language.sh \
 	test-uc_tolower$(EXEEXT) test-uc_totitle$(EXEEXT) \
@@ -561,13 +561,13 @@ check_PROGRAMS = test-accept$(EXEEXT) test-alignasof$(EXEEXT) \
 	test-strerror$(EXEEXT) test-strerror_r$(EXEEXT) \
 	test-striconveh$(EXEEXT) test-striconveha$(EXEEXT) \
 	test-string-h$(EXEEXT) test-strncat$(EXEEXT) \
-	test-strstr$(EXEEXT) test-symlink$(EXEEXT) \
-	test-sys_ioctl-h$(EXEEXT) test-sys_select-h$(EXEEXT) \
-	test-sys_socket-h$(EXEEXT) test-sys_stat-h$(EXEEXT) \
-	test-sys_time-h$(EXEEXT) test-sys_types-h$(EXEEXT) \
-	test-sys_uio-h$(EXEEXT) test-thread_self$(EXEEXT) \
-	test-thread_create$(EXEEXT) test-time-h$(EXEEXT) \
-	test-time$(EXEEXT) test-uchar-h$(EXEEXT) \
+	test-strncpy$(EXEEXT) test-strstr$(EXEEXT) \
+	test-symlink$(EXEEXT) test-sys_ioctl-h$(EXEEXT) \
+	test-sys_select-h$(EXEEXT) test-sys_socket-h$(EXEEXT) \
+	test-sys_stat-h$(EXEEXT) test-sys_time-h$(EXEEXT) \
+	test-sys_types-h$(EXEEXT) test-sys_uio-h$(EXEEXT) \
+	test-thread_self$(EXEEXT) test-thread_create$(EXEEXT) \
+	test-time-h$(EXEEXT) test-time$(EXEEXT) test-uchar-h$(EXEEXT) \
 	test-unicase-h$(EXEEXT) test-cased$(EXEEXT) \
 	test-ignorable$(EXEEXT) test-locale-language$(EXEEXT) \
 	test-uc_tolower$(EXEEXT) test-uc_totitle$(EXEEXT) \
@@ -912,9 +912,9 @@ EXTRA_PROGRAMS = test-verify-try$(EXEEXT)
 @GL_COND_OBJ_SLEEP_TRUE@am__append_58 = sleep.c
 @GL_COND_OBJ_SOCKET_TRUE@am__append_59 = socket.c
 @GL_COND_OBJ_STAT_TRUE@am__append_60 = stat.c
-@GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE@am__append_61 = stdio-consolesafe.c
-@GL_COND_OBJ_STDIO_READ_TRUE@am__append_62 = stdio-read.c
-@GL_COND_OBJ_STDIO_WRITE_TRUE@am__append_63 = stdio-write.c
+@GL_COND_OBJ_STDIO_READ_TRUE@am__append_61 = stdio-read.c
+@GL_COND_OBJ_STDIO_WRITE_TRUE@am__append_62 = stdio-write.c
+@GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE@am__append_63 = stdio-consolesafe.c
 @GL_COND_OBJ_STPCPY_TRUE@am__append_64 = stpcpy.c
 @GL_COND_OBJ_STRERROR_TRUE@am__append_65 = strerror.c
 @GL_COND_OBJ_STRERROR_OVERRIDE_TRUE@am__append_66 = strerror-override.c
@@ -1018,6 +1018,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib-m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib-m4/lib-ld.m4 \
 	$(top_srcdir)/gnulib-m4/lib-link.m4 \
 	$(top_srcdir)/gnulib-m4/lib-prefix.m4 \
+	$(top_srcdir)/gnulib-m4/libdl.m4 \
 	$(top_srcdir)/gnulib-m4/libunistring-base.m4 \
 	$(top_srcdir)/gnulib-m4/limits-h.m4 \
 	$(top_srcdir)/gnulib-m4/localcharset.m4 \
@@ -1118,6 +1119,7 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib-m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib-m4/string_h.m4 \
 	$(top_srcdir)/gnulib-m4/stringeq.m4 \
 	$(top_srcdir)/gnulib-m4/strncat.m4 \
+	$(top_srcdir)/gnulib-m4/strncpy.m4 \
 	$(top_srcdir)/gnulib-m4/strstr.m4 \
 	$(top_srcdir)/gnulib-m4/symlink.m4 \
 	$(top_srcdir)/gnulib-m4/sys_cdefs_h.m4 \
@@ -1198,8 +1200,8 @@ am__libtests_a_SOURCES_DIST = accept.c arpa_inet.c basename-lgpl.c \
 	same-inode.h same-inode.c sched_yield.c select.c setenv.c \
 	setlocale.c setsockopt.c signed-nan.h signed-snan.h \
 	sigprocmask.c sleep.c snan.h socket.c sockets.h sockets.c \
-	stat.c stat-time.c stdio-consolesafe.c stdio-read.c \
-	stdio-write.c stpcpy.c str_endswith.c str_startswith.c \
+	stat.c stat-time.c stdio-read.c stdio-write.c \
+	stdio-consolesafe.c stpcpy.c str_endswith.c str_startswith.c \
 	strerror.c strerror-override.c symlink.c sys_socket.c \
 	glthread/thread.h glthread/thread.c time.c unsetenv.c usleep.c \
 	wcrtomb.c wctob.c wctomb.c windows-cond.c windows-thread.c \
@@ -1266,9 +1268,9 @@ am__libtests_a_SOURCES_DIST = accept.c arpa_inet.c basename-lgpl.c \
 @GL_COND_OBJ_SLEEP_TRUE@am__objects_49 = sleep.$(OBJEXT)
 @GL_COND_OBJ_SOCKET_TRUE@am__objects_50 = socket.$(OBJEXT)
 @GL_COND_OBJ_STAT_TRUE@am__objects_51 = stat.$(OBJEXT)
-@GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE@am__objects_52 = stdio-consolesafe.$(OBJEXT)
-@GL_COND_OBJ_STDIO_READ_TRUE@am__objects_53 = stdio-read.$(OBJEXT)
-@GL_COND_OBJ_STDIO_WRITE_TRUE@am__objects_54 = stdio-write.$(OBJEXT)
+@GL_COND_OBJ_STDIO_READ_TRUE@am__objects_52 = stdio-read.$(OBJEXT)
+@GL_COND_OBJ_STDIO_WRITE_TRUE@am__objects_53 = stdio-write.$(OBJEXT)
+@GL_COND_OBJ_STDIO_CONSOLESAFE_TRUE@am__objects_54 = stdio-consolesafe.$(OBJEXT)
 @GL_COND_OBJ_STPCPY_TRUE@am__objects_55 = stpcpy.$(OBJEXT)
 @GL_COND_OBJ_STRERROR_TRUE@am__objects_56 = strerror.$(OBJEXT)
 @GL_COND_OBJ_STRERROR_OVERRIDE_TRUE@am__objects_57 = strerror-override.$(OBJEXT)
@@ -2889,6 +2891,12 @@ test_strncat_LDADD = $(LDADD)
 test_strncat_DEPENDENCIES = libtests.a ../lib/libunistring.la \
 	libtests.a ../lib/libunistring.la libtests.a \
 	$(am__DEPENDENCIES_1)
+test_strncpy_SOURCES = test-strncpy.c
+test_strncpy_OBJECTS = test-strncpy.$(OBJEXT)
+test_strncpy_LDADD = $(LDADD)
+test_strncpy_DEPENDENCIES = libtests.a ../lib/libunistring.la \
+	libtests.a ../lib/libunistring.la libtests.a \
+	$(am__DEPENDENCIES_1)
 test_strstr_SOURCES = test-strstr.c
 test_strstr_OBJECTS = test-strstr.$(OBJEXT)
 test_strstr_LDADD = $(LDADD)
@@ -4078,8 +4086,8 @@ am__depfiles_remade = ./$(DEPDIR)/accept.Po ./$(DEPDIR)/alloca.Po \
 	./$(DEPDIR)/test-strerror.Po ./$(DEPDIR)/test-strerror_r.Po \
 	./$(DEPDIR)/test-striconveh.Po ./$(DEPDIR)/test-striconveha.Po \
 	./$(DEPDIR)/test-string-h.Po ./$(DEPDIR)/test-strncat.Po \
-	./$(DEPDIR)/test-strstr.Po ./$(DEPDIR)/test-symlink.Po \
-	./$(DEPDIR)/test-sys_ioctl-h.Po \
+	./$(DEPDIR)/test-strncpy.Po ./$(DEPDIR)/test-strstr.Po \
+	./$(DEPDIR)/test-symlink.Po ./$(DEPDIR)/test-sys_ioctl-h.Po \
 	./$(DEPDIR)/test-sys_select-h.Po \
 	./$(DEPDIR)/test-sys_socket-h.Po \
 	./$(DEPDIR)/test-sys_stat-h.Po ./$(DEPDIR)/test-sys_time-h.Po \
@@ -4775,7 +4783,7 @@ SOURCES = $(libtests_a_SOURCES) $(EXTRA_libtests_a_SOURCES) \
 	test-str_endswith.c test-str_startswith.c test-strerror.c \
 	test-strerror_r.c test-striconveh.c \
 	$(test_striconveha_SOURCES) test-string-h.c test-strncat.c \
-	test-strstr.c $(test_sy_c_ident_SOURCES) \
+	test-strncpy.c test-strstr.c $(test_sy_c_ident_SOURCES) \
 	$(test_sy_c_whitespace_SOURCES) $(test_sy_java_ident_SOURCES) \
 	$(test_sy_java_whitespace_SOURCES) test-symlink.c \
 	test-sys_ioctl-h.c test-sys_select-h.c test-sys_socket-h.c \
@@ -5121,7 +5129,7 @@ DIST_SOURCES = $(am__libtests_a_SOURCES_DIST) \
 	test-str_endswith.c test-str_startswith.c test-strerror.c \
 	test-strerror_r.c test-striconveh.c \
 	$(test_striconveha_SOURCES) test-string-h.c test-strncat.c \
-	test-strstr.c $(test_sy_c_ident_SOURCES) \
+	test-strncpy.c test-strstr.c $(test_sy_c_ident_SOURCES) \
 	$(test_sy_c_whitespace_SOURCES) $(test_sy_java_ident_SOURCES) \
 	$(test_sy_java_whitespace_SOURCES) test-symlink.c \
 	test-sys_ioctl-h.c test-sys_select-h.c test-sys_socket-h.c \
@@ -5804,13 +5812,16 @@ GL_GNULIB_ISBLANK_L = @GL_GNULIB_ISBLANK_L@
 GL_GNULIB_ISCNTRL_L = @GL_GNULIB_ISCNTRL_L@
 GL_GNULIB_ISDIGIT_L = @GL_GNULIB_ISDIGIT_L@
 GL_GNULIB_ISFINITE = @GL_GNULIB_ISFINITE@
+GL_GNULIB_ISFINITE_NO_CXX = @GL_GNULIB_ISFINITE_NO_CXX@
 GL_GNULIB_ISGRAPH_L = @GL_GNULIB_ISGRAPH_L@
 GL_GNULIB_ISINF = @GL_GNULIB_ISINF@
+GL_GNULIB_ISINF_NO_CXX = @GL_GNULIB_ISINF_NO_CXX@
 GL_GNULIB_ISLOWER_L = @GL_GNULIB_ISLOWER_L@
 GL_GNULIB_ISNAN = @GL_GNULIB_ISNAN@
 GL_GNULIB_ISNAND = @GL_GNULIB_ISNAND@
 GL_GNULIB_ISNANF = @GL_GNULIB_ISNANF@
 GL_GNULIB_ISNANL = @GL_GNULIB_ISNANL@
+GL_GNULIB_ISNAN_NO_CXX = @GL_GNULIB_ISNAN_NO_CXX@
 GL_GNULIB_ISPRINT_L = @GL_GNULIB_ISPRINT_L@
 GL_GNULIB_ISPUNCT_L = @GL_GNULIB_ISPUNCT_L@
 GL_GNULIB_ISSPACE_L = @GL_GNULIB_ISSPACE_L@
@@ -5958,6 +5969,7 @@ GL_GNULIB_OBSTACK_PRINTF_POSIX = @GL_GNULIB_OBSTACK_PRINTF_POSIX@
 GL_GNULIB_OBSTACK_ZPRINTF = @GL_GNULIB_OBSTACK_ZPRINTF@
 GL_GNULIB_OPEN = @GL_GNULIB_OPEN@
 GL_GNULIB_OPENAT = @GL_GNULIB_OPENAT@
+GL_GNULIB_OPENAT2 = @GL_GNULIB_OPENAT2@
 GL_GNULIB_OVERRIDES_STRUCT_STAT = @GL_GNULIB_OVERRIDES_STRUCT_STAT@
 GL_GNULIB_PCLOSE = @GL_GNULIB_PCLOSE@
 GL_GNULIB_PERROR = @GL_GNULIB_PERROR@
@@ -6039,6 +6051,7 @@ GL_GNULIB_SIGACTION = @GL_GNULIB_SIGACTION@
 GL_GNULIB_SIGDESCR_NP = @GL_GNULIB_SIGDESCR_NP@
 GL_GNULIB_SIGNAL_H_SIGPIPE = @GL_GNULIB_SIGNAL_H_SIGPIPE@
 GL_GNULIB_SIGNBIT = @GL_GNULIB_SIGNBIT@
+GL_GNULIB_SIGNBIT_NO_CXX = @GL_GNULIB_SIGNBIT_NO_CXX@
 GL_GNULIB_SIGPROCMASK = @GL_GNULIB_SIGPROCMASK@
 GL_GNULIB_SINF = @GL_GNULIB_SINF@
 GL_GNULIB_SINHF = @GL_GNULIB_SINHF@
@@ -6066,8 +6079,10 @@ GL_GNULIB_STRERROR_R = @GL_GNULIB_STRERROR_R@
 GL_GNULIB_STRFTIME = @GL_GNULIB_STRFTIME@
 GL_GNULIB_STRINGEQ = @GL_GNULIB_STRINGEQ@
 GL_GNULIB_STRNCAT = @GL_GNULIB_STRNCAT@
+GL_GNULIB_STRNCPY = @GL_GNULIB_STRNCPY@
 GL_GNULIB_STRNDUP = @GL_GNULIB_STRNDUP@
 GL_GNULIB_STRNLEN = @GL_GNULIB_STRNLEN@
+GL_GNULIB_STRNUL = @GL_GNULIB_STRNUL@
 GL_GNULIB_STRPBRK = @GL_GNULIB_STRPBRK@
 GL_GNULIB_STRPTIME = @GL_GNULIB_STRPTIME@
 GL_GNULIB_STRSEP = @GL_GNULIB_STRSEP@
@@ -6582,6 +6597,7 @@ HAVE_NETINET_IN_H = @HAVE_NETINET_IN_H@
 HAVE_NEWLOCALE = @HAVE_NEWLOCALE@
 HAVE_OFF64_T = @HAVE_OFF64_T@
 HAVE_OPENAT = @HAVE_OPENAT@
+HAVE_OPENAT2 = @HAVE_OPENAT2@
 HAVE_OS_H = @HAVE_OS_H@
 HAVE_PCLOSE = @HAVE_PCLOSE@
 HAVE_PIPE = @HAVE_PIPE@
@@ -6739,6 +6755,7 @@ HAVE_SYS_INTTYPES_H = @HAVE_SYS_INTTYPES_H@
 HAVE_SYS_IOCTL_H = @HAVE_SYS_IOCTL_H@
 HAVE_SYS_LOADAVG_H = @HAVE_SYS_LOADAVG_H@
 HAVE_SYS_PARAM_H = @HAVE_SYS_PARAM_H@
+HAVE_SYS_PROCESS_H = @HAVE_SYS_PROCESS_H@
 HAVE_SYS_SELECT_H = @HAVE_SYS_SELECT_H@
 HAVE_SYS_SOCKET_H = @HAVE_SYS_SOCKET_H@
 HAVE_SYS_TIME_H = @HAVE_SYS_TIME_H@
@@ -6839,6 +6856,7 @@ LC_NUMERIC_IMPLEMENTED = @LC_NUMERIC_IMPLEMENTED@
 LC_TIME_IMPLEMENTED = @LC_TIME_IMPLEMENTED@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
+LIBDL = @LIBDL@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
 LIBMULTITHREAD = @LIBMULTITHREAD@
@@ -7284,6 +7302,7 @@ REPLACE_SIGNBIT = @REPLACE_SIGNBIT@
 REPLACE_SIGNBIT_USING_BUILTINS = @REPLACE_SIGNBIT_USING_BUILTINS@
 REPLACE_SINF = @REPLACE_SINF@
 REPLACE_SINHF = @REPLACE_SINHF@
+REPLACE_SINL = @REPLACE_SINL@
 REPLACE_SLEEP = @REPLACE_SLEEP@
 REPLACE_SNPRINTF = @REPLACE_SNPRINTF@
 REPLACE_SPRINTF = @REPLACE_SPRINTF@
@@ -7303,6 +7322,7 @@ REPLACE_STRERROR_L = @REPLACE_STRERROR_L@
 REPLACE_STRERROR_R = @REPLACE_STRERROR_R@
 REPLACE_STRFTIME = @REPLACE_STRFTIME@
 REPLACE_STRNCAT = @REPLACE_STRNCAT@
+REPLACE_STRNCPY = @REPLACE_STRNCPY@
 REPLACE_STRNDUP = @REPLACE_STRNDUP@
 REPLACE_STRNLEN = @REPLACE_STRNLEN@
 REPLACE_STRSIGNAL = @REPLACE_STRSIGNAL@
@@ -7709,30 +7729,31 @@ EXTRA_DIST = w32sock.h test-accept.c signature.h macros.h \
 	test-strerror_r.c signature.h macros.h test-striconveh.c \
 	macros.h test-striconveha.c iconvsupport.c macros.h \
 	test-string-h.c test-strncat.c unistr/test-strncat.h \
-	zerosize-ptr.h signature.h macros.h test-strstr.c \
-	zerosize-ptr.h signature.h macros.h test-symlink.h \
-	test-symlink.c signature.h macros.h sys_ioctl.in.h \
-	test-sys_ioctl-h.c sys_select.in.h test-sys_select-h.c \
-	signature.h sys_socket.in.h test-sys_socket-h.c macros.h \
-	sys_stat.in.h test-sys_stat-h.c sys_time.in.h \
-	test-sys_time-h.c test-sys_types-h.c sys_uio.in.h \
-	test-sys_uio-h.c init.sh test-init.sh test-thread_self.c \
-	test-thread_create.c macros.h test-time-h.c test-time.c \
-	signature.h macros.h test-uchar-h.c unicase/test-unicase-h.c \
-	unicase/test-cased.c unicase/test-predicate-part1.h \
-	unicase/test-predicate-part2.h macros.h \
-	unicase/test-ignorable.c unicase/test-predicate-part1.h \
-	unicase/test-predicate-part2.h macros.h \
-	unicase/test-locale-language.sh unicase/test-locale-language.c \
-	macros.h unicase/test-uc_tolower.c \
-	unicase/test-mapping-part1.h unicase/test-mapping-part2.h \
-	macros.h unicase/test-uc_totitle.c \
-	unicase/test-mapping-part1.h unicase/test-mapping-part2.h \
-	macros.h unicase/test-uc_toupper.c \
-	unicase/test-mapping-part1.h unicase/test-mapping-part2.h \
-	macros.h unicase/test-u16-casecmp.c unicase/test-casecmp.h \
-	macros.h unicase/test-u16-casecoll.c unicase/test-casecmp.h \
-	macros.h unicase/test-u16-casefold.c macros.h \
+	zerosize-ptr.h signature.h macros.h test-strncpy.c \
+	zerosize-ptr.h macros.h test-strstr.c zerosize-ptr.h \
+	signature.h macros.h test-symlink.h test-symlink.c signature.h \
+	macros.h sys_ioctl.in.h test-sys_ioctl-h.c sys_select.in.h \
+	test-sys_select-h.c signature.h sys_socket.in.h \
+	test-sys_socket-h.c macros.h sys_stat.in.h test-sys_stat-h.c \
+	sys_time.in.h test-sys_time-h.c test-sys_types-h.c \
+	sys_uio.in.h test-sys_uio-h.c init.sh test-init.sh \
+	test-thread_self.c test-thread_create.c macros.h test-time-h.c \
+	test-time.c signature.h macros.h test-uchar-h.c \
+	unicase/test-unicase-h.c unicase/test-cased.c \
+	unicase/test-predicate-part1.h unicase/test-predicate-part2.h \
+	macros.h unicase/test-ignorable.c \
+	unicase/test-predicate-part1.h unicase/test-predicate-part2.h \
+	macros.h unicase/test-locale-language.sh \
+	unicase/test-locale-language.c macros.h \
+	unicase/test-uc_tolower.c unicase/test-mapping-part1.h \
+	unicase/test-mapping-part2.h macros.h \
+	unicase/test-uc_totitle.c unicase/test-mapping-part1.h \
+	unicase/test-mapping-part2.h macros.h \
+	unicase/test-uc_toupper.c unicase/test-mapping-part1.h \
+	unicase/test-mapping-part2.h macros.h \
+	unicase/test-u16-casecmp.c unicase/test-casecmp.h macros.h \
+	unicase/test-u16-casecoll.c unicase/test-casecmp.h macros.h \
+	unicase/test-u16-casefold.c macros.h \
 	unicase/test-u16-is-cased.c unicase/test-is-cased.h macros.h \
 	unicase/test-u16-is-casefolded.c unicase/test-is-casefolded.h \
 	macros.h unicase/test-u16-is-lowercase.c \
@@ -11508,6 +11529,10 @@ test-strncat$(EXEEXT): $(test_strncat_OBJECTS) $(test_strncat_DEPENDENCIES) $(EX
 	@rm -f test-strncat$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_strncat_OBJECTS) $(test_strncat_LDADD) $(LIBS)
 
+test-strncpy$(EXEEXT): $(test_strncpy_OBJECTS) $(test_strncpy_DEPENDENCIES) $(EXTRA_test_strncpy_DEPENDENCIES) 
+	@rm -f test-strncpy$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_strncpy_OBJECTS) $(test_strncpy_LDADD) $(LIBS)
+
 test-strstr$(EXEEXT): $(test_strstr_OBJECTS) $(test_strstr_DEPENDENCIES) $(EXTRA_test_strstr_DEPENDENCIES) 
 	@rm -f test-strstr$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_strstr_OBJECTS) $(test_strstr_LDADD) $(LIBS)
@@ -13443,6 +13468,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-striconveha.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-string-h.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-strncat.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-strncpy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-strstr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-symlink.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-sys_ioctl-h.Po@am__quote@ # am--include-marker
@@ -15606,6 +15632,13 @@ test-string-h.log: test-string-h$(EXEEXT)
 test-strncat.log: test-strncat$(EXEEXT)
 	@p='test-strncat$(EXEEXT)'; \
 	b='test-strncat'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-strncpy.log: test-strncpy$(EXEEXT)
+	@p='test-strncpy$(EXEEXT)'; \
+	b='test-strncpy'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -19413,6 +19446,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/test-striconveha.Po
 	-rm -f ./$(DEPDIR)/test-string-h.Po
 	-rm -f ./$(DEPDIR)/test-strncat.Po
+	-rm -f ./$(DEPDIR)/test-strncpy.Po
 	-rm -f ./$(DEPDIR)/test-strstr.Po
 	-rm -f ./$(DEPDIR)/test-symlink.Po
 	-rm -f ./$(DEPDIR)/test-sys_ioctl-h.Po
@@ -20209,6 +20243,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/test-striconveha.Po
 	-rm -f ./$(DEPDIR)/test-string-h.Po
 	-rm -f ./$(DEPDIR)/test-strncat.Po
+	-rm -f ./$(DEPDIR)/test-strncpy.Po
 	-rm -f ./$(DEPDIR)/test-strstr.Po
 	-rm -f ./$(DEPDIR)/test-symlink.Po
 	-rm -f ./$(DEPDIR)/test-sys_ioctl-h.Po

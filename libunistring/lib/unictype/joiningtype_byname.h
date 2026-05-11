@@ -1,4 +1,4 @@
-/* ANSI-C code produced by gperf version 3.2 */
+/* ANSI-C code produced by gperf version 3.3 */
 /* Command-line: gperf -m 10 unictype/joiningtype_byname.gperf  */
 /* Computed positions: -k'1' */
 
@@ -164,6 +164,10 @@ static const struct joining_type_stringpool_t joining_type_stringpool_contents =
   };
 #define joining_type_stringpool ((const char *) &joining_type_stringpool_contents)
 
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
 static const struct named_joining_type joining_type_names[] =
   {
     {-1},
@@ -204,6 +208,9 @@ static const struct named_joining_type joining_type_names[] =
 #line 43 "unictype/joiningtype_byname.gperf"
     {(int)(size_t)&((struct joining_type_stringpool_t *)0)->joining_type_stringpool_str21, UC_JOINING_TYPE_C}
   };
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic pop
+#endif
 
 static const struct named_joining_type *
 uc_joining_type_lookup (register const char *str, register size_t len)
@@ -224,5 +231,5 @@ uc_joining_type_lookup (register const char *str, register size_t len)
             }
         }
     }
-  return 0;
+  return (struct named_joining_type *) 0;
 }

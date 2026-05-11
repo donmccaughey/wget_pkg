@@ -1,5 +1,5 @@
 /* Case mapping of a 32-bit wide character.
-   Copyright (C) 2020-2025 Free Software Foundation, Inc.
+   Copyright (C) 2020-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -21,7 +21,7 @@
 
 #if GNULIB_defined_mbstate_t
 # include "localcharset.h"
-# include "streq.h"
+# include "streq-opt.h"
 #endif
 
 #if GL_CHAR32_T_IS_UNICODE

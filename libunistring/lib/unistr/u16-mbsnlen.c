@@ -1,5 +1,5 @@
 /* Count characters in UTF-16 string.
-   Copyright (C) 2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007, 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2007.
 
    This file is free software.
@@ -31,9 +31,7 @@
 size_t
 u16_mbsnlen (const uint16_t *s, size_t n)
 {
-  size_t characters;
-
-  characters = 0;
+  size_t characters = 0;
   while (n > 0)
     {
       ucs4_t uc;

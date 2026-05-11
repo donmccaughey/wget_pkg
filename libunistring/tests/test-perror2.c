@@ -1,5 +1,5 @@
 /* Test of perror() function.
-   Copyright (C) 2011-2025 Free Software Foundation, Inc.
+   Copyright (C) 2011-2026 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -95,8 +95,7 @@ main (void)
   /* Test that perror uses the same message as strerror.  */
   {
     int errs[] = { EACCES, 0, -3, };
-    int i;
-    for (i = 0; i < SIZEOF (errs); i++)
+    for (int i = 0; i < SIZEOF (errs); i++)
       {
         char buf[256];
         const char *err = strerror (errs[i]);

@@ -1,5 +1,5 @@
 /* Titlecase mapping for UTF-8/UTF-16/UTF-32 substrings (locale dependent).
-   Copyright (C) 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This file is free software.
@@ -40,12 +40,7 @@ FUNC (const UNIT *s, size_t n,
 {
   /* The result being accumulated.  */
   UNIT *result;
-  size_t length;
   size_t allocated;
-  /* An array containing the word break positions.  */
-  char *wordbreaks;
-
-  /* Initialize the accumulator.  */
   if (nf != NULL || resultbuf == NULL)
     {
       result = NULL;
@@ -56,8 +51,10 @@ FUNC (const UNIT *s, size_t n,
       result = resultbuf;
       allocated = *lengthp;
     }
-  length = 0;
+  size_t length = 0;
 
+  /* An array containing the word break positions.  */
+  char *wordbreaks;
   /* Initialize the word breaks array.  */
   if (n > 0)
     {
@@ -102,15 +99,12 @@ FUNC (const UNIT *s, size_t n,
         ucs4_t uc;
         int count = U_MBTOUC_UNSAFE (&uc, s, s_end - s);
 
-        ucs4_t (*single_character_map) (ucs4_t);
-        size_t offset_in_rule; /* offset in 'struct special_casing_rule' */
-
-        ucs4_t mapped_uc[3];
-        unsigned int mapped_count;
-
         if (*wp)
           /* Crossing a word boundary.  */
           in_word_first_part = true;
+
+        ucs4_t (*single_character_map) (ucs4_t);
+        size_t offset_in_rule; /* offset in 'struct special_casing_rule' */
 
         /* Determine single_character_map, offset_in_rule.
            There are three possibilities:
@@ -139,6 +133,9 @@ FUNC (const UNIT *s, size_t n,
             single_character_map = uc_tolower;
             offset_in_rule = offsetof (struct special_casing_rule, lower[0]);
           }
+
+        ucs4_t mapped_uc[3];
+        unsigned int mapped_count;
 
         /* Actually map uc.  */
         if (single_character_map == NULL)
@@ -173,10 +170,11 @@ FUNC (const UNIT *s, size_t n,
                   {
                     /* Does the context apply?  */
                     int context = rule->context;
-                    bool applies;
 
                     if (context < 0)
                       context = - context;
+
+                    bool applies;
                     switch (context)
                       {
                       case SCC_ALWAYS:
@@ -357,15 +355,65 @@ FUNC (const UNIT *s, size_t n,
 
        found_mapping:
         /* Found the mapping: uc maps to mapped_uc[0..mapped_count-1].  */
-        {
-          unsigned int i;
+        for (unsigned int i = 0; i < mapped_count; i++)
+          {
+            ucs4_t muc = mapped_uc[i];
 
-          for (i = 0; i < mapped_count; i++)
+            /* Append muc to the result accumulator.  */
+            if (length < allocated)
+              {
+                int ret = U_UCTOMB (result + length, muc, allocated - length);
+                if (ret == -1)
+                  {
+                    errno = EINVAL;
+                    goto fail1;
+                  }
+                if (ret >= 0)
+                  {
+                    length += ret;
+                    goto done_appending;
+                  }
+              }
             {
-              ucs4_t muc = mapped_uc[i];
-
-              /* Append muc to the result accumulator.  */
-              if (length < allocated)
+              size_t old_allocated = allocated;
+              size_t new_allocated = 2 * old_allocated;
+              if (new_allocated < 64)
+                new_allocated = 64;
+              if (new_allocated < old_allocated) /* integer overflow? */
+                abort ();
+              {
+                UNIT *larger_result;
+                if (result == NULL)
+                  {
+                    larger_result = (UNIT *) malloc (new_allocated * sizeof (UNIT));
+                    if (larger_result == NULL)
+                      {
+                        errno = ENOMEM;
+                        goto fail1;
+                      }
+                  }
+                else if (result == resultbuf)
+                  {
+                    larger_result = (UNIT *) malloc (new_allocated * sizeof (UNIT));
+                    if (larger_result == NULL)
+                      {
+                        errno = ENOMEM;
+                        goto fail1;
+                      }
+                    U_CPY (larger_result, resultbuf, length);
+                  }
+                else
+                  {
+                    larger_result =
+                      (UNIT *) realloc (result, new_allocated * sizeof (UNIT));
+                    if (larger_result == NULL)
+                      {
+                        errno = ENOMEM;
+                        goto fail1;
+                      }
+                  }
+                result = larger_result;
+                allocated = new_allocated;
                 {
                   int ret = U_UCTOMB (result + length, muc, allocated - length);
                   if (ret == -1)
@@ -373,69 +421,15 @@ FUNC (const UNIT *s, size_t n,
                       errno = EINVAL;
                       goto fail1;
                     }
-                  if (ret >= 0)
-                    {
-                      length += ret;
-                      goto done_appending;
-                    }
-                }
-              {
-                size_t old_allocated = allocated;
-                size_t new_allocated = 2 * old_allocated;
-                if (new_allocated < 64)
-                  new_allocated = 64;
-                if (new_allocated < old_allocated) /* integer overflow? */
-                  abort ();
-                {
-                  UNIT *larger_result;
-                  if (result == NULL)
-                    {
-                      larger_result = (UNIT *) malloc (new_allocated * sizeof (UNIT));
-                      if (larger_result == NULL)
-                        {
-                          errno = ENOMEM;
-                          goto fail1;
-                        }
-                    }
-                  else if (result == resultbuf)
-                    {
-                      larger_result = (UNIT *) malloc (new_allocated * sizeof (UNIT));
-                      if (larger_result == NULL)
-                        {
-                          errno = ENOMEM;
-                          goto fail1;
-                        }
-                      U_CPY (larger_result, resultbuf, length);
-                    }
-                  else
-                    {
-                      larger_result =
-                        (UNIT *) realloc (result, new_allocated * sizeof (UNIT));
-                      if (larger_result == NULL)
-                        {
-                          errno = ENOMEM;
-                          goto fail1;
-                        }
-                    }
-                  result = larger_result;
-                  allocated = new_allocated;
-                  {
-                    int ret = U_UCTOMB (result + length, muc, allocated - length);
-                    if (ret == -1)
-                      {
-                        errno = EINVAL;
-                        goto fail1;
-                      }
-                    if (ret < 0)
-                      abort ();
-                    length += ret;
-                    goto done_appending;
-                  }
+                  if (ret < 0)
+                    abort ();
+                  length += ret;
+                  goto done_appending;
                 }
               }
-             done_appending: ;
             }
-        }
+           done_appending: ;
+          }
 
         if (!uc_is_case_ignorable (uc))
           last_char_except_ignorable = uc;
@@ -456,9 +450,8 @@ FUNC (const UNIT *s, size_t n,
   if (nf != NULL)
     {
       /* Finally, normalize the result.  */
-      UNIT *normalized_result;
-
-      normalized_result = U_NORMALIZE (nf, result, length, resultbuf, lengthp);
+      UNIT *normalized_result =
+        U_NORMALIZE (nf, result, length, resultbuf, lengthp);
       if (normalized_result == NULL)
         goto fail2;
 
@@ -482,9 +475,7 @@ FUNC (const UNIT *s, size_t n,
   else if (result != resultbuf && length < allocated)
     {
       /* Shrink the allocated memory if possible.  */
-      UNIT *memory;
-
-      memory = (UNIT *) realloc (result, length * sizeof (UNIT));
+      UNIT *memory = (UNIT *) realloc (result, length * sizeof (UNIT));
       if (memory != NULL)
         result = memory;
     }

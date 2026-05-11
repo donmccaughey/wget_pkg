@@ -1,5 +1,5 @@
 /* Canonical combining classes of Unicode characters.
-   Copyright (C) 2002, 2006-2007, 2011-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006-2007, 2011-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2011.
 
    This file is free software.
@@ -118,7 +118,6 @@ uc_combining_class_long_name (int ccc)
   if (ccc >= 0)
     {
       int index;
-
       if (ccc < 10)
         index = u_combining_class_index_part1[ccc];
       else if (ccc >= 200 && ccc < 241)

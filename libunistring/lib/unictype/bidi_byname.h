@@ -1,4 +1,4 @@
-/* ANSI-C code produced by gperf version 3.2 */
+/* ANSI-C code produced by gperf version 3.3 */
 /* Command-line: gperf -m 10 unictype/bidi_byname.gperf  */
 /* Computed positions: -k'1,9,$' */
 
@@ -125,9 +125,9 @@ bidi_class_hash (register const char *str, register size_t len)
     {
       default:
         hval += asso_values[(unsigned char)str[8]];
-#if defined __cplusplus && (__cplusplus >= 201703L || (__cplusplus >= 201103L && defined __clang_major__ && defined __clang_minor__ && __clang_major__ + (__clang_minor__ >= 9) > 3))
+#if (defined __cplusplus && (__cplusplus >= 201703L || (__cplusplus >= 201103L && defined __clang__ && __clang_major__ + (__clang_minor__ >= 9) > 3))) || (defined __STDC_VERSION__ && __STDC_VERSION__ >= 202000L && ((defined __GNUC__ && __GNUC__ >= 10) || (defined __clang__ && __clang_major__ >= 9)))
       [[fallthrough]];
-#elif defined __GNUC__ && __GNUC__ >= 7
+#elif (defined __GNUC__ && __GNUC__ >= 7) || (defined __clang__ && __clang_major__ >= 10)
       __attribute__ ((__fallthrough__));
 #endif
       /*FALLTHROUGH*/
@@ -291,6 +291,10 @@ static const struct bidi_class_stringpool_t bidi_class_stringpool_contents =
   };
 #define bidi_class_stringpool ((const char *) &bidi_class_stringpool_contents)
 
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
 static const struct named_bidi_class bidi_class_names[] =
   {
     {-1}, {-1}, {-1}, {-1}, {-1},
@@ -443,6 +447,9 @@ static const struct named_bidi_class bidi_class_names[] =
 #line 102 "unictype/bidi_byname.gperf"
     {(int)(size_t)&((struct bidi_class_stringpool_t *)0)->bidi_class_stringpool_str87, UC_BIDI_S}
   };
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic pop
+#endif
 
 static const struct named_bidi_class *
 uc_bidi_class_lookup (register const char *str, register size_t len)
@@ -463,5 +470,5 @@ uc_bidi_class_lookup (register const char *str, register size_t len)
             }
         }
     }
-  return 0;
+  return (struct named_bidi_class *) 0;
 }

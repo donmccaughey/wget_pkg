@@ -1,5 +1,5 @@
 /* Search character in piece of UTF-8 string.
-   Copyright (C) 1999, 2002, 2006-2007, 2009-2025 Free Software Foundation,
+   Copyright (C) 1999, 2002, 2006-2007, 2009-2026 Free Software Foundation,
    Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
@@ -46,8 +46,7 @@ u8_chr (const uint8_t *s, size_t n, ucs4_t uc)
 
   {
     uint8_t c[6];
-    size_t uc_size;
-    uc_size = u8_uctomb_aux (c, uc, 6);
+    size_t uc_size = u8_uctomb_aux (c, uc, 6);
 
     if (n < uc_size)
       return NULL;

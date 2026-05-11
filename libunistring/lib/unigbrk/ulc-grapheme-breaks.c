@@ -1,5 +1,5 @@
 /* Grapheme cluster breaks function.
-   Copyright (C) 2001-2003, 2006-2025 Free Software Foundation, Inc.
+   Copyright (C) 2001-2003, 2006-2026 Free Software Foundation, Inc.
    Written by Ben Pfaff <blp@cs.stanford.edu>, 2010,
    based on code written by Bruno Haible <bruno@clisp.org>, 2009.
 
@@ -51,10 +51,8 @@ is_utf8_encoding (const char *encoding)
 static void
 ascii_grapheme_breaks (const char *s, size_t n, char *p)
 {
-  size_t i;
-
   p[0] = 1;
-  for (i = 1; i < n; i++)
+  for (size_t i = 1; i < n; i++)
     {
       bool is_ascii = c_isprint (s[i]) || c_isspace (s[i]);
       p[i] = is_ascii && (s[i] != '\n' || s[i - 1] != '\r');
@@ -92,25 +90,22 @@ ulc_grapheme_breaks (const char *s, size_t n, char *p)
 
           if (offsets != NULL)
             {
-              uint8_t *t;
               size_t m;
-
-              t = u8_conv_from_encoding (encoding, iconveh_question_mark,
-                                         s, n, offsets, NULL, &m);
+              uint8_t *t =
+                u8_conv_from_encoding (encoding, iconveh_question_mark,
+                                       s, n, offsets, NULL, &m);
               if (t != NULL)
                 {
                   char *q = (char *) (m > 0 ? malloc (m) : NULL);
 
                   if (m == 0 || q != NULL)
                     {
-                      size_t i;
-
                       /* Determine the grapheme breaks of the UTF-8 string.  */
                       u8_grapheme_breaks (t, m, q);
 
                       /* Translate the result back to the original string.  */
                       memset (p, 0, n);
-                      for (i = 0; i < n; i++)
+                      for (size_t i = 0; i < n; i++)
                         if (offsets[i] != (size_t)(-1))
                           p[i] = q[offsets[i]];
 

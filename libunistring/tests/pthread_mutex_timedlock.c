@@ -1,5 +1,5 @@
 /* Lock a mutex, abandoning after a certain time.
-   Copyright (C) 2019-2025 Free Software Foundation, Inc.
+   Copyright (C) 2019-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -40,16 +40,16 @@ pthread_mutex_timedlock (pthread_mutex_t *mutex, const struct timespec *abstime)
      Therefore start the loop with a pthread_mutex_trylock call.  */
   for (;;)
     {
-      int err;
+      {
+        int err = pthread_mutex_trylock (mutex);
+        if (err != EBUSY)
+          return err;
+      }
+
       struct timeval currtime;
-      unsigned long remaining;
-
-      err = pthread_mutex_trylock (mutex);
-      if (err != EBUSY)
-        return err;
-
       gettimeofday (&currtime, NULL);
 
+      unsigned long remaining;
       if (currtime.tv_sec > abstime->tv_sec)
         remaining = 0;
       else

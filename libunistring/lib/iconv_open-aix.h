@@ -1,4 +1,4 @@
-/* ANSI-C code produced by gperf version 3.2 */
+/* ANSI-C code produced by gperf version 3.3 */
 /* Command-line: gperf -m 10 iconv_open-aix.gperf  */
 /* Computed positions: -k'4,$' */
 
@@ -153,6 +153,10 @@ static const struct stringpool_t stringpool_contents =
   };
 #define stringpool ((const char *) &stringpool_contents)
 
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
 static const struct mapping mappings[] =
   {
     {-1}, {-1}, {-1}, {-1}, {-1}, {-1},
@@ -226,6 +230,9 @@ static const struct mapping mappings[] =
 #line 44 "iconv_open-aix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str44, "IBM-861"}
   };
+#if (defined __GNUC__ && __GNUC__ + (__GNUC_MINOR__ >= 6) > 4) || (defined __clang__ && __clang_major__ >= 3)
+#pragma GCC diagnostic pop
+#endif
 
 const struct mapping *
 mapping_lookup (register const char *str, register size_t len)
@@ -246,5 +253,5 @@ mapping_lookup (register const char *str, register size_t len)
             }
         }
     }
-  return 0;
+  return (struct mapping *) 0;
 }

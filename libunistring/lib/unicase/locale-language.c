@@ -1,5 +1,5 @@
 /* Language code of current locale.
-   Copyright (C) 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This file is free software.
@@ -39,10 +39,9 @@ const char *
 uc_locale_language (void)
 {
   const char *locale_name = gl_locale_name (LC_CTYPE, "LC_CTYPE");
-  const char *p;
 
   /* Find the end of the language portion.  */
-  p = locale_name;
+  const char *p = locale_name;
   while (*p != '\0' && *p != '_' && *p != '.' && *p != '@')
     p++;
 

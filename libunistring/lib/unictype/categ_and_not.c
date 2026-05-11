@@ -1,5 +1,5 @@
 /* Categories of Unicode characters.
-   Copyright (C) 2007, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007, 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2007.
 
    This file is free software.
@@ -32,10 +32,7 @@ uc_general_category_t
 uc_general_category_and_not (uc_general_category_t category1,
                              uc_general_category_t category2)
 {
-  uint32_t bitmask;
-  uc_general_category_t result;
-
-  bitmask = category1.bitmask & ~category2.bitmask;
+  uint32_t bitmask = category1.bitmask & ~category2.bitmask;
 
   if (bitmask == category1.bitmask)
     return category1;
@@ -43,6 +40,7 @@ uc_general_category_and_not (uc_general_category_t category1,
   if (bitmask == 0)
     return _UC_CATEGORY_NONE;
 
+  uc_general_category_t result;
   result.bitmask = bitmask;
   result.generic = 1;
   result.lookup.lookup_fn = &uc_is_general_category_withtable;

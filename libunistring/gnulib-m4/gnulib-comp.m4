@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2025 Free Software Foundation, Inc.
+# Copyright (C) 2002-2026 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -346,8 +346,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module setsockopt-tests:
   # Code from module signal-h:
   # Code from module signal-h-tests:
-  # Code from module signbit:
-  # Code from module signbit-tests:
+  # Code from module signbit-no-c++:
+  # Code from module signbit-no-c++-tests:
   # Code from module signed-nan:
   # Code from module signed-snan:
   # Code from module sigprocmask:
@@ -380,6 +380,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module stdio-h:
   gl_STDIO_H_EARLY
   # Code from module stdio-h-tests:
+  # Code from module stdio-windows:
   # Code from module stdlib-h:
   # Code from module stdlib-h-tests:
   # Code from module stpcpy:
@@ -387,7 +388,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module str_endswith-tests:
   # Code from module str_startswith:
   # Code from module str_startswith-tests:
-  # Code from module streq:
+  # Code from module streq-opt:
   # Code from module strerror:
   # Code from module strerror-override:
   # Code from module strerror-tests:
@@ -402,6 +403,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module stringeq:
   # Code from module strncat:
   # Code from module strncat-tests:
+  # Code from module strncpy:
+  # Code from module strncpy-tests:
   # Code from module strstr:
   # Code from module strstr-simple:
   # Code from module strstr-tests:
@@ -1803,7 +1806,7 @@ AC_DEFUN([gl_INIT],
   gl_LOCALE_MODULE_INDICATOR([setlocale_null])
   gl_SIGNBIT
   gl_CONDITIONAL([GL_COND_OBJ_SIGNBIT3], [test $REPLACE_SIGNBIT = 1])
-  gl_MATH_MODULE_INDICATOR([signbit])
+  gl_MATH_MODULE_INDICATOR([signbit-no-cxx])
   gl_SIZE_MAX
   gt_TYPE_SSIZE_T
   gl_STDCKDINT_H
@@ -1837,6 +1840,12 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_STRNCAT
   ])
   gl_STRING_MODULE_INDICATOR([strncat])
+  gl_FUNC_STRNCPY
+  gl_CONDITIONAL([GL_COND_OBJ_STRNCPY], [test $REPLACE_STRNCPY = 1])
+  AM_COND_IF([GL_COND_OBJ_STRNCPY], [
+    gl_PREREQ_STRNCPY
+  ])
+  gl_STRING_MODULE_INDICATOR([strncpy])
   gl_FUNC_STRSTR
   if test $REPLACE_STRSTR = 1; then
     AC_LIBOBJ([strstr])
@@ -3340,18 +3349,6 @@ changequote([, ])dnl
   gl_STDIO_H
   gl_STDIO_H_REQUIRE_DEFAULTS
   AC_PROG_MKDIR_P
-  USES_MSVCRT=0
-  case "$host_os" in
-    mingw* | windows*)
-      AC_EGREP_CPP([Special], [
-  #ifndef _UCRT
-   Special
-  #endif
-        ],
-        [USES_MSVCRT=1])
-      ;;
-  esac
-  gl_CONDITIONAL([GL_COND_OBJ_STDIO_CONSOLESAFE], [test $USES_MSVCRT = 1])
   gl_CONDITIONAL([GL_COND_OBJ_STDIO_READ], [test $REPLACE_STDIO_READ_FUNCS = 1])
   gl_CONDITIONAL([GL_COND_OBJ_STDIO_WRITE], [test $REPLACE_STDIO_WRITE_FUNCS = 1])
   dnl No need to create extra modules for these functions. Everyone who uses
@@ -3378,6 +3375,20 @@ changequote([, ])dnl
   gl_STDIO_MODULE_INDICATOR([puts])
   gl_STDIO_MODULE_INDICATOR([fwrite])
   gl_DOUBLE_EXPONENT_LOCATION
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  USES_MSVCRT=0
+  case "$host_os" in
+    mingw* | windows*)
+      AC_EGREP_CPP([Special], [
+  #ifndef _UCRT
+   Special
+  #endif
+        ],
+        [USES_MSVCRT=1])
+      ;;
+  esac
+  gl_CONDITIONAL([GL_COND_OBJ_STDIO_CONSOLESAFE], [test $USES_MSVCRT = 1])
+  AC_CHECK_FUNCS([vasprintf])
   gl_FUNC_STPCPY
   gl_CONDITIONAL([GL_COND_OBJ_STPCPY],
                  [test $HAVE_STPCPY = 0 || test $REPLACE_STPCPY = 1])
@@ -3406,6 +3417,9 @@ changequote([, ])dnl
   gl_STRING_MODULE_INDICATOR([strerror_r])
   dnl For the modules argp, error, xstrerror.
   gl_MODULE_INDICATOR([strerror_r-posix])
+  gl_FUNC_MMAP_ANON
+  AC_CHECK_HEADERS_ONCE([sys/mman.h])
+  AC_CHECK_FUNCS_ONCE([mprotect])
   gl_FUNC_MMAP_ANON
   AC_CHECK_HEADERS_ONCE([sys/mman.h])
   AC_CHECK_FUNCS_ONCE([mprotect])
@@ -3854,7 +3868,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/stdlib.c
   lib/stdlib.in.h
   lib/str-two-way.h
-  lib/streq.h
+  lib/streq-opt.h
   lib/striconveh.c
   lib/striconveh.h
   lib/striconveha.c
@@ -3862,6 +3876,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/string.c
   lib/string.in.h
   lib/strncat.c
+  lib/strncpy.c
   lib/strstr.c
   lib/struniq.h
   lib/sys_types.in.h
@@ -4779,6 +4794,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
+  m4/libdl.m4
   m4/libunistring-base.m4
   m4/limits-h.m4
   m4/localcharset.m4
@@ -4881,6 +4897,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/string_h.m4
   m4/stringeq.m4
   m4/strncat.m4
+  m4/strncpy.m4
   m4/strstr.m4
   m4/symlink.m4
   m4/sys_cdefs_h.m4
@@ -5172,6 +5189,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-striconveha.c
   tests/test-string-h.c
   tests/test-strncat.c
+  tests/test-strncpy.c
   tests/test-strstr.c
   tests/test-symlink.c
   tests/test-symlink.h

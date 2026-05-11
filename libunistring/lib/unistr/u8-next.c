@@ -1,5 +1,5 @@
 /* Iterate over next character in UTF-8 string.
-   Copyright (C) 2002, 2006, 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006, 2009-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
    This file is free software.
@@ -34,9 +34,7 @@
 const uint8_t *
 u8_next (ucs4_t *puc, const uint8_t *s)
 {
-  int count;
-
-  count = u8_strmbtouc (puc, s);
+  int count = u8_strmbtouc (puc, s);
   if (count > 0)
     return s + count;
   else

@@ -1,5 +1,5 @@
 /* Grapheme cluster breaks test.
-   Copyright (C) 2009-2025 Free Software Foundation, Inc.
+   Copyright (C) 2009-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -52,28 +52,25 @@ main ()
     static const char s[] = "ZYX\352\353W\360\361V\362";
     enum { LENGTH = sizeof s - 1 };
     char p[LENGTH];
-    size_t i;
 
     ulc_grapheme_breaks (s, LENGTH, p);
-    for (i = 0; i < LENGTH; i++)
+    for (size_t i = 0; i < LENGTH; i++)
       if (p[i] != is_8859_6_break (s[i]))
         {
-          size_t j;
-
           fprintf (stderr, "wrong grapheme breaks:\n");
 
           fprintf (stderr, "   input:");
-          for (j = 0; j < LENGTH; j++)
+          for (size_t j = 0; j < LENGTH; j++)
             fprintf (stderr, " %02X", (unsigned char) s[j]);
           putc ('\n', stderr);
 
           fprintf (stderr, "expected:");
-          for (j = 0; j < LENGTH; j++)
+          for (size_t j = 0; j < LENGTH; j++)
             fprintf (stderr, "  %d", is_8859_6_break (s[j]));
           putc ('\n', stderr);
 
           fprintf (stderr, "  actual:");
-          for (j = 0; j < LENGTH; j++)
+          for (size_t j = 0; j < LENGTH; j++)
             fprintf (stderr, "  %d", p[j]);
           putc ('\n', stderr);
 

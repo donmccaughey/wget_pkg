@@ -1,3 +1,28 @@
+2026-02-24  Bruno Haible  <bruno@clisp.org>
+
+	Prepare for 1.4.2 release.
+	* version.sh: Bump version number, date, gnulib version.
+	* README: Update version.
+	* NEWS: Update.
+
+2025-12-29  Bruno Haible  <bruno@clisp.org>
+
+	Sync with gnulib.
+	* lib/unistring/cdefs.h: Update from gnulib/m4/gnulib-common.m4.
+	(_GL_UNNAMED): New macro.
+	(_UC_UNNAMED): Apply
+	2025-12-23  Paul Eggert  <eggert@cs.ucla.edu>
+	    New C macro _GL_UNNAMED
+
+2025-10-08  Bruno Haible  <bruno@clisp.org>
+
+	Make the generated <unistring/stdint.h> more usable in C++ mode.
+	Reported by Daniel Collins <solemnwarning@solemnwarning.net>
+	at <https://savannah.gnu.org/bugs/?67590>.
+
+	* lib/Makefile.am (unistring/stdint.h): In C++ 11 or newer mode, just use
+	<cstdint>.
+
 2025-10-05  Bruno Haible  <bruno@clisp.org>
 
 	Prepare for 1.4.1 release.

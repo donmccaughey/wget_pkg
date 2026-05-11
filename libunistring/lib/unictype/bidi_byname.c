@@ -1,5 +1,5 @@
 /* Bidi classes of Unicode characters.
-   Copyright (C) 2002, 2006, 2011-2025 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006, 2011-2026 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
    This file is free software.
@@ -35,13 +35,10 @@
 int
 uc_bidi_class_byname (const char *bidi_class_name)
 {
-  size_t len;
-
-  len = strlen (bidi_class_name);
+  size_t len = strlen (bidi_class_name);
   if (len <= MAX_WORD_LENGTH)
     {
       char buf[MAX_WORD_LENGTH + 1];
-      const struct named_bidi_class *found;
 
       /* Copy bidi_class_name into buf, converting '_' and '-' to ' '.  */
       {
@@ -62,7 +59,7 @@ uc_bidi_class_byname (const char *bidi_class_name)
       /* Here q == buf + len.  */
 
       /* Do a hash table lookup, with case-insensitive comparison.  */
-      found = uc_bidi_class_lookup (buf, len);
+      const struct named_bidi_class *found = uc_bidi_class_lookup (buf, len);
       if (found != NULL)
         return found->bidi_class;
     }

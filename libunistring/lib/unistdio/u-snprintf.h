@@ -1,5 +1,5 @@
 /* Formatted output to strings.
-   Copyright (C) 1999, 2002, 2005-2007, 2009-2025 Free Software Foundation,
+   Copyright (C) 1999, 2002, 2005-2007, 2009-2026 Free Software Foundation,
    Inc.
 
    This file is free software.
@@ -27,10 +27,8 @@ int
 SNPRINTF (DCHAR_T *buf, size_t size, const FCHAR_T *format, ...)
 {
   va_list args;
-  int result;
-
   va_start (args, format);
-  result = VSNPRINTF (buf, size, format, args);
+  int result = VSNPRINTF (buf, size, format, args);
   va_end (args);
   return result;
 }

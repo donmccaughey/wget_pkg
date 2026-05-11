@@ -73,6 +73,9 @@ unistring/stdint.h : $(STDINT_H) stdint.mini.h
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  echo '#include <stddef.h>'; \
+	  echo '#if __cplusplus >= 201103'; \
+	  echo '#include <cstdint>'; \
+	  echo '#else'; \
 	  echo '#if __GLIBC__ >= 2'; \
 	  echo '#include <stdint.h>'; \
 	  echo '#else'; \
@@ -102,6 +105,7 @@ unistring/stdint.h : $(STDINT_H) stdint.mini.h
 	      -e 's/@''HAVE_SYS_INTTYPES_H''@/'"$$HAVE_SYS_INTTYPES_H"'/g' \
 	      -e 's/@''HAVE_SYS_BITYPES_H''@/0/g' \
 	      < $(srcdir)/stdint.mini.h; \
+	  echo '#endif'; \
 	  echo '#endif'; \
 	} > $@-t
 	mv $@-t $@

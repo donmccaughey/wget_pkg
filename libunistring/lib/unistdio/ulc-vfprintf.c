@@ -1,5 +1,5 @@
 /* Formatted output to a stream.
-   Copyright (C) 2004, 2006-2025 Free Software Foundation, Inc.
+   Copyright (C) 2004, 2006-2026 Free Software Foundation, Inc.
 
    This file is free software.
    It is dual-licensed under "the GNU LGPLv3+ or the GNU GPLv2+".
@@ -44,12 +44,9 @@ int
 ulc_vfprintf (FILE *fp, const char *format, va_list args)
 {
   char buf[2000];
-  char *output;
-  size_t len;
   size_t lenbuf = sizeof (buf);
-
-  output = ulc_vasnprintf (buf, &lenbuf, format, args);
-  len = lenbuf;
+  char *output = ulc_vasnprintf (buf, &lenbuf, format, args);
+  size_t len = lenbuf;
 
   if (!output)
     {

@@ -1,5 +1,5 @@
 /* Test of uN_strstr() functions.
-   Copyright (C) 2004, 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2004, 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -130,10 +130,8 @@ test_u_strstr (void)
     UNIT *haystack = (UNIT *) malloc ((m + 1) * sizeof (UNIT));
     if (haystack != NULL)
       {
-        size_t i;
-
         haystack[0] = 'B';
-        for (i = 1; i < m; i++)
+        for (size_t i = 1; i < m; i++)
           haystack[i] = 'A';
         haystack[m] = '\0';
 
@@ -166,9 +164,7 @@ test_u_strstr (void)
     UNIT *needle = (UNIT *) malloc ((m + 1) * sizeof (UNIT));
     if (needle != NULL)
       {
-        size_t i;
-
-        for (i = 0; i < m; i++)
+        for (size_t i = 0; i < m; i++)
           needle[i] = 'A';
         needle[m] = '\0';
 
@@ -188,15 +184,14 @@ test_u_strstr (void)
     UNIT *needle = (UNIT *) malloc ((m + 2) * sizeof (UNIT));
     if (haystack != NULL && needle != NULL)
       {
-        size_t i;
         const UNIT *result;
 
-        for (i = 0; i < 2 * m; i++)
+        for (size_t i = 0; i < 2 * m; i++)
           haystack[i] = 'A';
         haystack[2 * m] = 'B';
         haystack[2 * m + 1] = 0;
 
-        for (i = 0; i < m; i++)
+        for (size_t i = 0; i < m; i++)
           needle[i] = 'A';
         needle[m] = 'B';
         needle[m + 1] = 0;

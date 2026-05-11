@@ -1,5 +1,5 @@
 /* Test of splitting a 'long double' into fraction and mantissa.
-   Copyright (C) 2007-2025 Free Software Foundation, Inc.
+   Copyright (C) 2007-2026 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 /* On PowerPC machines, LDBL_MIN_EXP is -1021, but the smallest reliable
    exponent for 'long double' is -968.  For exponents below that, the precision
    may be truncated to the precision used for 'double'.  */
-#if defined __ppc || defined __ppc__ || defined __powerpc || defined __powerpc__
+#if defined _ARCH_PPC
 # define MIN_NORMAL_EXP (LDBL_MIN_EXP + 53)
 # define MIN_SUBNORMAL_EXP MIN_NORMAL_EXP
 #else

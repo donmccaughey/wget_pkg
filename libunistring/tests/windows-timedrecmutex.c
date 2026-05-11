@@ -1,5 +1,5 @@
 /* Timed recursive mutexes (native Windows implementation).
-   Copyright (C) 2005-2025 Free Software Foundation, Inc.
+   Copyright (C) 2005-2026 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -179,13 +179,11 @@ glwthread_timedrecmutex_timedlock (glwthread_timedrecmutex_t *mutex,
 
             {
               struct timeval currtime;
-              DWORD timeout;
-              DWORD result;
-
               gettimeofday (&currtime, NULL);
 
               /* Wait until another thread signals the event or until the
                  abstime passes.  */
+              DWORD timeout;
               if (currtime.tv_sec > abstime->tv_sec)
                 timeout = 0;
               else
@@ -218,7 +216,7 @@ glwthread_timedrecmutex_timedlock (glwthread_timedrecmutex_t *mutex,
 
               /* WaitForSingleObject
                  <https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-waitforsingleobject> */
-              result = WaitForSingleObject (mutex->event, timeout);
+              DWORD result = WaitForSingleObject (mutex->event, timeout);
               if (result == WAIT_FAILED)
                 abort ();
               if (result == WAIT_TIMEOUT)
