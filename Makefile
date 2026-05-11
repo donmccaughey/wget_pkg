@@ -15,7 +15,7 @@ revision := 2
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
-tag := v"$(version)-r$(revision)
+tag := v$(version)-r$(revision)
 tag-message := A signed and notarized universal installer package for \`wget\` \
 	$(version), built with libiconv $(libiconv_version), libidn2 \
 	$(libidn2_version), libpsl $(libpsl_version), libunistring \
