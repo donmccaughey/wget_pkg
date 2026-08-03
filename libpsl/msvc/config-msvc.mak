@@ -28,7 +28,7 @@ GETTEXT_LIB = intl.lib
 # Version info
 
 PACKAGE_NAME=libpsl
-PACKAGE_VERSION=0.21.5
+PACKAGE_VERSION=0.23.0
 PACKAGE_URL=https://github.com/rockdaboot/libpsl
 
 # Bare minimum features and sources built into libpsl on Windows
@@ -109,7 +109,7 @@ PSL_LIBTYPE = DLL
 
 !if "$(DISABLE_RUNTIME)" == ""
 PSL_ADDITIONAL_LIBS = $(PSL_ADDITIONAL_LIBS) $(ICUUC_LIB)
-endif
+!endif
 
 !if "$(DISABLE_BUILTIN)" == ""
 PSL_TESTS =	\

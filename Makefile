@@ -6,12 +6,12 @@ TMP ?= $(abspath tmp)
 version := 1.25.0
 libiconv_version := 1.19
 libidn2_version := 2.3.8
-libpsl_version := 0.21.5
+libpsl_version := 0.23.0
 libunistring_version := 1.4.2
 openssl_version := 3.5.6
 pcre2_version := 10.47
 zlib_version := 1.3.2
-revision := 3
+revision := 4
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
@@ -63,7 +63,7 @@ libidn2 : \
 
 .PHONY : libpsl
 libpsl : \
-		$(TMP)/libpsl/install/usr/local/include/psl.h \
+		$(TMP)/libpsl/install/usr/local/include/libpsl.h \
 		$(TMP)/libpsl/install/usr/local/lib/libpsl.a
 
 
@@ -225,7 +225,8 @@ libpsl_config_options := \
 		CFLAGS='$(libpsl_cflags)' \
 		LDFLAGS='$(libpsl_ldflags)' \
 		LIBIDN2_CFLAGS='-I$(TMP)/libidn2/install/usr/local/include' \
-		LIBIDN2_LIBS='-L$(TMP)/libidn2/install/usr/local/lib -lidn2'
+		LIBIDN2_LIBS='-L$(TMP)/libidn2/install/usr/local/lib -lidn2 \
+				-L$(TMP)/libiconv/install/usr/local/lib -liconv'
 
 libpsl_sources := $(shell find libpsl -type f \! -name .DS_Store)
 

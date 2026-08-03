@@ -1,30 +1,11 @@
 /*
- * Copyright(c) 2014-2024 Tim Ruehsen
+ * SPDX-License-Identifier: MIT
  *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
+ * See the LICENSE file in the root directory for details and copyrights.
  *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- * This file is part of the test suite of libpsl.
+ * This file is part of libpsl.
  *
  * Test case for psl_is_cookie_doamin_acceptable()
- *
- * Changelog
- * 15.04.2014  Tim Ruehsen  created from libmget/cookie.c
  *
  */
 
@@ -32,18 +13,12 @@
 # include <config.h>
 #endif
 
-#ifdef _WIN32
-# include <winsock2.h> // WSAStartup, WSACleanup
-#endif
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef HAVE_ALLOCA_H
-#	include <alloca.h>
-#endif
 
 #include <libpsl.h>
+#include "common.h"
 
 #define countof(a) (sizeof(a)/sizeof(*(a)))
 
@@ -113,28 +88,12 @@ static void test_psl(void)
 
 int main(int argc, const char * const *argv)
 {
-#ifdef _WIN32
-	WSADATA wsa_data;
-	int err;
-
-	if ((err = WSAStartup(MAKEWORD(2,2), &wsa_data))) {
-		printf("WSAStartup failed with error: %d\n", err);
-		return 1;
-	}
-
-	atexit((void (__cdecl*)(void)) WSACleanup);
-#endif
-
 	/* if VALGRIND testing is enabled, we have to call ourselves with valgrind checking */
 	if (argc == 1) {
 		const char *valgrind = getenv("TESTS_VALGRIND");
 
 		if (valgrind && *valgrind) {
-			size_t cmdsize = strlen(valgrind) + strlen(argv[0]) + 32;
-			char *cmd = alloca(cmdsize);
-
-			snprintf(cmd, cmdsize, "TESTS_VALGRIND="" %s %s", valgrind, argv[0]);
-			return system(cmd) != 0;
+			return run_valgrind(valgrind, argv[0]);
 		}
 	}
 

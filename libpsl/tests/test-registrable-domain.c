@@ -1,30 +1,11 @@
 /*
- * Copyright(c) 2014-2024 Tim Ruehsen
+ * SPDX-License-Identifier: MIT
  *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
+ * See the LICENSE file in the root directory for details and copyrights.
  *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- * This file is part of the test suite of libpsl.
+ * This file is part of libpsl.
  *
  * Test psl_registered_domain() for all entries in test_psl.dat
- *
- * Changelog
- * 26.03.2014  Tim Ruehsen  created
  *
  */
 
@@ -35,13 +16,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef HAVE_ALLOCA_H
-#	include <alloca.h>
-#elif defined _WIN32
-#	include <malloc.h>
-#endif
 
 #include <libpsl.h>
+#include "common.h"
 
 static int
 	ok,
@@ -59,7 +36,7 @@ static void testx(const psl_ctx_t *psl, const char *domain, const char *encoding
 	if ((rc = psl_str_to_utf8lower(domain, encoding, lang, &lower)) == PSL_SUCCESS)
 		domain = lower;
 	/* non-ASCII domains fail here if no runtime IDN library is configured, so skip it */
-#if defined(WITH_LIBIDN) || defined(WITH_LIBIDN2) || defined(WITH_LIBICU)
+#if defined(WITH_LIBIDN) || defined(WITH_LIBIDN2) || defined(WITH_LIBICU) || defined(WITH_LIBICUCORE) || defined(WITH_LIBICU_WIN)
 	else if (domain) {
 		/* if we do not runtime support, test failure have to be skipped */
 		failed++;
@@ -115,7 +92,7 @@ static void test_psl(void)
 	test(NULL, "com", NULL);
 
 	/* Norwegian with uppercase oe */
-#ifdef WITH_LIBICU
+#if defined(WITH_LIBICU) || defined(WITH_LIBICUCORE) || defined(WITH_LIBICU_WIN)
 	test(psl, "www.\303\230yer.no", "www.\303\270yer.no");
 #endif
 
@@ -124,7 +101,7 @@ static void test_psl(void)
 
 	/* Norwegian with lowercase oe, encoded as ISO-8859-15 */
         /* makes only sense with a runtime IDN library configured */
-#if defined(WITH_LIBIDN) || defined(WITH_LIBIDN2) || defined(WITH_LIBICU)
+#if defined(WITH_LIBIDN) || defined(WITH_LIBIDN2) || defined(WITH_LIBICU) || defined(WITH_LIBICUCORE) || defined(WITH_LIBICU_WIN)
 	test_iso(psl, "www.\370yer.no", "www.\303\270yer.no");
 #endif
 
@@ -199,11 +176,7 @@ int main(int argc, const char * const *argv)
 		const char *valgrind = getenv("TESTS_VALGRIND");
 
 		if (valgrind && *valgrind) {
-			size_t cmdsize = strlen(valgrind) + strlen(argv[0]) + 32;
-			char *cmd = alloca(cmdsize);
-
-			snprintf(cmd, cmdsize, "TESTS_VALGRIND="" %s %s", valgrind, argv[0]);
-			return system(cmd) != 0;
+			return run_valgrind(valgrind, argv[0]);
 		}
 	}
 

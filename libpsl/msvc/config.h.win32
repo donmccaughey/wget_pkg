@@ -87,9 +87,6 @@
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
 
-/* Define to 1 if you have the `strndup' function. */
-/* #undef HAVE_STRNDUP */
-
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #define HAVE_SYS_STAT_H 1
 
@@ -120,7 +117,7 @@
 #define PACKAGE_NAME "libpsl"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "libpsl 0.21.5"
+#define PACKAGE_STRING "libpsl 0.23.0"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "libpsl"
@@ -129,7 +126,7 @@
 #define PACKAGE_URL "https://github.com/rockdaboot/libpsl"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.21.5"
+#define PACKAGE_VERSION "0.23.0"
 
 /* If using the C implementation of alloca, define if you know the
    direction of stack growth for your system; otherwise it will be
