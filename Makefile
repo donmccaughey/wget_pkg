@@ -8,10 +8,10 @@ libiconv_version := 1.19
 libidn2_version := 2.3.8
 libpsl_version := 0.23.0
 libunistring_version := 1.4.2
-openssl_version := 3.5.7
+openssl_version := 3.5.9
 pcre2_version := 10.49
 zlib_version := 1.4
-revision := 4
+revision := 5
 archs := arm64 x86_64
 
 rev := $(if $(patsubst 1,,$(revision)),-r$(revision),)
