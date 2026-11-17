@@ -132,8 +132,7 @@ $(TMP)/libiconv/installed.stamp.txt : \
 
 $(TMP)/libiconv/build/include/iconv.h \
 $(TMP)/libiconv/build/lib/.libs/libiconv.a : \
-		$(TMP)/libiconv/built.stamp.txt \
-		| $$(dir $$@)
+		$(TMP)/libiconv/built.stamp.txt
 	@:
 
 $(TMP)/libiconv/built.stamp.txt : \
@@ -180,7 +179,7 @@ $(TMP)/libidn2/installed.stamp.txt : \
 	rm -f $(TMP)/libidn2/install/usr/local/lib/*.la
 	date > $@
 
-$(TMP)/libidn2/build/lib/.libs/libidn2.a : $(TMP)/libidn2/built.stamp.txt | $$(dir $$@)
+$(TMP)/libidn2/build/lib/.libs/libidn2.a : $(TMP)/libidn2/built.stamp.txt
 	@:
 
 $(TMP)/libidn2/built.stamp.txt : $(TMP)/libidn2/configured.stamp.txt | $$(dir $$@)
@@ -244,8 +243,7 @@ $(TMP)/libpsl/installed.stamp.txt : \
 
 $(TMP)/libpsl/build/include/libpsl.h \
 $(TMP)/libpsl/build/src/.libs/libpsl.a : \
-		$(TMP)/libpsl/built.stamp.txt \
-		| $$(dir $$@)
+		$(TMP)/libpsl/built.stamp.txt
 	@:
 
 $(TMP)/libpsl/built.stamp.txt : \
@@ -301,14 +299,11 @@ $(TMP)/libunistring/installed.stamp.txt : \
 
 $(TMP)/libunistring/build/lib/unistr.h \
 $(TMP)/libunistring/build/lib/.libs/libunistring.a : \
-		$(TMP)/libunistring/built.stamp.txt \
-		| $$(dir $$@)
+		$(TMP)/libunistring/built.stamp.txt
 	@:
 
 $(TMP)/libunistring/built.stamp.txt : \
 		$(TMP)/libunistring/configured.stamp.txt \
-		$(TMP)/libiconv/install/usr/local/include/iconv.h \
-		$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
 		| $$(dir $$@)
 	cd $(TMP)/libunistring/build && $(MAKE)
 # 	libunistring `make` adds this empty file to the dist directory
@@ -317,6 +312,8 @@ $(TMP)/libunistring/built.stamp.txt : \
 
 $(TMP)/libunistring/configured.stamp.txt : \
 		$(libunistring_sources) \
+		$(TMP)/libiconv/install/usr/local/include/iconv.h \
+		$(TMP)/libiconv/install/usr/local/lib/libiconv.a \
 		| $(TMP)/libunistring/build
 	cd $(TMP)/libunistring/build \
 			&& $(abspath libunistring/configure) $(libunistring_config_options)
@@ -475,8 +472,7 @@ $(TMP)/pcre2/installed.stamp.txt : \
 
 $(TMP)/pcre2/build/src/pcre2.h \
 $(TMP)/pcre2/build/.libs/libpcre2-8.a : \
-		$(TMP)/pcre2/built.stamp.txt \
-		| $$(dir $$@)
+		$(TMP)/pcre2/built.stamp.txt
 	@:
 
 $(TMP)/pcre2/built.stamp.txt : $(TMP)/pcre2/configured.stamp.txt | $$(dir $$@)
@@ -604,8 +600,7 @@ $(TMP)/wget.pkg : $(TMP)/wget/install/usr/local/bin/uninstall-wget
 $(TMP)/wget/install/usr/local/bin/uninstall-wget : \
 		./uninstall-wget \
 		$(TMP)/wget/install/etc/paths.d/wget.path \
-		$(TMP)/wget/install/usr/local/bin/wget \
-		| $$(dir $$@)
+		$(TMP)/wget/install/usr/local/bin/wget
 	cp $< $@
 	cd $(TMP)/wget/install && find . -type f \! -name .DS_Store | sort >> $@
 	sed -e 's/^\./rm -f /g' -i '' $@
